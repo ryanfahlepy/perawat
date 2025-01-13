@@ -47,8 +47,8 @@ class LpseModel extends Model
      */
     public function deleteDokumen($id_dokumen)
     {
-        // Ensure the document ID exists before attempting to delete
-        return $this->where('id_dokumen', $id_dokumen)->delete();
+        // Delete the document where the id matches
+        return $this->delete($id_dokumen);
     }
 
     public function customInsert(array $data, bool $returnID = true)

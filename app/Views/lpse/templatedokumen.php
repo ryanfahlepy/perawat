@@ -84,62 +84,60 @@ $session = \Config\Services::session();
 </form>
 
 </div>
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Ensure jQuery is included -->
+
 <script>
     document.getElementById('edit-btn').addEventListener('click', function() {
-    const inputs = document.querySelectorAll('.dokumen-input');
-    const submitBtn = document.getElementById('submit-btn');
-    const editBtn = document.getElementById('edit-btn');
-    const deleteButtons = document.querySelectorAll('.delete-doc'); // Ambil tombol delete
-    
-    // Check if the current button is "Edit" or "Cancel"
-    if (editBtn.textContent === 'Edit') {
-        // Convert inputs to editable
-        inputs.forEach(input => {
-            input.readOnly = false;
-        });
+        const inputs = document.querySelectorAll('.dokumen-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const editBtn = document.getElementById('edit-btn');
+        const deleteButtons = document.querySelectorAll('.delete-doc'); // Ambil tombol delete
         
-        // Show the delete buttons (remove the 'd-none' class)
-        deleteButtons.forEach(button => {
-            button.classList.remove('d-none'); // Tampilkan tombol delete
-            button.classList.add('active'); // Tampilkan tombol delete dengan warna aktif
-        });
+        // Check if the current button is "Edit" or "Cancel"
+        if (editBtn.textContent === 'Edit') {
+            // Convert inputs to editable
+            inputs.forEach(input => {
+                input.readOnly = false;
+            });
+            
+            // Show the delete buttons (remove the 'd-none' class)
+            deleteButtons.forEach(button => {
+                button.classList.remove('d-none'); // Tampilkan tombol delete
+                button.classList.add('active'); // Tampilkan tombol delete dengan warna aktif
+            });
 
-        // Change button text to "Cancel" and styles to danger
-        editBtn.classList.remove('btn-primary');
-        editBtn.classList.add('btn-danger');
-        editBtn.textContent = 'Cancel';
-        
-        // Enable the "Submit" button
-        submitBtn.disabled = false;
-    } else {
-        // Convert inputs back to read-only (like the initial state)
-        inputs.forEach(input => {
-            input.readOnly = true;
-        });
-        
-        // Hide the delete buttons (add the 'd-none' class)
-        deleteButtons.forEach(button => {
-            button.classList.add('d-none'); // Sembunyikan tombol delete
-            button.classList.remove('active'); // Hapus kelas aktif
-        });
+            // Change button text to "Cancel" and styles to danger
+            editBtn.classList.remove('btn-primary');
+            editBtn.classList.add('btn-danger');
+            editBtn.textContent = 'Cancel';
+            
+            // Enable the "Submit" button
+            submitBtn.disabled = false;
+        } else {
+            // Convert inputs back to read-only (like the initial state)
+            inputs.forEach(input => {
+                input.readOnly = true;
+            });
+            
+            // Hide the delete buttons (add the 'd-none' class)
+            deleteButtons.forEach(button => {
+                button.classList.add('d-none'); // Sembunyikan tombol delete
+                button.classList.remove('active'); // Hapus kelas aktif
+            });
 
-        // Change button text back to "Edit" and styles back to primary
-        editBtn.classList.remove('btn-danger');
-        editBtn.classList.add('btn-primary');
-        editBtn.textContent = 'Edit';
-        
-        // Disable the "Submit" button
-        submitBtn.disabled = true;
-    }
-});
+            // Change button text back to "Edit" and styles back to primary
+            editBtn.classList.remove('btn-danger');
+            editBtn.classList.add('btn-primary');
+            editBtn.textContent = 'Edit';
+            
+            // Disable the "Submit" button
+            submitBtn.disabled = true;
+        }
+    });
 
-document.querySelectorAll('.delete-doc').forEach(button => {
-    button.addEventListener('click', function() {
-        const docId = this.getAttribute('data-id');
+    $(document).on('click', '.delete-doc', function() {
+        const docId = $(this).data('id_dokumen'); // Get document ID using jQuery
 
         // Show the SweetAlert2 confirmation dialog
         Swal.fire({
@@ -153,50 +151,46 @@ document.querySelectorAll('.delete-doc').forEach(button => {
             cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {
-                // If user confirmed, send the delete request
-                fetch('<?= base_url('lpse/templatedokumen/hapus') ?>', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
+                console.log("ID Dokumen: ", docId); // Debugging: Check if docId is correct
+
+                // If user confirmed, send the delete request via AJAX
+                $.ajax({
+                    url: '<?= base_url('lpse/templatedokumen/hapus') ?>', // The URL for the deletion endpoint
+                    type: 'POST',
+                    data: { 'id_dokumen': docId }, // Send the document ID
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data); // Debugging: Check the response from the server
+                        if (data.success) {
+                            $(this).closest('.d-flex').remove(); // Remove the document from the list
+                            Swal.fire(
+                                'Terhapus!',
+                                'Dokumen telah dihapus.',
+                                'success'
+                            );
+                        } else {
+                            Swal.fire(
+                                'Gagal!',
+                                'Dokumen gagal dihapus.',
+                                'error'
+                            );
+                        }
                     },
-                    body: JSON.stringify({ id_dokumen: docId })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // var_dump the data here for debugging
-                    console.log(data); // This logs the response from the PHP controller
-                    if (data.success) {
-                        // Remove the document from the view
-                        this.closest('.d-flex').remove();
+                    error: function(xhr, status, error) {
+                        console.error("Error: ", error); // Debugging: Check for any AJAX errors
                         Swal.fire(
-                            'Terhapus!',
-                            'Dokumen telah dihapus.',
-                            'success'
-                        );
-                    } else {
-                        Swal.fire(
-                            'Gagal!',
-                            'Dokumen gagal dihapus.',
+                            'Error!',
+                            'Terjadi kesalahan saat menghapus dokumen.',
                             'error'
                         );
                     }
-                })
-                .catch(error => {
-                    Swal.fire(
-                        'Error!',
-                        'Terjadi kesalahan saat menghapus dokumen.',
-                        'error'
-                    );
                 });
             }
         });
     });
-});
-
-
-
-
 </script>
+
+
 
 <style>
     .delete-doc i {

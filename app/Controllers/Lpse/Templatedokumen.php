@@ -90,14 +90,29 @@ public function hapus()
     // Get the document ID from the POST request
     $id_dokumen = $this->request->getPost('id_dokumen');
 
-    // Perform the delete operation
-    $result = $this->templatedokumenModel->delete($id_dokumen);
+    // Use var_dump to check the value of $id_dokumen
+    var_dump($id_dokumen); // This will dump the value of $id_dokumen to the browser
 
-    // Check if the delete operation was successful
+    // Check if the document ID is provided
+    if (!$id_dokumen) {
+        return $this->response->setJSON(['success' => false, 'message' => 'ID dokumen tidak ditemukan']);
+    }
+
+    // Load the model
+    $lpseModel = new LpseModel();
+
+    // Call the delete method of the model
+    $result = $lpseModel->deleteDokumen($id_dokumen);
+
+    // Use var_dump to check the result of the delete operation
+    var_dump($result); // This will dump the result (true or false)
+
     if ($result) {
-        return $this->response->setJSON(['success' => true]);
+        // Return a success response
+        return $this->response->setJSON(['success' => true, 'message' => 'Dokumen berhasil dihapus']);
     } else {
-        return $this->response->setJSON(['success' => false]);
+        // Return a failure response
+        return $this->response->setJSON(['success' => false, 'message' => 'Gagal menghapus dokumen']);
     }
 }
 
