@@ -23,7 +23,7 @@ $session = \Config\Services::session();
                 <div class="inner">
                     <h3>Rp 259</h3>
 
-                    <p>Total DIPA</p>
+                    <p>Total Paket</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -37,7 +37,7 @@ $session = \Config\Services::session();
                 <div class="inner">
                     <h3>Rp 716.400.000.000</h3>
 
-                    <p>Anggaran Total DIPA</p>
+                    <p>Anggaran Total Paket</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
