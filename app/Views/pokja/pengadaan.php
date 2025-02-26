@@ -20,7 +20,11 @@
 <?php endif; ?>
 
 <div class="card-body">
-    <!-- Membungkus tabel dengan kontainer untuk penataan -->
+<a href="<?= base_url('pokja/pengadaan/tambah_pengadaan') ?>" class="btn btn-primary">
+    Tambah
+</a>
+<hr>
+ 
     <div class="table-container">
         <table class="table table-bordered table-striped">
             <thead class="text-center">
@@ -42,7 +46,7 @@
                 <?php $no = 1; ?>
                 <?php foreach ($pengadaanData as $data): ?>
                 <tr>
-                    <td><?= $no++; ?></td>
+                    <td class="text-center" ><?= $no++; ?></td>
                     <td><?= $data['nama_pengadaan']; ?></td>
                     <!-- <td><?= $data['ref_tabel']; ?></td>
                     <td><?= $data['ppk']; ?></td>

@@ -83,7 +83,7 @@
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>No</th>
                     <th>Tahun Anggaran</th>
                     <th>Kategori</th>
@@ -98,7 +98,7 @@
                 <?php if (!empty($paket_perencanaan)): ?>
                     <?php $no = 1; foreach ($paket_perencanaan as $paket): ?>
                         <tr>
-                            <td><?= $no++; ?></td>
+                        <td class="text-center" ><?= $no++; ?></td>
                             <td><?= esc($paket['tahun_anggaran']); ?></td>
                             <td><?= esc($paket['kategori']); ?></td>
                             <td><?= esc($paket['kode_rup']); ?></td>
@@ -179,7 +179,7 @@
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
         <thead>
-    <tr>
+    <tr class="text-center">
         <th>No</th>
         <th>Tahun Anggaran</th>
         <th>Sumber Data</th>
@@ -196,7 +196,7 @@
     <?php if (!empty($paket_pelaksanaan)): ?>
         <?php $no = 1; foreach ($paket_pelaksanaan as $paket): ?>
             <tr>
-                <td><?= $no++; ?></td>
+            <td class="text-center" ><?= $no++; ?></td>
                 <td><?= esc($paket['tahun_anggaran']); ?></td>
                 <td><?= esc($paket['sumber_data']); ?></td>
                 <td><?= esc($paket['nama_penyedia']); ?></td>
@@ -279,7 +279,7 @@
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>No</th>
                     <th>Tahun Anggaran</th>
                     <th>Sumber Data</th>
@@ -295,7 +295,7 @@
                 <?php if (!empty($paket_pembayaran)): ?>
                     <?php $no = 1; foreach ($paket_pembayaran as $paket): ?>
                         <tr>
-                            <td><?= $no++; ?></td>
+                        <td class="text-center" ><?= $no++; ?></td>
                             <td><?= esc($paket['tahun_anggaran']); ?></td>
                             <td><?= esc($paket['sumber_data']); ?></td>
                             <td><?= esc($paket['nama_penyedia']); ?></td>
