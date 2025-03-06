@@ -37,9 +37,10 @@
                     <th>Nama Penyedia</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Berakhir</th>
+                    <th>Progress</th>
+                 
                     <th>Aksi</th>
-                    <!-- <th>Dokumen Terunggah</th>
-                    <th>Total Dokumen</th> -->
+                    
                 </tr>
             </thead>
             <tbody >
@@ -53,9 +54,19 @@
                     <td><?= $data['pokja_pp']; ?></td> -->
                     <td><?= $data['nama_penyedia']; ?></td>
                     <td><?= date('d/m/Y', strtotime($data['tanggal_mulai'])); ?></td>
-                    <td><?= date('d/m/  Y', strtotime($data['tanggal_berakhir'])); ?></td>
-                    <!-- <td><?= $data['dokumen_terunggah']; ?></td>
-                    <td><?= $data['total_dokumen']; ?></td> -->
+                    <td><?= date('d/m/Y', strtotime($data['tanggal_berakhir'])); ?></td>
+                    <td>
+    <!-- Tampilkan Progress dalam bentuk Persentase -->
+    <div style="width: 100%; background-color: #e0e0e0; border-radius: 5px; overflow: hidden;">
+        <div 
+            style="width: <?= $data['progress']; ?>%; background-color: <?= $data['progress'] >= 75 ? 'green' : ($data['progress'] >= 50 ? 'yellow' : 'red'); ?>; height: 20px;">
+        </div>
+    </div>
+    <div style="text-align: center;"><?= $data['progress']; ?>%</div>
+</td>
+
+                  
+                
                     <td>
     <div class="center d-flex gap-2 justify-content-center">
         <a href="<?= base_url('/pokja/pengadaan/detail_pengadaan/' . $data['id']); ?>" class="btn btn-info btn-sm m-1">

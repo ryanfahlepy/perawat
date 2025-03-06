@@ -47,4 +47,12 @@ class FileModel extends Model
     {
         return $this->where('id_dokumen', $id_dokumen)->first();
     }
+
+    
+    public function getFileCountByPengadaanId($refIdPengadaan)
+    {
+        return $this->where('ref_id_pengadaan', $refIdPengadaan)
+                    ->countAllResults();
+    }
+    
 }

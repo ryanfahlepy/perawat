@@ -8,7 +8,7 @@ class DokumenModel extends Model
 {
     protected $table;
     protected $primaryKey = 'id_dokumen';
-    protected $allowedFields = ['id_dokumen', 'dokumen'];
+    protected $allowedFields = ['id_dokumen', 'no_urut', 'dokumen'];
 
     public function __construct($table = null)
     {
@@ -22,4 +22,23 @@ class DokumenModel extends Model
     {
         return $this->where('ref_tabel', $id)->findAll();
     }
+    public function getAllCount($table)
+{
+    // Sesuaikan dengan query yang sesuai untuk masing-masing tabel
+    return $this->db->table($table)->countAllResults();
 }
+
+
+        public function countAllResult($table)
+        {
+            $this->table = $table;  // Menetapkan nama tabel yang diterima sebagai parameter
+            return $this->countAll(); // Menghitung semua data dalam tabel
+        }
+
+        public function getDokumenByTable($table)
+    {
+        return $this->db->table($table)->orderBy('no_urut', 'ASC')->get()->getResultArray();
+    }
+
+
+}        

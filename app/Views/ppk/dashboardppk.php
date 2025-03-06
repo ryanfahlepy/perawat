@@ -21,28 +21,28 @@ $session = \Config\Services::session();
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>Rp 259</h3>
+                    <h3><?= $jumlah_paket; ?></h3>
 
                     <p>Total Paket</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('ppk/paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>Rp 716.400.000.000</h3>
+                    <h3>Rp <?= number_format($total_perencanaan, 0, ',', '.'); ?></h3>
 
-                    <p>Anggaran Total Paket</p>
+                    <p>Total Perencanaan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('ppk/paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -50,29 +50,29 @@ $session = \Config\Services::session();
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>561</h3>
+                 <h3>Rp <?= number_format($total_pelaksanaan, 0, ',', '.'); ?></h3>
 
-                    <p>Jumlah Pengadaan</p>
+                    <p>Total Pelaksanaan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('ppk/paket#pelaksanaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box" style="background-color:#DBB300FF">
                 <div class="inner">
-                    <h3>42 %</h3>
+                <h3 style="color:white">Rp <?= number_format($total_pembayaran, 0, ',', '.'); ?></h3>
 
-                    <p>Total Presentase Pengadaan Selesai</p>
+                    <p style="color:white">Total Pembayaran</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('ppk/paket#pembayaran') ?>" class="small-box-footer" style="color:white">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -80,14 +80,14 @@ $session = \Config\Services::session();
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>65</h3>
+                <h3><?= $jumlah_pengadaan; ?></h3>
 
-                    <p>Others</p>
+                    <p>Total Pengadaan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pokja/pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->

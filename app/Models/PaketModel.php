@@ -80,5 +80,36 @@ class PaketModel extends Model
         return $this->db->table($table)->update($data, ['id' => $id]);
     }
 
-    
+    public function jumlah_paket()
+{
+    return $this->db->table($this->tablePerencanaan)->countAllResults();
+}
+
+public function total_perencanaan()
+{
+    return $this->db->table($this->tablePerencanaan)
+                    ->selectSum('total_perencanaan')
+                    ->get()
+                    ->getRow()
+                    ->total_perencanaan;
+}
+
+public function total_pelaksanaan()
+{
+    return $this->db->table($this->tablePelaksanaan)
+                    ->selectSum('total_pelaksanaan')
+                    ->get()
+                    ->getRow()
+                    ->total_pelaksanaan;
+}
+
+public function total_pembayaran()
+{
+    return $this->db->table($this->tablePembayaran)
+                    ->selectSum('total_pembayaran')
+                    ->get()
+                    ->getRow()
+                    ->total_pembayaran;
+}
+
 }

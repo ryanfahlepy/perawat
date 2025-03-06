@@ -1,8 +1,33 @@
 <?= $this->include('shared_page/header'); ?>
 
 <body class="hold-transition login-page" style="background-image: url('/assets/dist/img/banner.jpeg'); background-size: cover; background-position: center;">
-<h2><b>SISTEM INFORMASI MANAJEMEN PENGARSIPAN DOKUMEN</b></h2>
-<h2><b>PENGADAAN BARANG/JASA DISINFOLAHTAL</b></h2>
+<style>
+  .title {
+    color: white;
+    font-size: 2rem; /* Ukuran default */
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* Jika layar lebih kecil dari 768px, ukuran font akan mengecil */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 1.2rem;
+    }
+  }
+
+  /* Jika layar lebih kecil dari 480px, ukuran font akan lebih kecil lagi */
+  @media (max-width: 480px) {
+    .title {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<h2 class="title">SISTEM INFORMASI MANAJEMEN PENGARSIPAN DOKUMEN</h2>
+<h2 class="title">PENGADAAN BARANG/JASA DISINFOLAHTAL</h2>
+
+
     <div class="login-box">
         <div class="login-logo">
             

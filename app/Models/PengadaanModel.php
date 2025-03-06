@@ -25,4 +25,10 @@ class PengadaanModel extends Model
     {
         return $this->find($id);
     }
+
+    
+    public function jumlah_pengadaan()
+{
+    return $this->db->table($this->table)->countAllResults();
+}
 }

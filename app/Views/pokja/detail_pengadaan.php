@@ -32,7 +32,7 @@
                 <th>Metode Pemilihan</th>
                 <td>
                     <select name="ref_tabel" id="ref_tabel" class="form-control" disabled>
-                        <option value="1" <?= ($pengadaan['ref_tabel'] == '1') ? 'selected' : '' ?>>Pengadaan/Penunjukkan Langsung</option>
+                        <option value="1" <?= ($pengadaan['ref_tabel'] == '1') ? 'selected' : '' ?>>Penunjukkan Langsung</option>
                         <option value="2" <?= ($pengadaan['ref_tabel'] == '2') ? 'selected' : '' ?>>Tender</option>
                         <option value="3" <?= ($pengadaan['ref_tabel'] == '3') ? 'selected' : '' ?>>E-Purchasing</option>
                     </select>

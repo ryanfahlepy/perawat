@@ -5,6 +5,7 @@ namespace App\Controllers\Pokja;
 use App\Controllers\BaseController;
 use App\Models\PengadaanModel;
 use App\Models\FileModel;
+use App\Models\DokumenModel;
 
 class Pengadaan extends BaseController
 {
@@ -13,24 +14,63 @@ class Pengadaan extends BaseController
         $this->session = \Config\Services::session();
         $this->pengadaanModel = new PengadaanModel();  // Menginisialisasi model
         $this->fileModel = new FileModel();  // Menginisialisasi model
+        $this->dokumenModel = new DokumenModel();  // Menginisialisasi model
+
+         // Mengambil jumlah dokumen dari masing-masing tabel dan menyimpannya di properti class
+        $this->dokumenCounts = [
+            'tabel_pl' => $this->dokumenModel->getAllCount('tabel_pl'),
+            'tabel_tender' => $this->dokumenModel->getAllCount('tabel_tender'),
+            'tabel_ep' => $this->dokumenModel->getAllCount('tabel_ep'),
+        ];
+
+     
     }
 
     
-
     public function index()
     {
         // Mengambil semua data pengadaan
         $pengadaanData = $this->pengadaanModel->getAllPengadaan();
-
+    
+        // Update nilai pengadaanData berdasarkan ref_tabel
+        foreach ($pengadaanData as &$pengadaan) {
+            if ($pengadaan['ref_tabel'] == 1) {
+                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_pl'];
+            } elseif ($pengadaan['ref_tabel'] == 2) {
+                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_tender'];
+            } elseif ($pengadaan['ref_tabel'] == 3) {
+                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_ep'];
+            } else {
+                $pengadaan['jumlah_dokumen'] = 0; // Default jika tidak sesuai
+            }
+        }
+    
+        // Update pengadaanData untuk menghitung jumlah file dan progress
+        foreach ($pengadaanData as &$pengadaan) {
+            // Mengambil jumlah file berdasarkan id pengadaan
+            $pengadaan['jumlah_file'] = $this->fileModel->getFileCountByPengadaanId($pengadaan['id']);
+    
+            // Menghitung progress (persentase)
+            if ($pengadaan['jumlah_dokumen'] > 0) {
+                $pengadaan['progress'] = round(($pengadaan['jumlah_file'] / $pengadaan['jumlah_dokumen']) * 100); // Membulatkan ke angka terdekat
+            } else {
+                $pengadaan['progress'] = 0; // Jika tidak ada dokumen, set progress ke 0
+            }
+        }
+        
         $data = [
             'level_akses' => session()->get('nama_level'),
             'dtmenu' => $this->tampil_menu(session()->get('level')),
             'nama_menu' => 'Daftar Pengadaan',
-            'pengadaanData' => $pengadaanData // Menyisipkan data pengadaan ke view
+            'pengadaanData' => $pengadaanData,
         ];
-
+    
         return view('pokja/pengadaan', $data);
     }
+    
+    
+    
+
     public function detail_pengadaan($id)
 {
     $pengadaan = $this->pengadaanModel->find($id);
