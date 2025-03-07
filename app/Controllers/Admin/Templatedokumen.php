@@ -56,6 +56,25 @@ class Templatedokumen extends BaseController
     
         return $this->response->setJSON(['status' => 'success']);
     }
+
+    public function add_document()
+    {
+        $table = $this->request->getPost('table');
+        $dokumen = $this->request->getPost('dokumen');
+
+        if (!$table || !$dokumen) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Data tidak valid']);
+        }
+
+        $inserted = $this->dokumenModel->addDokumen($table, $dokumen);
+
+        if ($inserted) {
+            return $this->response->setJSON(['status' => 'success']);
+        } else {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal menambahkan dokumen']);
+        }
+    }
+}
     
 
-}
+

@@ -40,5 +40,15 @@ class DokumenModel extends Model
         return $this->db->table($table)->orderBy('no_urut', 'ASC')->get()->getResultArray();
     }
 
+    public function addDokumen($table, $dokumen)
+    {
+        $lastOrder = $this->countAllResult($table);
+        
+        return $this->db->table($table)->insert([
+            'no_urut' => $lastOrder + 1,
+            'dokumen' => $dokumen
+        ]);
+    }
+
 
 }        

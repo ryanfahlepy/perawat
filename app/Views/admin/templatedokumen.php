@@ -48,7 +48,8 @@
             <hr>
             <button class="btn btn-primary edit-btn mb-3" data-tab="<?= $tabId ?>">Edit</button>
             <button class="btn btn-success save-btn d-none mb-3" data-tab="<?= $tabId ?>">Simpan</button>
-
+            <button class="btn btn-info tambah-btn mb-3" data-tab="<?= $tabId ?>">Tambah</button>
+            
             <ul id="sortable-<?= $tabId ?>" class="list-group sortable">
                 <?php foreach ($documents as $index => $doc): ?>
                 <li class="list-group-item d-flex align-items-center" data-id="<?= $doc['id_dokumen'] ?>">
@@ -105,8 +106,6 @@
                     $(".edit-btn[data-tab='" + tab + "']").removeClass("d-none");
                     $("#sortable-" + tab).sortable({ disabled: true });
                     $("#sortable-" + tab + " .dokumen-input").prop("disabled", true);
-                    
-                    // Update nomor urut setelah disimpan
                     updateNomor(tab);
                 },
                 error: function() {
@@ -115,20 +114,58 @@
             });
         });
 
-        $(".sortable").sortable({
-            disabled: true, 
-            handle: ".handle",
-            update: function(event, ui) {
-                var tab = $(this).attr("id").replace("sortable-", "");
-                updateNomor(tab);
-            }
+        $(".tambah-btn").click(function() {
+            var tab = $(this).data("tab");
+            var newItem = `
+                <li class="list-group-item d-flex align-items-center new-item">
+                    <span class="nomor">-</span>
+                    <input type="text" class="form-control dokumen-input flex-grow-1 ml-2" placeholder="Masukkan dokumen baru">
+                    <button class="btn btn-success simpan-btn ml-2" data-tab="` + tab + `">Simpan</button>
+                </li>
+            `;
+            $("#sortable-" + tab).append(newItem);
+            $(this).addClass("d-none");
         });
 
-        function updateNomor(tab) {
-            $("#sortable-" + tab + " li").each(function(index) {
-                $(this).find(".nomor").text((index + 1) + ".");
-            });
+        $(document).on("click", ".simpan-btn", function() {
+    var tab = $(this).data("tab");
+    var dokumenBaru = $(this).siblings(".dokumen-input").val(); // Ambil nilai input
+
+ 
+
+// Menyesuaikan nama tabel sesuai dengan tab yang dipilih
+if (tab === "pl") {
+    tab = "tabel_pl";
+} else if (tab === "tender") {
+    tab = "tabel_tender";
+} else if (tab === "ep") {
+    tab = "tabel_ep";
+}
+
+
+    if (dokumenBaru.trim() === "") {
+        alert("Dokumen tidak boleh kosong!");
+        return;
+    }
+
+    console.log("Mengirim Data:", { dokumen: dokumenBaru, table: tab });
+
+    $.ajax({
+        url: "<?= base_url('admin/templatedokumen/add_document') ?>",
+        type: "POST",
+        data: { dokumen: dokumenBaru, table: tab },  // Ubah dari `dokumen` menjadi `dokumen: dokumenBaru`
+        success: function(response) {
+            console.log("Response:", response);
+            alert("Dokumen berhasil ditambahkan!");
+            location.reload();
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX Error:", error, xhr.responseText);
+            alert("Terjadi kesalahan, coba lagi!");
         }
+    });
+});
+
     });
 </script>
 
