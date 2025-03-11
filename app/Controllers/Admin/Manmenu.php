@@ -54,7 +54,7 @@ class Manmenu extends BaseController
                     'rules' => 'required|min_length[2]|is_unique[tbmenu.nama]',
                     'errors' => [
                         'required' => 'harus diisi',
-                        'min_length' => 'mininam 2 karakter',
+                        'min_length' => 'minimal 2 karakter',
                         'is_unique' => 'sudah terdaftar'
                     ]
                 ],
@@ -62,14 +62,14 @@ class Manmenu extends BaseController
                     'rules' => 'required|min_length[2]',
                     'errors' => [
                         'required' => 'harus diisi',
-                        'min_length' => 'mininam 2 karakter'
+                        'min_length' => 'minimal 2 karakter'
                     ]
                 ],
                 'icon' => [
                     'rules' => 'required|min_length[2]',
                     'errors' => [
                         'required' => 'harus diisi',
-                        'min_length' => 'mininam 2 karakter'
+                        'min_length' => 'minimal 2 karakter'
                     ]
                 ],
                 'level_id' => [
@@ -138,7 +138,7 @@ class Manmenu extends BaseController
                     'rules' => $rule,
                     'errors' => [
                         'required' => 'harus diisi',
-                        'min_length' => 'mininam 2 karakter',
+                        'min_length' => 'minimal 2 karakter',
                         'is_unique' => 'sudah terdaftar'
                     ]
                 ],
@@ -146,14 +146,14 @@ class Manmenu extends BaseController
                     'rules' => 'required|min_length[2]',
                     'errors' => [
                         'required' => 'harus diisi',
-                        'min_length' => 'mininam 2 karakter'
+                        'min_length' => 'minimal 2 karakter'
                     ]
                 ],
                 'icon' => [
                     'rules' => 'required|min_length[2]',
                     'errors' => [
                         'required' => 'harus diisi',
-                        'min_length' => 'mininam 2 karakter'
+                        'min_length' => 'minimal 2 karakter'
                     ]
                 ],
                 'level_id' => [

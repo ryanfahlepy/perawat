@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Pokja;
+namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PaketModel;
@@ -19,7 +19,7 @@ class Dashboardpokja extends BaseController
         $data = [
             'level_akses' => $this->session->nama_level,
             'dtmenu' => $this->tampil_menu($this->session->level),
-            'nama_menu' => 'Dashboard Pokja',
+            'nama_menu' => 'Dashboard Kelompok Kerja Pemilihan',
             'jumlah_paket' => $this->paketModel->jumlah_paket(),
             'total_perencanaan' => $this->paketModel->total_perencanaan(),
             'total_pelaksanaan' => $this->paketModel->total_pelaksanaan(),

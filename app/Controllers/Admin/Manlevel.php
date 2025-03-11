@@ -47,10 +47,10 @@ class Manlevel extends BaseController
     {
         $rules = [
             'nama_level' => [
-                'rules' => 'required|min_length[3]|is_unique[tbuser_level.nama_level]',
+                'rules' => 'required|min_length[2]|is_unique[tbuser_level.nama_level]',
                 'errors' => [
                     'required' => 'harus disi',
-                    'min_length' => 'mininam 3 karakter',
+                    'min_length' => 'minimal 2 karakter',
                     'is_unique' => 'sudah terdaftar'
                 ]
             ],
@@ -58,7 +58,7 @@ class Manlevel extends BaseController
                 'rules' => 'required|min_length[5]',
                 'errors' => [
                     'required' => 'harus disi',
-                    'min_length' => 'mininam 5 karakter',
+                    'min_length' => 'minimal 5 karakter',
                 ]
             ]
         ];
@@ -99,13 +99,13 @@ class Manlevel extends BaseController
         } else {
             $id = $this->request->getVar('id_level');
             $namaLama = $this->user_levelModel->find($id)->nama_level;
-            $rule = ($this->request->getVar('nama_level') == $namaLama) ? 'required|min_length[3]' : 'required|min_length[3]|is_unique[tbuser_level.nama_level]';
+            $rule = ($this->request->getVar('nama_level') == $namaLama) ? 'required|min_length[2]' : 'required|min_length[2]|is_unique[tbuser_level.nama_level]';
             $rules = [
                 'nama_level' => [
                     'rules' => $rule,
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 3 karakter',
+                        'min_length' => 'minimal 2 karakter',
                         'is_unique' => 'sudah terdaftar'
                     ]
                 ],
@@ -113,7 +113,7 @@ class Manlevel extends BaseController
                     'rules' => 'required|min_length[5]',
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 5 karakter',
+                        'min_length' => 'minimal 5 karakter',
                     ]
                 ]
             ];

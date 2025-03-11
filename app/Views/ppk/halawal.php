@@ -5,7 +5,7 @@ $session = \Config\Services::session();
 <?php $this->section('content'); ?>
 <div class="card-body">
     <!-- Blok content dinamis disini -->
-    <p> Letakkan kontent halaman <b>user level ppk</b> disini ...... </p>
+    <p> Letakkan kontent halaman <b>user level</b> disini ...... </p>
     <!-- End blok content dinamis -->
 </div>
 <!-- /.card-body -->

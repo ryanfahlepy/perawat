@@ -80,11 +80,11 @@ class Login extends BaseController
                 
                     // Tambahkan redirect berdasarkan level_user
                     if ($user->level_user == 2) {
-                        return redirect()->to('/ppk/dashboardppk');
+                        return redirect()->to('/dashboardppk');
                     } elseif ($user->level_user == 3) {
-                        return redirect()->to('/ketuapokja/dashboardketuapokja');
+                        return redirect()->to('/dashboardpokja');
                     } elseif ($user->level_user == 4) {
-                        return redirect()->to('/pokja/dashboardpokja');
+                        return redirect()->to('/dashboardpp');
                     } elseif ($user->level_user == 1) {
                         return redirect()->to('/admin/dashboard');
                     } else {
@@ -124,10 +124,10 @@ class Login extends BaseController
                     ]
                 ],
                 'username' => [
-                    'rules' => 'required|min_length[3]|is_unique[tbuser.username]',
+                    'rules' => 'required|min_length[2]|is_unique[tbuser.username]',
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 3 karakter',
+                        'min_length' => 'minimal 2 karakter',
                         'is_unique' => 'username sudah terdaftar',
                         
                     ]

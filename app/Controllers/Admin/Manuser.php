@@ -65,26 +65,26 @@ class Manuser extends BaseController
         } else {
             $rules = [
                 'nama' => [
-                    'rules' => 'required|min_length[3]',
+                    'rules' => 'required|min_length[2]',
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 3 karakter',
+                        'min_length' => 'minimal 2 karakter',
                     ]
                 ],
                 'username' => [
-                    'rules' => 'required|min_length[3]|is_unique[tbuser.username]',
+                    'rules' => 'required|min_length[2]|is_unique[tbuser.username]',
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 3 karakter',
+                        'min_length' => 'minimal 2 karakter',
                         'is_unique' => 'username sudah terdaftar',
                         
                     ]
                 ],
                 'password' => [
-                    'rules' => 'required|min_length[3]',
+                    'rules' => 'required|min_length[2]',
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 3 karakter',
+                        'min_length' => 'minimal 2 karakter',
                     ]
                 ],
                 'level_id' => [
@@ -145,18 +145,18 @@ class Manuser extends BaseController
             $rule = ($this->request->getVar('username') == $usernameLama) ? 'required|min_length[3]' : 'required|min_length[3]|is_unique[tbuser.username]';
             $rules = [
                 'nama' => [
-                    'rules' => 'required|min_length[3]',
+                    'rules' => 'required|min_length[2]',
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 3 karakter',
+                        'min_length' => 'minimal 2 karakter',
                     ]
                 ],
                 'username' => [
                     'rules' => $rule,
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 3 karakter',
-                        'is_unique' => 'username sudah terdaftra',
+                        'min_length' => 'minimal 2 karakter',
+                        'is_unique' => 'username sudah terdaftar',
                     
                     ]
                 ],
@@ -249,14 +249,14 @@ class Manuser extends BaseController
                     'rules' => 'required|min_length[5]',
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 5 karakter'
+                        'min_length' => 'minimal 5 karakter'
                     ]
                 ],
                 'pss2' => [
                     'rules' => 'required|min_length[5]',
                     'errors' => [
                         'required' => 'harus disi',
-                        'min_length' => 'mininam 5 karakter',
+                        'min_length' => 'minimal 5 karakter',
                     ]
                 ]
             ];

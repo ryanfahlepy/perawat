@@ -24,9 +24,13 @@
     Tambah
 </a>
 <hr>
- 
-    <div class="table-container">
-        <table class="table table-bordered table-striped">
+<div class="mb-3">
+    <input type="text" id="searchPengadaan" class="form-control" placeholder="Cari data pengadaan..." onkeyup="cariPengadaan()">
+</div>
+
+    <div class="table-responsive">
+    <table id="tablePengadaan" class="table table-bordered table-striped">
+
             <thead class="text-center">
                 <tr>
                     <th>No</th>
@@ -85,5 +89,30 @@
         </table>
     </div>
 </div>
-<?php $this->endSection(); ?>
 
+<script>
+    function cariPengadaan() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchPengadaan");
+    filter = input.value.toLowerCase();
+    table = document.getElementById("tablePengadaan");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 1; i < tr.length; i++) { // Mulai dari 1 biar skip thead
+        td = tr[i].getElementsByTagName("td");
+        let rowVisible = false;
+        for (let j = 0; j < td.length; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    rowVisible = true;
+                    break;
+                }
+            }
+        }
+        tr[i].style.display = rowVisible ? "" : "none";
+    }
+}
+
+</script>   
+<?php $this->endSection(); ?>

@@ -87,32 +87,33 @@
         });
 
         $(".save-btn").click(function() {
-            var tab = $(this).data("tab");
-            var order = [];
+    var tab = $(this).data("tab");
+    var order = [];
 
-            $("#sortable-" + tab + " li").each(function(index) {
-                var id = $(this).data("id");
-                var dokumen = $(this).find(".dokumen-input").val();
-                order.push({ id: id, dokumen: dokumen });
-            });
+    $("#sortable-" + tab + " li").each(function(index) {
+        var id = $(this).data("id");
+        var dokumen = $(this).find(".dokumen-input").val();
+        order.push({ id: id, dokumen: dokumen });
+    });
 
-            $.ajax({
-                url: "<?= base_url('admin/templatedokumen/update_order') ?>",
-                type: "POST",
-                data: { order: order, table: tab },
-                success: function(response) {
-                    alert("Data berhasil disimpan!");
-                    $(".save-btn[data-tab='" + tab + "']").addClass("d-none");
-                    $(".edit-btn[data-tab='" + tab + "']").removeClass("d-none");
-                    $("#sortable-" + tab).sortable({ disabled: true });
-                    $("#sortable-" + tab + " .dokumen-input").prop("disabled", true);
-                    updateNomor(tab);
-                },
-                error: function() {
-                    alert("Terjadi kesalahan, coba lagi!");
-                }
-            });
-        });
+    $.ajax({
+        url: "<?= base_url('admin/templatedokumen/update_order') ?>",
+        type: "POST",
+        data: { order: order, table: tab },
+        dataType: "json",
+        success: function(response) {
+            if (response.status === "success") {
+                alert("Data berhasil disimpan!");
+                location.reload(); // Auto-refresh halaman setelah sukses
+            } else {
+                alert("Gagal menyimpan data: " + response.message);
+            }
+        },
+        error: function() {
+            alert("Terjadi kesalahan, coba lagi!");
+        }
+    });
+});
 
         $(".tambah-btn").click(function() {
             var tab = $(this).data("tab");

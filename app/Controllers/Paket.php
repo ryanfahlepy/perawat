@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Ppk;
+namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PaketModel;
@@ -16,16 +16,29 @@ class Paket extends BaseController
 
     public function index()
     {
+        $nama_level = session()->get('nama_level');
+        
+        // Default, tidak ada filter
+        $whereCondition = [];
+    
+        if ($nama_level == 'Pokja') {
+            $whereCondition = ['dipa' => 'MABES TNI AL'];
+        } elseif ($nama_level == 'PPK') {
+            $whereCondition = ['dipa' => 'DISINFOLAHTAL'];
+        }
+    
         $data = [
-            'level_akses' => session()->get('nama_level'),
+            'level_akses' => $nama_level,
             'dtmenu' => $this->tampil_menu(session()->get('level')),
             'nama_menu' => 'Paket',
-            'paket_perencanaan' => $this->paketModel->getAll('paket_perencanaan'),
-            'paket_pelaksanaan' => $this->paketModel->getAll('paket_pelaksanaan'),
-            'paket_pembayaran' => $this->paketModel->getAll('paket_pembayaran')
+            'paket_perencanaan' => $this->paketModel->getAll('paket_perencanaan', $whereCondition),
+            'paket_pelaksanaan' => $this->paketModel->getAll('paket_pelaksanaan', $whereCondition),
+            'paket_pembayaran' => $this->paketModel->getAll('paket_pembayaran', $whereCondition)
         ];
+        
         return view('ppk/paket', $data);
     }
+    
     public function tambah_paket_perencanaan()
     {
         $data = [
@@ -42,6 +55,7 @@ class Paket extends BaseController
     // Ambil data dari form
     $data = [
         'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
+        'dipa' => $this->request->getPost('dipa'),
         'kategori' => $this->request->getPost('kategori'),
         'kode_rup' => $this->request->getPost('kode_rup'),
         'nama_paket' => $this->request->getPost('nama_paket'),
@@ -58,16 +72,15 @@ class Paket extends BaseController
     $this->paketModel->insertData('paket_perencanaan', [$data]);
 
     // Redirect setelah berhasil
-    return redirect()->to('/ppk/paket')->with('success', 'Data Baru Paket Perencanaan berhasil disimpan.');
+    return redirect()->to('/paket')->with('success', 'Data Baru Paket Perencanaan berhasil disimpan.');
 }
-
 public function hapus_data_paket_perencanaan($id)
 {
     // Panggil model untuk menghapus data berdasarkan ID
     $this->paketModel->deletePaket('paket_perencanaan',$id);
 
     // Redirect dengan pesan sukses
-    return redirect()->to('/ppk/paket')->with('success', 'Data berhasil dihapus.');
+    return redirect()->to('/paket')->with('success', 'Data berhasil dihapus.');
 }
 
 public function edit_data_paket_perencanaan($id) 
@@ -87,7 +100,7 @@ public function edit_data_paket_perencanaan($id)
     // Jika data tidak ditemukan, redirect ke halaman daftar paket
     if (!$paket) {
         session()->setFlashdata('error', 'Paket tidak ditemukan!');
-        return redirect()->to('/ppk/paket');
+        return redirect()->to('/paket');
     }
 
     // Kirim data paket ke view untuk ditampilkan pada form
@@ -106,6 +119,7 @@ public function edit_data_paket_perencanaan($id)
     // Ambil data dari form
     $data = [
         'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
+        'dipa' => $this->request->getPost('dipa'),
         'kategori' => $this->request->getPost('kategori'),
         'kode_rup' => $this->request->getPost('kode_rup'),
         'nama_paket' => $this->request->getPost('nama_paket'),
@@ -117,7 +131,7 @@ public function edit_data_paket_perencanaan($id)
     $paketModel->updatePaket('paket_perencanaan', $id, $data);
 
     session()->setFlashdata('success', 'Data berhasil diperbarui!');
-    return redirect()->to('/ppk/paket');
+    return redirect()->to('/paket');
 }
 
 public function ekspor_paket_perencanaan()
@@ -135,7 +149,7 @@ public function ekspor_paket_perencanaan()
     $output = fopen('php://output', 'w');
     
     // Menulis header CSV dengan kolom 'No'
-    fputcsv($output, ['No', 'Tahun Anggaran', 'Kode Rup', 'Nama Paket', 'Total Perencanaan', 'PDN']);
+    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Kategori', 'Kode Rup', 'Nama Paket', 'Total Perencanaan', 'PDN']);
     
     // Menulis data ke CSV dengan kolom 'No' sebagai urutan
     $no = 1; // Menambahkan variabel untuk nomor urut
@@ -143,6 +157,8 @@ public function ekspor_paket_perencanaan()
         fputcsv($output, [
             $no++, // Menambahkan nomor urut
             $paket['tahun_anggaran'],
+            $paket['dipa'],
+            $paket['kategori'],
             $paket['kode_rup'],
             $paket['nama_paket'],
             $paket['total_perencanaan'],
@@ -172,7 +188,7 @@ public function tambah_data_paket_pelaksanaan()
     // Ambil data dari form
     $data = [
         'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'sumber_data' => $this->request->getPost('sumber_data'),
+        'dipa' => $this->request->getPost('dipa'),
         'nama_penyedia' => $this->request->getPost('nama_penyedia'),
         'kode' => $this->request->getPost('kode'),
         'kode_rup' => $this->request->getPost('kode_rup'),
@@ -190,7 +206,7 @@ public function tambah_data_paket_pelaksanaan()
     $this->paketModel->insertData('paket_pelaksanaan', [$data]);
 
     // Redirect setelah berhasil
-    return redirect()->to('/ppk/paket')->with('success', 'Data Baru Paket Pelaksanaan berhasil disimpan.');
+    return redirect()->to('/paket')->with('success', 'Data Baru Paket Pelaksanaan berhasil disimpan.');
 }
 
 public function hapus_data_paket_pelaksanaan($id)
@@ -199,7 +215,7 @@ public function hapus_data_paket_pelaksanaan($id)
     $this->paketModel->deletePaket('paket_pelaksanaan', $id);
 
     // Redirect dengan pesan sukses
-    return redirect()->to('/ppk/paket')->with('success', 'Data berhasil dihapus.');
+    return redirect()->to('/paket')->with('success', 'Data berhasil dihapus.');
 }
 
 public function edit_data_paket_pelaksanaan($id) 
@@ -219,7 +235,7 @@ public function edit_data_paket_pelaksanaan($id)
     // Jika data tidak ditemukan, redirect ke halaman daftar paket
     if (!$paket) {
         session()->setFlashdata('error', 'Paket tidak ditemukan!');
-        return redirect()->to('/ppk/paket');
+        return redirect()->to('/paket');
     }
 
     // Kirim data paket ke view untuk ditampilkan pada form
@@ -237,7 +253,7 @@ public function update_data_paket_pelaksanaan($id)
     // Ambil data dari form
     $data = [
         'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'sumber_data' => $this->request->getPost('sumber_data'),
+        'dipa' => $this->request->getPost('dipa'),
         'nama_penyedia' => $this->request->getPost('nama_penyedia'),
         'kode' => $this->request->getPost('kode'),
         'kode_rup' => $this->request->getPost('kode_rup'),
@@ -250,7 +266,7 @@ public function update_data_paket_pelaksanaan($id)
     $paketModel->updatePaket('paket_pelaksanaan', $id, $data);
 
     session()->setFlashdata('success', 'Data berhasil diperbarui!');
-    return redirect()->to('/ppk/paket');
+    return redirect()->to('/paket');
 }
 
 public function ekspor_paket_pelaksanaan()
@@ -268,7 +284,7 @@ public function ekspor_paket_pelaksanaan()
     $output = fopen('php://output', 'w');
     
     // Menulis header CSV dengan kolom 'No'
-    fputcsv($output, ['No', 'Tahun Anggaran', 'Sumber Data', 'Nama Penyedia', 'Kode', 'Kode Rup', 'Nama Paket', 'Total Pelaksanaan', 'PDN']);
+    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Nama Penyedia', 'Kode', 'Kode Rup', 'Nama Paket', 'Total Pelaksanaan', 'PDN']);
     
     // Menulis data ke CSV dengan kolom 'No' sebagai urutan
     $no = 1; // Menambahkan variabel untuk nomor urut
@@ -276,7 +292,7 @@ public function ekspor_paket_pelaksanaan()
         fputcsv($output, [
             $no++, // Menambahkan nomor urut
             $paket['tahun_anggaran'],
-            $paket['sumber_data'],
+            $paket['dipa'],
             $paket['nama_penyedia'],
             $paket['kode'],
             $paket['kode_rup'],
@@ -306,7 +322,7 @@ public function tambah_data_paket_pembayaran()
     // Ambil data dari form
     $data = [
         'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'sumber_data' => $this->request->getPost('sumber_data'),
+        'dipa' => $this->request->getPost('dipa'),
         'nama_penyedia' => $this->request->getPost('nama_penyedia'),
         'kode_dokumen' => $this->request->getPost('kode_dokumen'),
         'kode_sp2d' => $this->request->getPost('kode_sp2d'),
@@ -323,7 +339,7 @@ public function tambah_data_paket_pembayaran()
     $this->paketModel->insertData('paket_pembayaran', [$data]);
 
     // Redirect setelah berhasil
-    return redirect()->to('/ppk/paket')->with('success', 'Data Baru Paket Pembayaran berhasil disimpan.');
+    return redirect()->to('/paket')->with('success', 'Data Baru Paket Pembayaran berhasil disimpan.');
 }
 
 public function hapus_data_paket_pembayaran($id)
@@ -332,7 +348,7 @@ public function hapus_data_paket_pembayaran($id)
     $this->paketModel->deletePaket('paket_pembayaran', $id);
 
     // Redirect dengan pesan sukses
-    return redirect()->to('/ppk/paket')->with('success', 'Data berhasil dihapus.');
+    return redirect()->to('/paket')->with('success', 'Data berhasil dihapus.');
 }
 
 public function edit_data_paket_pembayaran($id) 
@@ -352,7 +368,7 @@ public function edit_data_paket_pembayaran($id)
     // Jika data tidak ditemukan, redirect ke halaman daftar paket
     if (!$paket) {
         session()->setFlashdata('error', 'Paket tidak ditemukan!');
-        return redirect()->to('/ppk/paket');
+        return redirect()->to('/paket');
     }
 
     // Kirim data paket ke view untuk ditampilkan pada form
@@ -370,7 +386,7 @@ public function update_data_paket_pembayaran($id)
     // Ambil data dari form
     $data = [
         'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'sumber_data' => $this->request->getPost('sumber_data'),
+        'dipa' => $this->request->getPost('dipa'), 
         'nama_penyedia' => $this->request->getPost('nama_penyedia'),
         'kode_dokumen' => $this->request->getPost('kode_dokumen'),
         'kode_sp2d' => $this->request->getPost('kode_sp2d'),
@@ -382,7 +398,7 @@ public function update_data_paket_pembayaran($id)
     $paketModel->updatePaket('paket_pembayaran', $id, $data);
 
     session()->setFlashdata('success', 'Data berhasil diperbarui!');
-    return redirect()->to('/ppk/paket');
+    return redirect()->to('/paket');
 }
 
 public function ekspor_paket_pembayaran()
@@ -400,7 +416,7 @@ public function ekspor_paket_pembayaran()
     $output = fopen('php://output', 'w');
     
     // Menulis header CSV dengan kolom 'No'
-    fputcsv($output, ['No', 'Tahun Anggaran', 'Sumber Data', 'Nama Penyedia', 'Kode Dokumen', 'Kode SP2D', 'Total Pembayaran', 'PDN']);
+    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Nama Penyedia', 'Kode Dokumen', 'Kode SP2D', 'Total Pembayaran', 'PDN']);
     
     // Menulis data ke CSV dengan kolom 'No' sebagai urutan
     $no = 1; // Menambahkan variabel untuk nomor urut
@@ -408,7 +424,7 @@ public function ekspor_paket_pembayaran()
         fputcsv($output, [
             $no++, // Menambahkan nomor urut
             $paket['tahun_anggaran'],
-            $paket['sumber_data'],
+            $paket['dipa'],
             $paket['nama_penyedia'],
             $paket['kode_dokumen'],
             $paket['kode_sp2d'],
@@ -437,11 +453,12 @@ public function ekspor_paket_pembayaran()
     {
         return $this->import_csv_generic('paket_perencanaan', [
             'tahun_anggaran' => 1,
-            'kategori' => 2,
-            'kode_rup' => 3,
-            'nama_paket' => 4,
-            'total_perencanaan' => 5,
-            'pdn' => 6
+            'dipa'=>2,
+            'kategori' => 3,
+            'kode_rup' => 4,
+            'nama_paket' => 5,
+            'total_perencanaan' => 6,
+            'pdn' => 7
         ]);
     }
 
@@ -452,7 +469,7 @@ public function ekspor_paket_pembayaran()
     {
         return $this->import_csv_generic('paket_pelaksanaan', [
             'tahun_anggaran' => 1,
-            'sumber_data' => 2,
+            'dipa' => 2,
             'nama_penyedia' => 3,
             'kode' => 4,
             'kode_rup' => 5,
@@ -469,7 +486,7 @@ public function ekspor_paket_pembayaran()
 {
     return $this->import_csv_generic('paket_pembayaran', [
         'tahun_anggaran' => 1,
-        'sumber_data' => 2,
+        'dipa' => 2,
         'nama_penyedia' => 3,
         'kode_dokumen' => 4,
         'kode_sp2d' => 5,
@@ -486,14 +503,14 @@ public function ekspor_paket_pembayaran()
         $file = $this->request->getFile('file_csv');
 
         if (!$file->isValid() || $file->hasMoved()) {
-            return redirect()->to('/ppk/paket')->with('error', 'File tidak valid atau sudah diproses.');
+            return redirect()->to('/paket')->with('error', 'File tidak valid atau sudah diproses.');
         }
 
         $filePath = $file->getTempName();
         $handle = fopen($filePath, 'r');
 
         if ($handle === false) {
-            return redirect()->to('/ppk/paket')->with('error', 'Gagal membuka file.');
+            return redirect()->to('/paket')->with('error', 'Gagal membuka file.');
         }
 
         // Deteksi delimiter (koma atau titik koma)
@@ -512,7 +529,7 @@ public function ekspor_paket_pembayaran()
             // Pastikan jumlah kolom cukup sebelum menyimpan data
             if (count($row) < max(array_values($columnMap))) {
                 fclose($handle);
-                return redirect()->to('/ppk/paket')->with('error', 'Format CSV tidak sesuai. Pastikan jumlah kolom mencukupi.');
+                return redirect()->to('/paket')->with('error', 'Format CSV tidak sesuai. Pastikan jumlah kolom mencukupi.');
             }
 
             // Mapping kolom
@@ -528,9 +545,9 @@ public function ekspor_paket_pembayaran()
 
         if (!empty($data)) {
             $this->paketModel->insertData($table, $data);
-            return redirect()->to('/ppk/paket')->with('success', "Data berhasil diimpor ke tabel $table.");
+            return redirect()->to('/paket')->with('success', "Data berhasil diimpor ke tabel $table.");
         }
 
-        return redirect()->to('/ppk/paket')->with('error', 'Gagal mengimpor data.');
+        return redirect()->to('/paket')->with('error', 'Gagal mengimpor data.');
     }
 }

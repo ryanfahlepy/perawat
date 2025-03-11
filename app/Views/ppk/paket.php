@@ -38,7 +38,7 @@
     <div class="tab-pane fade show active" id="perencanaan">
     <!-- Button untuk membuka modal -->
     <div class="d-flex justify-content-between">
-    <a href="<?= base_url('ppk/paket/tambah_paket_perencanaan') ?>" class="btn btn-primary">
+    <a href="<?= base_url('paket/tambah_paket_perencanaan') ?>" class="btn btn-primary">
     Tambah
 </a>
 <div class="">
@@ -46,7 +46,7 @@
     Impor
 </button>
 
-<a href="<?= base_url('ppk/paket/ekspor_paket_perencanaan') ?>" class="btn btn-info">
+<a href="<?= base_url('paket/ekspor_paket_perencanaan') ?>" class="btn btn-info">
     Ekspor
 </a></div>
 </div>
@@ -63,7 +63,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('ppk/paket/import_csv_perencanaan') ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('paket/import_csv_perencanaan') ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="file_csv">Pilih file CSV:</label>
                         <input type="file" name="file_csv" class="form-control" required>
@@ -80,12 +80,19 @@
 
 
     <hr>
+    <!-- Input Pencarian -->
+<div class="mb-3">
+    <input type="text" id="searchPerencanaan" class="form-control" placeholder="Cari data perencanaan..." onkeyup="cariData('searchPerencanaan', 'tablePerencanaan')">
+</div>
+
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">
+    <table id="tablePerencanaan" class="table table-bordered table-striped">
+
             <thead>
                 <tr class="text-center">
                     <th>No</th>
                     <th>Tahun Anggaran</th>
+                    <th>DIPA</th>
                     <th>Kategori</th>
                     <th>Kode RUP</th>
                     <th>Nama Paket</th>
@@ -99,7 +106,8 @@
                     <?php $no = 1; foreach ($paket_perencanaan as $paket): ?>
                         <tr>
                         <td class="text-center" ><?= $no++; ?></td>
-                            <td><?= esc($paket['tahun_anggaran']); ?></td>
+                            <td class="text-center"><?= esc($paket['tahun_anggaran']); ?></td>
+                            <td class="text-center"><?= esc($paket['dipa']); ?></td>
                             <td><?= esc($paket['kategori']); ?></td>
                             <td><?= esc($paket['kode_rup']); ?></td>
                             <td><?= esc($paket['nama_paket']); ?></td>
@@ -107,10 +115,10 @@
                             <td><?= number_format($paket['pdn'], 0, ',', '.'); ?></td>
                             <td>
     <div class="center d-flex gap-2 justify-content-center">
-        <a href="<?= base_url('/ppk/paket/edit_data_paket_perencanaan/' . $paket['id']); ?>" class="btn btn-warning btn-sm m-1">
+        <a href="<?= base_url('/paket/edit_data_paket_perencanaan/' . $paket['id']); ?>" class="btn btn-warning btn-sm m-1">
             <i class="fas fa-edit"></i>
         </a>
-        <a href="<?= base_url('/ppk/paket/hapus_data_paket_perencanaan/' . $paket['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus?');">
+        <a href="<?= base_url('/paket/hapus_data_paket_perencanaan/' . $paket['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus?');">
             <i class="fas fa-trash"></i>
         </a>
     </div>
@@ -133,14 +141,14 @@
    <!-- Button untuk membuka modal -->
 
    <div class="d-flex justify-content-between">
-   <a href="<?= base_url('ppk/paket/tambah_paket_pelaksanaan') ?>" class="btn btn-primary">
+   <a href="<?= base_url('paket/tambah_paket_pelaksanaan') ?>" class="btn btn-primary">
     Tambah
 </a>
     <div class="">
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadModalPelaksanaan">
     Impor
 </button>
-<a href="<?= base_url('ppk/paket/ekspor_paket_pelaksanaan') ?>" class="btn btn-info">
+<a href="<?= base_url('paket/ekspor_paket_pelaksanaan') ?>" class="btn btn-info">
     Ekspor
 </a>
     </div>
@@ -159,7 +167,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('ppk/paket/import_csv_pelaksanaan') ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('paket/import_csv_pelaksanaan') ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="file_csv">Pilih file CSV:</label>
                         <input type="file" name="file_csv" class="form-control" required>
@@ -176,13 +184,16 @@
 
 
     <hr>
+    <div class="mb-3">
+    <input type="text" id="searchPelaksanaan" class="form-control" placeholder="Cari data pelaksanaan..." onkeyup="cariData('searchPelaksanaan', 'tablePelaksanaan')">
+</div>
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">
+    <table id="tablePelaksanaan" class="table table-bordered table-striped">
         <thead>
     <tr class="text-center">
         <th>No</th>
         <th>Tahun Anggaran</th>
-        <th>Sumber Data</th>
+        <th>DIPA</th>
         <th>Nama Penyedia</th>
         <th>Kode</th>
         <th>Kode RUP</th>
@@ -197,8 +208,8 @@
         <?php $no = 1; foreach ($paket_pelaksanaan as $paket): ?>
             <tr>
             <td class="text-center" ><?= $no++; ?></td>
-                <td><?= esc($paket['tahun_anggaran']); ?></td>
-                <td><?= esc($paket['sumber_data']); ?></td>
+                <td class="text-center"><?= esc($paket['tahun_anggaran']); ?></td>
+                <td><?= esc($paket['dipa']); ?></td>
                 <td><?= esc($paket['nama_penyedia']); ?></td>
                 <td><?= esc($paket['kode']); ?></td>
                 <td><?= esc($paket['kode_rup']); ?></td>
@@ -207,10 +218,10 @@
                 <td><?= number_format($paket['pdn'], 0, ',', '.'); ?></td>
                 <td>
     <div class="center d-flex gap-2 justify-content-center">
-        <a href="<?= base_url('/ppk/paket/edit_data_paket_pelaksanaan/' . $paket['id']); ?>" class="btn btn-warning btn-sm m-1">
+        <a href="<?= base_url('/paket/edit_data_paket_pelaksanaan/' . $paket['id']); ?>" class="btn btn-warning btn-sm m-1">
             <i class="fas fa-edit"></i>
         </a>
-        <a href="<?= base_url('/ppk/paket/hapus_data_paket_pelaksanaan/' . $paket['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus?');">
+        <a href="<?= base_url('/paket/hapus_data_paket_pelaksanaan/' . $paket['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus?');">
             <i class="fas fa-trash"></i>
         </a>
     </div>
@@ -231,7 +242,7 @@
 <div class="tab-pane fade" id="pembayaran">
    <!-- Button untuk membuka modal -->
    <div class="d-flex justify-content-between">
-   <a href="<?= base_url('ppk/paket/tambah_paket_pembayaran') ?>" class="btn btn-primary">
+   <a href="<?= base_url('paket/tambah_paket_pembayaran') ?>" class="btn btn-primary">
     Tambah
 </a>
   
@@ -239,7 +250,7 @@
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadModalPembayaran">
     Impor
 </button>
-<a href="<?= base_url('ppk/paket/ekspor_paket_pembayaran') ?>" class="btn btn-info">
+<a href="<?= base_url('paket/ekspor_paket_pembayaran') ?>" class="btn btn-info">
     Ekspor
 </a>
    </div>
@@ -258,7 +269,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('ppk/paket/import_csv_pembayaran') ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('paket/import_csv_pembayaran') ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="file_csv">Pilih file CSV:</label>
                         <input type="file" name="file_csv" class="form-control" required>
@@ -275,14 +286,16 @@
 
 
     <hr>
-
+    <div class="mb-3">
+    <input type="text" id="searchPembayaran" class="form-control" placeholder="Cari data pembayaran..." onkeyup="cariData('searchPembayaran', 'tablePembayaran')">
+</div>
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">
+    <table id="tablePembayaran" class="table table-bordered table-striped">
             <thead>
                 <tr class="text-center">
                     <th>No</th>
                     <th>Tahun Anggaran</th>
-                    <th>Sumber Data</th>
+                    <th>DIPA</th>
                     <th>Nama Penyedia</th>
                     <th>Kode Dokumen</th>
                     <th>Kode SP2D</th>
@@ -296,8 +309,8 @@
                     <?php $no = 1; foreach ($paket_pembayaran as $paket): ?>
                         <tr>
                         <td class="text-center" ><?= $no++; ?></td>
-                            <td><?= esc($paket['tahun_anggaran']); ?></td>
-                            <td><?= esc($paket['sumber_data']); ?></td>
+                            <td class="text-center"><?= esc($paket['tahun_anggaran']); ?></td>
+                            <td><?= esc($paket['dipa']); ?></td>
                             <td><?= esc($paket['nama_penyedia']); ?></td>
                             <td><?= esc($paket['kode_dokumen']); ?></td>
                             <td><?= esc($paket['kode_sp2d']); ?></td>
@@ -305,10 +318,10 @@
                             <td><?= number_format($paket['pdn'], 0, ',', '.'); ?></td>
                             <td>
     <div class="center d-flex gap-2 justify-content-center">
-        <a href="<?= base_url('/ppk/paket/edit_data_paket_pembayaran/' . $paket['id']); ?>" class="btn btn-warning btn-sm m-1">
+        <a href="<?= base_url('/paket/edit_data_paket_pembayaran/' . $paket['id']); ?>" class="btn btn-warning btn-sm m-1">
             <i class="fas fa-edit"></i>
         </a>
-        <a href="<?= base_url('/ppk/paket/hapus_data_paket_pembayaran/' . $paket['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus?');">
+        <a href="<?= base_url('/paket/hapus_data_paket_pembayaran/' . $paket['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus?');">
             <i class="fas fa-trash"></i>
         </a>
     </div>
@@ -350,6 +363,29 @@
 </div>
 
 <script>
+    function cariData(inputId, tableId) {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById(inputId);
+    filter = input.value.toLowerCase();
+    table = document.getElementById(tableId);
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 1; i < tr.length; i++) { // Mulai dari 1 biar skip thead
+        td = tr[i].getElementsByTagName("td");
+        let rowVisible = false;
+        for (let j = 0; j < td.length; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    rowVisible = true;
+                    break;
+                }
+            }
+        }
+        tr[i].style.display = rowVisible ? "" : "none";
+    }
+}
+
     function setDeleteLink(url) {
         document.getElementById('deleteLink').setAttribute('href', url);
     }
