@@ -36,44 +36,76 @@ class Templatedokumen extends BaseController
     }
 
     public function update_order()
-    {
-        $orderData = $this->request->getPost('order');
-        $table = $this->request->getPost('table');
-    
-        if (!$orderData || !$table) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Data tidak valid']);
-        }
-    
-        $db = \Config\Database::connect();
-        $builder = $db->table("tabel_" . $table);
-    
-        foreach ($orderData as $index => $item) {
-            $builder->where('id_dokumen', $item['id'])->update([
-                'no_urut' => $index + 1, // Urutan baru
-                'dokumen' => $item['dokumen'] // Nama dokumen baru
-            ]);
-        }
-    
-        return $this->response->setJSON(['status' => 'success']);
+{
+    $orderData = $this->request->getPost('order');
+    $table = $this->request->getPost('table');
+
+    if (!$orderData || !$table) {
+        session()->setFlashdata('error', 'Data tidak valid');
+        return redirect()->to(base_url('admin/templatedokumen'));
     }
 
-    public function add_document()
-    {
-        $table = $this->request->getPost('table');
-        $dokumen = $this->request->getPost('dokumen');
+    $db = \Config\Database::connect();
+    $builder = $db->table("tabel_" . $table);
 
-        if (!$table || !$dokumen) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Data tidak valid']);
+    try {
+        foreach ($orderData as $index => $item) {
+            $builder->where('id_dokumen', $item['id'])->update([
+                'no_urut' => $index + 1,
+                'dokumen' => $item['dokumen']
+            ]);
         }
+        session()->setFlashdata('success', 'Urutan dokumen berhasil diperbarui');
+    } catch (\Exception $e) {
+        session()->setFlashdata('error', 'Gagal memperbarui urutan dokumen: ' . $e->getMessage());
+    }
 
+    return redirect()->to(base_url('admin/templatedokumen'));
+}
+
+public function add_document()
+{
+    $table = $this->request->getPost('table');
+    $dokumen = $this->request->getPost('dokumen');
+
+    if (!$table || !$dokumen) {
+        session()->setFlashdata('error', 'Data tidak valid');
+        return redirect()->to(base_url('admin/templatedokumen'));
+    }
+
+    try {
         $inserted = $this->dokumenModel->addDokumen($table, $dokumen);
 
         if ($inserted) {
-            return $this->response->setJSON(['status' => 'success']);
+            session()->setFlashdata('success', 'Dokumen berhasil ditambahkan');
         } else {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal menambahkan dokumen']);
+            session()->setFlashdata('error', 'Gagal menambahkan dokumen');
         }
+    } catch (\Exception $e) {
+        session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
     }
+
+    return redirect()->to(base_url('admin/templatedokumen'));
+}
+public function delete_document()
+{
+    $id = $this->request->getPost('id');
+    $table = $this->request->getPost('table');
+
+    if (!$id || !$table) {
+        $this->session->setFlashdata('error', 'Data tidak lengkap!');
+        return redirect()->to(base_url('admin/templatedokumen'));
+    }
+
+    if ($this->dokumenModel->deleteDokumen($table, $id)) {
+        $this->session->setFlashdata('success', 'Dokumen berhasil dihapus');
+    } else {
+        $this->session->setFlashdata('error', 'Gagal menghapus dokumen');
+    }
+
+    return redirect()->to(base_url('admin/templatedokumen'))->with('refresh', true);
+}
+
 }
     
 

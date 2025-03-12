@@ -50,7 +50,9 @@ class DokumenModel extends Model
         ]);
     }
 
-    
-
-
+    public function deleteDokumen($table, $id)
+    {
+        log_message('debug', "Delete from $table where id_dokumen = $id");
+        return $this->db->table($table)->delete(['id_dokumen' => $id]);
+    }
 }        
