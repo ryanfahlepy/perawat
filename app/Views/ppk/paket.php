@@ -115,7 +115,7 @@
                             <td><?= number_format($paket['pdn'], 0, ',', '.'); ?></td>
                             <td>
     <div class="center d-flex gap-2 justify-content-center">
-        <a href="<?= base_url('/paket/edit_data_paket_perencanaan/' . $paket['id']); ?>" class="btn btn-warning btn-sm m-1">
+        <a href="<?= base_url('/paket/edit_data_paket_perencanaan/' . $paket['id']); ?>"  style="color: white;" class="btn btn-warning btn-sm m-1">
             <i class="fas fa-edit"></i>
         </a>
         <a href="<?= base_url('/paket/hapus_data_paket_perencanaan/' . $paket['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus?');">

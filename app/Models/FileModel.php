@@ -20,6 +20,13 @@ class FileModel extends Model
                     ->findAll();
     }
 
+    public function get_all_files($id_pengadaan)
+    {
+        return $this->where('ref_id_pengadaan', $id_pengadaan)->findAll();
+    }
+    
+
+
     /**
      * Tambah dokumen baru
      */
@@ -54,5 +61,7 @@ class FileModel extends Model
         return $this->where('ref_id_pengadaan', $refIdPengadaan)
                     ->countAllResults();
     }
+
+    
     
 }

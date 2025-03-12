@@ -1,7 +1,7 @@
 <?php $this->extend('shared_page/template'); ?>
 <?php $this->section('content'); ?>
 <div class="card-body">
-    <form action="<?= base_url('pokja/pengadaan/simpan_pengadaan') ?>" method="post" onsubmit="return validateForm()">
+    <form action="<?= base_url('pengadaan/simpan_pengadaan') ?>" method="post" onsubmit="return validateForm()">
         
         <div class="form-group">
             <label for="nama_pengadaan">Nama Pengadaan</label>
@@ -11,7 +11,7 @@
         <div class="form-group">
         <label for="ref_tabel">Metode Pemilihan</label>
 <select class="form-control" id="ref_tabel" name="ref_tabel" required>
-    <option value="" disabled selected>--PILIH--</option>
+    <option value="" disabled selected>--- PILIH ---</option>
     <option value="1">Pengadaan Langsung/Penunjukkan Langsung</option>
     <option value="2">Tender</option>
     <option value="3">E-Purchasing</option>

@@ -20,7 +20,7 @@
 <?php endif; ?>
 
 <div class="card-body">
-<a href="<?= base_url('pokja/pengadaan/tambah_pengadaan') ?>" class="btn btn-primary">
+<a href="<?= base_url('pengadaan/tambah_pengadaan') ?>" class="btn btn-primary">
     Tambah
 </a>
 <hr>
@@ -73,10 +73,10 @@
                 
                     <td>
     <div class="center d-flex gap-2 justify-content-center">
-        <a href="<?= base_url('/pokja/pengadaan/detail_pengadaan/' . $data['id']); ?>" class="btn btn-info btn-sm m-1">
+        <a href="<?= base_url('/pengadaan/detail_pengadaan/' . $data['id']); ?>" class="btn btn-info btn-sm m-1">
             <i class="fas fa-info-circle"></i> <!-- Mengganti icon edit dengan icon detail -->
         </a>
-        <a href="<?= base_url('/pokja/pengadaan/hapus_pengadaan/' . $data['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus?');">
+        <a href="<?= base_url('/pengadaan/hapus_pengadaan/' . $data['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus?');">
     <i class="fas fa-trash"></i>
 </a>
 

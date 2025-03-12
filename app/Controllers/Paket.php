@@ -17,25 +17,26 @@ class Paket extends BaseController
     public function index()
     {
         $nama_level = session()->get('nama_level');
-        
+
         // Default, tidak ada filter
         $whereCondition = [];
     
         if ($nama_level == 'Pokja') {
             $whereCondition = ['dipa' => 'MABES TNI AL'];
-        } elseif ($nama_level == 'PPK') {
+        } elseif ($nama_level == 'PP') {
             $whereCondition = ['dipa' => 'DISINFOLAHTAL'];
         }
+        
     
         $data = [
             'level_akses' => $nama_level,
             'dtmenu' => $this->tampil_menu(session()->get('level')),
             'nama_menu' => 'Paket',
-            'paket_perencanaan' => $this->paketModel->getAll('paket_perencanaan', $whereCondition),
-            'paket_pelaksanaan' => $this->paketModel->getAll('paket_pelaksanaan', $whereCondition),
-            'paket_pembayaran' => $this->paketModel->getAll('paket_pembayaran', $whereCondition)
+            'paket_perencanaan' => $this->paketModel->getAllbyColumn('paket_perencanaan', $whereCondition),
+            'paket_pelaksanaan' => $this->paketModel->getAllbyColumn('paket_pelaksanaan', $whereCondition),
+            'paket_pembayaran' => $this->paketModel->getAllbyColumn('paket_pembayaran', $whereCondition)
         ];
-        
+
         return view('ppk/paket', $data);
     }
     

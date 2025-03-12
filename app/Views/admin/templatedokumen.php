@@ -23,13 +23,13 @@
     <!-- Tab Navigation -->
     <ul class="nav nav-tabs" id="paketTabs">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#pl">Penunjukkan Langsung</a>
+            <a style="font-weight: bold;" class="nav-link active" data-toggle="tab" href="#pl">Penunjukkan Langsung</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#tender">Tender</a>
+            <a style="font-weight: bold;" class="nav-link" data-toggle="tab" href="#tender">Tender</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#ep">E-Purchasing</a>
+            <a style="font-weight: bold;" class="nav-link" data-toggle="tab" href="#ep">E-Purchasing</a>
         </li>
     </ul>
 
@@ -46,9 +46,9 @@
         <?php foreach ($tabs as $tabId => $documents): ?>
         <div class="tab-pane fade <?= ($tabId == 'pl') ? 'show active' : '' ?>" id="<?= $tabId ?>">
             <hr>
-            <button class="btn btn-primary edit-btn mb-3" data-tab="<?= $tabId ?>">Edit</button>
+            <button class="btn btn-primary tambah-btn mb-3" data-tab="<?= $tabId ?>">Tambah</button>
+            <button class="btn btn-warning edit-btn mb-3"  style="color: white;" data-tab="<?= $tabId ?>">Edit</button>
             <button class="btn btn-success save-btn d-none mb-3" data-tab="<?= $tabId ?>">Simpan</button>
-            <button class="btn btn-info tambah-btn mb-3" data-tab="<?= $tabId ?>">Tambah</button>
             
             <ul id="sortable-<?= $tabId ?>" class="list-group sortable">
                 <?php foreach ($documents as $index => $doc): ?>

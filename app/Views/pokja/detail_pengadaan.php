@@ -20,7 +20,7 @@
 <?php endif; ?>
 
 <div class="card-body">
-    <form id="detailForm" method="POST" action="<?= base_url('pokja/pengadaan/update_pengadaan/' . $pengadaan['id']); ?>">
+    <form id="detailForm" method="POST" action="<?= base_url('pengadaan/update_pengadaan/' . $pengadaan['id']); ?>">
         <table class="table table-bordered">
             <tr>
                 <th>Nama Pengadaan</th>
@@ -70,11 +70,18 @@
             </tr>
         </table>
 
-        <div class="d-flex">
-            <a href="<?= base_url('pokja/pengadaan'); ?>" class="btn btn-secondary mr-2">Kembali</a>
-            <button type="button" id="editBtn" class="btn btn-warning" onclick="editData()">Edit</button>
-            <button type="submit" id="saveBtn" class="btn btn-success" style="display:none;">Simpan</button>
-        </div>
+        <div class="d-flex justify-content-between">
+    <div>
+        <a href="<?= base_url('pengadaan'); ?>" class="btn btn-secondary mr-2">Kembali</a>
+        <button type="button" id="editBtn" class="btn btn-warning" style="color: white;" onclick="editData()">Edit</button>
+        <button type="submit" id="saveBtn" class="btn btn-success" style="display:none;">Simpan</button>
+    </div>
+    <button type="button" id="downloadAllBtn" class="btn btn-primary" 
+            onclick="location.href='<?= base_url('pengadaan/unduh_semua_dokumen/' . $pengadaan['id']) ?>'">
+        Unduh Semua Dokumen
+    </button>
+</div>
+
     </form>
 </div>
 
@@ -83,58 +90,69 @@
         <h5>Daftar Dokumen</h5>
     </div>
     <div class="card-body">
-        <table class="table table-bordered">
-            <thead class="text-center">
-                <tr>
-                <th style="width: 5%;">No</th>
-                    <th style="width: 25%;">Nama</th>
-                    <th style="width: 60%;">File</th>
-                    <th style="width: 10%;">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-    <?php if (!empty($dokumenList)) : ?>
-        <?php $no = 1; ?>
-        <?php foreach ($dokumenList as $dokumen) : ?>
-            <tr>
-                <td class="text-center" ><?= $no++; ?></td>
-                <td><?= esc($dokumen['dokumen']); ?></td>
-                <td class="text-left">
-                    <?php 
-                    $found = false;
-                    foreach ($fileList as $file) {
-                        if ($file['ref_id_dokumen'] == $dokumen['id_dokumen']) {
-                            $filePath = base_url('uploads/' . $pengadaan['id'] . '/' . $file['nama_file']);
-                            echo '<div class="d-flex align-items-center mb-2">
-                                    <a href="' . esc($filePath) . '" target="_blank" class="mr-2">
-                                        <i class="fas fa-file-pdf text-danger"></i> ' . esc($file['nama_file']) . '
-                                    </a>
-                                    <a href="' . base_url('pokja/pengadaan/hapus_file/' . $file['id']) . '" class="text-danger ml-2" onclick="return confirm(\'Apakah Anda yakin ingin menghapus file ini?\')">
-    <i class="fas fa-trash-alt"></i> <!-- Ikon hapus -->
-</a>
-
-                                  </div>';
-                            $found = true;
-                        }
-                    }
-                    if (!$found) {
-                        echo '<span class="text-muted">Tidak ada file</span>';
-                    }
-                    ?>
-                </td>
-                <td class="text-center">
-                    <button class="btn btn-primary btn-sm" onclick="showUploadModal(<?= $pengadaan['id']; ?>, <?= $dokumen['id_dokumen']; ?>)">Unggah</button>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    <?php else : ?>
+    <table class="table table-bordered">
+    <thead class="text-center">
         <tr>
-            <td colspan="4" class="text-center">Tidak ada dokumen.</td>
+            <th style="width: 5%;">No</th>
+            <th style="width: 20%;">Nama</th>
+            <th style="width: 35%;">Dokumen</th>
+            <th style="width: 20%;">Waktu Unggah</th>
+            <th style="width: 10%;">Aksi</th>
         </tr>
-    <?php endif; ?>
-</tbody>
+    </thead>
+    <tbody>
+        <?php if (!empty($dokumenList)) : ?>
+            <?php $no = 1; ?>
+            <?php foreach ($dokumenList as $dokumen) : ?>
+                <tr>
+                    <td class="text-center"><?= $no++; ?></td>
+                    <td><?= esc($dokumen['dokumen']); ?></td>
+                    <td class="text-left">
+                        <?php 
+                        $found = false;
+                        foreach ($fileList as $file) {
+                            if ($file['ref_id_dokumen'] == $dokumen['id_dokumen']) {
+                                $filePath = base_url('uploads/' . $pengadaan['id'] . '/' . $file['nama_file']);
+                                echo '<div class="d-flex align-items-center mb-2">
+                                        <a href="' . esc($filePath) . '" target="_blank" class="mr-2">
+                                            <i class="fas fa-file-pdf text-danger"></i> ' . esc($file['nama_file']) . '
+                                        </a>
+                                         <a href="#" class="text-danger ml-2" onclick="confirmDelete(\'' . base_url('pengadaan/hapus_file/' . $file['id']) . '\'); return false;">
+        <i class="fas fa-trash-alt"></i>
+      </a>
+                                      </div>';
+                                $found = true;
+                            }
+                        }
+                        if (!$found) {
+                            echo '<span class="text-muted">Tidak ada file</span>';
+                        }
+                        ?>
+                    </td>
+                    <td class="text-center">
+                        <?php 
+                        $uploadTimes = [];
+                        foreach ($fileList as $file) {
+                            if ($file['ref_id_dokumen'] == $dokumen['id_dokumen']) {
+                                $uploadTimes[] = date('d-m-Y H:i', strtotime($file['created_at']));
+                            }
+                        }
+                        echo !empty($uploadTimes) ? implode('<br>', $uploadTimes) : '<span class="text-muted">-</span>';
+                        ?>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-primary btn-sm" onclick="showUploadModal(<?= $pengadaan['id']; ?>, <?= $dokumen['id_dokumen']; ?>)">Unggah</button>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <tr>
+                <td colspan="5" class="text-center">Tidak ada dokumen.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
 
-        </table>
     </div>
 </div>
 
@@ -148,7 +166,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="uploadForm" action="<?= base_url('pokja/pengadaan/unggah_dokumen'); ?>" method="POST" enctype="multipart/form-data">
+            <form id="uploadForm" action="<?= base_url('pengadaan/unggah_dokumen'); ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <input type="hidden" id="uploadPengadaanId" name="id_pengadaan">
                     <input type="hidden" id="uploadDokumenId" name="id_dokumen">
@@ -166,27 +184,37 @@
     </div>
 </div>
 
-<!-- Modal Konfirmasi Hapus -->
-<div class="modal fade" id="hapusModal" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="hapusModalLabel">Konfirmasi Hapus</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Apakah Anda yakin ingin menghapus dokumen ini?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <a href="#" id="confirmDeleteBtn" class="btn btn-danger">Hapus</a>
-            </div>
-        </div>
-    </div>
-</div>
 
+<script>
+function confirmDelete(url) {
+    // console.log('Function confirmDelete terpanggil dengan URL:', url); // Debug awal
+
+    Swal.fire({
+        title: 'Konfirmasi Hapus',
+        text: 'Apakah Anda yakin ingin menghapus file ini?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Hapus',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        // console.log('Hasil konfirmasi:', result); // Debug hasil konfirmasi
+
+        if (result.value === true) { // Ganti ke result.value
+            // console.log('Redirect ke:', url); // Debug redirect
+            window.location.href = url;
+        } else {
+            // console.log('Aksi dibatalkan');
+        }
+    });
+}
+
+
+</script>
+
+<!-- Jangan lupa tambahkan script SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function showUploadModal(pengadaanId, dokumenId) {
         document.getElementById('uploadPengadaanId').value = pengadaanId;
@@ -195,7 +223,7 @@
     }
 
     function confirmHapus(id) {
-        let url = "<?= base_url('pokja/pengadaan/hapus_dokumen/'); ?>" + id;
+        let url = "<?= base_url('pengadaan/hapus_dokumen/'); ?>" + id;
         document.getElementById('confirmDeleteBtn').setAttribute('href', url);
         $('#hapusModal').modal('show');
     }

@@ -46,6 +46,17 @@ class PaketModel extends Model
         return $this->db->table($table)->get()->getResultArray();
     }
 
+    public function getAllbyColumn($table, $where = [])
+{
+    $builder = $this->db->table($table);
+    if (!empty($where)) {
+        $builder->where($where);
+    }
+    $query = $builder->get();
+
+    return $query->getResultArray(); // Jadi array, bukan stdClass
+}
+
     // Fungsi untuk mengambil data per ID dari tabel tertentu
     public function getById($table, $id)
     {
