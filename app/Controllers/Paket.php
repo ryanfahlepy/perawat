@@ -61,7 +61,6 @@ class Paket extends BaseController
         'kode_rup' => $this->request->getPost('kode_rup'),
         'nama_paket' => $this->request->getPost('nama_paket'),
         'total_perencanaan' => $this->request->getPost('total_perencanaan'),
-        'pdn' => $this->request->getPost('pdn')
     ];
 
     // Memastikan data adalah array yang valid
@@ -125,7 +124,6 @@ public function edit_data_paket_perencanaan($id)
         'kode_rup' => $this->request->getPost('kode_rup'),
         'nama_paket' => $this->request->getPost('nama_paket'),
         'total_perencanaan' => $this->request->getPost('total_perencanaan'),
-        'pdn' => $this->request->getPost('pdn'),
     ];
 
     // Update data di database
@@ -150,7 +148,7 @@ public function ekspor_paket_perencanaan()
     $output = fopen('php://output', 'w');
     
     // Menulis header CSV dengan kolom 'No'
-    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Kategori', 'Kode Rup', 'Nama Paket', 'Total Perencanaan', 'PDN']);
+    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Kategori', 'Kode Rup', 'Nama Paket', 'Total Perencanaan']);
     
     // Menulis data ke CSV dengan kolom 'No' sebagai urutan
     $no = 1; // Menambahkan variabel untuk nomor urut
@@ -163,7 +161,6 @@ public function ekspor_paket_perencanaan()
             $paket['kode_rup'],
             $paket['nama_paket'],
             $paket['total_perencanaan'],
-            $paket['pdn']
         ]);
     }
     
@@ -195,7 +192,7 @@ public function tambah_data_paket_pelaksanaan()
         'kode_rup' => $this->request->getPost('kode_rup'),
         'nama_paket' => $this->request->getPost('nama_paket'),
         'total_pelaksanaan' => $this->request->getPost('total_pelaksanaan'),
-        'pdn' => $this->request->getPost('pdn')
+        
     ];
 
     // Memastikan data adalah array yang valid
@@ -260,7 +257,6 @@ public function update_data_paket_pelaksanaan($id)
         'kode_rup' => $this->request->getPost('kode_rup'),
         'nama_paket' => $this->request->getPost('nama_paket'),
         'total_pelaksanaan' => $this->request->getPost('total_pelaksanaan'),
-        'pdn' => $this->request->getPost('pdn'),
     ];
 
     // Update data di database
@@ -285,7 +281,7 @@ public function ekspor_paket_pelaksanaan()
     $output = fopen('php://output', 'w');
     
     // Menulis header CSV dengan kolom 'No'
-    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Nama Penyedia', 'Kode', 'Kode Rup', 'Nama Paket', 'Total Pelaksanaan', 'PDN']);
+    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Nama Penyedia', 'Kode', 'Kode Rup', 'Nama Paket', 'Total Pelaksanaan']);
     
     // Menulis data ke CSV dengan kolom 'No' sebagai urutan
     $no = 1; // Menambahkan variabel untuk nomor urut
@@ -299,7 +295,6 @@ public function ekspor_paket_pelaksanaan()
             $paket['kode_rup'],
             $paket['nama_paket'],
             $paket['total_pelaksanaan'],
-            $paket['pdn']
         ]);
     }
     
@@ -327,8 +322,7 @@ public function tambah_data_paket_pembayaran()
         'nama_penyedia' => $this->request->getPost('nama_penyedia'),
         'kode_dokumen' => $this->request->getPost('kode_dokumen'),
         'kode_sp2d' => $this->request->getPost('kode_sp2d'),
-        'total_pembayaran' => $this->request->getPost('total_pembayaran'),
-        'pdn' => $this->request->getPost('pdn')
+        'total_pembayaran' => $this->request->getPost('total_pembayaran')
     ];
 
     // Memastikan data adalah array yang valid
@@ -391,8 +385,7 @@ public function update_data_paket_pembayaran($id)
         'nama_penyedia' => $this->request->getPost('nama_penyedia'),
         'kode_dokumen' => $this->request->getPost('kode_dokumen'),
         'kode_sp2d' => $this->request->getPost('kode_sp2d'),
-        'total_pembayaran' => $this->request->getPost('total_pembayaran'),
-        'pdn' => $this->request->getPost('pdn'),
+        'total_pembayaran' => $this->request->getPost('total_pembayaran')
     ];
 
     // Update data di database
@@ -417,7 +410,7 @@ public function ekspor_paket_pembayaran()
     $output = fopen('php://output', 'w');
     
     // Menulis header CSV dengan kolom 'No'
-    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Nama Penyedia', 'Kode Dokumen', 'Kode SP2D', 'Total Pembayaran', 'PDN']);
+    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Nama Penyedia', 'Kode Dokumen', 'Kode SP2D', 'Total Pembayaran']);
     
     // Menulis data ke CSV dengan kolom 'No' sebagai urutan
     $no = 1; // Menambahkan variabel untuk nomor urut
@@ -429,8 +422,7 @@ public function ekspor_paket_pembayaran()
             $paket['nama_penyedia'],
             $paket['kode_dokumen'],
             $paket['kode_sp2d'],
-            $paket['total_pembayaran'],
-            $paket['pdn']
+            $paket['total_pembayaran']
         ]);
     }
     
@@ -458,8 +450,7 @@ public function ekspor_paket_pembayaran()
             'kategori' => 3,
             'kode_rup' => 4,
             'nama_paket' => 5,
-            'total_perencanaan' => 6,
-            'pdn' => 7
+            'total_perencanaan' => 6
         ]);
     }
 
@@ -475,8 +466,7 @@ public function ekspor_paket_pembayaran()
             'kode' => 4,
             'kode_rup' => 5,
             'nama_paket' => 6,
-            'total_pelaksanaan' => 7,
-            'pdn' => 8
+            'total_pelaksanaan' => 7
         ]);
     }
 
@@ -491,8 +481,7 @@ public function ekspor_paket_pembayaran()
         'nama_penyedia' => 3,
         'kode_dokumen' => 4,
         'kode_sp2d' => 5,
-        'total_pembayaran' => 6,
-        'pdn' => 7
+        'total_pembayaran' => 6
     ]);
 }
 

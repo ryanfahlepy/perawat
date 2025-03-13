@@ -38,10 +38,7 @@ $session = \Config\Services::session();
             <label for="total_pelaksanaan">Total Pelaksanaan</label>
             <input type="number" class="form-control" id="total_pelaksanaan" name="total_pelaksanaan" required>
         </div>
-        <div class="form-group">
-            <label for="pdn">PDN</label>
-            <input type="number" class="form-control" id="pdn" name="pdn" required>
-        </div>
+       
         <button type="submit" class="btn btn-primary">Simpan</button>
         <button type="reset" class="btn btn-secondary">Atur Ulang</button>
     </form>
@@ -49,7 +46,7 @@ $session = \Config\Services::session();
 
 <script>
     function validateForm() {
-        let fields = ["tahun_anggaran", "dipa", "nama_penyedia", "kode", "kode_rup", "nama_paket", "total_pelaksanaan", "pdn"];
+        let fields = ["tahun_anggaran", "dipa", "nama_penyedia", "kode", "kode_rup", "nama_paket", "total_pelaksanaan"];
         for (let field of fields) {
             if (document.getElementById(field).value.trim() === "") {
                 alert("Semua kolom wajib diisi!");

@@ -97,7 +97,6 @@
                     <th>Kode RUP</th>
                     <th>Nama Paket</th>
                     <th>Total Perencanaan (Rp)</th>
-                    <th>PDN (Rp)</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -112,7 +111,6 @@
                             <td><?= esc($paket['kode_rup']); ?></td>
                             <td><?= esc($paket['nama_paket']); ?></td>
                             <td><?= number_format($paket['total_perencanaan'], 0, ',', '.'); ?></td>
-                            <td><?= number_format($paket['pdn'], 0, ',', '.'); ?></td>
                             <td>
     <div class="center d-flex gap-2 justify-content-center">
         <a href="<?= base_url('/paket/edit_data_paket_perencanaan/' . $paket['id']); ?>"  style="color: white;" class="btn btn-warning btn-sm m-1">
@@ -199,7 +197,6 @@
         <th>Kode RUP</th>
         <th>Nama Paket</th>
         <th>Total Pelaksanaan (Rp)</th>
-        <th>PDN (Rp)</th>
         <th>Aksi</th>
     </tr>
 </thead>
@@ -215,7 +212,7 @@
                 <td><?= esc($paket['kode_rup']); ?></td>
                 <td><?= esc($paket['nama_paket']); ?></td>
                 <td><?= number_format($paket['total_pelaksanaan'], 0, ',', '.'); ?></td>
-                <td><?= number_format($paket['pdn'], 0, ',', '.'); ?></td>
+                
                 <td>
     <div class="center d-flex gap-2 justify-content-center">
         <a href="<?= base_url('/paket/edit_data_paket_pelaksanaan/' . $paket['id']); ?>" class="btn btn-warning btn-sm m-1">
@@ -300,7 +297,6 @@
                     <th>Kode Dokumen</th>
                     <th>Kode SP2D</th>
                     <th>Total Pembayaran (Rp)</th>
-                    <th>PDN (Rp)</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -315,7 +311,6 @@
                             <td><?= esc($paket['kode_dokumen']); ?></td>
                             <td><?= esc($paket['kode_sp2d']); ?></td>
                             <td><?= number_format($paket['total_pembayaran'], 0, ',', '.'); ?></td>
-                            <td><?= number_format($paket['pdn'], 0, ',', '.'); ?></td>
                             <td>
     <div class="center d-flex gap-2 justify-content-center">
         <a href="<?= base_url('/paket/edit_data_paket_pembayaran/' . $paket['id']); ?>" class="btn btn-warning btn-sm m-1">

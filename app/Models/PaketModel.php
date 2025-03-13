@@ -14,30 +14,31 @@ class PaketModel extends Model
     // Kolom yang dapat diubah pada setiap tabel
     protected $allowedFieldsPerencanaan = [
         'tahun_anggaran',
+        'dipa',
         'kategori',
         'kode_rup',
         'nama_paket',
         'total_perencanaan',
-        'pdn'
+        
     ];
 
     protected $allowedFieldsPelaksanaan = [
         'tahun_anggaran',
-        'kategori',
+        'dipa',
+        'nama_penyedia',
+        'kode',
         'kode_rup',
         'nama_paket',
-        'status_pelaksanaan',
-        'tanggal_mulai',
-        'tanggal_selesai'
+        'total_pelaksanaan',
     ];
 
     protected $allowedFieldsPembayaran = [
         'tahun_anggaran',
-        'kategori',
-        'kode_rup',
-        'nama_paket',
-        'status_pembayaran',
-        'jumlah_pembayaran'
+        'dipa',
+        'nama_penyedia',
+        'kode_dokumen',
+        'kode_sp2d',
+        'total_pembayaran',
     ];
 
     // Fungsi untuk mengambil semua data dari tabel tertentu
@@ -91,6 +92,8 @@ class PaketModel extends Model
         return $this->db->table($table)->update($data, ['id' => $id]);
     }
 
+
+    //KESELURUHAN
     public function jumlah_paket()
 {
     return $this->db->table($this->tablePerencanaan)->countAllResults();
@@ -118,6 +121,86 @@ public function total_pembayaran()
 {
     return $this->db->table($this->tablePembayaran)
                     ->selectSum('total_pembayaran')
+                    ->get()
+                    ->getRow()
+                    ->total_pembayaran;
+}
+
+
+//BELANJA RUTIN
+
+public function jumlah_paket_belanja_rutin()
+{
+
+    return $this->db->table($this->tablePerencanaan)
+                    ->where('dipa', 'DISINFOLAHTAL')
+                    ->countAllResults();
+}
+
+public function perencanaan_belanja_rutin()
+{
+    return $this->db->table($this->tablePerencanaan)
+                    ->selectSum('total_perencanaan')
+                    ->where('dipa', 'DISINFOLAHTAL')
+                    ->get()
+                    ->getRow()
+                    ->total_perencanaan;
+}
+
+public function pelaksanaan_belanja_rutin()
+{
+    return $this->db->table($this->tablePelaksanaan)
+                    ->selectSum('total_pelaksanaan')
+                    ->where('dipa', 'DISINFOLAHTAL')
+                    ->get()
+                    ->getRow()
+                    ->total_pelaksanaan;
+}
+
+public function pembayaran_belanja_rutin()
+{
+    return $this->db->table($this->tablePembayaran)
+                    ->selectSum('total_pembayaran')
+                    ->where('dipa', 'DISINFOLAHTAL')
+                    ->get()
+                    ->getRow()
+                    ->total_pembayaran;
+}
+
+//BELANJA MODAL
+public function jumlah_paket_belanja_modal()
+{
+
+    return $this->db->table($this->tablePerencanaan)
+                    ->where('dipa', 'MABES TNI AL')
+                    ->countAllResults();
+}
+
+public function perencanaan_belanja_modal()
+{
+    return $this->db->table($this->tablePerencanaan)
+                    ->selectSum('total_perencanaan')
+                    ->where('dipa', 'MABES TNI AL')
+                    ->get()
+                    ->getRow()
+                    ->total_perencanaan;
+}
+
+public function pelaksanaan_belanja_modal()
+{
+    return $this->db->table($this->tablePelaksanaan)
+                    ->selectSum('total_pelaksanaan')
+                    ->where('dipa', 'MABES TNI AL')
+                    ->get()
+                    ->getRow()
+                    ->total_pelaksanaan;
+}
+
+public function pembayaran_belanja_modal()
+{
+    return $this->db->table($this->tablePembayaran)
+                    ->selectSum('total_pembayaran')
+                    ->where('dipa', 'MABES TNI AL')
                     ->get()
                     ->getRow()
                     ->total_pembayaran;

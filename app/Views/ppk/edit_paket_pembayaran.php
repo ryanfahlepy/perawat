@@ -40,10 +40,6 @@ $session = \Config\Services::session();
         <label for="total_pembayaran">Total Pembayaran</label>
         <input type="number" class="form-control" id="total_pembayaran" name="total_pembayaran" value="<?= old('total_pembayaran', $paket['total_pembayaran']); ?>" required>
     </div>
-    <div class="form-group">
-        <label for="pdn">PDN</label>
-        <input type="text" class="form-control" id="pdn" name="pdn" value="<?= old('pdn', $paket['pdn']); ?>" required>
-    </div>
 
     <button type="submit" class="btn btn-primary">Perbarui</button>
 </form>
