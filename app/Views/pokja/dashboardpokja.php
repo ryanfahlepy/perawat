@@ -4,16 +4,16 @@ $session = \Config\Services::session();
 <?php $this->extend('shared_page/template'); ?>
 <?php $this->section('content'); ?>
 <div class="card-header">
-                                <h5 class="ml-2 mb-3"></h5>
-                                <h3 class="card-title"> Hallo <b><?= $session->nama; ?></b>, Selamat datang </h3>
+    <h5 class="ml-2 mb-3"></h5>
+    <h3 class="card-title"> Hallo <b><?= $session->nama; ?></b>, Selamat datang </h3>
 
-                                <!-- <div class="card-tools">
+    <!-- <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                                         <i class="fas fa-minus"></i></button>
                                     <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
                                         <i class="fas fa-times"></i></button>
                                 </div> -->
-                            </div>
+</div>
 <div class="card-body">
     <!-- Small boxes (Stat box) -->
     <div class="row">
@@ -50,7 +50,7 @@ $session = \Config\Services::session();
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                 <h3>Rp <?= number_format($total_pelaksanaan, 0, ',', '.'); ?></h3>
+                    <h3>Rp <?= number_format($total_pelaksanaan, 0, ',', '.'); ?></h3>
 
                     <p>Total Pelaksanaan</p>
                 </div>
@@ -65,7 +65,7 @@ $session = \Config\Services::session();
             <!-- small box -->
             <div class="small-box" style="background-color:#DBB300FF">
                 <div class="inner">
-                <h3 style="color:white">Rp <?= number_format($total_pembayaran, 0, ',', '.'); ?></h3>
+                    <h3 style="color:white">Rp <?= number_format($total_pembayaran, 0, ',', '.'); ?></h3>
 
                     <p style="color:white">Total Pembayaran</p>
                 </div>
@@ -80,7 +80,7 @@ $session = \Config\Services::session();
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                <h3><?= $jumlah_pengadaan; ?></h3>
+                    <h3><?= $jumlah_pengadaan; ?></h3>
 
                     <p>Total Pengadaan</p>
                 </div>
