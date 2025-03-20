@@ -18,10 +18,6 @@ class DokumenModel extends Model
         }
     }
 
-    public function getDokumenByPengadaan($id)
-    {
-        return $this->where('ref_tabel', $id)->findAll();
-    }
     public function getAllCount($table)
 {
     // Sesuaikan dengan query yang sesuai untuk masing-masing tabel

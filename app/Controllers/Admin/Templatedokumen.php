@@ -19,8 +19,10 @@ class Templatedokumen extends BaseController
     {
         // Mengambil dokumen dari masing-masing tabel
         $plDocuments = $this->dokumenModel->getDokumenByTable('tabel_pl');
+        $juksungDocuments = $this->dokumenModel->getDokumenByTable('tabel_juksung');
         $tenderDocuments = $this->dokumenModel->getDokumenByTable('tabel_tender');
         $epDocuments = $this->dokumenModel->getDokumenByTable('tabel_ep');
+        $swakelolaDocuments = $this->dokumenModel->getDokumenByTable('tabel_swakelola');
 
         // Data yang dikirimkan ke view
         $data = [
@@ -28,8 +30,10 @@ class Templatedokumen extends BaseController
             'dtmenu' => $this->tampil_menu($this->session->level),
             'nama_menu' => 'Template Dokumen',
             'plDocuments' => $plDocuments,
+            'juksungDocuments' => $juksungDocuments,
             'tenderDocuments' => $tenderDocuments,
             'epDocuments' => $epDocuments,
+            'swakelolaDocuments' => $swakelolaDocuments,
         ];
 
         return view('admin/templatedokumen', $data);
@@ -46,7 +50,7 @@ class Templatedokumen extends BaseController
     }
 
     $db = \Config\Database::connect();
-    $builder = $db->table("tabel_" . $table);
+    $builder = $db->table($table); 
 
     try {
         foreach ($orderData as $index => $item) {
@@ -91,6 +95,7 @@ public function delete_document()
 {
     $id = $this->request->getPost('id');
     $table = $this->request->getPost('table');
+    
 
     if (!$id || !$table) {
         $this->session->setFlashdata('error', 'Data tidak lengkap!');
@@ -102,7 +107,7 @@ public function delete_document()
     } else {
         $this->session->setFlashdata('error', 'Gagal menghapus dokumen');
     }
-
+    
     return redirect()->to(base_url('admin/templatedokumen'))->with('refresh', true);
 }
 
