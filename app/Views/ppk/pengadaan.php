@@ -30,7 +30,7 @@
             <!-- Button untuk membuka modal -->
             <div class="d-flex justify-content-between">
                 <div class="">
-                    <a href="<?= base_url('paket/tambah_paket') ?>" class="btn btn-primary">
+                    <a href="<?= base_url('pengadaan/tambah_pengadaan') ?>" class="btn btn-primary">
                         Tambah
                     </a>
 
@@ -41,26 +41,26 @@
                         Impor
                     </button>
 
-                    <a href="<?= base_url('paket/ekspor_paket') ?>" class="btn btn-info">
+                    <a href="<?= base_url('pengadaan/ekspor_pengadaan') ?>" class="btn btn-info">
                         Ekspor
                     </a>
                 </div>
             </div>
 
 
-            <!-- Modal Impor Paket -->
+            <!-- Modal Impor Pengadaan -->
             <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="uploadModalLabel">Impor Paket</h5>
+                            <h5 class="modal-title" id="uploadModalLabel">Impor Pengadaan</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= base_url('paket/import_csv') ?>" method="post"
+                            <form action="<?= base_url('pengadaan/import_csv') ?>" method="post"
                                 enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="file_csv">Pilih file CSV:</label>
@@ -85,7 +85,7 @@
                         style="width: 140px;">
                         <option value="">Semua Tahun</option>
                         <?php
-                        $tahun_anggaran_list = array_unique(array_column($paket, 'tahun_anggaran'));
+                        $tahun_anggaran_list = array_unique(array_column($pengadaan, 'tahun_anggaran'));
                         sort($tahun_anggaran_list);
                         foreach ($tahun_anggaran_list as $tahun) {
                             echo "<option value='$tahun'>$tahun</option>";
@@ -93,12 +93,12 @@
                         ?>
                     </select>
                 </div>
-                <input type="text" id="search" class="form-control ml-2" placeholder="Cari data paket ..."
-                    onkeyup="cariData('search', 'tablePaket')">
+                <input type="text" id="search" class="form-control ml-2" placeholder="Cari data pengadaan ..."
+                    onkeyup="cariData('search', 'tablePengadaan')">
             </div>
 
             <div class="table-responsive">
-                <table id="tablePaket" class="table table-bordered table-striped">
+                <table id="tablePengadaan" class="table table-bordered table-striped">
 
                     <thead>
                         <tr class="text-center">
@@ -108,7 +108,7 @@
                             <th>Jenis</th>
                             <th>Metode</th>
                             <th>Kode RUP</th>
-                            <th>Nama Paket</th>
+                            <th>Nama Pengadaan</th>
                             <th>Perencanaan (Rp)</th>
                             <th>Pelaksanaan (Rp)</th>
                             <th>Pembayaran (Rp)</th>
@@ -116,9 +116,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($paket)): ?>
+                        <?php if (!empty($pengadaan)): ?>
                             <?php $no = 1;
-                            foreach ($paket as $p): ?>
+                            foreach ($pengadaan as $p): ?>
                                 <tr>
                                     <td class="text-center"><?= $no++; ?></td>
                                     <td class="text-center tahun-anggaran"><?= esc($p['tahun_anggaran']); ?></td>
@@ -127,14 +127,14 @@
                                     <td><?= esc($p['metode']); ?></td>
                                     <td>
                                         <span
-                                            onclick="window.open('<?= base_url('/paket/detail_paket/' . $p['id']); ?>', '_blank')"
+                                            onclick="window.open('<?= base_url('/pengadaan/detail_pengadaan/' . $p['id']); ?>', '_blank')"
                                             style="cursor: pointer; text-decoration: underline; color: blue;">
                                             <?= esc($p['kode_rup']); ?>
                                         </span>
                                     </td>
                                     <td>
 
-                                        <?= esc($p['nama_paket']); ?>
+                                        <?= esc($p['nama_pengadaan']); ?>
 
                                     </td>
 
@@ -144,11 +144,11 @@
                                     <td><?= number_format($p['pembayaran'], 0, ',', '.'); ?></td>
                                     <td>
                                         <div class="center d-flex gap-2 justify-content-center">
-                                            <a href="<?= base_url('/paket/detail_paket/' . $p['id']); ?>" target="_blank"
+                                            <a href="<?= base_url('/pengadaan/detail_pengadaan/' . $p['id']); ?>" target="_blank"
                                                 style="color: white;" class="btn btn-info btn-sm m-1">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a href="<?= base_url('/paket/hapus_data_paket/' . $p['id']); ?>"
+                                            <a href="<?= base_url('/pengadaan/hapus_data_pengadaan/' . $p['id']); ?>"
                                                 class="btn btn-danger btn-sm m-1"
                                                 onclick="return confirm('Yakin ingin menghapus?');">
                                                 <i class="fas fa-trash"></i>
@@ -174,7 +174,7 @@
     function filterData() {
         var tahunFilter = document.getElementById("filterTahun").value.toLowerCase();
         var searchFilter = document.getElementById("search").value.toLowerCase();
-        var table = document.getElementById("tablePaket");
+        var table = document.getElementById("tablePengadaan");
         var tr = table.getElementsByTagName("tr");
 
         for (var i = 1; i < tr.length; i++) {

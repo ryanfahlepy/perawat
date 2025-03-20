@@ -4,7 +4,7 @@ $session = \Config\Services::session();
 <?php $this->extend('shared_page/template'); ?>
 <?php $this->section('content'); ?>
 <div class="card-body">
-    <form action="<?= base_url('paket/tambah_data_paket') ?>" method="post" onsubmit="return validateForm()">
+    <form action="<?= base_url('pengadaan/tambah_data_pengadaan') ?>" method="post" onsubmit="return validateForm()">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -34,8 +34,8 @@ $session = \Config\Services::session();
                     <input type="text" class="form-control" id="metode" name="metode" required>
                 </div>
                 <div class="form-group">
-                    <label for="nama_paket">Nama Paket</label>
-                    <input type="text" class="form-control" id="nama_paket" name="nama_paket" required>
+                    <label for="nama_pengadaan">Nama Pengadaan</label>
+                    <input type="text" class="form-control" id="nama_pengadaan" name="nama_pengadaan" required>
                 </div>
             </div>
             <div class="col-md-4">
@@ -60,7 +60,7 @@ $session = \Config\Services::session();
 </div>
 <script>
     function validateForm() {
-        let fields = ["tahun_anggaran", "dipa", "jenis", "metode", "kode_rup", "nama_paket", "perencanaan", "pelaksanaan", "pembayaran"];
+        let fields = ["tahun_anggaran", "dipa", "jenis", "metode", "kode_rup", "nama_pengadaan", "perencanaan", "pelaksanaan", "pembayaran"];
         for (let field of fields) {
             if (document.getElementById(field).value.trim() === "") {
                 alert("Semua kolom wajib diisi!");

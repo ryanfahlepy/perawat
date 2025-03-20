@@ -8,7 +8,7 @@ class FileModel extends Model
 {
     protected $table = 'tabel_file';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['ref_id_paket', 'ref_id_dokumen', 'nama_file', 'created_at', 'deleted_at'];
+    protected $allowedFields = ['ref_id_pengadaan', 'ref_id_dokumen', 'nama_file', 'created_at', 'deleted_at'];
 
     /**
      * Ambil semua dokumen berdasarkan id_pengadaan
@@ -20,9 +20,9 @@ class FileModel extends Model
     //         ->findAll();
     // }
 
-    public function get_all_files($id_paket)
+    public function get_all_files($id_pengadaan)
     {
-        return $this->where('ref_id_paket', $id_paket)->findAll();
+        return $this->where('ref_id_pengadaan', $id_pengadaan)->findAll();
     }
 
 

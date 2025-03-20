@@ -21,14 +21,14 @@ $session = \Config\Services::session();
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3><?= $jumlah_paket; ?></h3>
+                    <h3><?= $jumlah_pengadaan; ?></h3>
 
-                    <p>Total Paket</p>
+                    <p>Total Pengadaan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-6">
@@ -42,7 +42,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -57,7 +57,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="<?= base_url('paket#pelaksanaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan#pelaksanaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -72,7 +72,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="<?= base_url('paket#pembayaran') ?>" class="small-box-footer" style="color:white">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan#pembayaran') ?>" class="small-box-footer" style="color:white">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->

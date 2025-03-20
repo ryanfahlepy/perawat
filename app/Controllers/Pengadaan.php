@@ -9,91 +9,89 @@ use App\Models\DokumenModel;
 
 class Pengadaan extends BaseController
 {
+    protected $pengadaanModel;
+
     public function __construct()
     {
-        $this->session = \Config\Services::session();
-        $this->pengadaanModel = new PengadaanModel();  // Menginisialisasi model
-        $this->fileModel = new FileModel();  // Menginisialisasi model
-        $this->dokumenModel = new DokumenModel();  // Menginisialisasi model
-
-        // Mengambil jumlah dokumen dari masing-masing tabel dan menyimpannya di properti class
-        $this->dokumenCounts = [
-            'tabel_pl' => $this->dokumenModel->getAllCount('tabel_pl'),
-            'tabel_tender' => $this->dokumenModel->getAllCount('tabel_tender'),
-            'tabel_ep' => $this->dokumenModel->getAllCount('tabel_ep'),
-        ];
+        $this->pengadaanModel = new PengadaanModel();
+        $this->fileModel = new FileModel();  
+        $this->dokumenModel = new DokumenModel();  
     }
-
 
     public function index()
     {
-        // Mengambil semua data pengadaan
-        $pengadaanData = $this->pengadaanModel->getAllPengadaan();
+        $nama_level = session()->get('nama_level');
+        $whereCondition = $nama_level == 'Pokja' ? ['dipa' => 'MABES TNI AL'] : ($nama_level == 'PP' ? ['dipa' => 'DISINFOLAHTAL'] : []);
+        $pengadaan = $this->pengadaanModel->getAllbyColumn('pengadaan', $whereCondition);
 
-        // Update nilai pengadaanData berdasarkan ref_tabel
-        foreach ($pengadaanData as &$pengadaan) {
-            if ($pengadaan['ref_tabel'] == 1) {
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_pl'];
-            } elseif ($pengadaan['ref_tabel'] == 2) {
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_tender'];
-            } elseif ($pengadaan['ref_tabel'] == 3) {
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_ep'];
-            } else {
-                $pengadaan['jumlah_dokumen'] = 0; // Default jika tidak sesuai
-            }
-        }
-
-        // Update pengadaanData untuk menghitung jumlah file dan progress
-        foreach ($pengadaanData as &$pengadaan) {
-            // Mengambil jumlah file berdasarkan id pengadaan
-            $pengadaan['jumlah_file'] = $this->fileModel->getFileCountByPengadaanId($pengadaan['id']);
-
-            // Menghitung progress (persentase)
-            if ($pengadaan['jumlah_dokumen'] > 0) {
-                $pengadaan['progress'] = round(($pengadaan['jumlah_file'] / $pengadaan['jumlah_dokumen']) * 100); // Membulatkan ke angka terdekat
-            } else {
-                $pengadaan['progress'] = 0; // Jika tidak ada dokumen, set progress ke 0
-            }
-        }
-
-        $data = [
-            'level_akses' => session()->get('nama_level'),
+        return view('ppk/pengadaan', [
+            'level_akses' => $nama_level,
             'dtmenu' => $this->tampil_menu(session()->get('level')),
-            'nama_menu' => 'Daftar Pengadaan',
-            'pengadaanData' => $pengadaanData,
-        ];
+            'nama_menu' => 'Pengadaan',
+            'pengadaan' => $pengadaan,
+            // Debugging
 
-        return view('pokja/pengadaan', $data);
+        ]);
+        
     }
 
+    public function tambah_pengadaan()
+    {
+        return view('ppk/tambah_pengadaan', [
+            'level_akses' => session()->get('nama_level'),
+            'dtmenu' => $this->tampil_menu(session()->get('level')),
+            'nama_menu' => 'Tambah Pengadaan',
+        ]);
+    }
 
+    public function tambah_data_pengadaan()
+    {
+        $data = $this->request->getPost([
+            'tahun_anggaran', 'dipa', 'jenis', 'metode', 'kode_rup', 'nama_pengadaan', 'perencanaan', 'pelaksanaan', 'pembayaran'
+        ]);
 
+        if (!$data) {
+            return redirect()->back()->with('error', 'Data yang diteruskan tidak valid.');
+        }
+
+        $this->pengadaanModel->insertData('pengadaan', [$data]);
+        return redirect()->to('/pengadaan')->with('success', 'Data baru Pengadaan berhasil disimpan.');
+    }
+
+    public function hapus_data_pengadaan($id)
+    {
+        $this->pengadaanModel->deletePengadaan('perencanaan', $id);
+        return redirect()->to('/pengadaan')->with('success', 'Data berhasil dihapus.');
+    }
 
     public function detail_pengadaan($id)
     {
-        $pengadaan = $this->pengadaanModel->find($id);
+        $pengadaan = $this->pengadaanModel->getById('pengadaan', $id);
+        if (!$pengadaan) {
+            session()->setFlashdata('error', 'Pengadaan tidak ditemukan!');
+            return redirect()->to('/pengadaan');
+        }
+
         $fileList = $this->fileModel->where('ref_id_pengadaan', $id)
             ->where('deleted_at', null) // Menambahkan kondisi untuk memastikan hanya file yang belum dihapus yang diambil
             ->findAll();
 
 
 
-
-        if (!$pengadaan) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Pengadaan tidak ditemukan!');
-        }
-
         // Tentukan tabel dokumen berdasarkan ref_tabel
         $dokumenTable = '';
-        switch ($pengadaan['ref_tabel']) {
-            case '1':
+        switch ($pengadaan['metode']) {
+            case 'Pengadaan Langsung':
                 $dokumenTable = 'tabel_pl';
                 break;
-            case '2':
-                $dokumenTable = 'tabel_tender';
+            case 'Penunjukkan Langsung':
+                $dokumenTable = 'tabel_juksung';
                 break;
-            case '3':
+            case 'E-Purchasing':
                 $dokumenTable = 'tabel_ep';
+                break;
+            case 'Swakelola':
+                $dokumenTable = 'tabel_swakelola';
                 break;
             default:
                 $dokumenTable = null;
@@ -119,45 +117,38 @@ class Pengadaan extends BaseController
             'fileList' => $fileList // Tambahkan data file yang sudah diunggah
         ];
 
-        return view('pokja/detail_pengadaan', $data);
+        return view('ppk/detail_pengadaan', $data);
     }
 
-    public function hapus_file($id_file)
+
+    public function update_pengadaan($id)
     {
-        log_message('debug', 'Function hapus_file terpanggil dengan ID: ' . $id_file);
+        $data = $this->request->getPost([
+            'tahun_anggaran', 'dipa', 'jenis', 'metode', 'kode_rup', 'nama_pengadaan', 'perencanaan', 'pelaksanaan', 'pembayaran'
+        ]);
 
-        // Validasi apakah ID file ada di database
-        $file = $this->fileModel->find($id_file);
-        if ($file) {
-            // Path file lama dengan struktur: uploads/{id_pengadaan}/{nama_file}
-            $uploadFolder = FCPATH . 'uploads/' . $file['ref_id_pengadaan'] . '/';  
-            $oldFilePath = $uploadFolder . $file['nama_file'];  
-            $newFileName = 'deleted-' . $file['nama_file'];
-            $newFilePath = $uploadFolder . $newFileName;
-    
-            // Debugging - Periksa apakah file ada
-            if (!file_exists($oldFilePath)) {
-                session()->setFlashdata('error', 'File tidak ditemukan di folder: ' . $oldFilePath);
-                return redirect()->to(base_url('pengadaan/detail_pengadaan/' . $file['ref_id_pengadaan']));
-            }
-    
-            // Coba ubah nama file
-            if (rename($oldFilePath, $newFilePath)) {
-                // Jika berhasil rename, hapus data file dari database
-                $this->fileModel->delete($id_file);
-    
-                session()->setFlashdata('success', 'Dokumen berhasil dihapus.');
-            } else {
-                session()->setFlashdata('error', 'Gagal mengubah nama dokumen. Periksa izin folder.');
-            }
-        } else {
-            session()->setFlashdata('error', 'Dokumen tidak ditemukan di database.');
-        }
-    
-        // Redirect kembali ke halaman detail pengadaan
-        return redirect()->to(base_url('pengadaan/detail_pengadaan/' . $file['ref_id_pengadaan']));
+        $this->pengadaanModel->updatePengadaan('pengadaan', $id, $data);
+        session()->setFlashdata('success', 'Data berhasil diperbarui!');
+        return redirect()->to('/pengadaan/detail_pengadaan/'.$id);
     }
-    
+
+    public function ekspor_pengadaan()
+    {
+        $pengadaanData = $this->pengadaanModel->getAll('pengadaan');
+        $filename = "pengadaan.csv";
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Jenis', 'Metode', 'Kode Rup', 'Nama Pengadaan', 'Perencanaan', 'Pelaksanaan', 'Pembayaran']);
+        
+        foreach ($pengadaanData as $index => $pengadaan) {
+            fputcsv($output, array_merge([$index + 1], array_values($pengadaan)));
+        }
+        
+        fclose($output);
+        exit();
+    }
 
     public function unggah_dokumen()
     {
@@ -189,113 +180,18 @@ class Pengadaan extends BaseController
 
                 $this->fileModel->save($data);
 
-                session()->setFlashdata('success', 'Dokumen berhasil diunggah.');
+                session()->setFlashdata('success', 'Dokumen berhasil diunggah');
                 return redirect()->to(base_url('pengadaan/detail_pengadaan/' . $id_pengadaan));
             } else {
-                session()->setFlashdata('error', 'Gagal mengunggah file.');
+                session()->setFlashdata('error', 'Gagal mengunggah dokumen');
             }
         } else {
-            session()->setFlashdata('error', 'Gagal mengunggah dokumen. ' . $file->getErrorString());
+            session()->setFlashdata('error', 'Gagal mengunggah dokumen ' . $file->getErrorString());
         }
 
         return redirect()->back();
     }
 
-    public function update_pengadaan($id)
-    {
-        $data = [
-            'nama_pengadaan' => $this->request->getPost('nama_pengadaan'),
-            'ref_tabel' => $this->request->getPost('ref_tabel'),
-            'ppk' => $this->request->getPost('ppk'),
-            'pokja_pp' => $this->request->getPost('pokja_pp'),
-            'nama_penyedia' => $this->request->getPost('nama_penyedia'),
-            'tanggal_mulai' => $this->request->getPost('tanggal_mulai'),
-            'tanggal_berakhir' => $this->request->getPost('tanggal_berakhir'),
-            'dokumen_terunggah' => $this->request->getPost('dokumen_terunggah'),
-            'total_dokumen' => $this->request->getPost('total_dokumen')
-        ];
-
-        $this->pengadaanModel->update($id, $data);
-
-        session()->setFlashdata('success', 'Data pengadaan berhasil diperbarui.');
-        return redirect()->to(base_url('pengadaan/detail_pengadaan/' . $id));
-    }
-
-
-    public function hapus_pengadaan($id)
-    {
-        // Validasi apakah ID ada di database
-        $pengadaan = $this->pengadaanModel->find($id);
-        if ($pengadaan) {
-            // Menghapus data berdasarkan ID
-            $this->pengadaanModel->delete($id);
-
-            // Menyimpan pesan sukses ke dalam session dan mengarahkan ke halaman daftar pengadaan
-            $this->session->setFlashdata('success', 'Pengadaan berhasil dihapus.');
-        } else {
-            // Jika data tidak ditemukan
-            $this->session->setFlashdata('error', 'Pengadaan tidak ditemukan.');
-        }
-
-        // Redirect ke halaman daftar pengadaan
-        return redirect()->to('/pengadaan');
-    }
-
-    public function tambah_pengadaan()
-    {
-        // Menyiapkan data untuk form tambah pengadaan
-        $data = [
-            'level_akses' => session()->get('nama_level'),
-            'dtmenu' => $this->tampil_menu(session()->get('level')),
-            'nama_menu' => 'Tambah Pengadaan',
-        ];
-
-        return view('pokja/tambah_pengadaan', $data);
-    }
-
-    public function simpan_pengadaan()
-    {
-        // Validasi input dari form
-        $validation = \Config\Services::validation();
-        if (!$this->validate([
-            'nama_pengadaan' => 'required|min_length[3]',
-            'ref_tabel' => 'required|in_list[1,2,3]',
-            'ppk' => 'required|min_length[3]',
-            'pokja_pp' => 'required|min_length[3]',
-            'nama_penyedia' => 'required|min_length[3]',
-            'tanggal_mulai' => 'required|valid_date[Y-m-d]',
-            'tanggal_berakhir' => 'required|valid_date[Y-m-d]',
-        ])) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        }
-
-
-
-        // Pastikan tanggal_berakhir tidak lebih awal dari tanggal_mulai
-        $tanggal_mulai = $this->request->getPost('tanggal_mulai');
-        $tanggal_berakhir = $this->request->getPost('tanggal_berakhir');
-        if (strtotime($tanggal_berakhir) < strtotime($tanggal_mulai)) {
-            session()->setFlashdata('error', 'Tanggal berakhir tidak boleh lebih awal dari tanggal mulai.');
-            return redirect()->back()->withInput();
-        }
-
-        // Menyimpan data pengadaan baru ke database
-        $this->pengadaanModel->save([
-            'nama_pengadaan' => $this->request->getPost('nama_pengadaan'),
-            'ref_tabel' => (int) $this->request->getPost('ref_tabel'),
-            'ppk' => $this->request->getPost('ppk'),
-            'pokja_pp' => $this->request->getPost('pokja_pp'),
-            'nama_penyedia' => $this->request->getPost('nama_penyedia'),
-            'tanggal_mulai' => $this->request->getPost('tanggal_mulai'),
-            'tanggal_berakhir' => $this->request->getPost('tanggal_berakhir'),
-            'dokumen_terunggah' => 0,
-            'total_dokumen' => 0
-        ]);
-
-        // Redirect dengan pesan sukses
-        session()->setFlashdata('success', 'Pengadaan berhasil ditambahkan.');
-        return redirect()->to(base_url('pengadaan'));
-    }
     public function unduh_semua_dokumen($id_pengadaan)
     {
         helper('download');
@@ -308,21 +204,20 @@ class Pengadaan extends BaseController
         }
 
         $files = $this->fileModel->get_all_files($id_pengadaan);
-        // var_dump($files);
-        // exit;
+        $namaPengadaan = $this->pengadaanModel->find($id_pengadaan);
         
 
         if (empty($files)) {
-            session()->setFlashdata('error', 'Tidak ada dokumen untuk diunduh.');
-            return redirect()->to(base_url('pengadaan'));
+            session()->setFlashdata('error', 'Tidak ada dokumen untuk diunduh');
+            return redirect()->to(base_url('pengadaan/detail_pengadaan/'.$id_pengadaan));
         }
 
         $folder = FCPATH . 'uploads/' . $id_pengadaan . '/';
-        $zipFileName = WRITEPATH . 'uploads/Semua_Dokumen_' . $id_pengadaan . '.zip';
+        $zipFileName = WRITEPATH . 'uploads/' . $namaPengadaan['nama_pengadaan'] . '.zip';
 
         if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) !== true) {
             session()->setFlashdata('error', 'Gagal membuat file ZIP.');
-            return redirect()->to(base_url('pengadaan'));
+            return redirect()->to(base_url('pengadaan/detail_pengadaan/'.$id_pengadaan));
         }
 
         foreach ($files as $file) {
@@ -336,7 +231,7 @@ class Pengadaan extends BaseController
         $zip->close();
 
         // Menggunakan download bawaan CodeIgniter
-        $response = $this->response->download($zipFileName, null)->setFileName('Semua_Dokumen_' . $id_pengadaan . '.zip');
+        $response = $this->response->download($zipFileName, null)->setFileName($namaPengadaan['nama_pengadaan'] . '.zip');
 
         // Hapus file ZIP setelah download
         register_shutdown_function(function () use ($zipFileName) {
@@ -346,5 +241,39 @@ class Pengadaan extends BaseController
         });
 
         return $response;
+    }
+
+    public function hapus_dokumen($id_file)
+    {
+        // Validasi apakah ID file ada di database
+        $file = $this->fileModel->find($id_file);
+        if ($file) {
+           
+            $uploadFolder = FCPATH . 'uploads/' . $file['ref_id_pengadaan'] . '/';  
+            $oldFilePath = $uploadFolder . $file['nama_file'];  
+            $newFileName = 'deleted-' . $file['nama_file'];
+            $newFilePath = $uploadFolder . $newFileName;
+    
+            // Debugging - Periksa apakah file ada
+            if (!file_exists($oldFilePath)) {
+                session()->setFlashdata('error', 'File tidak ditemukan di folder: ' . $oldFilePath);
+                return redirect()->to(base_url('pengadaan/detail_pengadaan/' . $file['ref_id_pengadaan']));
+            }
+    
+            // Coba ubah nama file
+            if (rename($oldFilePath, $newFilePath)) {
+                // Jika berhasil rename, hapus data file dari database
+                $this->fileModel->delete($id_file);
+    
+                session()->setFlashdata('success', 'Dokumen berhasil dihapus');
+            } else {
+                session()->setFlashdata('error', 'Gagal mengubah nama dokumen');
+            }
+        } else {
+            session()->setFlashdata('error', 'Dokumen tidak ditemukan di database');
+        }
+    
+        // Redirect kembali ke halaman detail pengadaan
+        return redirect()->to(base_url('pengadaan/detail_pengadaan/' . $file['ref_id_pengadaan']));
     }
 }

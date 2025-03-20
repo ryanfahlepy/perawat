@@ -8,20 +8,20 @@ $session = \Config\Services::session();
                                 <h3 class="card-title"> Hallo <b><?= $session->nama; ?></b>, Selamat datang </h3>
                             </div>
                             <div class="card-body">
-                                <h2 class="text-center mb-3" style="font-weight:bold">INFORMASI PAKET</h2>
+                                <h2 class="text-center mb-3" style="font-weight:bold">INFORMASI PEGADAAN</h2>
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-3">
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3><?= $jumlah_paket; ?></h3>
-                    <p>Jumlah Paket</p>
+                    <h3><?= $jumlah_pengadaan; ?></h3>
+                    <p>Jumlah Pengadaan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -35,7 +35,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -48,7 +48,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-3">
@@ -60,7 +60,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
@@ -69,13 +69,13 @@ $session = \Config\Services::session();
         <div class="col-3">
         <div class="small-box bg-info">
                 <div class="inner">
-                    <h3><?= $jumlah_paket_belanja_rutin; ?></h3>
-                    <p>Jumlah Paket Belanja Rutin</p>
+                    <h3><?= $jumlah_pengadaan_belanja_rutin; ?></h3>
+                    <p>Jumlah Pengadaan Belanja Rutin</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -89,7 +89,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -102,7 +102,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-3">
@@ -114,7 +114,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
@@ -123,13 +123,13 @@ $session = \Config\Services::session();
         <div class="col-3">
         <div class="small-box bg-info">
                 <div class="inner">
-                    <h3><?= $jumlah_paket_belanja_modal; ?></h3>
-                    <p>Jumlah Paket Belanja Modal</p>
+                    <h3><?= $jumlah_pengadaan_belanja_modal; ?></h3>
+                    <p>Jumlah Pengadaan Belanja Modal</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -143,7 +143,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -156,7 +156,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-3">
@@ -168,7 +168,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
@@ -182,13 +182,13 @@ $session = \Config\Services::session();
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3><?= $jumlah_paket; ?></h3>
-                    <p>Jumlah Paket</p>
+                    <h3><?= $jumlah_pengadaan; ?></h3>
+                    <p>Jumlah Pengadaan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -202,7 +202,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -215,7 +215,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-3">
@@ -227,7 +227,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
@@ -236,13 +236,13 @@ $session = \Config\Services::session();
         <div class="col-3">
         <div class="small-box bg-info">
                 <div class="inner">
-                    <h3><?= $jumlah_paket_belanja_rutin; ?></h3>
-                    <p>Jumlah Paket Belanja Rutin</p>
+                    <h3><?= $jumlah_pengadaan_belanja_rutin; ?></h3>
+                    <p>Jumlah Pengadaan Belanja Rutin</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -256,7 +256,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -269,7 +269,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-3">
@@ -281,7 +281,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
@@ -290,13 +290,13 @@ $session = \Config\Services::session();
         <div class="col-3">
         <div class="small-box bg-info">
                 <div class="inner">
-                    <h3><?= $jumlah_paket_belanja_modal; ?></h3>
-                    <p>Jumlah Paket Belanja Modal</p>
+                    <h3><?= $jumlah_pengadaan_belanja_modal; ?></h3>
+                    <p>Jumlah Pengadaan Belanja Modal</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -310,7 +310,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         
@@ -323,7 +323,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-3">
@@ -335,7 +335,7 @@ $session = \Config\Services::session();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url('paket') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('pengadaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>

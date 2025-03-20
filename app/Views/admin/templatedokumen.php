@@ -22,7 +22,7 @@
 
 
     <!-- Tab Navigation -->
-    <ul class="nav nav-tabs" id="paketTabs">
+    <ul class="nav nav-tabs" id="pengadaanTabs">
         <li class="nav-item">
             <a style="font-weight: bold;" class="nav-link active" data-toggle="tab" href="#pl">Penunjukkan Langsung</a>
         </li>
