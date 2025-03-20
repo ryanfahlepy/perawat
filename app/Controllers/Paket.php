@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PaketModel;
+use App\Models\FileModel;
+use App\Models\DokumenModel;
 
 class Paket extends BaseController
 {
@@ -12,532 +14,266 @@ class Paket extends BaseController
     public function __construct()
     {
         $this->paketModel = new PaketModel();
+        $this->fileModel = new FileModel();  // Menginisialisasi model
+        $this->dokumenModel = new DokumenModel();  // Menginisialisasi model
     }
 
     public function index()
     {
         $nama_level = session()->get('nama_level');
+        $whereCondition = $nama_level == 'Pokja' ? ['dipa' => 'MABES TNI AL'] : ($nama_level == 'PP' ? ['dipa' => 'DISINFOLAHTAL'] : []);
+        $paket = $this->paketModel->getAllbyColumn('paket', $whereCondition);
 
-        // Default, tidak ada filter
-        $whereCondition = [];
-    
-        if ($nama_level == 'Pokja') {
-            $whereCondition = ['dipa' => 'MABES TNI AL'];
-        } elseif ($nama_level == 'PP') {
-            $whereCondition = ['dipa' => 'DISINFOLAHTAL'];
-        }
-        
-    
-        $data = [
+        return view('ppk/paket', [
             'level_akses' => $nama_level,
             'dtmenu' => $this->tampil_menu(session()->get('level')),
             'nama_menu' => 'Paket',
-            'paket_perencanaan' => $this->paketModel->getAllbyColumn('paket_perencanaan', $whereCondition),
-            'paket_pelaksanaan' => $this->paketModel->getAllbyColumn('paket_pelaksanaan', $whereCondition),
-            'paket_pembayaran' => $this->paketModel->getAllbyColumn('paket_pembayaran', $whereCondition)
-        ];
+            'paket' => $paket,
+            // Debugging
 
-        return view('ppk/paket', $data);
+        ]);
+        
     }
-    
-    public function tambah_paket_perencanaan()
+
+    public function tambah_paket()
     {
+        return view('ppk/tambah_paket', [
+            'level_akses' => session()->get('nama_level'),
+            'dtmenu' => $this->tampil_menu(session()->get('level')),
+            'nama_menu' => 'Tambah Paket',
+        ]);
+    }
+
+    public function tambah_data_paket()
+    {
+        $data = $this->request->getPost([
+            'tahun_anggaran', 'dipa', 'jenis', 'metode', 'kode_rup', 'nama_paket', 'perencanaan', 'pelaksanaan', 'pembayaran'
+        ]);
+
+        if (!$data) {
+            return redirect()->back()->with('error', 'Data yang diteruskan tidak valid.');
+        }
+
+        $this->paketModel->insertData('paket', [$data]);
+        return redirect()->to('/paket')->with('success', 'Data baru Paket berhasil disimpan.');
+    }
+
+    public function hapus_data_paket($id)
+    {
+        $this->paketModel->deletePaket('perencanaan', $id);
+        return redirect()->to('/paket')->with('success', 'Data berhasil dihapus.');
+    }
+
+    public function detail_paket($id)
+    {
+        $paket = $this->paketModel->getById('paket', $id);
+        if (!$paket) {
+            session()->setFlashdata('error', 'Paket tidak ditemukan!');
+            return redirect()->to('/paket');
+        }
+
+        $fileList = $this->fileModel->where('ref_id_paket', $id)
+            ->where('deleted_at', null) // Menambahkan kondisi untuk memastikan hanya file yang belum dihapus yang diambil
+            ->findAll();
+
+
+
+        // Tentukan tabel dokumen berdasarkan ref_tabel
+        $dokumenTable = '';
+        switch ($paket['metode']) {
+            case 'Pengadaan Langsung':
+                $dokumenTable = 'tabel_pl';
+                break;
+            case 'Penunjukkan Langsung':
+                $dokumenTable = 'tabel_juksung';
+                break;
+            case 'E-Purchasing':
+                $dokumenTable = 'tabel_ep';
+                break;
+            case 'Swakelola':
+                $dokumenTable = 'tabel_swakelola';
+                break;
+            default:
+                $dokumenTable = null;
+        }
+
+        // Jika ref_tabel valid, ambil data dokumen dari tabel yang sesuai
+        $dokumenList = [];
+        if ($dokumenTable) {
+            $db = \Config\Database::connect();
+            $dokumenList = $db->table($dokumenTable)
+                ->select('id_dokumen, dokumen')
+
+                ->get()
+                ->getResultArray();
+        }
+
         $data = [
             'level_akses' => session()->get('nama_level'),
             'dtmenu' => $this->tampil_menu(session()->get('level')),
-            'nama_menu' => 'Tambah Paket Perencaan',
+            'nama_menu' => 'Detail Paket',
+            'paket' => $paket,
+            'dokumenList' => $dokumenList,
+            'fileList' => $fileList // Tambahkan data file yang sudah diunggah
         ];
-        return view('ppk/tambah_paket_perencanaan', $data);
-    }
-    
 
-    public function tambah_data_paket_perencanaan()
-{
-    // Ambil data dari form
-    $data = [
-        'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'dipa' => $this->request->getPost('dipa'),
-        'kategori' => $this->request->getPost('kategori'),
-        'kode_rup' => $this->request->getPost('kode_rup'),
-        'nama_paket' => $this->request->getPost('nama_paket'),
-        'total_perencanaan' => $this->request->getPost('total_perencanaan'),
-    ];
-
-    // Memastikan data adalah array yang valid
-    if (!is_array($data)) {
-        return redirect()->back()->with('error', 'Data yang diteruskan tidak valid.');
+        return view('ppk/detail_paket', $data);
     }
 
-    // Membungkus data dalam array sehingga insertBatch dapat menerima data dalam format array of arrays
-    $this->paketModel->insertData('paket_perencanaan', [$data]);
 
-    // Redirect setelah berhasil
-    return redirect()->to('/paket')->with('success', 'Data Baru Paket Perencanaan berhasil disimpan.');
-}
-public function hapus_data_paket_perencanaan($id)
-{
-    // Panggil model untuk menghapus data berdasarkan ID
-    $this->paketModel->deletePaket('paket_perencanaan',$id);
-
-    // Redirect dengan pesan sukses
-    return redirect()->to('/paket')->with('success', 'Data berhasil dihapus.');
-}
-
-public function edit_data_paket_perencanaan($id) 
-{
-    $data = [
-        'level_akses' => session()->get('nama_level'),
-        'dtmenu' => $this->tampil_menu(session()->get('level')),
-        'nama_menu' => 'Edit Data Paket Perencanaan',
-    ];
-    
-    // Memuat model
-    $paketModel = new PaketModel();
-
-    // Ambil data paket berdasarkan ID
-    $paket = $paketModel->getById('paket_perencanaan', $id);
-
-    // Jika data tidak ditemukan, redirect ke halaman daftar paket
-    if (!$paket) {
-        session()->setFlashdata('error', 'Paket tidak ditemukan!');
-        return redirect()->to('/paket');
-    }
-
-    // Kirim data paket ke view untuk ditampilkan pada form
-    $data['paket'] = $paket;
-
-    // Kirim data ke view
-    return view('ppk/edit_paket_perencanaan', $data);
-}
-
-
-    // Fungsi untuk memperbarui data paket
-    public function update_data_paket_perencanaan($id)
-{
-    $paketModel = new PaketModel();
-
-    // Ambil data dari form
-    $data = [
-        'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'dipa' => $this->request->getPost('dipa'),
-        'kategori' => $this->request->getPost('kategori'),
-        'kode_rup' => $this->request->getPost('kode_rup'),
-        'nama_paket' => $this->request->getPost('nama_paket'),
-        'total_perencanaan' => $this->request->getPost('total_perencanaan'),
-    ];
-
-    // Update data di database
-    $paketModel->updatePaket('paket_perencanaan', $id, $data);
-
-    session()->setFlashdata('success', 'Data berhasil diperbarui!');
-    return redirect()->to('/paket');
-}
-
-public function ekspor_paket_perencanaan()
-{
-    // Mengambil data paket pembayaran dari model
-    $paketModel = new PaketModel();
-    $paketData = $paketModel->getAll('paket_perencanaan'); // Mengambil semua data paket pembayaran
-
-    // Menyiapkan header CSV
-    $filename = "paket_perencanaan" . ".csv";
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="' . $filename . '"');
-    
-    // Membuka file PHP output stream
-    $output = fopen('php://output', 'w');
-    
-    // Menulis header CSV dengan kolom 'No'
-    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Kategori', 'Kode Rup', 'Nama Paket', 'Total Perencanaan']);
-    
-    // Menulis data ke CSV dengan kolom 'No' sebagai urutan
-    $no = 1; // Menambahkan variabel untuk nomor urut
-    foreach ($paketData as $paket) {
-        fputcsv($output, [
-            $no++, // Menambahkan nomor urut
-            $paket['tahun_anggaran'],
-            $paket['dipa'],
-            $paket['kategori'],
-            $paket['kode_rup'],
-            $paket['nama_paket'],
-            $paket['total_perencanaan'],
+    public function update_paket($id)
+    {
+        $data = $this->request->getPost([
+            'tahun_anggaran', 'dipa', 'jenis', 'metode', 'kode_rup', 'nama_paket', 'perencanaan', 'pelaksanaan', 'pembayaran'
         ]);
+
+        $this->paketModel->updatePaket('paket', $id, $data);
+        session()->setFlashdata('success', 'Data berhasil diperbarui!');
+        return redirect()->to('/paket/detail_paket/'.$id);
     }
-    
-    // Menutup output stream
-    fclose($output);
-    exit();
-}
 
-
-
-public function tambah_paket_pelaksanaan()
-{
-    $data = [
-        'level_akses' => session()->get('nama_level'),
-        'dtmenu' => $this->tampil_menu(session()->get('level')),
-        'nama_menu' => 'Tambah Paket Pelaksanaan',
-    ];
-    return view('ppk/tambah_paket_pelaksanaan', $data);
-}
-
-public function tambah_data_paket_pelaksanaan()
-{
-    // Ambil data dari form
-    $data = [
-        'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'dipa' => $this->request->getPost('dipa'),
-        'nama_penyedia' => $this->request->getPost('nama_penyedia'),
-        'kode' => $this->request->getPost('kode'),
-        'kode_rup' => $this->request->getPost('kode_rup'),
-        'nama_paket' => $this->request->getPost('nama_paket'),
-        'total_pelaksanaan' => $this->request->getPost('total_pelaksanaan'),
+    public function ekspor_paket()
+    {
+        $paketData = $this->paketModel->getAll('paket');
+        $filename = "paket.csv";
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
         
-    ];
-
-    // Memastikan data adalah array yang valid
-    if (!is_array($data)) {
-        return redirect()->back()->with('error', 'Data yang diteruskan tidak valid.');
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Jenis', 'Metode', 'Kode Rup', 'Nama Paket', 'Perencanaan', 'Pelaksanaan', 'Pembayaran']);
+        
+        foreach ($paketData as $index => $paket) {
+            fputcsv($output, array_merge([$index + 1], array_values($paket)));
+        }
+        
+        fclose($output);
+        exit();
     }
 
-    // Membungkus data dalam array sehingga insertBatch dapat menerima data dalam format array of arrays
-    $this->paketModel->insertData('paket_pelaksanaan', [$data]);
-
-    // Redirect setelah berhasil
-    return redirect()->to('/paket')->with('success', 'Data Baru Paket Pelaksanaan berhasil disimpan.');
-}
-
-public function hapus_data_paket_pelaksanaan($id)
-{
-    // Panggil model untuk menghapus data berdasarkan ID
-    $this->paketModel->deletePaket('paket_pelaksanaan', $id);
-
-    // Redirect dengan pesan sukses
-    return redirect()->to('/paket')->with('success', 'Data berhasil dihapus.');
-}
-
-public function edit_data_paket_pelaksanaan($id) 
-{
-    $data = [
-        'level_akses' => session()->get('nama_level'),
-        'dtmenu' => $this->tampil_menu(session()->get('level')),
-        'nama_menu' => 'Edit Data Paket Pelaksanaan',
-    ];
-    
-    // Memuat model
-    $paketModel = new PaketModel();
-
-    // Ambil data paket berdasarkan ID
-    $paket = $paketModel->getById('paket_pelaksanaan', $id);
-
-    // Jika data tidak ditemukan, redirect ke halaman daftar paket
-    if (!$paket) {
-        session()->setFlashdata('error', 'Paket tidak ditemukan!');
-        return redirect()->to('/paket');
-    }
-
-    // Kirim data paket ke view untuk ditampilkan pada form
-    $data['paket'] = $paket;
-
-    // Kirim data ke view
-    return view('ppk/edit_paket_pelaksanaan', $data);
-}
-
-// Fungsi untuk memperbarui data paket pelaksanaan
-public function update_data_paket_pelaksanaan($id)
-{
-    $paketModel = new PaketModel();
-
-    // Ambil data dari form
-    $data = [
-        'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'dipa' => $this->request->getPost('dipa'),
-        'nama_penyedia' => $this->request->getPost('nama_penyedia'),
-        'kode' => $this->request->getPost('kode'),
-        'kode_rup' => $this->request->getPost('kode_rup'),
-        'nama_paket' => $this->request->getPost('nama_paket'),
-        'total_pelaksanaan' => $this->request->getPost('total_pelaksanaan'),
-    ];
-
-    // Update data di database
-    $paketModel->updatePaket('paket_pelaksanaan', $id, $data);
-
-    session()->setFlashdata('success', 'Data berhasil diperbarui!');
-    return redirect()->to('/paket');
-}
-
-public function ekspor_paket_pelaksanaan()
-{
-    // Mengambil data paket pembayaran dari model
-    $paketModel = new PaketModel();
-    $paketData = $paketModel->getAll('paket_pelaksanaan'); // Mengambil semua data paket pembayaran
-
-    // Menyiapkan header CSV
-    $filename = "paket_pelaksanaan" . ".csv";
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="' . $filename . '"');
-    
-    // Membuka file PHP output stream
-    $output = fopen('php://output', 'w');
-    
-    // Menulis header CSV dengan kolom 'No'
-    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Nama Penyedia', 'Kode', 'Kode Rup', 'Nama Paket', 'Total Pelaksanaan']);
-    
-    // Menulis data ke CSV dengan kolom 'No' sebagai urutan
-    $no = 1; // Menambahkan variabel untuk nomor urut
-    foreach ($paketData as $paket) {
-        fputcsv($output, [
-            $no++, // Menambahkan nomor urut
-            $paket['tahun_anggaran'],
-            $paket['dipa'],
-            $paket['nama_penyedia'],
-            $paket['kode'],
-            $paket['kode_rup'],
-            $paket['nama_paket'],
-            $paket['total_pelaksanaan'],
-        ]);
-    }
-    
-    // Menutup output stream
-    fclose($output);
-    exit();
-}
-
-public function tambah_paket_pembayaran()
-{
-    $data = [
-        'level_akses' => session()->get('nama_level'),
-        'dtmenu' => $this->tampil_menu(session()->get('level')),
-        'nama_menu' => 'Tambah Paket Pembayaran',
-    ];
-    return view('ppk/tambah_paket_pembayaran', $data);
-}
-
-public function tambah_data_paket_pembayaran()
-{
-    // Ambil data dari form
-    $data = [
-        'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'dipa' => $this->request->getPost('dipa'),
-        'nama_penyedia' => $this->request->getPost('nama_penyedia'),
-        'kode_dokumen' => $this->request->getPost('kode_dokumen'),
-        'kode_sp2d' => $this->request->getPost('kode_sp2d'),
-        'total_pembayaran' => $this->request->getPost('total_pembayaran')
-    ];
-
-    // Memastikan data adalah array yang valid
-    if (!is_array($data)) {
-        return redirect()->back()->with('error', 'Data yang diteruskan tidak valid.');
-    }
-
-    // Membungkus data dalam array sehingga insertBatch dapat menerima data dalam format array of arrays
-    $this->paketModel->insertData('paket_pembayaran', [$data]);
-
-    // Redirect setelah berhasil
-    return redirect()->to('/paket')->with('success', 'Data Baru Paket Pembayaran berhasil disimpan.');
-}
-
-public function hapus_data_paket_pembayaran($id)
-{
-    // Panggil model untuk menghapus data berdasarkan ID
-    $this->paketModel->deletePaket('paket_pembayaran', $id);
-
-    // Redirect dengan pesan sukses
-    return redirect()->to('/paket')->with('success', 'Data berhasil dihapus.');
-}
-
-public function edit_data_paket_pembayaran($id) 
-{
-    $data = [
-        'level_akses' => session()->get('nama_level'),
-        'dtmenu' => $this->tampil_menu(session()->get('level')),
-        'nama_menu' => 'Edit Data Paket Pembayaran',
-    ];
-    
-    // Memuat model
-    $paketModel = new PaketModel();
-
-    // Ambil data paket berdasarkan ID
-    $paket = $paketModel->getById('paket_pembayaran', $id);
-
-    // Jika data tidak ditemukan, redirect ke halaman daftar paket
-    if (!$paket) {
-        session()->setFlashdata('error', 'Paket tidak ditemukan!');
-        return redirect()->to('/paket');
-    }
-
-    // Kirim data paket ke view untuk ditampilkan pada form
-    $data['paket'] = $paket;
-
-    // Kirim data ke view
-    return view('ppk/edit_paket_pembayaran', $data);
-}
-
-// Fungsi untuk memperbarui data paket pembayaran
-public function update_data_paket_pembayaran($id)
-{
-    $paketModel = new PaketModel();
-
-    // Ambil data dari form
-    $data = [
-        'tahun_anggaran' => $this->request->getPost('tahun_anggaran'),
-        'dipa' => $this->request->getPost('dipa'), 
-        'nama_penyedia' => $this->request->getPost('nama_penyedia'),
-        'kode_dokumen' => $this->request->getPost('kode_dokumen'),
-        'kode_sp2d' => $this->request->getPost('kode_sp2d'),
-        'total_pembayaran' => $this->request->getPost('total_pembayaran')
-    ];
-
-    // Update data di database
-    $paketModel->updatePaket('paket_pembayaran', $id, $data);
-
-    session()->setFlashdata('success', 'Data berhasil diperbarui!');
-    return redirect()->to('/paket');
-}
-
-public function ekspor_paket_pembayaran()
-{
-    // Mengambil data paket pembayaran dari model
-    $paketModel = new PaketModel();
-    $paketData = $paketModel->getAll('paket_pembayaran'); // Mengambil semua data paket pembayaran
-
-    // Menyiapkan header CSV
-    $filename = "paket_pembayaran" . ".csv";
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="' . $filename . '"');
-    
-    // Membuka file PHP output stream
-    $output = fopen('php://output', 'w');
-    
-    // Menulis header CSV dengan kolom 'No'
-    fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Nama Penyedia', 'Kode Dokumen', 'Kode SP2D', 'Total Pembayaran']);
-    
-    // Menulis data ke CSV dengan kolom 'No' sebagai urutan
-    $no = 1; // Menambahkan variabel untuk nomor urut
-    foreach ($paketData as $paket) {
-        fputcsv($output, [
-            $no++, // Menambahkan nomor urut
-            $paket['tahun_anggaran'],
-            $paket['dipa'],
-            $paket['nama_penyedia'],
-            $paket['kode_dokumen'],
-            $paket['kode_sp2d'],
-            $paket['total_pembayaran']
-        ]);
-    }
-    
-    // Menutup output stream
-    fclose($output);
-    exit();
-}
-
-
-
-
-
-
-
-
-
-    // ============================
-    // IMPORT PERENCANAAN
-    // ============================
-    public function import_csv_perencanaan()
+    public function unggah_dokumen()
     {
-        return $this->import_csv_generic('paket_perencanaan', [
-            'tahun_anggaran' => 1,
-            'dipa'=>2,
-            'kategori' => 3,
-            'kode_rup' => 4,
-            'nama_paket' => 5,
-            'total_perencanaan' => 6
-        ]);
-    }
+        $id_paket = $this->request->getPost('id_paket');
+        $id_dokumen = $this->request->getPost('id_dokumen');
 
-    // ============================
-    // IMPORT PELAKSANAAN
-    // ============================
-    public function import_csv_pelaksanaan()
-    {
-        return $this->import_csv_generic('paket_pelaksanaan', [
-            'tahun_anggaran' => 1,
-            'dipa' => 2,
-            'nama_penyedia' => 3,
-            'kode' => 4,
-            'kode_rup' => 5,
-            'nama_paket' => 6,
-            'total_pelaksanaan' => 7
-        ]);
-    }
-
-    // ============================
-    // IMPORT PEMBAYARAN
-    // ============================
-    public function import_csv_pembayaran()
-{
-    return $this->import_csv_generic('paket_pembayaran', [
-        'tahun_anggaran' => 1,
-        'dipa' => 2,
-        'nama_penyedia' => 3,
-        'kode_dokumen' => 4,
-        'kode_sp2d' => 5,
-        'total_pembayaran' => 6
-    ]);
-}
-
-    // ============================
-    // GENERIC CSV IMPORT FUNCTION
-    // ============================
-    private function import_csv_generic($table, $columnMap)
-    {
-        $file = $this->request->getFile('file_csv');
-
-        if (!$file->isValid() || $file->hasMoved()) {
-            return redirect()->to('/paket')->with('error', 'File tidak valid atau sudah diproses.');
+        if (!filter_var($id_paket, FILTER_VALIDATE_INT) || !filter_var($id_dokumen, FILTER_VALIDATE_INT)) {
+            session()->setFlashdata('error', 'ID Paket atau ID Dokumen tidak valid.');
+            return redirect()->back();
         }
 
-        $filePath = $file->getTempName();
-        $handle = fopen($filePath, 'r');
+        $file = $this->request->getFile('file');
 
-        if ($handle === false) {
-            return redirect()->to('/paket')->with('error', 'Gagal membuka file.');
-        }
+        if ($file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getName();
+            $folder = 'uploads/' . $id_paket . '/';
 
-        // Deteksi delimiter (koma atau titik koma)
-        $firstLine = fgets($handle);
-        $delimiter = (strpos($firstLine, ';') !== false) ? ';' : ',';
-        rewind($handle);
-
-        $data = [];
-        $rowIndex = 0;
-        while (($row = fgetcsv($handle, 1000, $delimiter)) !== false) {
-            if ($rowIndex == 0) { // Lewati header
-                $rowIndex++;
-                continue;
+            if (!is_dir($folder)) {
+                mkdir($folder, 0777, true);
             }
 
-            // Pastikan jumlah kolom cukup sebelum menyimpan data
-            if (count($row) < max(array_values($columnMap))) {
-                fclose($handle);
-                return redirect()->to('/paket')->with('error', 'Format CSV tidak sesuai. Pastikan jumlah kolom mencukupi.');
-            }
+            if ($file->move($folder, $newName)) {
+                $data = [
+                    'ref_id_paket' => (int) $id_paket,
+                    'ref_id_dokumen' => (int) $id_dokumen,
+                    'nama_file' => $newName,
+                    'created_at'   => date('Y-m-d H:i:s')
+                ];
 
-            // Mapping kolom
-            $entry = [];
-            foreach ($columnMap as $field => $index) {
-                $entry[$field] = str_replace(',', '', $row[$index]); // Hilangkan koma dari angka
-            }
+                $this->fileModel->save($data);
 
-            $data[] = $entry;
+                session()->setFlashdata('success', 'Dokumen berhasil diunggah');
+                return redirect()->to(base_url('paket/detail_paket/' . $id_paket));
+            } else {
+                session()->setFlashdata('error', 'Gagal mengunggah dokumen');
+            }
+        } else {
+            session()->setFlashdata('error', 'Gagal mengunggah dokumen ' . $file->getErrorString());
         }
 
-        fclose($handle);
+        return redirect()->back();
+    }
 
-        if (!empty($data)) {
-            $this->paketModel->insertData($table, $data);
-            return redirect()->to('/paket')->with('success', "Data berhasil diimpor ke tabel $table.");
+    public function unduh_semua_dokumen($id_paket)
+    {
+        helper('download');
+        $zip = new \ZipArchive();
+        $this->fileModel = new FileModel();
+
+        if (!$id_paket) {
+            session()->setFlashdata('error', 'ID paket tidak ditemukan.');
+            return redirect()->to(base_url('paket'));
         }
 
-        return redirect()->to('/paket')->with('error', 'Gagal mengimpor data.');
+        $files = $this->fileModel->get_all_files($id_paket);
+        $namaPaket = $this->paketModel->find($id_paket);
+        
+
+        if (empty($files)) {
+            session()->setFlashdata('error', 'Tidak ada dokumen untuk diunduh');
+            return redirect()->to(base_url('paket/detail_paket/'.$id_paket));
+        }
+
+        $folder = FCPATH . 'uploads/' . $id_paket . '/';
+        $zipFileName = WRITEPATH . 'uploads/' . $namaPaket['nama_paket'] . '.zip';
+
+        if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) !== true) {
+            session()->setFlashdata('error', 'Gagal membuat file ZIP.');
+            return redirect()->to(base_url('paket/detail_paket/'.$id_paket));
+        }
+
+        foreach ($files as $file) {
+            $path = $folder . $file['nama_file']; // Gunakan indeks array
+            if (file_exists($path)) {
+                $zip->addFile($path, $file['nama_file']); // Gunakan indeks array
+            }
+        }
+        
+
+        $zip->close();
+
+        // Menggunakan download bawaan CodeIgniter
+        $response = $this->response->download($zipFileName, null)->setFileName($namaPaket['nama_paket'] . '.zip');
+
+        // Hapus file ZIP setelah download
+        register_shutdown_function(function () use ($zipFileName) {
+            if (file_exists($zipFileName)) {
+                unlink($zipFileName);
+            }
+        });
+
+        return $response;
+    }
+
+    public function hapus_dokumen($id_file)
+    {
+        // Validasi apakah ID file ada di database
+        $file = $this->fileModel->find($id_file);
+        if ($file) {
+            // Path file lama dengan struktur: uploads/{id_pengadaan}/{nama_file}
+            $uploadFolder = FCPATH . 'uploads/' . $file['ref_id_paket'] . '/';  
+            $oldFilePath = $uploadFolder . $file['nama_file'];  
+            $newFileName = 'deleted-' . $file['nama_file'];
+            $newFilePath = $uploadFolder . $newFileName;
+    
+            // Debugging - Periksa apakah file ada
+            if (!file_exists($oldFilePath)) {
+                session()->setFlashdata('error', 'File tidak ditemukan di folder: ' . $oldFilePath);
+                return redirect()->to(base_url('paket/detail_paket/' . $file['ref_id_paket']));
+            }
+    
+            // Coba ubah nama file
+            if (rename($oldFilePath, $newFilePath)) {
+                // Jika berhasil rename, hapus data file dari database
+                $this->fileModel->delete($id_file);
+    
+                session()->setFlashdata('success', 'Dokumen berhasil dihapus');
+            } else {
+                session()->setFlashdata('error', 'Gagal mengubah nama dokumen');
+            }
+        } else {
+            session()->setFlashdata('error', 'Dokumen tidak ditemukan di database');
+        }
+    
+        // Redirect kembali ke halaman detail pengadaan
+        return redirect()->to(base_url('paket/detail_paket/' . $file['ref_id_paket']));
     }
 }

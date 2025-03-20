@@ -1,7 +1,7 @@
 <?php $this->extend('shared_page/template'); ?>
 
 <?php $this->section('content'); ?>
-<?php if (session()->getFlashdata('success')) : ?>
+<?php if (session()->getFlashdata('success')): ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <?= session()->getFlashdata('success'); ?>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -10,7 +10,7 @@
     </div>
 <?php endif; ?>
 
-<?php if (session()->getFlashdata('error')) : ?>
+<?php if (session()->getFlashdata('error')): ?>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <?= session()->getFlashdata('error'); ?>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -25,14 +25,16 @@
             <tr>
                 <th>Nama Pengadaan</th>
                 <td>
-                    <input type="text" name="nama_pengadaan" value="<?= $pengadaan['nama_pengadaan']; ?>" id="nama_pengadaan" class="form-control" readonly>
+                    <input type="text" name="nama_pengadaan" value="<?= $pengadaan['nama_pengadaan']; ?>"
+                        id="nama_pengadaan" class="form-control" readonly>
                 </td>
             </tr>
             <tr>
                 <th>Metode Pemilihan</th>
                 <td>
                     <select name="ref_tabel" id="ref_tabel" class="form-control" disabled>
-                        <option value="1" <?= ($pengadaan['ref_tabel'] == '1') ? 'selected' : '' ?>>Penunjukkan Langsung</option>
+                        <option value="1" <?= ($pengadaan['ref_tabel'] == '1') ? 'selected' : '' ?>>Penunjukkan Langsung
+                        </option>
                         <option value="2" <?= ($pengadaan['ref_tabel'] == '2') ? 'selected' : '' ?>>Tender</option>
                         <option value="3" <?= ($pengadaan['ref_tabel'] == '3') ? 'selected' : '' ?>>E-Purchasing</option>
                     </select>
@@ -41,46 +43,54 @@
             <tr>
                 <th>PPK</th>
                 <td>
-                    <input type="text" name="ppk" value="<?= $pengadaan['ppk']; ?>" id="ppk" class="form-control" readonly>
+                    <input type="text" name="ppk" value="<?= $pengadaan['ppk']; ?>" id="ppk" class="form-control"
+                        readonly>
                 </td>
             </tr>
             <tr>
                 <th>Pokja/PP</th>
                 <td>
-                    <input type="text" name="pokja_pp" value="<?= $pengadaan['pokja_pp']; ?>" id="pokja_pp" class="form-control" readonly>
+                    <input type="text" name="pokja_pp" value="<?= $pengadaan['pokja_pp']; ?>" id="pokja_pp"
+                        class="form-control" readonly>
                 </td>
             </tr>
             <tr>
                 <th>Nama Penyedia</th>
                 <td>
-                    <input type="text" name="nama_penyedia" value="<?= $pengadaan['nama_penyedia']; ?>" id="nama_penyedia" class="form-control" readonly>
+                    <input type="text" name="nama_penyedia" value="<?= $pengadaan['nama_penyedia']; ?>"
+                        id="nama_penyedia" class="form-control" readonly>
                 </td>
             </tr>
             <tr>
                 <th>Tanggal Mulai</th>
                 <td>
-                    <input type="date" name="tanggal_mulai" value="<?= date('Y-m-d', strtotime($pengadaan['tanggal_mulai'])); ?>" id="tanggal_mulai" class="form-control" readonly>
+                    <input type="date" name="tanggal_mulai"
+                        value="<?= date('Y-m-d', strtotime($pengadaan['tanggal_mulai'])); ?>" id="tanggal_mulai"
+                        class="form-control" readonly>
                 </td>
             </tr>
             <tr>
                 <th>Tanggal Berakhir</th>
                 <td>
-                    <input type="date" name="tanggal_berakhir" value="<?= date('Y-m-d', strtotime($pengadaan['tanggal_berakhir'])); ?>" id="tanggal_berakhir" class="form-control" readonly>
+                    <input type="date" name="tanggal_berakhir"
+                        value="<?= date('Y-m-d', strtotime($pengadaan['tanggal_berakhir'])); ?>" id="tanggal_berakhir"
+                        class="form-control" readonly>
                 </td>
             </tr>
         </table>
 
         <div class="d-flex justify-content-between">
-    <div>
-        <a href="<?= base_url('pengadaan'); ?>" class="btn btn-secondary mr-2">Kembali</a>
-        <button type="button" id="editBtn" class="btn btn-warning" style="color: white;" onclick="editData()">Edit</button>
-        <button type="submit" id="saveBtn" class="btn btn-success" style="display:none;">Simpan</button>
-    </div>
-    <button type="button" id="downloadAllBtn" class="btn btn-primary" 
-            onclick="location.href='<?= base_url('pengadaan/unduh_semua_dokumen/' . $pengadaan['id']) ?>'">
-        Unduh Semua Dokumen
-    </button>
-</div>
+            <div>
+                <a href="<?= base_url('pengadaan'); ?>" class="btn btn-secondary mr-2">Kembali</a>
+                <button type="button" id="editBtn" class="btn btn-warning" style="color: white;"
+                    onclick="editData()">Edit</button>
+                <button type="submit" id="saveBtn" class="btn btn-success" style="display:none;">Simpan</button>
+            </div>
+            <button type="button" id="downloadAllBtn" class="btn btn-primary"
+                onclick="location.href='<?= base_url('pengadaan/unduh_semua_dokumen/' . $pengadaan['id']) ?>'">
+                Unduh Semua Dokumen
+            </button>
+        </div>
 
     </form>
 </div>
@@ -90,30 +100,30 @@
         <h5>Daftar Dokumen</h5>
     </div>
     <div class="card-body">
-    <table class="table table-bordered">
-    <thead class="text-center">
-        <tr>
-            <th style="width: 5%;">No</th>
-            <th style="width: 20%;">Nama</th>
-            <th style="width: 35%;">Dokumen</th>
-            <th style="width: 20%;">Waktu Unggah</th>
-            <th style="width: 10%;">Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (!empty($dokumenList)) : ?>
-            <?php $no = 1; ?>
-            <?php foreach ($dokumenList as $dokumen) : ?>
+        <table class="table table-bordered">
+            <thead class="text-center">
                 <tr>
-                    <td class="text-center"><?= $no++; ?></td>
-                    <td><?= esc($dokumen['dokumen']); ?></td>
-                    <td class="text-left">
-                        <?php 
-                        $found = false;
-                        foreach ($fileList as $file) {
-                            if ($file['ref_id_dokumen'] == $dokumen['id_dokumen']) {
-                                $filePath = base_url('uploads/' . $pengadaan['id'] . '/' . $file['nama_file']);
-                                echo '<div class="d-flex align-items-center mb-2">
+                    <th style="width: 5%;">No</th>
+                    <th style="width: 20%;">Nama</th>
+                    <th style="width: 35%;">Dokumen</th>
+                    <th style="width: 20%;">Waktu Unggah</th>
+                    <th style="width: 10%;">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($dokumenList)): ?>
+                    <?php $no = 1; ?>
+                    <?php foreach ($dokumenList as $dokumen): ?>
+                        <tr>
+                            <td class="text-center"><?= $no++; ?></td>
+                            <td><?= esc($dokumen['dokumen']); ?></td>
+                            <td class="text-left">
+                                <?php
+                                $found = false;
+                                foreach ($fileList as $file) {
+                                    if ($file['ref_id_dokumen'] == $dokumen['id_dokumen']) {
+                                        $filePath = base_url('uploads/' . $pengadaan['id'] . '/' . $file['nama_file']);
+                                        echo '<div class="d-flex align-items-center mb-2">
                                         <a href="' . esc($filePath) . '" target="_blank" class="mr-2">
                                             <i class="fas fa-file-pdf text-danger"></i> ' . esc($file['nama_file']) . '
                                         </a>
@@ -121,37 +131,38 @@
         <i class="fas fa-trash-alt"></i>
       </a>
                                       </div>';
-                                $found = true;
-                            }
-                        }
-                        if (!$found) {
-                            echo '<span class="text-muted">Tidak ada file</span>';
-                        }
-                        ?>
-                    </td>
-                    <td class="text-center">
-                        <?php 
-                        $uploadTimes = [];
-                        foreach ($fileList as $file) {
-                            if ($file['ref_id_dokumen'] == $dokumen['id_dokumen']) {
-                                $uploadTimes[] = date('d-m-Y H:i', strtotime($file['created_at']));
-                            }
-                        }
-                        echo !empty($uploadTimes) ? implode('<br>', $uploadTimes) : '<span class="text-muted">-</span>';
-                        ?>
-                    </td>
-                    <td class="text-center">
-                        <button class="btn btn-primary btn-sm" onclick="showUploadModal(<?= $pengadaan['id']; ?>, <?= $dokumen['id_dokumen']; ?>)">Unggah</button>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <tr>
-                <td colspan="5" class="text-center">Tidak ada dokumen.</td>
-            </tr>
-        <?php endif; ?>
-    </tbody>
-</table>
+                                        $found = true;
+                                    }
+                                }
+                                if (!$found) {
+                                    echo '<span class="text-muted">Tidak ada file</span>';
+                                }
+                                ?>
+                            </td>
+                            <td class="text-center">
+                                <?php
+                                $uploadTimes = [];
+                                foreach ($fileList as $file) {
+                                    if ($file['ref_id_dokumen'] == $dokumen['id_dokumen']) {
+                                        $uploadTimes[] = date('d-m-Y H:i', strtotime($file['created_at']));
+                                    }
+                                }
+                                echo !empty($uploadTimes) ? implode('<br>', $uploadTimes) : '<span class="text-muted">-</span>';
+                                ?>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-primary btn-sm"
+                                    onclick="showUploadModal(<?= $pengadaan['id']; ?>, <?= $dokumen['id_dokumen']; ?>)">Unggah</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5" class="text-center">Tidak ada dokumen.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
 
     </div>
 </div>
@@ -166,7 +177,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="uploadForm" action="<?= base_url('pengadaan/unggah_dokumen'); ?>" method="POST" enctype="multipart/form-data">
+            <form id="uploadForm" action="<?= base_url('pengadaan/unggah_dokumen'); ?>" method="POST"
+                enctype="multipart/form-data">
                 <div class="modal-body">
                     <input type="hidden" id="uploadPengadaanId" name="id_pengadaan">
                     <input type="hidden" id="uploadDokumenId" name="id_dokumen">
@@ -186,29 +198,29 @@
 
 
 <script>
-function confirmDelete(url) {
-    // console.log('Function confirmDelete terpanggil dengan URL:', url); // Debug awal
+    function confirmDelete(url) {
+        // console.log('Function confirmDelete terpanggil dengan URL:', url); // Debug awal
 
-    Swal.fire({
-        title: 'Konfirmasi Hapus',
-        text: 'Apakah Anda yakin ingin menghapus file ini?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Hapus',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        // console.log('Hasil konfirmasi:', result); // Debug hasil konfirmasi
+        Swal.fire({
+            title: 'Konfirmasi Hapus',
+            text: 'Apakah Anda yakin ingin menghapus file ini?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            // console.log('Hasil konfirmasi:', result); // Debug hasil konfirmasi
 
-        if (result.value === true) { // Ganti ke result.value
-            // console.log('Redirect ke:', url); // Debug redirect
-            window.location.href = url;
-        } else {
-            // console.log('Aksi dibatalkan');
-        }
-    });
-}
+            if (result.value === true) { // Ganti ke result.value
+                // console.log('Redirect ke:', url); // Debug redirect
+                window.location.href = url;
+            } else {
+                // console.log('Aksi dibatalkan');
+            }
+        });
+    }
 
 
 </script>

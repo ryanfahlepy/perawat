@@ -10,7 +10,7 @@ $session = \Config\Services::session();
         </div>
     <?php endif; ?>
 
-    <form action="<?= base_url('/paket/update_data_paket_perencanaan/' . $paket['id']); ?>" method="post">
+    <form action="<?= base_url('/paket/update_data_paket/' . $paket['id']); ?>" method="post">
         <div class="form-group">
             <label for="tahun_anggaran">Tahun Anggaran</label>
             <input type="number" class="form-control" id="tahun_anggaran" name="tahun_anggaran" value="<?= old('tahun_anggaran', $paket['tahun_anggaran']); ?>" required>

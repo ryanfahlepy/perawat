@@ -6,23 +6,23 @@ use CodeIgniter\Model;
 
 class FileModel extends Model
 {
-    protected $table = 'tabel_file'; // Nama tabel di database
+    protected $table = 'tabel_file';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['ref_id_pengadaan', 'ref_id_dokumen', 'nama_file', 'created_at', 'deleted_at'];
+    protected $allowedFields = ['ref_id_paket', 'ref_id_dokumen', 'nama_file', 'created_at', 'deleted_at'];
 
     /**
      * Ambil semua dokumen berdasarkan id_pengadaan
      */
-    public function getFilesByPengadaan($id_pengadaan)
-    {
-        return $this->where('id_pengadaan', $id_pengadaan)
-            ->where('deleted_at', null) // Hanya dokumen yang belum dihapus
-            ->findAll();
-    }
+    // public function getFilesByPengadaan($id_pengadaan)
+    // {
+    //     return $this->where('id_pengadaan', $id_pengadaan)
+    //         ->where('deleted_at', null) // Hanya dokumen yang belum dihapus
+    //         ->findAll();
+    // }
 
-    public function get_all_files($id_pengadaan)
+    public function get_all_files($id_paket)
     {
-        return $this->where('ref_id_pengadaan', $id_pengadaan)->findAll();
+        return $this->where('ref_id_paket', $id_paket)->findAll();
     }
 
 
