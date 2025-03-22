@@ -46,19 +46,19 @@ class PengadaanModel extends Model
 
     // Fungsi untuk menambah data ke tabel tertentu
     public function insertData($data)
-{
-    if (!is_array($data)) {
-        throw new \InvalidArgumentException('Parameter data harus berupa array.');
-    }
-
-    foreach ($data as $entry) {
-        if (!is_array($entry)) {
-            throw new \InvalidArgumentException('Setiap entry dalam data harus berupa array.');
+    {
+        if (!is_array($data)) {
+            throw new \InvalidArgumentException('Parameter data harus berupa array.');
         }
-    }
 
-    return $this->insertBatch($data); // langsung pakai fungsi bawaan model
-}
+        foreach ($data as $entry) {
+            if (!is_array($entry)) {
+                throw new \InvalidArgumentException('Setiap entry dalam data harus berupa array.');
+            }
+        }
+
+        return $this->insertBatch($data); // langsung pakai fungsi bawaan model
+    }
 
 
     // Fungsi untuk menghapus data berdasarkan ID
@@ -74,123 +74,140 @@ class PengadaanModel extends Model
         if (!is_array($data)) {
             throw new \InvalidArgumentException('Data harus berupa array.');
         }
-    
+
         return $this->update($id, $data); // pakai fungsi bawaan model
     }
-    
+
 
 
     //KESELURUHAN
-    public function jumlah_pengadaan()
+    
+    // Jumlah pengadaan keseluruhan
+    public function jumlah_pengadaan($tahun = null)
     {
-        return $this->db->table($this->table)->countAllResults();
+        $builder = $this->db->table($this->table);
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->countAllResults();
     }
 
-    public function total_perencanaan()
+    public function total_perencanaan($tahun = null)
     {
-        return $this->db->table($this->table)
-            ->selectSum('perencanaan')
+        $builder = $this->db->table($this->table)->selectSum('perencanaan');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->get()->getRow()->perencanaan;
+    }
+
+    public function total_pelaksanaan($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->selectSum('pelaksanaan');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->get()->getRow()->pelaksanaan;
+    }
+
+    public function total_pembayaran($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->selectSum('pembayaran');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->get()->getRow()->pembayaran;
+    }
+
+    // BELANJA RUTIN (DISINFOLAHTAL)
+    public function jumlah_pengadaan_belanja_rutin($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->where('dipa', 'DISINFOLAHTAL');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->countAllResults();
+    }
+
+    public function perencanaan_belanja_rutin($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->selectSum('perencanaan')->where('dipa', 'DISINFOLAHTAL');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->get()->getRow()->perencanaan;
+    }
+
+    public function pelaksanaan_belanja_rutin($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->selectSum('pelaksanaan')->where('dipa', 'DISINFOLAHTAL');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->get()->getRow()->pelaksanaan;
+    }
+
+    public function pembayaran_belanja_rutin($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->selectSum('pembayaran')->where('dipa', 'DISINFOLAHTAL');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->get()->getRow()->pembayaran;
+    }
+
+    // BELANJA MODAL (MABES TNI AL)
+    public function jumlah_pengadaan_belanja_modal($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->where('dipa', 'MABES TNI AL');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->countAllResults();
+    }
+
+    public function perencanaan_belanja_modal($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->selectSum('perencanaan')->where('dipa', 'MABES TNI AL');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->get()->getRow()->perencanaan;
+    }
+
+    public function pelaksanaan_belanja_modal($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->selectSum('pelaksanaan')->where('dipa', 'MABES TNI AL');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->get()->getRow()->pelaksanaan;
+    }
+
+    public function pembayaran_belanja_modal($tahun = null)
+    {
+        $builder = $this->db->table($this->table)->selectSum('pembayaran')->where('dipa', 'MABES TNI AL');
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+        return $builder->get()->getRow()->pembayaran;
+    }
+
+    // Jumlah pengadaan per bulan
+    public function jumlahPengadaanPerBulan($tahun = null)
+    {
+        $builder = $this->db->table($this->table)
+            ->select("MONTH(tanggal_mulai) AS bulan, COUNT(*) AS jumlah");
+
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+
+        return $builder->groupBy("MONTH(tanggal_mulai)")
+            ->orderBy("bulan", "ASC")
             ->get()
-            ->getRow()
-            ->perencanaan;
+            ->getResultArray();
     }
 
-    public function total_pelaksanaan()
-    {
-        return $this->db->table($this->table)
-            ->selectSum('pelaksanaan')
-            ->get()
-            ->getRow()
-            ->pelaksanaan;
-    }
-
-    public function total_pembayaran()
-    {
-        return $this->db->table($this->table)
-            ->selectSum('pembayaran')
-            ->get()
-            ->getRow()
-            ->pembayaran;
-    }
-
-
-    //BELANJA RUTIN
-
-    public function jumlah_pengadaan_belanja_rutin()
-    {
-
-        return $this->db->table($this->table)
-            ->where('dipa', 'DISINFOLAHTAL')
-            ->countAllResults();
-    }
-
-    public function perencanaan_belanja_rutin()
-    {
-        return $this->db->table($this->table)
-            ->selectSum('perencanaan')
-            ->where('dipa', 'DISINFOLAHTAL')
-            ->get()
-            ->getRow()
-            ->perencanaan;
-    }
-
-    public function pelaksanaan_belanja_rutin()
-    {
-        return $this->db->table($this->table)
-            ->selectSum('pelaksanaan')
-            ->where('dipa', 'DISINFOLAHTAL')
-            ->get()
-            ->getRow()
-            ->pelaksanaan;
-    }
-
-    public function pembayaran_belanja_rutin()
-    {
-        return $this->db->table($this->table)
-            ->selectSum('pembayaran')
-            ->where('dipa', 'DISINFOLAHTAL')
-            ->get()
-            ->getRow()
-            ->pembayaran;
-    }
-
-    //BELANJA MODAL
-    public function jumlah_pengadaan_belanja_modal()
-    {
-
-        return $this->db->table($this->table)
-            ->where('dipa', 'MABES TNI AL')
-            ->countAllResults();
-    }
-
-    public function perencanaan_belanja_modal()
-    {
-        return $this->db->table($this->table)
-            ->selectSum('perencanaan')
-            ->where('dipa', 'MABES TNI AL')
-            ->get()
-            ->getRow()
-            ->perencanaan;
-    }
-
-    public function pelaksanaan_belanja_modal()
-    {
-        return $this->db->table($this->table)
-            ->selectSum('pelaksanaan')
-            ->where('dipa', 'MABES TNI AL')
-            ->get()
-            ->getRow()
-            ->pelaksanaan;
-    }
-
-    public function pembayaran_belanja_modal()
-    {
-        return $this->db->table($this->table)
-            ->selectSum('pembayaran')
-            ->where('dipa', 'MABES TNI AL')
-            ->get()
-            ->getRow()
-            ->pembayaran;
-    }
 
 }
