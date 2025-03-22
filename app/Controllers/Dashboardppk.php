@@ -27,24 +27,103 @@ class Dashboardppk extends BaseController
             ->findAll();
 
         // Ambil data jumlah pengadaan per bulan berdasarkan tahun
-        $pengadaanPerBulan = $this->pengadaanModel->jumlahPengadaanPerBulan($tahun_dipilih);
+        $pengadaanMulaiPerBulan = $this->pengadaanModel->jumlahPengadaanMulaiPerBulan($tahun_dipilih);
 
         // Format data untuk chart
-        $bulan = [];
-        $jumlah = [];
+        $bulan_mulai = [];
+        $jumlah_mulai = [];
 
-        foreach ($pengadaanPerBulan as $row) {
-            $bulan[] = date("F", mktime(0, 0, 0, $row['bulan'], 1)); // ubah angka jadi nama bulan
-            $jumlah[] = $row['jumlah'];
+        foreach ($pengadaanMulaiPerBulan as $row) {
+            $bulan_mulai[] = date("F", mktime(0, 0, 0, $row['bulan'], 1)); // ubah angka jadi nama bulan
+            $jumlah_mulai[] = $row['jumlah'];
         }
         // Gabungkan data bulan dan jumlah menjadi array of objects
         $jumlah_pengadaan = [];
-        foreach ($pengadaanPerBulan as $row) {
+        foreach ($pengadaanMulaiPerBulan as $row) {
             $jumlah_pengadaan[] = [
-                'bulan' => $row['bulan'],
-                'jumlah' => $row['jumlah']
+                'bulan_mulai' => $row['bulan'],
+                'jumlah_mulai' => $row['jumlah']
             ];
         }
+
+        // Ambil data jumlah pengadaan berakhir per bulan
+        $pengadaanBerakhirPerBulan = $this->pengadaanModel->jumlahPengadaanBerakhirPerBulan($tahun_dipilih);
+
+        $bulan_berakhir = [];
+        $jumlah_berakhir = [];
+
+        foreach ($pengadaanBerakhirPerBulan as $row) {
+            $bulan_berakhir[] = date("F", mktime(0, 0, 0, $row['bulan'], 1));
+            $jumlah_berakhir[] = $row['jumlah'];
+        }
+        $distribusi_jenis = $this->pengadaanModel->distribusiPengadaanPerJenis($tahun_dipilih);
+
+        // Ubah ke format untuk Chart.js
+        $label_jenis = [];
+        $data_jenis = [];
+
+        foreach ($distribusi_jenis as $row) {
+            $label_jenis[] = $row['jenis'];
+            $data_jenis[] = (int) $row['jumlah'];
+        }
+
+        $distribusi_metode = $this->pengadaanModel->distribusiPengadaanPerMetode($tahun_dipilih);
+
+        // Ubah ke format chart
+        $label_metode = [];
+        $data_metode = [];
+
+        foreach ($distribusi_metode as $row) {
+            $label_metode[] = $row['metode'];
+            $data_metode[] = (int) $row['jumlah'];
+        }
+
+        // $raw_matrix = $this->pengadaanModel->jumlahPengadaanPerJenisMetode($tahun_dipilih);
+
+        // // Susun matrix: [jenis][metode] = jumlah
+        // $matrix_data = [];
+        // $all_jenis_matrix = [];
+        // $all_metode_matrix = [];
+        
+        // foreach ($raw_matrix as $row) {
+        //     $jenis = $row['jenis'];
+        //     $metode = $row['metode'];
+        
+        //     if (!isset($matrix_data[$metode])) {
+        //         $matrix_data[$metode] = [];
+        //     }
+        
+        //     $matrix_data[$metode][$jenis] = (int) $row['jumlah'];
+        
+        //     if (!in_array($jenis, $all_jenis_matrix)) {
+        //         $all_jenis_matrix[] = $jenis;
+        //     }
+        //     if (!in_array($metode, $all_metode_matrix)) {
+        //         $all_metode_matrix[] = $metode;
+        //     }
+        // }
+        
+        // sort($all_jenis_matrix);
+        // sort($all_metode_matrix);
+        
+        // // Format data untuk Chart.js
+        // $matrix_datasets = [];
+        // $colors = ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0', '#9966ff', '#c9cbcf'];
+        
+        // foreach ($matrix_data as $metode => $data_jenis) {
+        //     $data = [];
+        //     foreach ($all_jenis_matrix as $jenis) {
+        //         $data[] = $data_jenis[$jenis] ?? 0;
+        //     }
+        
+        //     $matrix_datasets[] = [
+        //         'label' => $metode,
+        //         'data' => $data,
+        //         'backgroundColor' => array_shift($colors)
+        //     ];
+        // }
+        
+        
         $data = [
             'level_akses' => $this->session->nama_level,
             'dtmenu' => $this->tampil_menu($this->session->level),
@@ -73,8 +152,19 @@ class Dashboardppk extends BaseController
             'pembayaran_belanja_modal' => $this->pengadaanModel->pembayaran_belanja_modal($tahun_dipilih),
 
             // Data grafik
-            'bulan' => json_encode($bulan),
-            'jumlah' => json_encode($jumlah),
+            'bulan_mulai' => json_encode($bulan_mulai),
+            'bulan_berakhir' => json_encode($bulan_berakhir),
+            'jumlah_mulai' => json_encode($jumlah_mulai),
+            'jumlah_berakhir' => json_encode($jumlah_berakhir),
+            'label_jenis' => json_encode($label_jenis),
+            'data_jenis' => json_encode($data_jenis),
+            'label_metode' => json_encode($label_metode),
+            'data_metode' => json_encode($data_metode),
+            // 'label_jenis_matrix' => json_encode($all_jenis_matrix),
+            // 'matrix_jenis_metode_datasets' => json_encode($matrix_datasets),
+
+
+
         ];
 
         return view('layout/dashboardppk', $data);

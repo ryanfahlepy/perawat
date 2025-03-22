@@ -81,7 +81,7 @@ class PengadaanModel extends Model
 
 
     //KESELURUHAN
-    
+
     // Jumlah pengadaan keseluruhan
     public function jumlah_pengadaan($tahun = null)
     {
@@ -194,7 +194,7 @@ class PengadaanModel extends Model
     }
 
     // Jumlah pengadaan per bulan
-    public function jumlahPengadaanPerBulan($tahun = null)
+    public function jumlahPengadaanMulaiPerBulan($tahun = null)
     {
         $builder = $this->db->table($this->table)
             ->select("MONTH(tanggal_mulai) AS bulan, COUNT(*) AS jumlah");
@@ -207,6 +207,54 @@ class PengadaanModel extends Model
             ->orderBy("bulan", "ASC")
             ->get()
             ->getResultArray();
+    }
+
+    public function jumlahPengadaanBerakhirPerBulan($tahun = null)
+    {
+        $builder = $this->db->table($this->table)
+            ->select("MONTH(tanggal_berakhir) AS bulan, COUNT(*) AS jumlah");
+
+        if ($tahun) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+
+        return $builder->groupBy("MONTH(tanggal_berakhir)")
+            ->orderBy("bulan", "ASC")
+            ->get()
+            ->getResultArray();
+    }
+    public function distribusiPengadaanPerJenis($tahun = null)
+    {
+        $builder = $this->select('jenis, COUNT(*) as jumlah')
+            ->groupBy('jenis');
+
+        if (!empty($tahun)) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+
+        return $builder->findAll();
+    }
+    public function distribusiPengadaanPerMetode($tahun = null)
+    {
+        $builder = $this->select('metode, COUNT(*) as jumlah')
+            ->groupBy('metode');
+
+        if (!empty($tahun)) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+
+        return $builder->findAll();
+    }
+    public function jumlahPengadaanPerJenisMetode($tahun = null)
+    {
+        $builder = $this->select('jenis, metode, COUNT(*) as jumlah')
+            ->groupBy('jenis, metode');
+
+        if (!empty($tahun)) {
+            $builder->where('tahun_anggaran', $tahun);
+        }
+
+        return $builder->findAll();
     }
 
 
