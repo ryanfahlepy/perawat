@@ -51,7 +51,7 @@ class Manmenu extends BaseController
         } else {
             $rules = [
                 'nama_menu' => [
-                    'rules' => 'required|min_length[2]|is_unique[tbmenu.nama]',
+                    'rules' => 'required|min_length[2]|is_unique[tabel_menu.nama]',
                     'errors' => [
                         'required' => 'harus diisi',
                         'min_length' => 'minimal 2 karakter',
@@ -132,7 +132,7 @@ class Manmenu extends BaseController
         } else {
             $id = $this->request->getVar('id_menu');
             $namaLama = $this->menuModel->find($id)->nama;
-            $rule = ($this->request->getVar('nama_menu') == $namaLama) ? 'required|min_length[2]' : 'required|min_length[2]|is_unique[tbmenu.nama]';
+            $rule = ($this->request->getVar('nama_menu') == $namaLama) ? 'required|min_length[2]' : 'required|min_length[2]|is_unique[tabel_menu.nama]';
             $rules = [
                 'nama_menu' => [
                     'rules' => $rule,

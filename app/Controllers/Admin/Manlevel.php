@@ -47,7 +47,7 @@ class Manlevel extends BaseController
     {
         $rules = [
             'nama_level' => [
-                'rules' => 'required|min_length[2]|is_unique[tbuser_level.nama_level]',
+                'rules' => 'required|min_length[2]|is_unique[tabel_user_level.nama_level]',
                 'errors' => [
                     'required' => 'harus disi',
                     'min_length' => 'minimal 2 karakter',
@@ -99,7 +99,7 @@ class Manlevel extends BaseController
         } else {
             $id = $this->request->getVar('id_level');
             $namaLama = $this->user_levelModel->find($id)->nama_level;
-            $rule = ($this->request->getVar('nama_level') == $namaLama) ? 'required|min_length[2]' : 'required|min_length[2]|is_unique[tbuser_level.nama_level]';
+            $rule = ($this->request->getVar('nama_level') == $namaLama) ? 'required|min_length[2]' : 'required|min_length[2]|is_unique[tabel_user_level.nama_level]';
             $rules = [
                 'nama_level' => [
                     'rules' => $rule,

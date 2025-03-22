@@ -25,6 +25,6 @@ class Dashboardpp extends BaseController
             'total_pembayaran' => $this->pengadaanModel->total_pembayaran(),
             'jumlah_pengadaan' => $this->pengadaanModel->jumlah_pengadaan()
         ];
-        return view('pokja/dashboardpp', $data);
+        return view('layout/dashboardpp', $data);
     }
 }

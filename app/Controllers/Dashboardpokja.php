@@ -24,6 +24,6 @@ class Dashboardpokja extends BaseController
             'total_pembayaran' => $this->pengadaanModel->total_pembayaran(),
             'jumlah_pengadaan' => $this->pengadaanModel->jumlah_pengadaan()
         ];
-        return view('pokja/dashboardpokja', $data);
+        return view('layout/dashboardpokja', $data);
     }
 }

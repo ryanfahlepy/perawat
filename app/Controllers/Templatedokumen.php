@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\DokumenModel;
@@ -36,7 +36,7 @@ class Templatedokumen extends BaseController
             'swakelolaDocuments' => $swakelolaDocuments,
         ];
 
-        return view('admin/templatedokumen', $data);
+        return view('layout/templatedokumen', $data);
     }
 
     public function update_order()
@@ -64,7 +64,7 @@ class Templatedokumen extends BaseController
         session()->setFlashdata('error', 'Gagal memperbarui urutan dokumen: ' . $e->getMessage());
     }
 
-    return redirect()->to(base_url('admin/templatedokumen'));
+    return redirect()->to(base_url('templatedokumen'));
 }
 
 public function add_document()
@@ -74,7 +74,7 @@ public function add_document()
 
     if (!$table || !$dokumen) {
         session()->setFlashdata('error', 'Data tidak valid');
-        return redirect()->to(base_url('admin/templatedokumen'));
+        return redirect()->to(base_url('templatedokumen'));
     }
 
     try {
@@ -89,7 +89,7 @@ public function add_document()
         session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
     }
 
-    return redirect()->to(base_url('admin/templatedokumen'));
+    return redirect()->to(base_url('templatedokumen'));
 }
 public function delete_document()
 {
@@ -108,7 +108,7 @@ public function delete_document()
         $this->session->setFlashdata('error', 'Gagal menghapus dokumen');
     }
     
-    return redirect()->to(base_url('admin/templatedokumen'))->with('refresh', true);
+    return redirect()->to(base_url('templatedokumen'))->with('refresh', true);
 }
 
 }

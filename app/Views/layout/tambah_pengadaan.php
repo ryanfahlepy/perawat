@@ -15,8 +15,11 @@ $session = \Config\Services::session();
                     <label for="dipa">DIPA</label>
                     <select class="form-control" id="dipa" name="dipa" required>
                         <option value="">--- Pilih DIPA ---</option>
-                        <option value="DISINFOLAHTAL">DISINFOLAHTAL</option>
-                        <option value="MABES TNI AL">MABES TNI AL</option>
+                        <?php foreach ($listDipa as $dipa): ?>
+                            <option value="<?= esc($dipa['dipa']) ?>">
+                                <?= esc($dipa['dipa']) ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">
@@ -27,12 +30,27 @@ $session = \Config\Services::session();
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="jenis">Jenis</label>
-                    <input type="text" class="form-control" id="jenis" name="jenis" required>
+                    <select class="form-control" id="jenis" name="jenis" required>
+                        <option value="">--- Pilih JENIS ---</option>
+                        <?php foreach ($listJenis as $jenis): ?>
+                            <option value="<?= esc($jenis['jenis']) ?>">
+                                <?= esc($jenis['jenis']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="metode">Metode</label>
-                    <input type="text" class="form-control" id="metode" name="metode" required>
+                    <select class="form-control" id="metode" name="metode" required>
+                        <option value="">--- Pilih METODE ---</option>
+                        <?php foreach ($listMetode as $metode): ?>
+                            <option value="<?= esc($metode['metode']) ?>">
+                                <?= esc($metode['metode']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
+
                 <div class="form-group">
                     <label for="nama_pengadaan">Nama Pengadaan</label>
                     <input type="text" class="form-control" id="nama_pengadaan" name="nama_pengadaan" required>

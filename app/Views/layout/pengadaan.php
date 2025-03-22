@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="card-body">
-    
+
     <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?= session()->getFlashdata('success') ?>
@@ -25,7 +25,7 @@
 
 
     <!-- Tab Content -->
-    <div class="tab-content mt-3">
+    <div class="tab-content">
         <div class="tab-pane fade show active">
             <!-- Button untuk membuka modal -->
             <div class="d-flex justify-content-between">
@@ -103,12 +103,13 @@
                     <thead>
                         <tr class="text-center">
                             <th>No</th>
-                            <th>Tahun Anggaran</th>
+                            <th>Tahun</th>
                             <th>DIPA</th>
-                            <th>Jenis</th>
+                            <!-- <th>Jenis</th> -->
                             <th>Metode</th>
                             <th>Kode RUP</th>
                             <th>Nama Pengadaan</th>
+                            <th>Progress</th>
                             <th>Perencanaan (Rp)</th>
                             <th>Pelaksanaan (Rp)</th>
                             <th>Pembayaran (Rp)</th>
@@ -123,12 +124,12 @@
                                     <td class="text-center"><?= $no++; ?></td>
                                     <td class="text-center tahun-anggaran"><?= esc($p['tahun_anggaran']); ?></td>
                                     <td class="text-center"><?= esc($p['dipa']); ?></td>
-                                    <td><?= esc($p['jenis']); ?></td>
+                                    <!-- <td><?= esc($p['jenis']); ?></td> -->
                                     <td><?= esc($p['metode']); ?></td>
-                                    <td>
+                                    <td class="text-center">
                                         <span
                                             onclick="window.open('<?= base_url('/pengadaan/detail_pengadaan/' . $p['id']); ?>', '_blank')"
-                                            style="cursor: pointer; text-decoration: underline; color: blue;">
+                                            style="cursor: pointer; color: blue;">
                                             <?= esc($p['kode_rup']); ?>
                                         </span>
                                     </td>
@@ -137,15 +138,25 @@
                                         <?= esc($p['nama_pengadaan']); ?>
 
                                     </td>
+                                    <td>
+                                        <!-- Tampilkan Progress dalam bentuk Persentase -->
+                                        <div
+                                            style="width: 100%; background-color: #e0e0e0; border-radius: 5px; overflow: hidden;">
+                                            <div
+                                                style="width: <?= $p['progress']; ?>%; background-color: <?= $p['progress'] >= 75 ? 'green' : ($p['progress'] >= 50 ? 'yellow' : 'red'); ?>; height: 20px;">
+                                            </div>
+                                        </div>
+                                        <div style="text-align: center;"><?= $p['progress']; ?>%</div>
+                                    </td>
 
 
-                                    <td><?= number_format($p['perencanaan'], 0, ',', '.'); ?></td>
-                                    <td><?= number_format($p['pelaksanaan'], 0, ',', '.'); ?></td>
-                                    <td><?= number_format($p['pembayaran'], 0, ',', '.'); ?></td>
+                                    <td class="text-right"><?= number_format($p['perencanaan'], 0, ',', '.'); ?></td>
+                                    <td class="text-right"><?= number_format($p['pelaksanaan'], 0, ',', '.'); ?></td>
+                                    <td class="text-right"><?= number_format($p['pembayaran'], 0, ',', '.'); ?></td>
                                     <td>
                                         <div class="center d-flex gap-2 justify-content-center">
-                                            <a href="<?= base_url('/pengadaan/detail_pengadaan/' . $p['id']); ?>" target="_blank"
-                                                style="color: white;" class="btn btn-info btn-sm m-1">
+                                            <a href="<?= base_url('/pengadaan/detail_pengadaan/' . $p['id']); ?>"
+                                                target="_blank" style="color: white;" class="btn btn-info btn-sm m-1">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                             <a href="<?= base_url('/pengadaan/hapus_data_pengadaan/' . $p['id']); ?>"

@@ -16,10 +16,14 @@ $session = \Config\Services::session();
                 <div class="form-group">
                     <label for="dipa">DIPA</label>
                     <select class="form-control" id="dipa" name="dipa" required disabled>
-                        <option value=""> --- Pilih DIPA ---</option>
-                        <option value="DISINFOLAHTAL" <?= old('dipa', $pengadaan['dipa']) == 'DISINFOLAHTAL' ? 'selected' : ''; ?>>DISINFOLAHTAL</option>
-                        <option value="MABES TNI AL" <?= old('dipa', $pengadaan['dipa']) == 'MABES TNI AL' ? 'selected' : ''; ?>>MABES TNI AL</option>
+                        <option value="">--- Pilih DIPA ---</option>
+                        <?php foreach ($listDipa as $dipa): ?>
+                            <option value="<?= esc($dipa['dipa']) ?>" <?= old('dipa', $pengadaan['dipa']) == $dipa['dipa'] ? 'selected' : '' ?>>
+                                <?= esc($dipa['dipa']) ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
+
                 </div>
                 <div class="form-group">
                     <label for="kode_rup">Kode RUP</label>
@@ -32,13 +36,25 @@ $session = \Config\Services::session();
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="jenis">Jenis</label>
-                    <input type="text" class="form-control" id="jenis" name="jenis"
-                        value="<?= old('jenis', $pengadaan['jenis']); ?>" required readonly>
+                    <select class="form-control" id="jenis" name="jenis" required disabled>
+                        <option value="">--- Pilih JENIS ---</option>
+                        <?php foreach ($listJenis as $jenis): ?>
+                            <option value="<?= esc($jenis['jenis']) ?>" <?= old('jenis', $pengadaan['jenis']) == $jenis['jenis'] ? 'selected' : '' ?>>
+                                <?= esc($jenis['jenis']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="metode">Metode</label>
-                    <input type="text" class="form-control" id="metode" name="metode"
-                        value="<?= old('metode', $pengadaan['metode']); ?>" required readonly>
+                    <select class="form-control" id="metode" name="metode" required disabled>
+                        <option value="">--- Pilih METODE ---</option>
+                        <?php foreach ($listMetode as $metode): ?>
+                            <option value="<?= esc($metode['metode']) ?>" <?= old('metode', $pengadaan['metode']) == $metode['metode'] ? 'selected' : '' ?>>
+                                <?= esc($metode['metode']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="nama_pengadaan">Nama Pengadaan</label>
@@ -85,9 +101,18 @@ $session = \Config\Services::session();
 
 
 </div>
-<div class="card mt-4">
+<div class="mt-4">
+    <div class="text-center mr-4 ml-4">
+        <h2 style="font-weight:600">PROGRESS</h2>
+        <div style="width: 100%; background-color: #e0e0e0; border-radius: 5px; overflow: hidden;">
+        <div
+            style="width: <?= $pengadaan['progress']; ?>%; background-color: <?= $pengadaan['progress'] >= 75 ? 'green' : ($pengadaan['progress'] >= 50 ? 'yellow' : 'red'); ?>; height: 20px;">
+        </div>
+    </div>
+    <h3 style="text-align:"><?= $pengadaan['progress']; ?>%</h3>
+    </div>
     <div class="card-header">
-        <h5>Daftar Dokumen</h5>
+        <h4>Daftar Dokumen</h4>
     </div>
     <div class="card-body">
         <table class="table table-bordered">
@@ -194,7 +219,7 @@ $session = \Config\Services::session();
     }
     // Fungsi SweetAlert2 untuk konfirmasi hapus
     const confirmDelete = (url) => {
-    
+
         Swal.fire({
             title: "Konfirmasi Hapus",
             text: "Apakah Anda yakin ingin menghapus dokumen ini?",
@@ -205,9 +230,9 @@ $session = \Config\Services::session();
             confirmButtonText: "Hapus",
             cancelButtonText: "Batal"
         }).then((result) => {
-        
+
             if (result.value) {  // <- Gunakan `value` bukan `isConfirmed`
-                
+
                 window.location.href = url;
             }
         });
@@ -230,13 +255,15 @@ $session = \Config\Services::session();
     // Fungsi untuk mengaktifkan mode edit
     const editData = () => {
         const fields = [
-            "tahun_anggaran", "jenis", "metode", "kode_rup",
+            "tahun_anggaran", "kode_rup",
             "nama_pengadaan", "perencanaan", "pelaksanaan", "pembayaran"
         ];
 
         document.getElementById("saveBtn").style.display = "inline-block";
         document.getElementById("editBtn").style.display = "none";
         document.getElementById("dipa").removeAttribute("disabled");
+        document.getElementById("jenis").removeAttribute("disabled");
+        document.getElementById("metode").removeAttribute("disabled");
 
         fields.forEach(id => document.getElementById(id).removeAttribute("readonly"));
     };

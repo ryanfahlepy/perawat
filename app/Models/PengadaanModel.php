@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class PengadaanModel extends Model
 {
     // Tentukan nama tabel yang digunakan
-    protected $table = 'pengadaan';
+    protected $table = 'tabel_pengadaan';
 
 
     // Kolom yang dapat diubah pada setiap tabel
@@ -30,163 +30,167 @@ class PengadaanModel extends Model
         return $this->db->table($table)->get()->getResultArray();
     }
 
-    public function getAllbyColumn($table, $where = [])
-{
-    $builder = $this->db->table($table);
-    if (!empty($where)) {
-        $builder->where($where);
+    public function getAllByColumn($where = [])
+    {
+        // $this->where(...) otomatis pakai builder di balik layar
+        return $this->where($where)
+            ->orderBy('id', 'DESC')
+            ->findAll(); // hasilnya sudah array
     }
-    $query = $builder->get();
-
-    return $query->getResultArray(); // Jadi array, bukan stdClass
-}
 
     // Fungsi untuk mengambil data per ID dari tabel tertentu
-    public function getById($table, $id)
+    public function getById($id)
     {
-        return $this->db->table($table)->where('id', $id)->get()->getRowArray();
+        return $this->where('id', $id)->get()->getRowArray();
     }
 
     // Fungsi untuk menambah data ke tabel tertentu
-    public function insertData($table, $data)
-    {
-        if (!is_array($data)) {
-            throw new \InvalidArgumentException('Parameter data harus berupa array.');
-        }
-
-        foreach ($data as $entry) {
-            if (!is_array($entry)) {
-                throw new \InvalidArgumentException('Setiap entry dalam data harus berupa array.');
-            }
-        }
-
-        $this->db->table($table)->insertBatch($data);
+    public function insertData($data)
+{
+    if (!is_array($data)) {
+        throw new \InvalidArgumentException('Parameter data harus berupa array.');
     }
+
+    foreach ($data as $entry) {
+        if (!is_array($entry)) {
+            throw new \InvalidArgumentException('Setiap entry dalam data harus berupa array.');
+        }
+    }
+
+    return $this->insertBatch($data); // langsung pakai fungsi bawaan model
+}
+
 
     // Fungsi untuk menghapus data berdasarkan ID
-    public function deletePengadaan($table, $id)
+    public function deletePengadaan($id)
     {
-        return $this->db->table($table)->delete(['id' => $id]);
+        return $this->delete($id); // otomatis pakai primary key
     }
 
+
     // Fungsi untuk memperbarui data di tabel tertentu
-    public function updatePengadaan($table, $id, $data)
+    public function updatePengadaan($id, $data)
     {
-        return $this->db->table($table)->update($data, ['id' => $id]);
+        if (!is_array($data)) {
+            throw new \InvalidArgumentException('Data harus berupa array.');
+        }
+    
+        return $this->update($id, $data); // pakai fungsi bawaan model
     }
+    
 
 
     //KESELURUHAN
     public function jumlah_pengadaan()
-{
-    return $this->db->table($this->table)->countAllResults();
-}
+    {
+        return $this->db->table($this->table)->countAllResults();
+    }
 
-public function total_perencanaan()
-{
-    return $this->db->table($this->table)
-                    ->selectSum('perencanaan')
-                    ->get()
-                    ->getRow()
-                    ->perencanaan;
-}
+    public function total_perencanaan()
+    {
+        return $this->db->table($this->table)
+            ->selectSum('perencanaan')
+            ->get()
+            ->getRow()
+            ->perencanaan;
+    }
 
-public function total_pelaksanaan()
-{
-    return $this->db->table($this->table)
-                    ->selectSum('pelaksanaan')
-                    ->get()
-                    ->getRow()
-                    ->pelaksanaan;
-}
+    public function total_pelaksanaan()
+    {
+        return $this->db->table($this->table)
+            ->selectSum('pelaksanaan')
+            ->get()
+            ->getRow()
+            ->pelaksanaan;
+    }
 
-public function total_pembayaran()
-{
-    return $this->db->table($this->table)
-                    ->selectSum('pembayaran')
-                    ->get()
-                    ->getRow()
-                    ->pembayaran;
-}
+    public function total_pembayaran()
+    {
+        return $this->db->table($this->table)
+            ->selectSum('pembayaran')
+            ->get()
+            ->getRow()
+            ->pembayaran;
+    }
 
 
-//BELANJA RUTIN
+    //BELANJA RUTIN
 
-public function jumlah_pengadaan_belanja_rutin()
-{
+    public function jumlah_pengadaan_belanja_rutin()
+    {
 
-    return $this->db->table($this->table)
-                    ->where('dipa', 'DISINFOLAHTAL')
-                    ->countAllResults();
-}
+        return $this->db->table($this->table)
+            ->where('dipa', 'DISINFOLAHTAL')
+            ->countAllResults();
+    }
 
-public function perencanaan_belanja_rutin()
-{
-    return $this->db->table($this->table)
-                    ->selectSum('perencanaan')
-                    ->where('dipa', 'DISINFOLAHTAL')
-                    ->get()
-                    ->getRow()
-                    ->perencanaan;
-}
+    public function perencanaan_belanja_rutin()
+    {
+        return $this->db->table($this->table)
+            ->selectSum('perencanaan')
+            ->where('dipa', 'DISINFOLAHTAL')
+            ->get()
+            ->getRow()
+            ->perencanaan;
+    }
 
-public function pelaksanaan_belanja_rutin()
-{
-    return $this->db->table($this->table)
-                    ->selectSum('pelaksanaan')
-                    ->where('dipa', 'DISINFOLAHTAL')
-                    ->get()
-                    ->getRow()
-                    ->pelaksanaan;
-}
+    public function pelaksanaan_belanja_rutin()
+    {
+        return $this->db->table($this->table)
+            ->selectSum('pelaksanaan')
+            ->where('dipa', 'DISINFOLAHTAL')
+            ->get()
+            ->getRow()
+            ->pelaksanaan;
+    }
 
-public function pembayaran_belanja_rutin()
-{
-    return $this->db->table($this->table)
-                    ->selectSum('pembayaran')
-                    ->where('dipa', 'DISINFOLAHTAL')
-                    ->get()
-                    ->getRow()
-                    ->pembayaran;
-}
+    public function pembayaran_belanja_rutin()
+    {
+        return $this->db->table($this->table)
+            ->selectSum('pembayaran')
+            ->where('dipa', 'DISINFOLAHTAL')
+            ->get()
+            ->getRow()
+            ->pembayaran;
+    }
 
-//BELANJA MODAL
-public function jumlah_pengadaan_belanja_modal()
-{
+    //BELANJA MODAL
+    public function jumlah_pengadaan_belanja_modal()
+    {
 
-    return $this->db->table($this->table)
-                    ->where('dipa', 'MABES TNI AL')
-                    ->countAllResults();
-}
+        return $this->db->table($this->table)
+            ->where('dipa', 'MABES TNI AL')
+            ->countAllResults();
+    }
 
-public function perencanaan_belanja_modal()
-{
-    return $this->db->table($this->table)
-                    ->selectSum('perencanaan')
-                    ->where('dipa', 'MABES TNI AL')
-                    ->get()
-                    ->getRow()
-                    ->perencanaan;
-}
+    public function perencanaan_belanja_modal()
+    {
+        return $this->db->table($this->table)
+            ->selectSum('perencanaan')
+            ->where('dipa', 'MABES TNI AL')
+            ->get()
+            ->getRow()
+            ->perencanaan;
+    }
 
-public function pelaksanaan_belanja_modal()
-{
-    return $this->db->table($this->table)
-                    ->selectSum('pelaksanaan')
-                    ->where('dipa', 'MABES TNI AL')
-                    ->get()
-                    ->getRow()
-                    ->pelaksanaan;
-}
+    public function pelaksanaan_belanja_modal()
+    {
+        return $this->db->table($this->table)
+            ->selectSum('pelaksanaan')
+            ->where('dipa', 'MABES TNI AL')
+            ->get()
+            ->getRow()
+            ->pelaksanaan;
+    }
 
-public function pembayaran_belanja_modal()
-{
-    return $this->db->table($this->table)
-                    ->selectSum('pembayaran')
-                    ->where('dipa', 'MABES TNI AL')
-                    ->get()
-                    ->getRow()
-                    ->pembayaran;
-}
+    public function pembayaran_belanja_modal()
+    {
+        return $this->db->table($this->table)
+            ->selectSum('pembayaran')
+            ->where('dipa', 'MABES TNI AL')
+            ->get()
+            ->getRow()
+            ->pembayaran;
+    }
 
 }

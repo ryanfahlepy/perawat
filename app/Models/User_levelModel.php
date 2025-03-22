@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class User_levelModel extends Model
 {
-    protected $table                = 'tbuser_level';
+    protected $table                = 'tabel_user_level';
     protected $primaryKey           = 'id';
     protected $allowedFields        = ['nama_level', 'keterangan'];
     protected $returnType           = 'App\Entities\Output';

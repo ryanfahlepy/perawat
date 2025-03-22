@@ -41,6 +41,6 @@ class Dashboardppk extends BaseController
             
             'jumlah_pengadaan' => $this->pengadaanModel->jumlah_pengadaan() 
         ];
-        return view('ppk/dashboardppk', $data);
+        return view('layout/dashboardppk', $data);
     }
 }
