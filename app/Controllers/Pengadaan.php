@@ -34,51 +34,107 @@ class Pengadaan extends BaseController
     }
 
     public function index()
+{
+    $nama_level = session()->get('nama_level');
+    $whereCondition = [];
+
+    if ($nama_level == 'Pokja') {
+        $whereCondition = ['dipa' => 'MABES TNI AL'];
+    } elseif ($nama_level == 'PP') {
+        $whereCondition = ['dipa' => 'DISINFOLAHTAL'];
+    }
+
+    // Ambil tahun dari POST (filter)
+    $tahun_dipilih = $this->request->getPost('tahun');
+
+    // Ambil data pengadaan
+    $pengadaanData = $this->pengadaanModel->getAllbyColumn($whereCondition, $tahun_dipilih);
+
+    // Ambil semua tahun dari database (untuk dropdown)
+    $tahun_tersedia = $this->pengadaanModel
+        ->select('tahun_anggaran')
+        ->distinct()
+        ->orderBy('tahun_anggaran', 'DESC')
+        ->findAll();
+
+    // Hitung jumlah dokumen berdasarkan metode
+    foreach ($pengadaanData as &$pengadaan) {
+        switch ($pengadaan['metode']) {
+            case 'Pengadaan Langsung':
+                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_pl'];
+                break;
+            case 'Penunjukkan Langsung':
+                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_juksung'];
+                break;
+            case 'Tender':
+                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_tender'];
+                break;
+            case 'E-Purchasing':
+                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_ep'];
+                break;
+            case 'Swakelola':
+                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_swakelola'];
+                break;
+            default:
+                $pengadaan['jumlah_dokumen'] = 0;
+        }
+    }
+
+    // Hitung jumlah file dan progress
+    foreach ($pengadaanData as &$pengadaan) {
+        $pengadaan['jumlah_file'] = $this->fileModel->getFileCountByPengadaanId($pengadaan['id']);
+        $pengadaan['progress'] = ($pengadaan['jumlah_dokumen'] > 0)
+            ? round(($pengadaan['jumlah_file'] / $pengadaan['jumlah_dokumen']) * 100)
+            : 0;
+    }
+
+    // Cek apakah ada filter DIPA (hindari error undefined index)
+    $dipaFilter = isset($whereCondition['dipa']) ? $whereCondition['dipa'] : null;
+
+    return view('layout/pengadaan', [
+        'level_akses' => $nama_level,
+        'dtmenu' => $this->tampil_menu(session()->get('level')),
+        'nama_menu' => 'Pengadaan',
+        'pengadaan' => $pengadaanData,
+        'tahun_dipilih' => $tahun_dipilih,
+        'tahun_tersedia' => $tahun_tersedia,
+
+        // Statistik keseluruhan (filtered by tahun & dipa)
+        'jumlah_pengadaan' => $this->pengadaanModel->jumlah_pengadaan($tahun_dipilih, $dipaFilter),
+        'total_perencanaan' => $this->pengadaanModel->total_perencanaan($tahun_dipilih, $dipaFilter),
+        'total_pelaksanaan' => $this->pengadaanModel->total_pelaksanaan($tahun_dipilih, $dipaFilter),
+        'total_pembayaran' => $this->pengadaanModel->total_pembayaran($tahun_dipilih, $dipaFilter),
+
+        // Statistik belanja rutin
+        'jumlah_pengadaan_belanja_rutin' => $this->pengadaanModel->jumlah_pengadaan_belanja_rutin($tahun_dipilih),
+        'perencanaan_belanja_rutin' => $this->pengadaanModel->perencanaan_belanja_rutin($tahun_dipilih),
+        'pelaksanaan_belanja_rutin' => $this->pengadaanModel->pelaksanaan_belanja_rutin($tahun_dipilih),
+        'pembayaran_belanja_rutin' => $this->pengadaanModel->pembayaran_belanja_rutin($tahun_dipilih),
+
+        // Statistik belanja modal
+        'jumlah_pengadaan_belanja_modal' => $this->pengadaanModel->jumlah_pengadaan_belanja_modal($tahun_dipilih),
+        'perencanaan_belanja_modal' => $this->pengadaanModel->perencanaan_belanja_modal($tahun_dipilih),
+        'pelaksanaan_belanja_modal' => $this->pengadaanModel->pelaksanaan_belanja_modal($tahun_dipilih),
+        'pembayaran_belanja_modal' => $this->pengadaanModel->pembayaran_belanja_modal($tahun_dipilih),
+    ]);
+}
+
+    public function filterByTahun()
     {
+        $tahun = $this->request->getPost('tahun');
         $nama_level = session()->get('nama_level');
         $whereCondition = $nama_level == 'Pokja' ? ['dipa' => 'MABES TNI AL'] : ($nama_level == 'PP' ? ['dipa' => 'DISINFOLAHTAL'] : []);
-        $pengadaanData = $this->pengadaanModel->getAllbyColumn($whereCondition);
 
-        // Update nilai pengadaanData berdasarkan ref_tabel
-        foreach ($pengadaanData as &$pengadaan) {
-            if ($pengadaan['metode'] == 'Pengadaan Langsung') {
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_pl'];
-            } elseif ($pengadaan['metode'] == 'Penunjukkan Langsung') {
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_juksung'];
-            } elseif ($pengadaan['metode'] == 'Tender') {
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_tender'];
-            } elseif ($pengadaan['metode'] == 'E-Purchasing') {
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_ep'];
-            } elseif ($pengadaan['metode'] == 'Swakelola') {
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_swakelola'];
-            } else {
-                $pengadaan['jumlah_dokumen'] = 0; // Default jika tidak sesuai
-            }
-        }
+        $data = [
+            'jumlah_pengadaan' => $this->pengadaanModel->jumlah_pengadaan($tahun = null, $whereCondition['dipa']),
+            'total_perencanaan' => number_format($this->pengadaanModel->total_perencanaan($tahun, $whereCondition['dipa']), 0, ',', '.'),
+            'total_pelaksanaan' => number_format($this->pengadaanModel->total_pelaksanaan($tahun, $whereCondition['dipa']), 0, ',', '.'),
+            'total_pembayaran' => number_format($this->pengadaanModel->total_pembayaran($tahun, $whereCondition['dipa']), 0, ',', '.'),
+        ];
 
-        // Update pengadaanData untuk menghitung jumlah file dan progress
-        foreach ($pengadaanData as &$pengadaan) {
-            // Mengambil jumlah file berdasarkan id pengadaan
-            $pengadaan['jumlah_file'] = $this->fileModel->getFileCountByPengadaanId($pengadaan['id']);
-
-            // Menghitung progress (persentase)
-            if ($pengadaan['jumlah_dokumen'] > 0) {
-                $pengadaan['progress'] = round(($pengadaan['jumlah_file'] / $pengadaan['jumlah_dokumen']) * 100); // Membulatkan ke angka terdekat
-            } else {
-                $pengadaan['progress'] = 0; // Jika tidak ada dokumen, set progress ke 0
-            }
-        }
-
-        return view('layout/pengadaan', [
-            'level_akses' => $nama_level,
-            'dtmenu' => $this->tampil_menu(session()->get('level')),
-            'nama_menu' => 'Pengadaan',
-            'pengadaan' => $pengadaanData,
-            // Debugging
-
-        ]);
-
+        return $this->response->setJSON($data);
     }
+
 
     public function tambah_pengadaan()
     {

@@ -21,15 +21,129 @@
         </div>
     <?php endif; ?>
 
-    <div class="container-full">
-        <?php if ($level_akses === 'Pokja'): ?>
-            <p>1</p>
+    <?php if ($level_akses === 'Pokja'): ?>
+            <div class="pokja">
+                <form method="get">
+                    <label for="tahun">Tahun Anggaran : </label>
+                    <select name="tahun" id="tahun" onchange="this.form.submit()">
+                        <option value="">Semua Tahun</option>
+                        <?php foreach ($tahun_tersedia as $t): ?>
+                            <option value="<?= $t['tahun_anggaran'] ?>" <?= $t['tahun_anggaran'] == $tahun_dipilih ? 'selected' : '' ?>>
+                                <?= $t['tahun_anggaran'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </form>
+                <div class="row">
+                    <!-- JUMLAH PENGADAAN -->
+                    <div class="col-3 position-relative">
+                        <div class="small-box bg-info"
+                            onmouseout="hideDetail('detail-pengadaan')">
+                            <div class="inner">
+                            <h3 id="jumlahPengadaan"><?= $jumlah_pengadaan; ?></h3>
+                                <p>Jumlah Pengadaan</p>
+                            </div>
+                            <div class="icon"><i class="ion ion-bag"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- TOTAL PERENCANAAN -->
+                    <div class="col-3 position-relative">
+                        <div class="small-box" style="background-color:#DBB300FF; color:white"
+                            onmouseover="showDetail('detail-perencanaan')">
+                            <div class="inner">
+                            <h3 id="totalPerencanaan">Rp <?= number_format($total_perencanaan, 0, ',', '.'); ?></h3>
+                                <p>Total Perencanaan</p>
+                            </div>
+                            <div class="icon"><i class="ion ion-bag"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- TOTAL PELAKSANAAN -->
+                    <div class="col-3 position-relative">
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                            <h3 id="totalPelaksanaan">Rp <?= number_format($total_pelaksanaan, 0, ',', '.'); ?></h3>
+                                <p>Total Pelaksanaan</p>
+                            </div>
+                            <div class="icon"><i class="ion ion-bag"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- TOTAL PEMBAYARAN -->
+                    <div class="col-3 position-relative">
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3 id="totalPembayaran">Rp <?= number_format($total_pembayaran, 0, ',', '.'); ?></h3>
+                                <p>Total Pembayaran</p>
+                            </div>
+                            <div class="icon"><i class="ion ion-bag"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?php elseif ($level_akses === 'PP'): ?>
-            <p>2</p>
+            <div class="pp">
+                <form method="get">
+                    <label for="tahun">Tahun Anggaran : </label>
+                    <select name="tahun" id="tahun" onchange="this.form.submit()">
+                        <option value="">Semua Tahun</option>
+                        <?php foreach ($tahun_tersedia as $t): ?>
+                            <option value="<?= $t['tahun_anggaran'] ?>" <?= $t['tahun_anggaran'] == $tahun_dipilih ? 'selected' : '' ?>>
+                                <?= $t['tahun_anggaran'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </form>
+                <div class="row">
+                    <!-- JUMLAH PENGADAAN -->
+                    <div class="col-3 position-relative">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                            <h3 id="jumlahPengadaan"><?= $jumlah_pengadaan; ?></h3>
+                                <p>Jumlah Pengadaan</p>
+                            </div>
+                            <div class="icon"><i class="ion ion-bag"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- TOTAL PERENCANAAN -->
+                    <div class="col-3 position-relative">
+                        <div class="small-box" style="background-color:#DBB300FF; color:white">
+                            <div class="inner">
+                            <h3 id="totalPerencanaan">Rp <?= number_format($total_perencanaan, 0, ',', '.'); ?></h3>
+                                <p>Total Perencanaan</p>
+                            </div>
+                            <div class="icon"><i class="ion ion-bag"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- TOTAL PELAKSANAAN -->
+                    <div class="col-3 position-relative">
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                            <h3 id="totalPelaksanaan">Rp <?= number_format($total_pelaksanaan, 0, ',', '.'); ?></h3>
+                                <p>Total Pelaksanaan</p>
+                            </div>
+                            <div class="icon"><i class="ion ion-bag"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- TOTAL PEMBAYARAN -->
+                    <div class="col-3 position-relative">
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3 id="totalPembayaran">Rp <?= number_format($total_pembayaran, 0, ',', '.'); ?></h3>
+                                <p>Total Pembayaran</p>
+                            </div>
+                            <div class="icon"><i class="ion ion-bag"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?php else: ?>
             <p>Level akses tidak dikenal.</p>
         <?php endif; ?>
-    </div>
 
 
 
@@ -43,65 +157,28 @@
                     <a href="<?= base_url('pengadaan/tambah_pengadaan') ?>" class="btn btn-primary">
                         Tambah
                     </a>
-
-
                 </div>
                 <div class="">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadModal">
-                        Impor
-                    </button>
-
-                    <a href="<?= base_url('pengadaan/ekspor_pengadaan') ?>" class="btn btn-info">
+                    <a href="<?= base_url('pengadaan/ekspor_pengadaan') ?>" class="btn btn-success">
                         Ekspor
                     </a>
                 </div>
             </div>
-
-
-            <!-- Modal Impor Pengadaan -->
-            <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="uploadModalLabel">Impor Pengadaan</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="<?= base_url('pengadaan/import_csv') ?>" method="post"
-                                enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label for="file_csv">Pilih file CSV:</label>
-                                    <input type="file" name="file_csv" class="form-control" required>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                    <button type="submit" class="btn btn-primary">Impor</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
             <hr>
             <!-- Input Pencarian -->
             <div class="mb-3 d-flex justify-content-between align-items-center">
                 <div>
-                    <select id="filterTahun" class="form-control text-center" onchange="filterData()"
-                        style="width: 140px;">
-                        <option value="">Semua Tahun</option>
-                        <?php
-                        $tahun_anggaran_list = array_unique(array_column($pengadaan, 'tahun_anggaran'));
-                        sort($tahun_anggaran_list);
-                        foreach ($tahun_anggaran_list as $tahun) {
-                            echo "<option value='$tahun'>$tahun</option>";
-                        }
-                        ?>
-                    </select>
+                <select id="filterTahun" class="form-control text-center" onchange="filterTahun(); filterData();" style="width: 140px;">
+    <option value="">Semua Tahun</option>
+    <?php
+    $tahun_anggaran_list = array_unique(array_column($pengadaan, 'tahun_anggaran'));
+    sort($tahun_anggaran_list);
+    foreach ($tahun_anggaran_list as $tahun) {
+        echo "<option value='$tahun'>$tahun</option>";
+    }
+    ?>
+</select>
+
                 </div>
                 <input type="text" id="search" class="form-control ml-2" placeholder="Cari data pengadaan ..."
                     onkeyup="cariData('search', 'tablePengadaan')">
@@ -115,7 +192,6 @@
                             <th>No</th>
                             <th>Tahun</th>
                             <th>DIPA</th>
-                            <!-- <th>Jenis</th> -->
                             <th>Metode</th>
                             <th>Kode RUP</th>
                             <th>Nama Pengadaan</th>
@@ -146,7 +222,6 @@
                                     <td>
 
                                         <?= esc($p['nama_pengadaan']); ?>
-
                                     </td>
                                     <td>
                                         <!-- Tampilkan Progress dalam bentuk Persentase -->
@@ -192,38 +267,63 @@
 </div>
 
 <script>
-    function filterData() {
-        var tahunFilter = document.getElementById("filterTahun").value.toLowerCase();
-        var searchFilter = document.getElementById("search").value.toLowerCase();
-        var table = document.getElementById("tablePengadaan");
-        var tr = table.getElementsByTagName("tr");
+    function filterTahun() {
+    var tahunFilter = document.getElementById("filterTahun").value;
 
-        for (var i = 1; i < tr.length; i++) {
-            var tahunCell = tr[i].getElementsByClassName("tahun-anggaran")[0];
-            var allCells = tr[i].getElementsByTagName("td");
-            var rowVisible = true;
+    fetch("<?= base_url('pengadaan/filterByTahun'); ?>", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: "tahun=" + encodeURIComponent(tahunFilter)
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("jumlahPengadaan").innerText = data.jumlah_pengadaan;
+        document.getElementById("totalPerencanaan").innerText = 'Rp ' + data.total_perencanaan;
+        document.getElementById("totalPelaksanaan").innerText = 'Rp ' + data.total_pelaksanaan;
+        document.getElementById("totalPembayaran").innerText = 'Rp ' + data.total_pembayaran;
+    });
+}
 
-            if (tahunCell && tahunFilter !== "") {
-                var tahunText = tahunCell.textContent || tahunCell.innerText;
-                if (tahunText !== tahunFilter) {
-                    rowVisible = false;
-                }
-            }
+function filterData() {
+    var tahunFilter = document.getElementById("filterTahun").value;
+    console.log("Tahun yang dipilih:", tahunFilter); // DEBUG
+    var searchFilter = document.getElementById("search") ? document.getElementById("search").value.toLowerCase() : "";
+    var table = document.getElementById("tablePengadaan");
+    var tr = table.getElementsByTagName("tr");
 
-            if (rowVisible && searchFilter !== "") {
+    for (var i = 1; i < tr.length; i++) {
+        var tahunCell = tr[i].getElementsByClassName("tahun-anggaran")[0];
+        var allCells = tr[i].getElementsByTagName("td");
+        var rowVisible = true;
+
+        // Filter Tahun
+        if (tahunFilter !== "" && tahunCell) {
+            var tahunText = tahunCell.textContent || tahunCell.innerText;
+            if (tahunText !== tahunFilter) {
                 rowVisible = false;
-                for (var j = 0; j < allCells.length; j++) {
-                    var txtValue = allCells[j].textContent || allCells[j].innerText;
-                    if (txtValue.toLowerCase().indexOf(searchFilter) > -1) {
-                        rowVisible = true;
-                        break;
-                    }
+            }
+        }
+
+        // Filter Keyword (optional)
+        if (rowVisible && searchFilter !== "") {
+            rowVisible = false;
+            for (var j = 0; j < allCells.length; j++) {
+                var txtValue = allCells[j].textContent || allCells[j].innerText;
+                if (txtValue.toLowerCase().indexOf(searchFilter) > -1) {
+                    rowVisible = true;
+                    break;
                 }
             }
-
-            tr[i].style.display = rowVisible ? "" : "none";
         }
+
+        tr[i].style.display = rowVisible ? "" : "none";
     }
+}
+
+    
     function cariData(inputId, tableId) {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById(inputId);

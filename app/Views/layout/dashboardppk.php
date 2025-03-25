@@ -122,7 +122,7 @@ $session = \Config\Services::session();
 
         <!-- TOTAL PELAKSANAAN -->
         <div class="col-3 position-relative">
-            <div class="small-box bg-danger" onmouseover="showDetail('detail-pelaksanaan')"
+            <div class="small-box bg-success" onmouseover="showDetail('detail-pelaksanaan')"
                 onmouseout="hideDetail('detail-pelaksanaan')">
                 <div class="inner">
                     <h3>Rp <?= number_format($total_pelaksanaan, 0, ',', '.'); ?></h3>
@@ -143,7 +143,7 @@ $session = \Config\Services::session();
 
         <!-- TOTAL PEMBAYARAN -->
         <div class="col-3 position-relative">
-            <div class="small-box bg-success" onmouseover="showDetail('detail-pembayaran')"
+            <div class="small-box bg-danger" onmouseover="showDetail('detail-pembayaran')"
                 onmouseout="hideDetail('detail-pembayaran')">
                 <div class="inner">
                     <h3>Rp <?= number_format($total_pembayaran, 0, ',', '.'); ?></h3>

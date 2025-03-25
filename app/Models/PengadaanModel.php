@@ -85,41 +85,68 @@ class PengadaanModel extends Model
     //KESELURUHAN
 
     // Jumlah pengadaan keseluruhan
-    public function jumlah_pengadaan($tahun = null)
+    public function jumlah_pengadaan($tahun = null, $dipa = null)
     {
         $builder = $this->db->table($this->table);
-        if ($tahun) {
+
+        if ($dipa !== null) {
+            $builder->where('dipa', $dipa);
+        }
+
+        if ($tahun !== null) {
             $builder->where('tahun_anggaran', $tahun);
         }
+
         return $builder->countAllResults();
     }
 
-    public function total_perencanaan($tahun = null)
+
+
+    public function total_perencanaan($tahun = null, $dipa = null)
     {
         $builder = $this->db->table($this->table)->selectSum('perencanaan');
-        if ($tahun) {
+
+        if ($dipa !== null) {
+            $builder->where('dipa', $dipa);
+        }
+
+        if ($tahun !== null) {
             $builder->where('tahun_anggaran', $tahun);
         }
+
         return $builder->get()->getRow()->perencanaan;
     }
 
-    public function total_pelaksanaan($tahun = null)
+    public function total_pelaksanaan($tahun = null, $dipa = null)
     {
         $builder = $this->db->table($this->table)->selectSum('pelaksanaan');
-        if ($tahun) {
+
+        if ($dipa !== null) {
+            $builder->where('dipa', $dipa);
+        }
+
+        if ($tahun !== null) {
             $builder->where('tahun_anggaran', $tahun);
         }
+
         return $builder->get()->getRow()->pelaksanaan;
     }
 
-    public function total_pembayaran($tahun = null)
+    public function total_pembayaran($tahun = null, $dipa = null)
     {
         $builder = $this->db->table($this->table)->selectSum('pembayaran');
-        if ($tahun) {
+
+        if ($dipa !== null) {
+            $builder->where('dipa', $dipa);
+        }
+
+        if ($tahun !== null) {
             $builder->where('tahun_anggaran', $tahun);
         }
+
         return $builder->get()->getRow()->pembayaran;
     }
+
 
     // BELANJA RUTIN (DISINFOLAHTAL)
     public function jumlah_pengadaan_belanja_rutin($tahun = null)

@@ -78,51 +78,6 @@ class Dashboardppk extends BaseController
             $data_metode[] = (int) $row['jumlah'];
         }
 
-        // $raw_matrix = $this->pengadaanModel->jumlahPengadaanPerJenisMetode($tahun_dipilih);
-
-        // // Susun matrix: [jenis][metode] = jumlah
-        // $matrix_data = [];
-        // $all_jenis_matrix = [];
-        // $all_metode_matrix = [];
-        
-        // foreach ($raw_matrix as $row) {
-        //     $jenis = $row['jenis'];
-        //     $metode = $row['metode'];
-        
-        //     if (!isset($matrix_data[$metode])) {
-        //         $matrix_data[$metode] = [];
-        //     }
-        
-        //     $matrix_data[$metode][$jenis] = (int) $row['jumlah'];
-        
-        //     if (!in_array($jenis, $all_jenis_matrix)) {
-        //         $all_jenis_matrix[] = $jenis;
-        //     }
-        //     if (!in_array($metode, $all_metode_matrix)) {
-        //         $all_metode_matrix[] = $metode;
-        //     }
-        // }
-        
-        // sort($all_jenis_matrix);
-        // sort($all_metode_matrix);
-        
-        // // Format data untuk Chart.js
-        // $matrix_datasets = [];
-        // $colors = ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0', '#9966ff', '#c9cbcf'];
-        
-        // foreach ($matrix_data as $metode => $data_jenis) {
-        //     $data = [];
-        //     foreach ($all_jenis_matrix as $jenis) {
-        //         $data[] = $data_jenis[$jenis] ?? 0;
-        //     }
-        
-        //     $matrix_datasets[] = [
-        //         'label' => $metode,
-        //         'data' => $data,
-        //         'backgroundColor' => array_shift($colors)
-        //     ];
-        // }
-        
         
         $data = [
             'level_akses' => $this->session->nama_level,
@@ -160,8 +115,6 @@ class Dashboardppk extends BaseController
             'data_jenis' => json_encode($data_jenis),
             'label_metode' => json_encode($label_metode),
             'data_metode' => json_encode($data_metode),
-            // 'label_jenis_matrix' => json_encode($all_jenis_matrix),
-            // 'matrix_jenis_metode_datasets' => json_encode($matrix_datasets),
 
 
 
