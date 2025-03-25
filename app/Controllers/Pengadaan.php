@@ -107,7 +107,9 @@ class Pengadaan extends BaseController
             'nama_pengadaan',
             'perencanaan',
             'pelaksanaan',
-            'pembayaran'
+            'pembayaran',
+            'tangga_mulai',
+            'tanggal_berakhir'
         ]);
 
         if (!$data) {
@@ -227,7 +229,9 @@ class Pengadaan extends BaseController
             'nama_pengadaan',
             'perencanaan',
             'pelaksanaan',
-            'pembayaran'
+            'pembayaran',
+            'tanggal_mulai',
+            'tanggal_berakhir'
         ]);
 
         $this->pengadaanModel->updatePengadaan($id, $data);
@@ -244,7 +248,7 @@ class Pengadaan extends BaseController
         header('Content-Disposition: attachment; filename="' . $filename . '"');
 
         $output = fopen('php://output', 'w');
-        fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Jenis', 'Metode', 'Kode Rup', 'Nama Pengadaan', 'Perencanaan', 'Pelaksanaan', 'Pembayaran']);
+        fputcsv($output, ['No', 'Tahun Anggaran', 'DIPA', 'Jenis', 'Metode', 'Kode Rup', 'Nama Pengadaan', 'Perencanaan', 'Pelaksanaan', 'Pembayaran', 'Tanggal_Mulai', 'Tanggal_Berakhir']);
 
         foreach ($pengadaanData as $index => $pengadaan) {
             fputcsv($output, array_merge([$index + 1], array_values($pengadaan)));

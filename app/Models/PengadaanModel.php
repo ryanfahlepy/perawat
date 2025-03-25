@@ -21,7 +21,9 @@ class PengadaanModel extends Model
         'nama_pengadaan',
         'perencanaan',
         'pelaksanaan',
-        'pembayaran'
+        'pembayaran',
+        'tanggal_mulai',
+        'tanggal_berakhir'
     ];
 
     // Fungsi untuk mengambil semua data dari tabel tertentu
