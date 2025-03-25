@@ -10,9 +10,9 @@ $session = \Config\Services::session();
             <div class="card-header text-center">
                 <h4><b>FORM REGISTER</b></h4>
             </div>
-            <?= form_open('/user/login/simpanregister', ['id' => 'register']) ?>
+            <?= form_open('/login/simpanregister', ['id' => 'register']) ?>
             <div class="card-body">
-            
+
                 <?= csrf_field(); ?>
                 <div class="input-group mb-3">
                     <input type="text" name="nama" class="form-control" placeholder="Masukan nama" autofocus>
@@ -27,14 +27,15 @@ $session = \Config\Services::session();
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" name="password2" class="form-control" placeholder="Masukan Konfirmasi Password">
+                    <input type="password" name="password2" class="form-control"
+                        placeholder="Masukan Konfirmasi Password">
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="input-group mb-3">
                     <select name="level" id="level" class="form-control">
                         <option value="">--- Pilih Level ---</option>
-                        <?php foreach ($dtlevel as $dt) : ?>
-                            <?php if ($dt->id !== '1') : ?>
+                        <?php foreach ($dtlevel as $dt): ?>
+                            <?php if ($dt->id !== '1'): ?>
                                 <option value="<?= $dt->id ?>"><?= $dt->nama_level ?></option>
                             <?php endif ?>
                         <?php endforeach ?>
@@ -47,7 +48,7 @@ $session = \Config\Services::session();
                     </div>
                 </div>
                 <div class="social-auth-links text-center">
-                    <small class="text-danger">Sudah punya akun ? Silahkan <a href="/user/login">Login</a></small>
+                    <small class="text-danger">Sudah punya akun ? Silahkan <a href="/login">Login</a></small>
                 </div>
             </div>
             <!-- /.card-body -->
@@ -69,19 +70,19 @@ $session = \Config\Services::session();
     <script src="/assets/plugins/toastr/toastr.min.js"></script>
 
     <script>
-        $(document).on("submit", "#register", function(e) {
+        $(document).on("submit", "#register", function (e) {
             e.preventDefault()
             $.ajax({
                 url: $(this).attr("action"),
                 data: $(this).serialize(),
                 dataType: "json",
-                success: function(responds) {
+                success: function (responds) {
                     if (responds.validasi) {
                         if (responds.simpan) {
                             toastr.success('Selamat, Registrasi anda berhasil, segera hubungi admin untuk minta aktifasi akun anda')
                             setTimeout(
-                                function() {
-                                    window.location.href = "/user/login"
+                                function () {
+                                    window.location.href = "/login"
                                 },
                                 3000);
                         } else {
@@ -89,7 +90,7 @@ $session = \Config\Services::session();
                         }
                     } else {
                         toastr.error('Data belum valid, ulangi lagi')
-                        $.each(responds.errors, function(key, value) {
+                        $.each(responds.errors, function (key, value) {
                             $('[name="' + key + '"]').addClass('is-invalid')
                             $('[name="' + key + '"]').next().text(value)
                             if (value == "") {
@@ -104,7 +105,7 @@ $session = \Config\Services::session();
     </script>
 
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -112,16 +113,16 @@ $session = \Config\Services::session();
                 timer: 3000
             });
 
-            $('.toastrDefaultSuccess').click(function() {
+            $('.toastrDefaultSuccess').click(function () {
                 toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
             });
-            $('.toastrDefaultInfo').click(function() {
+            $('.toastrDefaultInfo').click(function () {
                 toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
             });
-            $('.toastrDefaultError').click(function() {
+            $('.toastrDefaultError').click(function () {
                 toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
             });
-            $('.toastrDefaultWarning').click(function() {
+            $('.toastrDefaultWarning').click(function () {
                 toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
             });
         });

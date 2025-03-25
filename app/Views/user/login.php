@@ -40,7 +40,7 @@
                 <div class="text-center mb-4">
                     <img src="/assets/dist/img/logo.png" width="200" class="img-circle" alt="User Image">
                 </div>
-                <form action="/user/login/ceklogin" method="POST">
+                <form action="/login/ceklogin" method="POST">
                     <?= csrf_field(); ?>
                     <div class="input-group mb-3">
                         <input type="text" name="username" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" value="<?= old('username'); ?>" placeholder="Masukan username" autofocus required>
@@ -71,7 +71,7 @@
                 </form>
             </div>
             <div class="social-auth-links text-center">
-                <small class="text-danger">Belum punya akun ? <a href="/user/login/register">Registrasi</a></small>
+                <small class="text-danger">Belum punya akun ? <a href="/login/register">Registrasi</a></small>
             </div>
             <!-- /.login-card-body -->
         </div>

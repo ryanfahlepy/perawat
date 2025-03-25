@@ -22,7 +22,7 @@ $session = \Config\Services::session();
                 <!-- Message End -->
             </a>
             <div class="dropdown-divider"></div>
-            <a href="/user/login/logout" class="dropdown-item dropdown-footer">Logout</a>
+            <a href="/login/logout" class="dropdown-item dropdown-footer">Logout</a>
         </div>
     </li>
     <!-- <li class="nav-item">

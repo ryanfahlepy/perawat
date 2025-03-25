@@ -141,8 +141,6 @@
                     </div>
                 </div>
             </div>
-        <?php else: ?>
-            <p>Level akses tidak dikenal.</p>
         <?php endif; ?>
 
 
@@ -154,9 +152,11 @@
             <!-- Button untuk membuka modal -->
             <div class="d-flex justify-content-between">
                 <div class="">
-                    <a href="<?= base_url('pengadaan/tambah_pengadaan') ?>" class="btn btn-primary">
+                <?php if ($level_akses ==! 'PPK'): ?>    
+                <a href="<?= base_url('pengadaan/tambah_pengadaan') ?>" class="btn btn-primary">
                         Tambah
                     </a>
+                    <?php endif ?>
                 </div>
                 <div class="">
                     <a href="<?= base_url('pengadaan/ekspor_pengadaan') ?>" class="btn btn-success">
@@ -244,11 +244,14 @@
                                                 target="_blank" style="color: white;" class="btn btn-info btn-sm m-1">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a href="<?= base_url('/pengadaan/hapus_data_pengadaan/' . $p['id']); ?>"
+                                            
+                                            <?php if ($level_akses ==! 'PPK'): ?>    
+                                                <a href="<?= base_url('/pengadaan/hapus_data_pengadaan/' . $p['id']); ?>"
                                                 class="btn btn-danger btn-sm m-1"
                                                 onclick="return confirm('Yakin ingin menghapus?');">
                                                 <i class="fas fa-trash"></i>
                                             </a>
+                                                <?php endif ?>
                                         </div>
                                     </td>
 

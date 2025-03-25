@@ -38,7 +38,7 @@ $session = \Config\Services::session();
                     <?php endforeach; ?>
                 <?php endforeach; ?>
                 <li class="nav-item">
-                    <a href="/user/login/logout" class="nav-link">
+                    <a href="/login/logout" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Logout

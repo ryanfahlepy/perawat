@@ -12,7 +12,7 @@ class LoginFilter implements FilterInterface
     {
         session();
         if (!session()->has('sdh_login')) {
-            return redirect()->to('/user/login');
+            return redirect()->to('/login');
         }
     }
 

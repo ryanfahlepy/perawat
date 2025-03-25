@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\User;
+namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
@@ -20,7 +20,7 @@ class Login extends BaseController
         if (session()->has('sdh_login')) {
             $_SESSION['color'] = 'warning';
             session()->setFlashdata('pesan', 'Anda sudah login');
-            return redirect()->to('/user/profile');
+            return redirect()->to('/profile');
         }
         $data = [
             'validation' => $this->validation
@@ -57,7 +57,7 @@ class Login extends BaseController
         ])) {
             $_SESSION['color'] = 'danger';
             session()->setFlashdata('pesan', 'Data tidak valid');
-            return redirect()->to('/user/login')->withInput();
+            return redirect()->to('/login')->withInput();
         }
         // jika validasi berhasil
         $dtlogin = $this->request->getVar();
@@ -86,26 +86,26 @@ class Login extends BaseController
                     } elseif ($user->level_user == 4) {
                         return redirect()->to('/pengadaan');
                     } elseif ($user->level_user == 1) {
-                        return redirect()->to('/admin/dashboard');
+                        return redirect()->to('/profile');
                     } else {
                         // Redirect default jika level_user tidak sesuai
-                        return redirect()->to('/user/profile');
+                        return redirect()->to('/profile');
                     }
                 } else {
                     $_SESSION['color'] = 'danger';
                     session()->setFlashdata('pesan', 'User belum aktif');
-                    return redirect()->to('/user/login')->withInput();
+                    return redirect()->to('/login')->withInput();
                 }
                 
             } else {
                 $_SESSION['color'] = 'danger';
                 session()->setFlashdata('pesan', 'Password tidak benar');
-                return redirect()->to('/user/login')->withInput();
+                return redirect()->to('/login')->withInput();
             }
         } else {
             $_SESSION['color'] = 'danger';
             session()->setFlashdata('pesan', 'User tidak terdaftar');
-            return redirect()->to('/user/login')->withInput();
+            return redirect()->to('/login')->withInput();
         }
     }
 
@@ -192,6 +192,6 @@ class Login extends BaseController
     {
         $session = \Config\Services::session();
         $session->destroy();
-        return redirect()->to('/user/login');
+        return redirect()->to('/login');
     }
 }
