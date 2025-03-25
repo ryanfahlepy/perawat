@@ -82,9 +82,9 @@ class Login extends BaseController
                     if ($user->level_user == 2) {
                         return redirect()->to('/dashboardppk');
                     } elseif ($user->level_user == 3) {
-                        return redirect()->to('/dashboardpokja');
+                        return redirect()->to('/pengadaan');
                     } elseif ($user->level_user == 4) {
-                        return redirect()->to('/dashboardpp');
+                        return redirect()->to('/pengadaan');
                     } elseif ($user->level_user == 1) {
                         return redirect()->to('/admin/dashboard');
                     } else {
@@ -124,7 +124,7 @@ class Login extends BaseController
                     ]
                 ],
                 'username' => [
-                    'rules' => 'required|min_length[2]|is_unique[tbuser.username]',
+                    'rules' => 'required|min_length[2]|is_unique[tabel_user.username]',
                     'errors' => [
                         'required' => 'harus disi',
                         'min_length' => 'minimal 2 karakter',

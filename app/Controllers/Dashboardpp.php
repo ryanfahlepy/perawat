@@ -23,8 +23,8 @@ class Dashboardpp extends BaseController
             'total_perencanaan' => $this->pengadaanModel->total_perencanaan(),
             'total_pelaksanaan' => $this->pengadaanModel->total_pelaksanaan(),
             'total_pembayaran' => $this->pengadaanModel->total_pembayaran(),
-            'jumlah_pengadaan' => $this->pengadaanModel->jumlah_pengadaan()
+
         ];
-        return view('layout/dashboardpp', $data);
+        return view('layout/pengadaan', $data);
     }
 }

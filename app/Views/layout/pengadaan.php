@@ -3,7 +3,6 @@
 <?= $this->section('content'); ?>
 
 <div class="card-body">
-
     <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?= session()->getFlashdata('success') ?>
@@ -21,6 +20,17 @@
             </button>
         </div>
     <?php endif; ?>
+
+    <div class="container-full">
+        <?php if ($level_akses === 'Pokja'): ?>
+            <p>1</p>
+        <?php elseif ($level_akses === 'PP'): ?>
+            <p>2</p>
+        <?php else: ?>
+            <p>Level akses tidak dikenal.</p>
+        <?php endif; ?>
+    </div>
+
 
 
 

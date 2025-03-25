@@ -168,7 +168,7 @@ $session = \Config\Services::session();
 <div>
     <div class="row">
         <div class="col-6">
-            <h5 class="mt-4 text-center">Jumlah Pengadaan per Bulan pada Tahun <?= $tahun_dipilih ?? 'Semua Tahun' ?>
+            <h5 class="mt-4 text-center">Jumlah Pengadaan Mulai per Bulan pada Tahun <?= $tahun_dipilih ?? 'Semua Tahun' ?>
             </h5>
             <canvas id="jumlahPengadaanPerBulanChart" width="200" height="100"></canvas>
         </div>
@@ -198,7 +198,7 @@ $session = \Config\Services::session();
             data: {
                 labels: <?= $bulan_mulai; ?>, // contoh: ["January", "February", ...]
                 datasets: [{
-                    label: 'Jumlah Pengadaan',
+                    label: 'Jumlah Pengadaan Mulai',
                     data: <?= $jumlah_mulai; ?>, // contoh: [2, 4, 3, ...]
                     backgroundColor: '#17a2b8',
                     borderColor: '#17a2b8',
@@ -229,7 +229,7 @@ $session = \Config\Services::session();
                         },
                         title: {
                             display: true,
-                            text: 'Jumlah Pengadaan'
+                            text: 'Jumlah Pengadaan Mulai'
                         }
                     },
                     x: {

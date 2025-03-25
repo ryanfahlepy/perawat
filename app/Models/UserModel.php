@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table                = 'tbuser';
+    protected $table                = 'tabel_user';
     protected $primaryKey           = 'id';
     protected $returnType           = 'App\Entities\Output';
     protected $allowedFields        = ['photo', 'nama', 'username', 'password', 'level_user', 'status'];
@@ -19,12 +19,12 @@ class UserModel extends Model
 
     public function getUser($username = false)
     {
-        $this->builder()->select('tbuser.*, tabel_user_level.nama_level');
+        $this->builder()->select('tabel_user.*, tabel_user_level.nama_level');
         if ($username) {
-            return $this->builder()->join('tabel_user_level', 'tabel_user_level.id = tbuser.level_user')
+            return $this->builder()->join('tabel_user_level', 'tabel_user_level.id = tabel_user.level_user')
                 ->where('username', $username)->get();
         } else {
-            return $this->builder()->join('tabel_user_level', 'tabel_user_level.id = tbuser.level_user')->get();
+            return $this->builder()->join('tabel_user_level', 'tabel_user_level.id = tabel_user.level_user')->get();
         }
     }
 }

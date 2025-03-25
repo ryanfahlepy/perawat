@@ -72,7 +72,7 @@ class Manuser extends BaseController
                     ]
                 ],
                 'username' => [
-                    'rules' => 'required|min_length[2]|is_unique[tbuser.username]',
+                    'rules' => 'required|min_length[2]|is_unique[tabel_user.username]',
                     'errors' => [
                         'required' => 'harus disi',
                         'min_length' => 'minimal 2 karakter',
@@ -142,7 +142,7 @@ class Manuser extends BaseController
             $id = $this->request->getVar('id_user');
             $dtuser = $this->userModel->find($id);
             $usernameLama = $dtuser->username;
-            $rule = ($this->request->getVar('username') == $usernameLama) ? 'required|min_length[3]' : 'required|min_length[3]|is_unique[tbuser.username]';
+            $rule = ($this->request->getVar('username') == $usernameLama) ? 'required|min_length[3]' : 'required|min_length[3]|is_unique[tabel_user.username]';
             $rules = [
                 'nama' => [
                     'rules' => 'required|min_length[2]',

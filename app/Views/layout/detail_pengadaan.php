@@ -7,7 +7,7 @@ $session = \Config\Services::session();
     <form action="<?= base_url('/pengadaan/update_pengadaan/' . $pengadaan['id']); ?>" method="post">
         <div class="row">
             <!-- Kolom 1 -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="tahun_anggaran">Tahun Anggaran</label>
                     <input type="number" class="form-control" id="tahun_anggaran" name="tahun_anggaran"
@@ -33,7 +33,7 @@ $session = \Config\Services::session();
             </div>
 
             <!-- Kolom 2 -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="jenis">Jenis</label>
                     <select class="form-control" id="jenis" name="jenis" required disabled>
@@ -64,7 +64,7 @@ $session = \Config\Services::session();
             </div>
 
             <!-- Kolom 3 -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="perencanaan">Perencanaan</label>
                     <input type="number" class="form-control" id="perencanaan" name="perencanaan"
@@ -79,6 +79,20 @@ $session = \Config\Services::session();
                     <label for="pembayaran">Pembayaran</label>
                     <input type="number" class="form-control" id="pembayaran" name="pembayaran"
                         value="<?= old('pembayaran', $pengadaan['pembayaran']); ?>" required readonly>
+                </div>
+            </div>
+
+            <!-- Kolom 3 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="tanggal_mulai">Tanggal Mulai</label>
+                    <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai"
+                        value="<?= old('tanggal_mulai', $pengadaan['tanggal_mulai']); ?>" required readonly>
+                </div>
+                <div class="form-group">
+                    <label for="tanggal_berakhir">Tanggal Berakhir</label>
+                    <input type="date" class="form-control" id="tanggal_berakhir" name="tanggal_berakhir"
+                        value="<?= old('tanggal_berakhir', $pengadaan['tanggal_berakhir']); ?>" required readonly>
                 </div>
             </div>
         </div>
@@ -256,7 +270,7 @@ $session = \Config\Services::session();
     const editData = () => {
         const fields = [
             "tahun_anggaran", "kode_rup",
-            "nama_pengadaan", "perencanaan", "pelaksanaan", "pembayaran"
+            "nama_pengadaan", "perencanaan", "pelaksanaan", "pembayaran", "tanggal_mulai", "tanggal_berakhir"
         ];
 
         document.getElementById("saveBtn").style.display = "inline-block";

@@ -6,7 +6,7 @@ $session = \Config\Services::session();
 <div class="card-body">
     <form action="<?= base_url('pengadaan/tambah_data_pengadaan') ?>" method="post" onsubmit="return validateForm()">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="tahun_anggaran">Tahun Anggaran</label>
                     <input type="number" class="form-control" id="tahun_anggaran" name="tahun_anggaran" required>
@@ -27,7 +27,7 @@ $session = \Config\Services::session();
                     <input type="text" class="form-control" id="kode_rup" name="kode_rup" required>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="jenis">Jenis</label>
                     <select class="form-control" id="jenis" name="jenis" required>
@@ -56,7 +56,7 @@ $session = \Config\Services::session();
                     <input type="text" class="form-control" id="nama_pengadaan" name="nama_pengadaan" required>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="perencanaan">Perencanaan</label>
                     <input type="number" class="form-control" id="perencanaan" name="perencanaan" required>
@@ -68,6 +68,16 @@ $session = \Config\Services::session();
                 <div class="form-group">
                     <label for="pembayaran">Pembayaran</label>
                     <input type="number" class="form-control" id="pembayaran" name="pembayaran" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="tanggal_mulai">Tanggal Mulai</label>
+                    <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai" required>
+                </div>
+                <div class="form-group">
+                    <label for="tanggal_berakhir">Tanggal Berakhir</label>
+                    <input type="date" class="form-control" id="tanggal_berakhir" name="tanggal_berakhir" required>
                 </div>
             </div>
         </div>
