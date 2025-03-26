@@ -117,19 +117,19 @@
             });
 
             $.ajax({
-                url: "<?= base_url('admin/templatedokumen/update_order') ?>",
+                url: "<?= base_url('templatedokumen/update_order') ?>",
                 type: "POST",
                 data: { order: order, table: tab },
                 dataType: "json",
                 success: function (response) {
                     if (response.status === "success") {
-                        window.location.href = "<?= base_url('admin/templatedokumen') ?>?success=Data berhasil disimpan!";
+                        window.location.href = "<?= base_url('templatedokumen') ?>?success=Data berhasil disimpan!";
                     } else {
-                        window.location.href = "<?= base_url('admin/templatedokumen') ?>?error=" + encodeURIComponent("Gagal menyimpan data: " + response.message);
+                        window.location.href = "<?= base_url('templatedokumen') ?>?error=" + encodeURIComponent("Gagal menyimpan data: " + response.message);
                     }
                 },
                 error: function () {
-                    window.location.href = "<?= base_url('admin/templatedokumen') ?>?error=Terjadi kesalahan, coba lagi!";
+                    window.location.href = "<?= base_url('templatedokumen') ?>?error=Terjadi kesalahan, coba lagi!";
                 }
 
             });
@@ -176,7 +176,7 @@
             console.log("Mengirim Data:", { dokumen: dokumenBaru, table: tab });
 
             $.ajax({
-                url: "<?= base_url('admin/templatedokumen/add_document') ?>",
+                url: "<?= base_url('templatedokumen/add_document') ?>",
                 type: "POST",
                 data: {
                     dokumen: dokumenBaru, table: tab,
@@ -227,7 +227,7 @@
                 
 
                 $.ajax({
-                    url: "<?= base_url('admin/templatedokumen/delete_document') ?>",
+                    url: "<?= base_url('templatedokumen/delete_document') ?>",
                     type: "POST",
                     data: { id: documentId, table: table },
                     beforeSend: function () {

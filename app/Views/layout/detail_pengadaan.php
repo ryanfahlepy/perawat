@@ -138,7 +138,7 @@ $session = \Config\Services::session();
                     <th style="width: 20%;">Nama</th>
                     <th style="width: 35%;">Dokumen</th>
                     <th style="width: 20%;">Waktu Unggah</th>
-                    <?php if ($level_akses == !'PPK'): ?>
+                    <?php if ($level_akses !== 'PPK'): ?>
                     <th style="width: 10%;">Aksi</th>
                     <?php endif ?>
                 </tr>
@@ -183,7 +183,7 @@ $session = \Config\Services::session();
                                 echo !empty($uploadTimes) ? implode('<br>', $uploadTimes) : '<span class="text-muted">-</span>';
                                 ?>
                             </td>
-                            <?php if ($level_akses == !'PPK'): ?>
+                            <?php if ($level_akses !=='PPK'): ?>
                             <td class="text-center">
                                 <button class="btn btn-primary btn-sm"
                                     onclick="showUploadModal(<?= $pengadaan['id']; ?>, <?= $dokumen['id_dokumen']; ?>)">Unggah</button>
