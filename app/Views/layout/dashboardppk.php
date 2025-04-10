@@ -111,10 +111,10 @@ $session = \Config\Services::session();
                 <a class="small-box-footer">Arahkan kursor untuk lihat rincian</a>
                 <div id="detail-perencanaan" class="floating-detail-box">
                     <div class="detail-text"><strong>DIPA DISINFOLAHTAL:</strong> Rp
-                        <?= number_format($perencanaan_belanja_rutin, 0, ',', '.'); ?>
+                        <?= number_format($perencanaan_belanja_dipa_disinfolahtal, 0, ',', '.'); ?>
                     </div>
                     <div class="detail-text"><strong>DIPA MABES TNI AL:</strong> Rp
-                        <?= number_format($perencanaan_belanja_modal, 0, ',', '.'); ?>
+                        <?= number_format($perencanaan_belanja_dipa_mabesal, 0, ',', '.'); ?>
                     </div>
                 </div>
             </div>
@@ -132,10 +132,10 @@ $session = \Config\Services::session();
                 <a class="small-box-footer">Arahkan kursor untuk lihat rincian</a>
                 <div id="detail-pelaksanaan" class="floating-detail-box">
                     <div class="detail-text"><strong>DIPA DISINFOLAHTAL:</strong> Rp
-                        <?= number_format($pelaksanaan_belanja_rutin, 0, ',', '.'); ?>
+                        <?= number_format($pelaksanaan_belanja_dipa_disinfolahtal, 0, ',', '.'); ?>
                     </div>
                     <div class="detail-text"><strong>DIPA MABES TNI AL:</strong> Rp
-                        <?= number_format($pelaksanaan_belanja_modal, 0, ',', '.'); ?>
+                        <?= number_format($pelaksanaan_belanja_dipa_mabesal, 0, ',', '.'); ?>
                     </div>
                 </div>
             </div>
@@ -153,10 +153,10 @@ $session = \Config\Services::session();
                 <a class="small-box-footer">Arahkan kursor untuk lihat rincian</a>
                 <div id="detail-pembayaran" class="floating-detail-box">
                     <div class="detail-text"><strong>DIPA DISINFOLAHTAL:</strong> Rp
-                        <?= number_format($pembayaran_belanja_rutin, 0, ',', '.'); ?>
+                        <?= number_format($pembayaran_belanja_dipa_disinfolahtal, 0, ',', '.'); ?>
                     </div>
                     <div class="detail-text"><strong>DIPA MABES TNI AL:</strong> Rp
-                        <?= number_format($pembayaran_belanja_modal, 0, ',', '.'); ?>
+                        <?= number_format($pembayaran_belanja_dipa_mabesal, 0, ',', '.'); ?>
                     </div>
                 </div>
             </div>

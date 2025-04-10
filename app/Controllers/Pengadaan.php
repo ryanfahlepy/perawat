@@ -107,15 +107,15 @@ class Pengadaan extends BaseController
 
         // Statistik belanja rutin
         'jumlah_pengadaan_belanja_rutin' => $this->pengadaanModel->jumlah_pengadaan_belanja_rutin($tahun_dipilih),
-        'perencanaan_belanja_rutin' => $this->pengadaanModel->perencanaan_belanja_rutin($tahun_dipilih),
-        'pelaksanaan_belanja_rutin' => $this->pengadaanModel->pelaksanaan_belanja_rutin($tahun_dipilih),
-        'pembayaran_belanja_rutin' => $this->pengadaanModel->pembayaran_belanja_rutin($tahun_dipilih),
+        'perencanaan_belanja_dipa_disinfolahtal' => $this->pengadaanModel->perencanaan_belanja_dipa_disinfolahtal($tahun_dipilih),
+        'pelaksanaan_belanja_dipa_disinfolahtal' => $this->pengadaanModel->pelaksanaan_belanja_dipa_disinfolahtal($tahun_dipilih),
+        'pembayaran_belanja_dipa_disinfolahtal' => $this->pengadaanModel->pembayaran_belanja_dipa_disinfolahtal($tahun_dipilih),
 
         // Statistik belanja modal
         'jumlah_pengadaan_belanja_modal' => $this->pengadaanModel->jumlah_pengadaan_belanja_modal($tahun_dipilih),
-        'perencanaan_belanja_modal' => $this->pengadaanModel->perencanaan_belanja_modal($tahun_dipilih),
-        'pelaksanaan_belanja_modal' => $this->pengadaanModel->pelaksanaan_belanja_modal($tahun_dipilih),
-        'pembayaran_belanja_modal' => $this->pengadaanModel->pembayaran_belanja_modal($tahun_dipilih),
+        'perencanaan_belanja_dipa_mabesal' => $this->pengadaanModel->perencanaan_belanja_dipa_mabesal($tahun_dipilih),
+        'pelaksanaan_belanja_dipa_mabesal' => $this->pengadaanModel->pelaksanaan_belanja_dipa_mabesal($tahun_dipilih),
+        'pembayaran_belanja_dipa_mabesal' => $this->pengadaanModel->pembayaran_belanja_dipa_mabesal($tahun_dipilih),
     ]);
 }
 

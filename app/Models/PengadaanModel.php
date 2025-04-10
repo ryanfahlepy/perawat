@@ -158,7 +158,7 @@ class PengadaanModel extends Model
         return $builder->countAllResults();
     }
 
-    public function perencanaan_belanja_rutin($tahun = null)
+    public function perencanaan_belanja_dipa_disinfolahtal($tahun = null)
     {
         $builder = $this->db->table($this->table)->selectSum('perencanaan')->where('dipa', 'DISINFOLAHTAL');
         if ($tahun) {
@@ -167,7 +167,7 @@ class PengadaanModel extends Model
         return $builder->get()->getRow()->perencanaan;
     }
 
-    public function pelaksanaan_belanja_rutin($tahun = null)
+    public function pelaksanaan_belanja_dipa_disinfolahtal($tahun = null)
     {
         $builder = $this->db->table($this->table)->selectSum('pelaksanaan')->where('dipa', 'DISINFOLAHTAL');
         if ($tahun) {
@@ -176,7 +176,7 @@ class PengadaanModel extends Model
         return $builder->get()->getRow()->pelaksanaan;
     }
 
-    public function pembayaran_belanja_rutin($tahun = null)
+    public function pembayaran_belanja_dipa_disinfolahtal($tahun = null)
     {
         $builder = $this->db->table($this->table)->selectSum('pembayaran')->where('dipa', 'DISINFOLAHTAL');
         if ($tahun) {
@@ -195,7 +195,7 @@ class PengadaanModel extends Model
         return $builder->countAllResults();
     }
 
-    public function perencanaan_belanja_modal($tahun = null)
+    public function perencanaan_belanja_dipa_mabesal($tahun = null)
     {
         $builder = $this->db->table($this->table)->selectSum('perencanaan')->where('dipa', 'MABES TNI AL');
         if ($tahun) {
@@ -204,7 +204,7 @@ class PengadaanModel extends Model
         return $builder->get()->getRow()->perencanaan;
     }
 
-    public function pelaksanaan_belanja_modal($tahun = null)
+    public function pelaksanaan_belanja_dipa_mabesal($tahun = null)
     {
         $builder = $this->db->table($this->table)->selectSum('pelaksanaan')->where('dipa', 'MABES TNI AL');
         if ($tahun) {
@@ -213,7 +213,7 @@ class PengadaanModel extends Model
         return $builder->get()->getRow()->pelaksanaan;
     }
 
-    public function pembayaran_belanja_modal($tahun = null)
+    public function pembayaran_belanja_dipa_mabesal($tahun = null)
     {
         $builder = $this->db->table($this->table)->selectSum('pembayaran')->where('dipa', 'MABES TNI AL');
         if ($tahun) {
