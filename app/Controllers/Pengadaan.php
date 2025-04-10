@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\PengadaanModel;
 use App\Models\FileModel;
-use App\Models\DokumenModel;
+use App\Models\TemplateDokumenModel;
 use App\Models\DipaModel;
 use App\Models\JenisModel;
 use App\Models\MetodeModel;
@@ -21,15 +21,15 @@ class Pengadaan extends BaseController
         $this->dipaModel = new DipaModel();
         $this->jenisModel = new JenisModel();
         $this->metodeModel = new MetodeModel();
-        $this->dokumenModel = new DokumenModel();
+        $this->templateDokumenModel = new TemplateDokumenModel();
 
         // Mengambil jumlah dokumen dari masing-masing tabel dan menyimpannya di properti class
         $this->dokumenCounts = [
-            'tabel_pl' => $this->dokumenModel->getAllCount('tabel_pl'),
-            'tabel_juksung' => $this->dokumenModel->getAllCount('tabel_juksung'),
-            'tabel_tender' => $this->dokumenModel->getAllCount('tabel_tender'),
-            'tabel_ep' => $this->dokumenModel->getAllCount('tabel_ep'),
-            'tabel_swakelola' => $this->dokumenModel->getAllCount('tabel_swakelola'),
+            'tabel_pl' => $this->templateDokumenModel->getAllCount('tabel_pl'),
+            'tabel_juksung' => $this->templateDokumenModel->getAllCount('tabel_juksung'),
+            'tabel_tender' => $this->templateDokumenModel->getAllCount('tabel_tender'),
+            'tabel_ep' => $this->templateDokumenModel->getAllCount('tabel_ep'),
+            'tabel_swakelola' => $this->templateDokumenModel->getAllCount('tabel_swakelola'),
         ];
     }
 

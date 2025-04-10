@@ -3,26 +3,26 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\DokumenModel;
+use App\Models\TemplateDokumenModel;
 
 class Templatedokumen extends BaseController
 {
-    protected $dokumenModel;
+    protected $templateDokumenModel;
 
     public function __construct()
     {
         $this->session = \Config\Services::session();
-        $this->dokumenModel = new DokumenModel();
+        $this->templateDokumenModel = new TemplateDokumenModel();
     }
 
     public function index()
     {
         // Mengambil dokumen dari masing-masing tabel
-        $plDocuments = $this->dokumenModel->getDokumenByTable('tabel_pl');
-        $juksungDocuments = $this->dokumenModel->getDokumenByTable('tabel_juksung');
-        $tenderDocuments = $this->dokumenModel->getDokumenByTable('tabel_tender');
-        $epDocuments = $this->dokumenModel->getDokumenByTable('tabel_ep');
-        $swakelolaDocuments = $this->dokumenModel->getDokumenByTable('tabel_swakelola');
+        $plDocuments = $this->templateDokumenModel->getDokumenByTable('tabel_pl');
+        $juksungDocuments = $this->templateDokumenModel->getDokumenByTable('tabel_juksung');
+        $tenderDocuments = $this->templateDokumenModel->getDokumenByTable('tabel_tender');
+        $epDocuments = $this->templateDokumenModel->getDokumenByTable('tabel_ep');
+        $swakelolaDocuments = $this->templateDokumenModel->getDokumenByTable('tabel_swakelola');
 
         // Data yang dikirimkan ke view
         $data = [
@@ -86,7 +86,7 @@ class Templatedokumen extends BaseController
         }
 
         try {
-            $inserted = $this->dokumenModel->addDokumen($table, $dokumen);
+            $inserted = $this->templateDokumenModel->addDokumen($table, $dokumen);
 
             if ($inserted) {
                 session()->setFlashdata('success', 'Dokumen berhasil ditambahkan');
@@ -110,7 +110,7 @@ class Templatedokumen extends BaseController
             return redirect()->to(base_url('admin/templatedokumen'));
         }
 
-        if ($this->dokumenModel->deleteDokumen($table, $id)) {
+        if ($this->templateDokumenModel->deleteDokumen($table, $id)) {
             $this->session->setFlashdata('success', 'Dokumen berhasil dihapus');
         } else {
             $this->session->setFlashdata('error', 'Gagal menghapus dokumen');

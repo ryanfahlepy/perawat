@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DokumenModel extends Model
+class TemplateDokumenModel extends Model
 {
     protected $table;
     protected $primaryKey = 'id_dokumen';
