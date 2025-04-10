@@ -4,7 +4,7 @@
             <th>Nama Menu</th>
             <th>url</th>
             <!-- <th>Icon</th> -->
-            <th>Level User</th>
+            <th>Level Pengguna</th>
             <th>Urutan</th>
             <th>Status</th>
             <th>Aksi</th>

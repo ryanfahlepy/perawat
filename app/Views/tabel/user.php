@@ -3,9 +3,9 @@
         <tr class="text-center">
             <th>No</th>
             <th>Photo</th>
-            <th>Nama User</th>
+            <th>Nama Pengguna</th>
             <th>Username</th>
-            <th>Level User</th>
+            <th>Level Pengguna</th>
             <th>Status</th>
             <th>Aksi</th>
         </tr>

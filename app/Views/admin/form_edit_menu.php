@@ -24,9 +24,9 @@
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group">
-                    <label for="level_id">Level User</label>
+                    <label for="level_id">Level Pengguna</label>
                     <select name="level_id" id="level_id" class="form-control">
-                        <option value="">--- Pilih Level User ---</option>
+                        <option value="">--- Pilih Level Pengguna ---</option>
                         <?php foreach ($level as $lvl) : ?>
                             <option value="<?= $lvl->id ?>"> <?= $lvl->nama_level ?> </option>
                         <?php endforeach ?>

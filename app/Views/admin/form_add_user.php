@@ -1,15 +1,15 @@
 <div class="card-body">
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Form Tambah User</h3>
+            <h3 class="card-title">Form Tambah Pengguna</h3>
         </div>
         <?= form_open_multipart('/admin/manuser/simpan', ['id' => 'adduser']); ?>
         <div class="card-body">
             <div class="chart">
                 <?= csrf_field(); ?>
                 <div class="form-group">
-                    <label for="nama">Nama User</label>
-                    <input type="text" name="nama" id="nama" class="form-control" value="<?= old('nama') ?>" placeholder=" Enter Nama User" autofocus>
+                    <label for="nama">Nama Pengguna</label>
+                    <input type="text" name="nama" id="nama" class="form-control" value="<?= old('nama') ?>" placeholder=" Enter Nama Pengguna" autofocus>
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group">
@@ -23,9 +23,9 @@
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group">
-                    <label for="level_id">Level User</label>
+                    <label for="level_id">Level Pengguna</label>
                     <select name="level_id" id="level_id" class="form-control">
-                        <option value="">--- Pilih Level User ---</option>
+                        <option value="">--- Pilih Level Pengguna ---</option>
                         <?php foreach ($level as $lv) : ?>
                             <option value="<?= $lv->id ?>"> <?= $lv->nama_level ?> </option>
                         <?php endforeach ?>

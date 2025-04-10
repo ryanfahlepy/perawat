@@ -9,7 +9,7 @@
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_user" value="<?= $data->id ?>">
                 <div class="form-group">
-                    <label for="nama">Nama User</label>
+                    <label for="nama">Nama Pengguna</label>
                     <input type="text" name="nama" id="nama" class="form-control" value="<?= $data->nama ?>" autofocus>
                     <div class="invalid-feedback"></div>
                 </div>
@@ -19,9 +19,9 @@
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group">
-                    <label for="level_id">Level User</label>
+                    <label for="level_id">Level Pengguna</label>
                     <select name="level_id" id="level_id" class="form-control">
-                        <option value="">--- Pilih Level User ---</option>
+                        <option value="">--- Pilih Level Pengguna ---</option>
                         <?php foreach ($level as $lv) : ?>
                             <option value="<?= $lv->id ?>"> <?= $lv->nama_level ?> </option>
                         <?php endforeach ?>

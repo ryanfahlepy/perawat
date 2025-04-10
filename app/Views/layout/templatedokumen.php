@@ -108,6 +108,21 @@
 
         $(".save-btn").click(function () {
             var tab = $(this).data("tab");
+
+            // Mapping tab ke nama tabel sesuai
+            var table;
+            if (tab === "pl") {
+                table = "tabel_pl";
+            } else if (tab === "juksung") {
+                table = "tabel_juksung";
+            } else if (tab === "tender") {
+                table = "tabel_tender";
+            } else if (tab === "ep") {
+                table = "tabel_ep";
+            } else if (tab === "swakelola") {
+                table = "tabel_swakelola";
+            }
+
             var order = [];
 
             $("#sortable-" + tab + " li").each(function (index) {
@@ -116,24 +131,30 @@
                 order.push({ id: id, dokumen: dokumen });
             });
 
+            console.log("Data order:", order);
+            console.log("Table:", table);
+
             $.ajax({
                 url: "<?= base_url('templatedokumen/update_order') ?>",
                 type: "POST",
-                data: { order: order, table: tab },
+                data: { order: order, table: table },
                 dataType: "json",
                 success: function (response) {
                     if (response.status === "success") {
-                        window.location.href = "<?= base_url('templatedokumen') ?>?success=Data berhasil disimpan!";
+                        Swal.fire('Berhasil', 'Data berhasil disimpan', 'success').then(() => {
+                            window.location.reload();
+                        });
                     } else {
-                        window.location.href = "<?= base_url('templatedokumen') ?>?error=" + encodeURIComponent("Gagal menyimpan data: " + response.message);
+                        Swal.fire('Gagal', 'Gagal menyimpan data: ' + response.message, 'error');
                     }
                 },
                 error: function () {
-                    window.location.href = "<?= base_url('templatedokumen') ?>?error=Terjadi kesalahan, coba lagi!";
+                    Swal.fire('Gagal', 'Terjadi kesalahan, coba lagi!', 'error');
                 }
 
             });
         });
+
 
         $(".tambah-btn").click(function () {
             var tab = $(this).data("tab");
@@ -224,7 +245,7 @@
         }).then((result) => {
 
             if (result.value) {
-                
+
 
                 $.ajax({
                     url: "<?= base_url('templatedokumen/delete_document') ?>",
@@ -241,7 +262,7 @@
                     }
                 });
             } else {
-                
+
             }
 
         });
