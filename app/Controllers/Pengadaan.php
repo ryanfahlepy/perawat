@@ -1,7 +1,10 @@
 <?php
 
+
 namespace App\Controllers;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use App\Controllers\BaseController;
 use App\Models\PengadaanModel;
 use App\Models\FileModel;
@@ -34,90 +37,90 @@ class Pengadaan extends BaseController
     }
 
     public function index()
-{
-    $nama_level = session()->get('nama_level');
-    $whereCondition = [];
+    {
+        $nama_level = session()->get('nama_level');
+        $whereCondition = [];
 
-    if ($nama_level == 'Pokja') {
-        $whereCondition = ['dipa' => 'MABES TNI AL'];
-    } elseif ($nama_level == 'PP') {
-        $whereCondition = ['dipa' => 'DISINFOLAHTAL'];
-    }
-
-    // Ambil tahun dari POST (filter)
-    $tahun_dipilih = $this->request->getPost('tahun');
-
-    // Ambil data pengadaan
-    $pengadaanData = $this->pengadaanModel->getAllbyColumn($whereCondition, $tahun_dipilih);
-
-    // Ambil semua tahun dari database (untuk dropdown)
-    $tahun_tersedia = $this->pengadaanModel
-        ->select('tahun_anggaran')
-        ->distinct()
-        ->orderBy('tahun_anggaran', 'DESC')
-        ->findAll();
-
-    // Hitung jumlah dokumen berdasarkan metode
-    foreach ($pengadaanData as &$pengadaan) {
-        switch ($pengadaan['metode']) {
-            case 'Pengadaan Langsung':
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_pl'];
-                break;
-            case 'Penunjukkan Langsung':
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_juksung'];
-                break;
-            case 'Tender':
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_tender'];
-                break;
-            case 'E-Purchasing':
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_ep'];
-                break;
-            case 'Swakelola':
-                $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_swakelola'];
-                break;
-            default:
-                $pengadaan['jumlah_dokumen'] = 0;
+        if ($nama_level == 'Pokja') {
+            $whereCondition = ['dipa' => 'MABES TNI AL'];
+        } elseif ($nama_level == 'PP') {
+            $whereCondition = ['dipa' => 'DISINFOLAHTAL'];
         }
+
+        // Ambil tahun dari POST (filter)
+        $tahun_dipilih = $this->request->getPost('tahun');
+
+        // Ambil data pengadaan
+        $pengadaanData = $this->pengadaanModel->getAllbyColumn($whereCondition, $tahun_dipilih);
+
+        // Ambil semua tahun dari database (untuk dropdown)
+        $tahun_tersedia = $this->pengadaanModel
+            ->select('tahun_anggaran')
+            ->distinct()
+            ->orderBy('tahun_anggaran', 'DESC')
+            ->findAll();
+
+        // Hitung jumlah dokumen berdasarkan metode
+        foreach ($pengadaanData as &$pengadaan) {
+            switch ($pengadaan['metode']) {
+                case 'Pengadaan Langsung':
+                    $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_pl'];
+                    break;
+                case 'Penunjukkan Langsung':
+                    $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_juksung'];
+                    break;
+                case 'Tender':
+                    $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_tender'];
+                    break;
+                case 'E-Purchasing':
+                    $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_ep'];
+                    break;
+                case 'Swakelola':
+                    $pengadaan['jumlah_dokumen'] = $this->dokumenCounts['tabel_swakelola'];
+                    break;
+                default:
+                    $pengadaan['jumlah_dokumen'] = 0;
+            }
+        }
+
+        // Hitung jumlah file dan progress
+        foreach ($pengadaanData as &$pengadaan) {
+            $pengadaan['jumlah_file'] = $this->fileModel->getFileCountByPengadaanId($pengadaan['id']);
+            $pengadaan['progress'] = ($pengadaan['jumlah_dokumen'] > 0)
+                ? round(($pengadaan['jumlah_file'] / $pengadaan['jumlah_dokumen']) * 100)
+                : 0;
+        }
+
+        // Cek apakah ada filter DIPA (hindari error undefined index)
+        $dipaFilter = isset($whereCondition['dipa']) ? $whereCondition['dipa'] : null;
+
+        return view('layout/pengadaan', [
+            'level_akses' => $nama_level,
+            'dtmenu' => $this->tampil_menu(session()->get('level')),
+            'nama_menu' => 'Pengadaan',
+            'pengadaan' => $pengadaanData,
+            'tahun_dipilih' => $tahun_dipilih,
+            'tahun_tersedia' => $tahun_tersedia,
+
+            // Statistik keseluruhan (filtered by tahun & dipa)
+            'jumlah_pengadaan' => $this->pengadaanModel->jumlah_pengadaan($tahun_dipilih, $dipaFilter),
+            'total_perencanaan' => $this->pengadaanModel->total_perencanaan($tahun_dipilih, $dipaFilter),
+            'total_pelaksanaan' => $this->pengadaanModel->total_pelaksanaan($tahun_dipilih, $dipaFilter),
+            'total_pembayaran' => $this->pengadaanModel->total_pembayaran($tahun_dipilih, $dipaFilter),
+
+            // Statistik belanja rutin
+            'jumlah_pengadaan_belanja_rutin' => $this->pengadaanModel->jumlah_pengadaan_belanja_rutin($tahun_dipilih),
+            'perencanaan_belanja_dipa_disinfolahtal' => $this->pengadaanModel->perencanaan_belanja_dipa_disinfolahtal($tahun_dipilih),
+            'pelaksanaan_belanja_dipa_disinfolahtal' => $this->pengadaanModel->pelaksanaan_belanja_dipa_disinfolahtal($tahun_dipilih),
+            'pembayaran_belanja_dipa_disinfolahtal' => $this->pengadaanModel->pembayaran_belanja_dipa_disinfolahtal($tahun_dipilih),
+
+            // Statistik belanja modal
+            'jumlah_pengadaan_belanja_modal' => $this->pengadaanModel->jumlah_pengadaan_belanja_modal($tahun_dipilih),
+            'perencanaan_belanja_dipa_mabesal' => $this->pengadaanModel->perencanaan_belanja_dipa_mabesal($tahun_dipilih),
+            'pelaksanaan_belanja_dipa_mabesal' => $this->pengadaanModel->pelaksanaan_belanja_dipa_mabesal($tahun_dipilih),
+            'pembayaran_belanja_dipa_mabesal' => $this->pengadaanModel->pembayaran_belanja_dipa_mabesal($tahun_dipilih),
+        ]);
     }
-
-    // Hitung jumlah file dan progress
-    foreach ($pengadaanData as &$pengadaan) {
-        $pengadaan['jumlah_file'] = $this->fileModel->getFileCountByPengadaanId($pengadaan['id']);
-        $pengadaan['progress'] = ($pengadaan['jumlah_dokumen'] > 0)
-            ? round(($pengadaan['jumlah_file'] / $pengadaan['jumlah_dokumen']) * 100)
-            : 0;
-    }
-
-    // Cek apakah ada filter DIPA (hindari error undefined index)
-    $dipaFilter = isset($whereCondition['dipa']) ? $whereCondition['dipa'] : null;
-
-    return view('layout/pengadaan', [
-        'level_akses' => $nama_level,
-        'dtmenu' => $this->tampil_menu(session()->get('level')),
-        'nama_menu' => 'Pengadaan',
-        'pengadaan' => $pengadaanData,
-        'tahun_dipilih' => $tahun_dipilih,
-        'tahun_tersedia' => $tahun_tersedia,
-
-        // Statistik keseluruhan (filtered by tahun & dipa)
-        'jumlah_pengadaan' => $this->pengadaanModel->jumlah_pengadaan($tahun_dipilih, $dipaFilter),
-        'total_perencanaan' => $this->pengadaanModel->total_perencanaan($tahun_dipilih, $dipaFilter),
-        'total_pelaksanaan' => $this->pengadaanModel->total_pelaksanaan($tahun_dipilih, $dipaFilter),
-        'total_pembayaran' => $this->pengadaanModel->total_pembayaran($tahun_dipilih, $dipaFilter),
-
-        // Statistik belanja rutin
-        'jumlah_pengadaan_belanja_rutin' => $this->pengadaanModel->jumlah_pengadaan_belanja_rutin($tahun_dipilih),
-        'perencanaan_belanja_dipa_disinfolahtal' => $this->pengadaanModel->perencanaan_belanja_dipa_disinfolahtal($tahun_dipilih),
-        'pelaksanaan_belanja_dipa_disinfolahtal' => $this->pengadaanModel->pelaksanaan_belanja_dipa_disinfolahtal($tahun_dipilih),
-        'pembayaran_belanja_dipa_disinfolahtal' => $this->pengadaanModel->pembayaran_belanja_dipa_disinfolahtal($tahun_dipilih),
-
-        // Statistik belanja modal
-        'jumlah_pengadaan_belanja_modal' => $this->pengadaanModel->jumlah_pengadaan_belanja_modal($tahun_dipilih),
-        'perencanaan_belanja_dipa_mabesal' => $this->pengadaanModel->perencanaan_belanja_dipa_mabesal($tahun_dipilih),
-        'pelaksanaan_belanja_dipa_mabesal' => $this->pengadaanModel->pelaksanaan_belanja_dipa_mabesal($tahun_dipilih),
-        'pembayaran_belanja_dipa_mabesal' => $this->pengadaanModel->pembayaran_belanja_dipa_mabesal($tahun_dipilih),
-    ]);
-}
 
     public function filterByTahun()
     {
@@ -164,7 +167,7 @@ class Pengadaan extends BaseController
             'perencanaan',
             'pelaksanaan',
             'pembayaran',
-            'tangga_mulai',
+            'tanggal_mulai',
             'tanggal_berakhir'
         ]);
 
@@ -356,7 +359,8 @@ class Pengadaan extends BaseController
         return redirect()->back();
     }
 
-    public function unduh_semua_dokumen($id_pengadaan)
+
+    public function unduh_dokumen_laporan($id_pengadaan)
     {
         helper('download');
         $zip = new \ZipArchive();
@@ -370,6 +374,29 @@ class Pengadaan extends BaseController
         $files = $this->fileModel->get_all_files($id_pengadaan);
         $namaPengadaan = $this->pengadaanModel->find($id_pengadaan);
 
+        // Tentukan tabel dokumen berdasarkan metode
+        switch ($namaPengadaan['metode']) {
+            case 'Pengadaan Langsung':
+                $tableDokumen = 'tabel_pl';
+                break;
+            case 'Penunjukkan Langsung':
+                $tableDokumen = 'tabel_juksung';
+                break;
+            case 'Tender':
+                $tableDokumen = 'tabel_tender';
+                break;
+            case 'E-Purchasing':
+                $tableDokumen = 'tabel_ep';
+                break;
+            case 'Swakelola':
+                $tableDokumen = 'tabel_swakelola';
+                break;
+            default:
+                $tableDokumen = '';
+                break;
+        }
+
+        $templateDokumen = $this->templateDokumenModel->getDokumenByTable($tableDokumen);
 
         if (empty($files)) {
             session()->setFlashdata('error', 'Tidak ada dokumen untuk diunduh');
@@ -384,28 +411,115 @@ class Pengadaan extends BaseController
             return redirect()->to(base_url('pengadaan/detail_pengadaan/' . $id_pengadaan));
         }
 
+        // Tambahkan file dokumen ke zip
         foreach ($files as $file) {
-            $path = $folder . $file['nama_file']; // Gunakan indeks array
+            $path = $folder . $file['nama_file'];
             if (file_exists($path)) {
-                $zip->addFile($path, $file['nama_file']); // Gunakan indeks array
+                $zip->addFile($path, $file['nama_file']);
             }
         }
 
+        // Mapping dokumen yang sudah diupload
+        $uploadedFileMap = []; // [ref_id_dokumen => [nama_file1, nama_file2, ...]]
+        foreach ($files as $file) {
+            $refId = $file['ref_id_dokumen'];
+            if (!isset($uploadedFileMap[$refId])) {
+                $uploadedFileMap[$refId] = [];
+            }
+            $uploadedFileMap[$refId][] = $file['nama_file'];
+        }
+
+        // === Generate RESUME LAPORAN PDF ===
+        $html = '<h3 style="text-align:center;">RESUME LAPORAN</h3>';
+
+        // Detail Pengadaan
+        $html .= '<h4 style="margin-top:15px; margin-bottom:8px;">Detail Pengadaan</h4>';
+        $html .= '<table border="1" cellpadding="3" cellspacing="0" width="100%" style="margin-bottom: 15px; border-collapse: collapse; font-size: 11px;">';
+        $html .= '<tbody>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>ID</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['id'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Tahun Anggaran</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['tahun_anggaran'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>DIPA</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['dipa'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Jenis</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['jenis'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Metode</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['metode'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Kode RUP</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['kode_rup'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Nama Pengadaan</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['nama_pengadaan'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Perencanaan</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['perencanaan'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Pelaksanaan</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['pelaksanaan'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Pembayaran</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['pembayaran'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Tanggal Mulai</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['tanggal_mulai'] . '</td></tr>';
+        $html .= '<tr><td style="padding: 3px 6px;"><b>Tanggal Berakhir</b></td><td style="padding: 3px 6px;">' . $namaPengadaan['tanggal_berakhir'] . '</td></tr>';
+        $html .= '</tbody></table>';
+
+        // Daftar Dokumen
+        $html .= '<h4 style="margin-top:15px; margin-bottom:8px;">Daftar Dokumen</h4>';
+        $html .= '<table border="1" cellpadding="3" cellspacing="0" width="100%" style="border-collapse: collapse; font-size: 11px;">';
+        $html .= '<thead>
+<tr>
+    <th style="width: 50%; padding: 3px 6px;">Dokumen</th>
+    <th style="width: 40%; padding: 3px 6px;">Nama File</th>
+    <th style="width: 10%; padding: 3px 6px; text-align: center;">Ceklis</th>
+</tr>
+</thead><tbody>';
+
+        foreach ($templateDokumen as $template) {
+            $idDokumen = $template['id_dokumen'];
+            $namaDokumen = $template['dokumen'];
+
+            if (isset($uploadedFileMap[$idDokumen])) {
+                $fileList = '<ul><li>' . implode('</li><li>', $uploadedFileMap[$idDokumen]) . '</li></ul>';
+                $html .= "<tr>
+            <td style=\"padding: 3px 6px;\">$namaDokumen</td>
+            <td style=\"padding: 3px 6px;\">$fileList</td>
+            <td style=\"padding: 3px 6px; text-align: center; font-size: 16px; color: #00c853;\">&#10004;</td>
+        </tr>";
+            } else {
+                $html .= "<tr>
+            <td style=\"padding: 3px 6px;\">$namaDokumen</td>
+            <td style=\"padding: 3px 6px; text-align: center;\"><i>Belum diunggah</i></td>
+            <td style=\"padding: 3px 6px; text-align: center; font-size: 16px; color: #d50000;\">&#10008;</td>
+        </tr>";
+            }
+        }
+
+        $html .= '</tbody></table>';
+
+        // Generate PDF dengan Dompdf
+        $options = new \Dompdf\Options();
+        $options->set('isRemoteEnabled', true);
+        $options->set('defaultFont', 'DejaVu Sans'); // Font ini support banyak simbol
+        $dompdf = new \Dompdf\Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $resumePath = WRITEPATH . 'uploads/RESUME_LAPORAN.pdf';
+        file_put_contents($resumePath, $dompdf->output());
+
+        // Tambahkan resume ke dalam ZIP
+        if (file_exists($resumePath)) {
+            $zip->addFile($resumePath, '_RESUME_LAPORAN_.pdf');
+        }
 
         $zip->close();
 
-        // Menggunakan download bawaan CodeIgniter
+        // Unduh ZIP
         $response = $this->response->download($zipFileName, null)->setFileName($namaPengadaan['nama_pengadaan'] . '.zip');
 
-        // Hapus file ZIP setelah download
-        register_shutdown_function(function () use ($zipFileName) {
+        // Hapus file sementara setelah proses selesai
+        register_shutdown_function(function () use ($zipFileName, $resumePath) {
             if (file_exists($zipFileName)) {
                 unlink($zipFileName);
+            }
+            if (file_exists($resumePath)) {
+                unlink($resumePath);
             }
         });
 
         return $response;
     }
+
+
+
 
     public function hapus_dokumen($id_file)
     {

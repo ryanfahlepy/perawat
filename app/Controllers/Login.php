@@ -20,7 +20,7 @@ class Login extends BaseController
         if (session()->has('sdh_login')) {
             $_SESSION['color'] = 'warning';
             session()->setFlashdata('pesan', 'Anda sudah login');
-            return redirect()->to('/profile');
+            return redirect()->to('/profil');
         }
         $data = [
             'validation' => $this->validation
@@ -86,10 +86,10 @@ class Login extends BaseController
                     } elseif ($user->level_user == 4) {
                         return redirect()->to('/pengadaan');
                     } elseif ($user->level_user == 1) {
-                        return redirect()->to('/profile');
+                        return redirect()->to('/profil');
                     } else {
                         // Redirect default jika level_user tidak sesuai
-                        return redirect()->to('/profile');
+                        return redirect()->to('/profil');
                     }
                 } else {
                     $_SESSION['color'] = 'danger';

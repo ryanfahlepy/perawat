@@ -108,8 +108,8 @@ $session = \Config\Services::session();
                 <?php endif ?>
             </div>
             <button type="button" id="downloadAllBtn" class="btn btn-primary"
-                onclick="location.href='<?= base_url('pengadaan/unduh_semua_dokumen/' . $pengadaan['id']) ?>'">
-                Unduh Semua Dokumen
+                onclick="location.href='<?= base_url('pengadaan/unduh_dokumen_laporan/' . $pengadaan['id']) ?>'">
+                Unduh Dokumen & Laporan
             </button>
         </div>
     </form>

@@ -70,7 +70,7 @@ CREATE TABLE `tbmenu` (
 --
 
 INSERT INTO `tbmenu` (`id`, `user_level_id`, `nama`, `url`, `icon`, `urutan`, `aktif`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Profile', '/user/profile', 'fas fa-user', 1, 1, '2021-10-11 03:47:07', '2021-10-11 03:47:07'),
+(1, 2, 'Profile', '/user/profil', 'fas fa-user', 1, 1, '2021-10-11 03:47:07', '2021-10-11 03:47:07'),
 (2, 1, 'Kelola Menu', '/admin/manmenu', 'fas fa-edit', 2, 1, '2021-10-11 03:49:34', '2021-10-11 03:49:34'),
 (3, 1, 'Dashboard', '/admin/dasboard', 'fas fa-th', 1, 1, '2021-10-11 05:46:37', '2022-01-16 07:00:24'),
 (4, 3, 'Menu Supervisor', '/supervisor/home', 'fas fa-atom', 2, 1, '2021-10-11 05:46:37', '2021-10-11 05:46:37'),

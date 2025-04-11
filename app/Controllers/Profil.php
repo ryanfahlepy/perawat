@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 
-class Profile extends BaseController
+class Profil extends BaseController
 {
     public function __construct()
     {
@@ -17,8 +17,8 @@ class Profile extends BaseController
         $data = [
             'level_akses' => $this->session->nama_level,
             'dtmenu' => $this->tampil_menu($this->session->level),
-            'nama_menu' => 'Profile'
+            'nama_menu' => 'Profil'
         ];
-        return view('user/profile', $data);
+        return view('user/profil', $data);
     }
 }
