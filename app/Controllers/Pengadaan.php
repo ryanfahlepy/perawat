@@ -187,6 +187,7 @@ class Pengadaan extends BaseController
 
     public function detail_pengadaan($id)
     {
+        $search = $this->request->getGet('search'); // ambil keyword pencarian dari query string
 
         $listDipa = $this->dipaModel->findAll();
         $listJenis = $this->jenisModel->findAll();
@@ -197,9 +198,16 @@ class Pengadaan extends BaseController
             return redirect()->to('/pengadaan');
         }
 
-        $fileList = $this->fileModel->where('ref_id_pengadaan', $id)
-            ->where('deleted_at', null) // Menambahkan kondisi untuk memastikan hanya file yang belum dihapus yang diambil
-            ->findAll();
+        $fileQuery = $this->fileModel
+            ->where('ref_id_pengadaan', $id)
+            ->where('deleted_at', null);
+
+        if (!empty($search)) {
+            $fileQuery->like('nama_file', $search);
+        }
+
+        $fileList = $fileQuery->findAll();
+
 
 
 
@@ -224,13 +232,18 @@ class Pengadaan extends BaseController
 
         // Jika ref_tabel valid, ambil data dokumen dari tabel yang sesuai
         $dokumenList = [];
+
         if ($dokumenTable) {
             $db = \Config\Database::connect();
-            $dokumenList = $db->table($dokumenTable)
-                ->select('id_dokumen, dokumen')
+            $builder = $db->table($dokumenTable)
+                ->select('id_dokumen, dokumen');
 
-                ->get()
-                ->getResultArray();
+            // jika ada input pencarian, tambahkan filter LIKE
+            if (!empty($search)) {
+                $builder->like('dokumen', $search);
+            }
+
+            $dokumenList = $builder->get()->getResultArray();
         }
 
 
@@ -270,6 +283,7 @@ class Pengadaan extends BaseController
             'listDipa' => $listDipa,
             'listJenis' => $listJenis,
             'listMetode' => $listMetode,
+            'search' => $search, // kirim ke view
 
         ];
 

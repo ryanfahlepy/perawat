@@ -132,13 +132,25 @@ $session = \Config\Services::session();
     </div>
     <div class="card-body">
         <table class="table table-bordered">
+            <div class="input-group mb-3">
+                <input type="text" id="filterInput" class="form-control" placeholder="Cari dokumen atau file...">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button"
+                        onclick="document.getElementById('filterInput').value=''; filterTable();">
+                        <i class="fas fa-times"></i> Reset
+                    </button>
+                </div>
+            </div>
+
             <thead class="text-center">
                 <tr>
                     <th style="width: 5%;">No</th>
                     <th style="width: 20%;">Nama</th>
                     <th style="width: 35%;">Dokumen</th>
                     <th style="width: 20%;">Waktu Unggah</th>
+                    <?php if ($level_akses !== 'PPK'): ?>
                     <th style="width: 10%;">Aksi</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -160,10 +172,12 @@ $session = \Config\Services::session();
                                             <a href="<?= esc($filePath) ?>" target="_blank" class="mr-2">
                                                 <i class="fas fa-file-pdf text-danger"></i> <?= esc($file['nama_file']) ?>
                                             </a>
+                                            <?php if ($level_akses !== 'PPK'): ?>
                                             <a href="#" class="text-danger ml-2"
                                                 onclick="confirmDelete('<?= esc($deleteUrl) ?>'); return false;">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
+                                            <?php endif; ?>
                                         </div>
                                         <?php
                                         $found = true;
@@ -186,10 +200,12 @@ $session = \Config\Services::session();
                                 echo !empty($uploadTimes) ? implode('<br>', $uploadTimes) : '<span class="text-muted">-</span>';
                                 ?>
                             </td>
+                            <?php if ($level_akses !== 'PPK'): ?>
                             <td class="text-center">
                                 <button class="btn btn-primary btn-sm"
                                     onclick="showUploadModal(<?= $pengadaan['id']; ?>, <?= $dokumen['id_dokumen']; ?>)">Unggah</button>
                             </td>
+                            <?php endif; ?>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -238,6 +254,7 @@ $session = \Config\Services::session();
     function closeTab() {
         window.close();
     }
+
     // Fungsi SweetAlert2 untuk konfirmasi hapus
     const confirmDelete = (url) => {
 
@@ -306,6 +323,24 @@ $session = \Config\Services::session();
             confirmButtonText: "OK"
         });
     <?php endif; ?>
+</script>
+<script>
+    document.getElementById('filterInput').addEventListener('keyup', filterTable);
+
+    function filterTable() {
+        const input = document.getElementById('filterInput').value.toLowerCase();
+        const rows = document.querySelectorAll('table tbody tr');
+
+        rows.forEach(row => {
+            const nama = row.cells[1]?.textContent.toLowerCase();
+            const dokumen = row.cells[2]?.textContent.toLowerCase();
+            if (nama.includes(input) || dokumen.includes(input)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
 </script>
 
 <?php $this->endSection(); ?>
