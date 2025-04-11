@@ -101,7 +101,7 @@ $session = \Config\Services::session();
         <div class="d-flex justify-content-between mt-3">
             <div>
                 <a href="javascript:void(0);" class="btn btn-secondary mr-2" onclick="closeTab()">Kembali</a>
-                <?php if ($level_akses == !'PPK'): ?>
+                <?php if ($level_akses !== 'PPK'): ?>
                     <button type="button" id="editBtn" class="btn btn-warning" style="color: white;"
                         onclick="editData()">Edit</button>
                     <button type="submit" id="saveBtn" class="btn btn-success" style="display:none;">Simpan</button>
@@ -138,9 +138,7 @@ $session = \Config\Services::session();
                     <th style="width: 20%;">Nama</th>
                     <th style="width: 35%;">Dokumen</th>
                     <th style="width: 20%;">Waktu Unggah</th>
-                    <?php if ($level_akses !== 'PPK'): ?>
                     <th style="width: 10%;">Aksi</th>
-                    <?php endif ?>
                 </tr>
             </thead>
             <tbody>
@@ -155,15 +153,19 @@ $session = \Config\Services::session();
                                 $found = false;
                                 foreach ($fileList as $file) {
                                     if ($file['ref_id_dokumen'] == $dokumen['id_dokumen']) {
-                                        $filePath = base_url('uploads/' . $pengadaan['id'] . '/' . $file['nama_file']);
-                                        echo '<div class="d-flex align-items-center mb-2">
-                                        <a href="' . esc($filePath) . '" target="_blank" class="mr-2">
-                                            <i class="fas fa-file-pdf text-danger"></i> ' . esc($file['nama_file']) . '
-                                        </a>
-                                        <a href="#" class="text-danger ml-2" onclick="confirmDelete(\'' . base_url('pengadaan/hapus_dokumen/' . $file['id']) . '\'); return false;">
-                                        <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                        </div>';
+                                        $filePath = base_url('uploads/' . esc($pengadaan['id']) . '/' . esc($file['nama_file']));
+                                        $deleteUrl = base_url('pengadaan/hapus_dokumen/' . esc($file['id']));
+                                        ?>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <a href="<?= esc($filePath) ?>" target="_blank" class="mr-2">
+                                                <i class="fas fa-file-pdf text-danger"></i> <?= esc($file['nama_file']) ?>
+                                            </a>
+                                            <a href="#" class="text-danger ml-2"
+                                                onclick="confirmDelete('<?= esc($deleteUrl) ?>'); return false;">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </div>
+                                        <?php
                                         $found = true;
                                     }
                                 }
@@ -172,6 +174,7 @@ $session = \Config\Services::session();
                                 }
                                 ?>
                             </td>
+
                             <td class="text-center">
                                 <?php
                                 $uploadTimes = [];
@@ -183,12 +186,10 @@ $session = \Config\Services::session();
                                 echo !empty($uploadTimes) ? implode('<br>', $uploadTimes) : '<span class="text-muted">-</span>';
                                 ?>
                             </td>
-                            <?php if ($level_akses !=='PPK'): ?>
                             <td class="text-center">
                                 <button class="btn btn-primary btn-sm"
                                     onclick="showUploadModal(<?= $pengadaan['id']; ?>, <?= $dokumen['id_dokumen']; ?>)">Unggah</button>
                             </td>
-                            <?php endif ?>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

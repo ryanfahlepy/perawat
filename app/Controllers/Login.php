@@ -40,30 +40,35 @@ class Login extends BaseController
     public function ceklogin()
     {
         session();
-        if (!$this->validate([
-            'username' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi',
+        if (
+            !$this->validate([
+                'username' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} harus diisi',
+                    ]
+                ],
+                'password' => [
+                    'rules' => 'required|min_length[5]',
+                    'errors' => [
+                        'required' => 'harus diisi',
+                        'min_length' => 'minimal 5 karakter'
+                    ]
                 ]
-            ],
-            'password' => [
-                'rules' => 'required|min_length[5]',
-                'errors' => [
-                    'required' => 'harus diisi',
-                    'min_length' => 'minimal 5 karakter'
-                ]
-            ]
-        ])) {
+            ])
+        ) {
             $_SESSION['color'] = 'danger';
-            session()->setFlashdata('pesan', 'Data tidak valid');
+            session()->setFlashdata('error', 'Data tidak valid');
             return redirect()->to('/login')->withInput();
         }
-        // jika validasi berhasil
-        $dtlogin = $this->request->getVar();
-        $user = $this->userModel->getUser($dtlogin['username'])->getResult()[0];
 
-        if ($user) {
+        // Jika validasi berhasil
+        $dtlogin = $this->request->getVar();
+        $hasil = $this->userModel->getUser($dtlogin['username'])->getResult();
+
+        if (count($hasil) > 0) {
+            $user = $hasil[0];
+
             if (password_verify($dtlogin['password'], $user->password)) {
                 if ($user->status == 'Aktif') {
                     $dtuser = [
@@ -77,37 +82,37 @@ class Login extends BaseController
                     session()->set($dtuser);
                     $_SESSION['color'] = 'success';
                     session()->setFlashdata('pesan', 'Login berhasil');
-                
-                    // Tambahkan redirect berdasarkan level_user
+
+                    // Redirect sesuai level_user
                     if ($user->level_user == 2) {
                         return redirect()->to('/dashboardppk');
-                    } elseif ($user->level_user == 3) {
-                        return redirect()->to('/pengadaan');
-                    } elseif ($user->level_user == 4) {
+                    } elseif ($user->level_user == 3 || $user->level_user == 4) {
                         return redirect()->to('/pengadaan');
                     } elseif ($user->level_user == 1) {
                         return redirect()->to('/profil');
                     } else {
-                        // Redirect default jika level_user tidak sesuai
                         return redirect()->to('/profil');
                     }
+
                 } else {
                     $_SESSION['color'] = 'danger';
-                    session()->setFlashdata('pesan', 'User belum aktif');
+                    session()->setFlashdata('error', 'User belum aktif');
                     return redirect()->to('/login')->withInput();
                 }
-                
+
             } else {
                 $_SESSION['color'] = 'danger';
-                session()->setFlashdata('pesan', 'Password tidak benar');
+                session()->setFlashdata('error', 'Password tidak benar');
                 return redirect()->to('/login')->withInput();
             }
+
         } else {
             $_SESSION['color'] = 'danger';
-            session()->setFlashdata('pesan', 'User tidak terdaftar');
+            session()->setFlashdata('error', 'User tidak terdaftar');
             return redirect()->to('/login')->withInput();
         }
     }
+
 
     public function simpanregister()
     {
@@ -129,7 +134,7 @@ class Login extends BaseController
                         'required' => 'harus disi',
                         'min_length' => 'minimal 2 karakter',
                         'is_unique' => 'username sudah terdaftar',
-                        
+
                     ]
                 ],
                 'password1' => [

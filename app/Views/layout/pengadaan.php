@@ -1,25 +1,55 @@
 <?= $this->extend('shared_page/template'); ?>
 
 <?= $this->section('content'); ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <div class="card-body">
-    <?php if (session()->getFlashdata('success')): ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <?= session()->getFlashdata('success') ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+<?php if (session()->getFlashdata('success')): ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '<?= session()->getFlashdata('success'); ?>',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+        </script>
     <?php endif; ?>
-
     <?php if (session()->getFlashdata('error')): ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <?= session()->getFlashdata('error') ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '<?= session()->getFlashdata('error'); ?>',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+        </script>
     <?php endif; ?>
+    <script>
+$(document).on("click", ".btn-hapuspengadaan", function () {
+    var id = $(this).data("id");
+    Swal.fire({
+        title: "Yakin ingin menghapus?",
+        text: "Data yang dihapus tidak dapat dikembalikan!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Ya, hapus!",
+        cancelButtonText: "Batal"
+    }).then((result) => {
+        if (result.value) {
+            // Redirect manual ke URL penghapusan
+            window.location.href = "/pengadaan/hapus_data_pengadaan/" + id;
+        }
+    });
+});
+
+
+    </script>
 
     <?php if ($level_akses === 'Pokja'): ?>
             <div class="pokja">
@@ -247,11 +277,12 @@
                                             </a>
 
                                             <?php if ($level_akses !== 'PPK'): ?>    
-                                                <a href="<?= base_url('/pengadaan/hapus_data_pengadaan/' . $p['id']); ?>"
-                                                class="btn btn-danger btn-sm m-1"
-                                                onclick="return confirm('Yakin ingin menghapus?');">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
+                                                <a href="javascript:void(0);"
+   class="btn btn-danger btn-sm m-1 btn-hapuspengadaan"
+   data-id="<?= $p['id']; ?>">
+   <i class="fas fa-trash"></i>
+</a>
+
                                                 <?php endif ?>
                                         </div>
                                     </td>

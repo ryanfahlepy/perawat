@@ -7,12 +7,14 @@ use CodeIgniter\Model;
 class PengadaanModel extends Model
 {
     // Tentukan nama tabel yang digunakan
-    protected $table = 'tabel_pengadaan';
+    protected $table = 'tabel_pengadaan'; // ganti sesuai nama tabel kamu
+    protected $primaryKey = 'id';   // ganti jika bukan 'id'
 
+    protected $useAutoIncrement = true;
+    protected $returnType = 'array';
+    protected $useSoftDeletes = false;
 
-    // Kolom yang dapat diubah pada setiap tabel
-    protected $allowedFieldsPerencanaan = [
-        'id',
+    protected $allowedFields = [
         'tahun_anggaran',
         'dipa',
         'jenis',
@@ -26,6 +28,13 @@ class PengadaanModel extends Model
         'tanggal_berakhir'
     ];
 
+    protected $useTimestamps = false;
+
+    // optional method kamu
+    public function insertData($data)
+    {
+        return $this->insert($data); // atau insertBatch kalau kirim banyak
+    }
     // Fungsi untuk mengambil semua data dari tabel tertentu
     public function getAll($table)
     {
@@ -46,21 +55,6 @@ class PengadaanModel extends Model
         return $this->where('id', $id)->get()->getRowArray();
     }
 
-    // Fungsi untuk menambah data ke tabel tertentu
-    public function insertData($data)
-    {
-        if (!is_array($data)) {
-            throw new \InvalidArgumentException('Parameter data harus berupa array.');
-        }
-
-        foreach ($data as $entry) {
-            if (!is_array($entry)) {
-                throw new \InvalidArgumentException('Setiap entry dalam data harus berupa array.');
-            }
-        }
-
-        return $this->insertBatch($data); // langsung pakai fungsi bawaan model
-    }
 
 
     // Fungsi untuk menghapus data berdasarkan ID

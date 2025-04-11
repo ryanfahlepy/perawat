@@ -172,17 +172,17 @@ class Pengadaan extends BaseController
         ]);
 
         if (!$data) {
-            return redirect()->back()->with('error', 'Data yang diteruskan tidak valid.');
+            return redirect()->back()->with('error', 'Data yang diteruskan tidak valid');
         }
 
         $this->pengadaanModel->insertData($data);
-        return redirect()->to('/pengadaan')->with('success', 'Data baru Pengadaan berhasil disimpan.');
+        return redirect()->to('/pengadaan')->with('success', 'Data baru pengadaan berhasil disimpan');
     }
 
     public function hapus_data_pengadaan($id)
     {
         $this->pengadaanModel->deletePengadaan($id);
-        return redirect()->to('/pengadaan')->with('success', 'Data berhasil dihapus.');
+        return redirect()->to('/pengadaan')->with('success', 'Data berhasil dihapus');
     }
 
     public function detail_pengadaan($id)
@@ -330,6 +330,14 @@ class Pengadaan extends BaseController
         $file = $this->request->getFile('file');
 
         if ($file->isValid() && !$file->hasMoved()) {
+            $mime = $file->getMimeType();
+            $ext = strtolower($file->getClientExtension());
+
+            if ($ext !== 'pdf' || $mime !== 'application/pdf') {
+                session()->setFlashdata('error', 'Hanya file PDF yang diperbolehkan');
+                return redirect()->back();
+            }
+
             $newName = $file->getName();
             $folder = 'uploads/' . $id_pengadaan . '/';
 
@@ -355,6 +363,7 @@ class Pengadaan extends BaseController
         } else {
             session()->setFlashdata('error', 'Gagal mengunggah dokumen ' . $file->getErrorString());
         }
+
 
         return redirect()->back();
     }

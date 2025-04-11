@@ -37,6 +37,20 @@ $session = \Config\Services::session();
 
 
 </script>
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php if (session()->getFlashdata('pesan')) : ?>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '<?= session()->getFlashdata('pesan'); ?>',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
+</script>
+<?php endif; ?>
+
 <!-- STYLE -->
 <style>
     .floating-detail-box {

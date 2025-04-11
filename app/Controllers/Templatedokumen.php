@@ -64,12 +64,12 @@ class Templatedokumen extends BaseController
 
             return $this->response->setJSON([
                 'status' => 'success',
-                'message' => 'Urutan dokumen berhasil diperbarui'
+                'message' => 'Urutan template dokumen berhasil diperbarui'
             ]);
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'status' => 'error',
-                'message' => 'Gagal memperbarui urutan dokumen: ' . $e->getMessage()
+                'message' => 'Gagal memperbarui urutan template dokumen: ' . $e->getMessage()
             ]);
         }
     }
@@ -89,9 +89,9 @@ class Templatedokumen extends BaseController
             $inserted = $this->templateDokumenModel->addDokumen($table, $dokumen);
 
             if ($inserted) {
-                session()->setFlashdata('success', 'Dokumen berhasil ditambahkan');
+                session()->setFlashdata('success', 'Template dokumen berhasil ditambahkan');
             } else {
-                session()->setFlashdata('error', 'Gagal menambahkan dokumen');
+                session()->setFlashdata('error', 'Gagal menambahkan template dokumen');
             }
         } catch (\Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
@@ -111,9 +111,9 @@ class Templatedokumen extends BaseController
         }
 
         if ($this->templateDokumenModel->deleteDokumen($table, $id)) {
-            $this->session->setFlashdata('success', 'Dokumen berhasil dihapus');
+            $this->session->setFlashdata('success', 'Template okumen berhasil dihapus');
         } else {
-            $this->session->setFlashdata('error', 'Gagal menghapus dokumen');
+            $this->session->setFlashdata('error', 'Gagal menghapus template dokumen');
         }
 
         return redirect()->to(base_url('templatedokumen'))->with('refresh', true);

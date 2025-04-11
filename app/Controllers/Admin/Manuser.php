@@ -208,7 +208,7 @@ class Manuser extends BaseController
                     'status' => $this->userModel->find($id)->status
                 ];
                 $this->userModel->update($id, $dtedit);
-                $psn = 'User berhasil disimpan';
+                $psn = 'Pengguna berhasil disimpan';
                 echo json_encode(['status' => TRUE, 'psn' => $psn]);
             }
         }
@@ -297,7 +297,7 @@ class Manuser extends BaseController
             $id = $this->request->getVar('id');
             $user = $this->userModel->find($id);
             if ($user->username == 'admin') {
-                $psn = 'Data user admin tdk bisa dinonaktifkan';
+                $psn = 'Admin tidak boleh dinonaktifkan';
                 echo json_encode(['status' => TRUE, 'psn' => $psn]);
             } else {
                 unset($user->status);
@@ -305,7 +305,7 @@ class Manuser extends BaseController
                     $user->status = 'Nonaktif';
                 }
                 $this->userModel->save($user);
-                $psn = 'User berhasil dinonaktifkan';
+                $psn = 'Pengguna berhasil dinonaktifkan';
                 echo json_encode(['status' => TRUE, 'psn' => $psn]);
             }
         } else {
@@ -322,7 +322,7 @@ class Manuser extends BaseController
                 $user->status = 'Aktif';
             }
             $this->userModel->save($user);
-            $psn = 'User berhasil diaktifkan';
+            $psn = 'Pengguna berhasil diaktifkan';
             echo json_encode(['status' => TRUE, 'psn' => $psn]);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Maaf Halaman Tidak Ditemukan');
@@ -333,11 +333,11 @@ class Manuser extends BaseController
         if ($this->request->isAJAX()) {
             $nama = $this->userModel->find($this->request->getVar('id'))->username;
             if ($nama == 'admin') {
-                $psn = 'User admin tidak boleh dihapus';
+                $psn = 'Admin tidak boleh dihapus';
                 echo json_encode(['status' => TRUE, 'psn' => $psn]);
             } else {
                 $this->userModel->delete($this->request->getVar('id'));
-                $psn = 'User berhasil dihapus';
+                $psn = 'Pengguna berhasil dihapus';
                 echo json_encode(['status' => TRUE, 'psn' => $psn]);
             }
         } else {

@@ -141,7 +141,7 @@
                 dataType: "json",
                 success: function (response) {
                     if (response.status === "success") {
-                        Swal.fire('Berhasil', 'Data berhasil disimpan', 'success').then(() => {
+                        Swal.fire('Berhasil', 'Template dokumen berhasil diperbarui', 'success').then(() => {
                             window.location.reload();
                         });
                     } else {
@@ -236,7 +236,7 @@
 
         Swal.fire({
             title: "Apakah Anda yakin?",
-            text: "Dokumen ini akan dihapus secara permanen",
+            text: "Template dokumen ini akan dihapus secara permanen",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#d33",
@@ -254,7 +254,7 @@
                     beforeSend: function () {
                     },
                     success: function (response) {
-                        Swal.fire('Berhasil', 'Dokumen berhasil dihapus', 'success').then(() => {
+                        Swal.fire('Berhasil', 'Template dokumen berhasil dihapus', 'success').then(() => {
                             window.location.reload(); // Paksa refresh halaman setelah hapus
                         });
                     },
