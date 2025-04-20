@@ -53,7 +53,7 @@ $(document).on("click", ".btn-hapuspengadaan", function () {
 
     <?php if ($level_akses === 'Pokja'): ?>
             <div class="pokja">
-                <form method="get">
+                <form method="post">
                     <label for="tahun">Tahun Anggaran : </label>
                     <select name="tahun" id="tahun" onchange="this.form.submit()">
                         <option value="">Semua Tahun</option>
@@ -114,7 +114,7 @@ $(document).on("click", ".btn-hapuspengadaan", function () {
             </div>
         <?php elseif ($level_akses === 'PP'): ?>
             <div class="pp">
-                <form method="get">
+                <form method="post">
                     <label for="tahun">Tahun Anggaran : </label>
                     <select name="tahun" id="tahun" onchange="this.form.submit()">
                         <option value="">Semua Tahun</option>

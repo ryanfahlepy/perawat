@@ -51,7 +51,7 @@ class Pengadaan extends BaseController
         }
 
         // Ambil tahun dari POST (filter)
-        $tahun_dipilih = $this->request->getPost('tahun');
+        $tahun_dipilih = $this->request->getPost('tahun') ?: null;
 
         // Ambil data pengadaan
         $pengadaanData = $this->pengadaanModel->getAllbyColumn($whereCondition, $tahun_dipilih);

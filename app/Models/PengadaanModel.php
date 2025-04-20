@@ -41,13 +41,17 @@ class PengadaanModel extends Model
         return $this->db->table($table)->get()->getResultArray();
     }
 
-    public function getAllByColumn($where = [])
+    public function getAllByColumn($where = [], $tahun = null)
     {
-        // $this->where(...) otomatis pakai builder di balik layar
+        if (!empty($tahun)) {
+            $where['tahun_anggaran'] = $tahun;
+        }
+
         return $this->where($where)
             ->orderBy('id', 'DESC')
-            ->findAll(); // hasilnya sudah array
+            ->findAll();
     }
+
 
     // Fungsi untuk mengambil data per ID dari tabel tertentu
     public function getById($id)
