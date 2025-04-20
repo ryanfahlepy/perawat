@@ -8,7 +8,7 @@ class FileModel extends Model
 {
     protected $table = 'tabel_file';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['ref_id_pengadaan', 'ref_id_dokumen', 'nama_file', 'created_at', 'deleted_at'];
+    protected $allowedFields = ['ref_id_pengadaan', 'ref_id_dokumen', 'nama_file','pengunggah', 'penghapus','created_at', 'deleted_at'];
 
     /**
      * Ambil semua dokumen berdasarkan id_pengadaan
@@ -58,7 +58,7 @@ class FileModel extends Model
 
     public function getFileCountByPengadaanId($refIdPengadaan)
     {
-        return $this->where('ref_id_pengadaan', $refIdPengadaan)
+        return $this->where('ref_id_pengadaan', $refIdPengadaan)->where('deleted_at',NULL)
             ->countAllResults();
     }
 }

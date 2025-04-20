@@ -12,6 +12,8 @@ use App\Models\TemplateDokumenModel;
 use App\Models\DipaModel;
 use App\Models\JenisModel;
 use App\Models\MetodeModel;
+use App\Models\UserModel;
+
 
 class Pengadaan extends BaseController
 {
@@ -25,6 +27,7 @@ class Pengadaan extends BaseController
         $this->jenisModel = new JenisModel();
         $this->metodeModel = new MetodeModel();
         $this->templateDokumenModel = new TemplateDokumenModel();
+        $this->userModel = new UserModel();
 
         // Mengambil jumlah dokumen dari masing-masing tabel dan menyimpannya di properti class
         $this->dokumenCounts = [
@@ -335,6 +338,9 @@ class Pengadaan extends BaseController
     {
         $id_pengadaan = $this->request->getPost('id_pengadaan');
         $id_dokumen = $this->request->getPost('id_dokumen');
+        $username_user = session()->get('username');
+        $nama_user = $this->userModel->getNamaByUsername($username_user);
+        $nama_user = $nama_user->nama;
 
         if (!filter_var($id_pengadaan, FILTER_VALIDATE_INT) || !filter_var($id_dokumen, FILTER_VALIDATE_INT)) {
             session()->setFlashdata('error', 'ID Pengadaan atau ID Dokumen tidak valid.');
@@ -364,6 +370,7 @@ class Pengadaan extends BaseController
                     'ref_id_pengadaan' => (int) $id_pengadaan,
                     'ref_id_dokumen' => (int) $id_dokumen,
                     'nama_file' => $newName,
+                    'pengunggah' => $nama_user,
                     'created_at' => date('Y-m-d H:i:s')
                 ];
 
@@ -555,6 +562,10 @@ class Pengadaan extends BaseController
             $newFileName = 'deleted-' . $file['nama_file'];
             $newFilePath = $uploadFolder . $newFileName;
 
+            $username_user = session()->get('username');
+            $nama_user = $this->userModel->getNamaByUsername($username_user);
+            $nama_user = $nama_user->nama;
+
             // Debugging - Periksa apakah file ada
             if (!file_exists($oldFilePath)) {
                 session()->setFlashdata('error', 'File tidak ditemukan di folder: ' . $oldFilePath);
@@ -563,8 +574,15 @@ class Pengadaan extends BaseController
 
             // Coba ubah nama file
             if (rename($oldFilePath, $newFilePath)) {
-                // Jika berhasil rename, hapus data file dari database
-                $this->fileModel->delete($id_file);
+
+                // Update informasi penghapus dan waktu hapus
+                $this->fileModel->update($id_file, [
+                    'penghapus' => $nama_user,
+                    'deleted_at' => date('Y-m-d H:i:s')
+                ]);
+
+                // Hapus data dari database
+                // $this->fileModel->delete($id_file);
 
                 session()->setFlashdata('success', 'Dokumen berhasil dihapus');
             } else {
@@ -577,4 +595,5 @@ class Pengadaan extends BaseController
         // Redirect kembali ke halaman detail pengadaan
         return redirect()->to(base_url('pengadaan/detail_pengadaan/' . $file['ref_id_pengadaan']));
     }
+
 }

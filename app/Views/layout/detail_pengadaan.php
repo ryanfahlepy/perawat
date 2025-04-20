@@ -146,10 +146,11 @@ $session = \Config\Services::session();
                 <tr>
                     <th style="width: 5%;">No</th>
                     <th style="width: 20%;">Nama</th>
-                    <th style="width: 35%;">Dokumen</th>
-                    <th style="width: 20%;">Waktu Unggah</th>
+                    <th style="width: 30%;">Dokumen</th>
+                    <th style="width: 10%;">Pengunggah</th>
+                    <th style="width: 15%;">Waktu Unggah</th>
                     <?php if ($level_akses !== 'PPK'): ?>
-                    <th style="width: 10%;">Aksi</th>
+                        <th style="width: 10%;">Aksi</th>
                     <?php endif; ?>
                 </tr>
             </thead>
@@ -173,10 +174,10 @@ $session = \Config\Services::session();
                                                 <i class="fas fa-file-pdf text-danger"></i> <?= esc($file['nama_file']) ?>
                                             </a>
                                             <?php if ($level_akses !== 'PPK'): ?>
-                                            <a href="#" class="text-danger ml-2"
-                                                onclick="confirmDelete('<?= esc($deleteUrl) ?>'); return false;">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
+                                                <a href="#" class="text-danger ml-2"
+                                                    onclick="confirmDelete('<?= esc($deleteUrl) ?>'); return false;">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
                                             <?php endif; ?>
                                         </div>
                                         <?php
@@ -188,7 +189,18 @@ $session = \Config\Services::session();
                                 }
                                 ?>
                             </td>
-
+                            <!-- Kolom Pengunggah -->
+                            <td class="text-center">
+                                <?php
+                                $uploaders = [];
+                                foreach ($fileList as $file) {
+                                    if ($file['ref_id_dokumen'] == $dokumen['id_dokumen']) {
+                                        $uploaders[] = esc($file['pengunggah'] ?? '-');
+                                    }
+                                }
+                                echo !empty($uploaders) ? implode('<br>', $uploaders) : '<span class="text-muted">-</span>';
+                                ?>
+                            </td>
                             <td class="text-center">
                                 <?php
                                 $uploadTimes = [];
@@ -201,10 +213,10 @@ $session = \Config\Services::session();
                                 ?>
                             </td>
                             <?php if ($level_akses !== 'PPK'): ?>
-                            <td class="text-center">
-                                <button class="btn btn-primary btn-sm"
-                                    onclick="showUploadModal(<?= $pengadaan['id']; ?>, <?= $dokumen['id_dokumen']; ?>)">Unggah</button>
-                            </td>
+                                <td class="text-center">
+                                    <button class="btn btn-primary btn-sm"
+                                        onclick="showUploadModal(<?= $pengadaan['id']; ?>, <?= $dokumen['id_dokumen']; ?>)">Unggah</button>
+                                </td>
                             <?php endif; ?>
                         </tr>
                     <?php endforeach; ?>
@@ -259,7 +271,7 @@ $session = \Config\Services::session();
     const confirmDelete = (url) => {
 
         Swal.fire({
-            title: "Konfirmasi Hapus",
+            title: "Konfirmasi",
             text: "Apakah Anda yakin ingin menghapus dokumen ini?",
             icon: "warning",
             showCancelButton: true,

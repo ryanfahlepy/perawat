@@ -27,4 +27,11 @@ class UserModel extends Model
             return $this->builder()->join('tabel_user_level', 'tabel_user_level.id = tabel_user.level_user')->get();
         }
     }
+
+    public function getNamaByUsername($username)
+    {
+        return $this->select('nama')
+                    ->where('username', $username)
+                    ->first(); // return satu baris
+    }
 }
