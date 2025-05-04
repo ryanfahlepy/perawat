@@ -1,0 +1,134 @@
+CRITICAL - 2025-05-04 16:57:13 --> Constant FILTER_SANITIZE_STRING is deprecated
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\HTTP\CLIRequest.php(175): CodeIgniter\Debug\Exceptions->errorHandler(8192, 'Constant FILTER...', 'C:\\xampp7\\htdoc...', 175)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\HTTP\CLIRequest.php(67): CodeIgniter\HTTP\CLIRequest->parseCommand()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\Services.php(123): CodeIgniter\HTTP\CLIRequest->__construct(Object(Config\App))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\BaseService.php(248): CodeIgniter\Config\Services::clirequest(Object(Config\App), false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\BaseService.php(189): CodeIgniter\Config\BaseService::__callStatic('clirequest', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\Services.php(118): CodeIgniter\Config\BaseService::getSharedInstance('clirequest', Object(Config\App))
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\BaseService.php(248): CodeIgniter\Config\Services::clirequest(Object(Config\App))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(527): CodeIgniter\Config\BaseService::__callStatic('clirequest', Array)
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(292): CodeIgniter\CodeIgniter->getRequestObject()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\perawat\spark(63): CodeIgniter\CLI\Console->run()
+#11 {main}
+CRITICAL - 2025-05-04 16:57:23 --> Constant FILTER_SANITIZE_STRING is deprecated
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\HTTP\CLIRequest.php(175): CodeIgniter\Debug\Exceptions->errorHandler(8192, 'Constant FILTER...', 'C:\\xampp7\\htdoc...', 175)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\HTTP\CLIRequest.php(67): CodeIgniter\HTTP\CLIRequest->parseCommand()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\Services.php(123): CodeIgniter\HTTP\CLIRequest->__construct(Object(Config\App))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\BaseService.php(248): CodeIgniter\Config\Services::clirequest(Object(Config\App), false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\BaseService.php(189): CodeIgniter\Config\BaseService::__callStatic('clirequest', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\Services.php(118): CodeIgniter\Config\BaseService::getSharedInstance('clirequest', Object(Config\App))
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\BaseService.php(248): CodeIgniter\Config\Services::clirequest(Object(Config\App))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(527): CodeIgniter\Config\BaseService::__callStatic('clirequest', Array)
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(292): CodeIgniter\CodeIgniter->getRequestObject()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\perawat\spark(63): CodeIgniter\CLI\Console->run()
+#11 {main}
+CRITICAL - 2025-05-04 17:17:33 --> Undefined variable: pengadaan
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\pengadaan.php(205): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 205, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/pengadaa...', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Ekinerja.php(34): view('layout/pengadaa...', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ekinerja->index()
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ekinerja))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-04 17:17:44 --> Undefined variable: pengadaan
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\pengadaan.php(205): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 205, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/pengadaa...', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Ekinerja.php(34): view('layout/pengadaa...', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ekinerja->index()
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ekinerja))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-04 17:18:31 --> Undefined variable: pengadaan
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\ekinerja.php(7): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 7, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/ekinerja', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Ekinerja.php(34): view('layout/ekinerja', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ekinerja->index()
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ekinerja))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-04 17:18:38 --> Undefined variable: pengadaan
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\ekinerja.php(7): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 7, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/ekinerja', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Ekinerja.php(34): view('layout/ekinerja', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ekinerja->index()
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ekinerja))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-04 17:23:36 --> Undefined property: App\Controllers\EInovasi::$session
+#0 C:\xampp7\htdocs\perawat\app\Controllers\EInovasi.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 19, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\EInovasi->index()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EInovasi))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-05-04 17:26:30 --> Cannot use empty array elements in arrays
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-05-04 17:26:53 --> Cannot use empty array elements in arrays
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-05-04 17:26:53 --> Cannot use empty array elements in arrays
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-05-04 17:27:34 --> Cannot use [] for reading
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ekinerja->index()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ekinerja))
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-05-04 17:29:02 --> Undefined variable: level
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\kompetensi.php(8): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 8, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/kompeten...', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Kompetensi.php(22): view('layout/kompeten...', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Kompetensi->index()
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kompetensi))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-04 17:29:07 --> Undefined variable: nama_level
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\kompetensi.php(8): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 8, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/kompeten...', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Kompetensi.php(22): view('layout/kompeten...', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Kompetensi->index()
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kompetensi))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-04 17:29:08 --> Undefined variable: nama_level
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\kompetensi.php(8): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 8, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/kompeten...', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Kompetensi.php(22): view('layout/kompeten...', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Kompetensi->index()
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kompetensi))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}

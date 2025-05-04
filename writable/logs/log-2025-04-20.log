@@ -1,0 +1,35 @@
+ERROR - 2025-04-20 10:26:51 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-04-20 10:26:51 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT `tabel_u...', Array, false)
+#2 C:\xampp7\htdocs\try\app\Models\User_level_aksesModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\try\app\Controllers\BaseController.php(59): App\Models\User_level_aksesModel->getMenu_akses('3')
+#4 C:\xampp7\htdocs\try\app\Controllers\Profil.php(19): App\Controllers\BaseController->tampil_menu('3')
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Profil->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profil))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-04-20 10:26:52 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php:96
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\xampp7\\htdoc...', 96, Array)
+#1 C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php(96): print_r(Object(App\Controllers\Profil), true)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(235): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(132): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-20 10:42:03 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(135): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 135, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->filterByTahun()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}

@@ -1,0 +1,234 @@
+CRITICAL - 2025-04-11 09:20:51 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:20:53 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:20:57 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:20:59 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:25:15 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:28:59 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:29:00 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:29:00 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:29:01 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:29:01 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:29:01 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:29:02 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:34:22 --> Trait 'Vendor\Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:34:22 --> Trait 'Vendor\Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:34:23 --> Trait 'Vendor\Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:34:23 --> Trait 'Vendor\Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:34:23 --> Trait 'Vendor\Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:34:24 --> Trait 'Vendor\Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:34:32 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:34:33 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:36:21 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:38:58 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:39:17 --> Trait 'App\Controllers\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:39:35 --> App\Controllers\Pengadaan cannot use Dompdf\Dompdf - it is not a trait
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:39:42 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:44:04 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:46:31 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:46:31 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:46:32 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:46:32 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:46:32 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:46:32 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:46:33 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:48:05 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:49:31 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:49:31 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:49:32 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:49:32 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:49:32 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:49:32 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:49:33 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:49:33 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:50:27 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:51:16 --> Trait 'Dompdf\Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:51:17 --> Trait 'Dompdf\Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:51:24 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:51:26 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:51:30 --> App\Controllers\Pengadaan cannot use Dompdf\Dompdf - it is not a trait
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:51:50 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:52:52 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:53:18 --> App\Controllers\Pengadaan cannot use Dompdf\Dompdf - it is not a trait
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:54:14 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:54:14 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:54:15 --> Trait 'Dompdf\Dompdf\Dompdf' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-04-11 09:55:37 --> Undefined index: nama_file
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(428): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 428, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->unduh_semua_dokumen('86')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-04-11 19:34:10 --> Undefined offset: 0
+#0 C:\xampp7\htdocs\try\app\Controllers\Login.php(64): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xampp7\\htdoc...', 64, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Login->ceklogin()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-04-11 19:34:37 --> Undefined offset: 0
+#0 C:\xampp7\htdocs\try\app\Controllers\Login.php(64): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xampp7\\htdoc...', 64, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Login->ceklogin()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-04-11 20:20:26 --> Setiap entry dalam data harus berupa array.
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(178): App\Models\PengadaanModel->insertData(Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->tambah_data_pengadaan()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-04-11 20:28:02 --> Allowed fields must be specified for model: App\Models\PengadaanModel
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(1134): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\Peng...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(713): CodeIgniter\BaseModel->doProtectFields(Array)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(620): CodeIgniter\BaseModel->insert(Array, true)
+#3 C:\xampp7\htdocs\try\app\Models\PengadaanModel.php(56): CodeIgniter\Model->insert(Array)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(178): App\Models\PengadaanModel->insertData(Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->tambah_data_pengadaan()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-04-11 20:29:18 --> Allowed fields must be specified for model: App\Models\PengadaanModel
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(1134): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\Peng...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(713): CodeIgniter\BaseModel->doProtectFields(Array)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(620): CodeIgniter\BaseModel->insert(Array, true)
+#3 C:\xampp7\htdocs\try\app\Models\PengadaanModel.php(56): CodeIgniter\Model->insert(Array)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(178): App\Models\PengadaanModel->insertData(Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->tambah_data_pengadaan()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-04-11 20:30:56 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(132): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 132, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->filterByTahun()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-04-11 20:31:07 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(132): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 132, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->filterByTahun()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}

@@ -1,0 +1,119 @@
+CRITICAL - 2025-03-21 10:16:49 --> Cannot declare class App\Controllers\Admin\Templatedokumen, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-21 10:16:59 --> Cannot declare class Templatedokumen, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-21 10:17:22 --> Cannot declare class App\Controllers\Admin\Templatedokumen, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-21 10:18:05 --> Invalid file: templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('templatedokumen...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('templatedokumen', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('templatedokumen', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:18:17 --> Invalid file: /templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/templatedokume...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('/templatedokume...', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('/templatedokume...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:18:17 --> Invalid file: /templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/templatedokume...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('/templatedokume...', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('/templatedokume...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:18:26 --> Invalid file: admin/templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/templated...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/templated...', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('admin/templated...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:18:32 --> Invalid file: /templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/templatedokume...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('/templatedokume...', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('/templatedokume...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:18:35 --> Invalid file: templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('templatedokumen...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('templatedokumen', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('templatedokumen', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:19:33 --> Invalid file: templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('templatedokumen...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('templatedokumen', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('templatedokumen', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:19:34 --> Invalid file: templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('templatedokumen...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('templatedokumen', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('templatedokumen', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:19:34 --> Invalid file: templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('templatedokumen...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('templatedokumen', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('templatedokumen', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:19:34 --> Invalid file: templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('templatedokumen...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('templatedokumen', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('templatedokumen', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-21 10:19:35 --> Invalid file: templatedokumen.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('templatedokumen...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('templatedokumen', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Templatedokumen.php(39): view('templatedokumen', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Templatedokumen->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Templatedokumen))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}

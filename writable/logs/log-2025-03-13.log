@@ -1,0 +1,601 @@
+CRITICAL - 2025-03-13 11:26:52 --> Cannot redeclare App\Models\PaketModel::jumlah_paket()
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-13 11:30:25 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:30:35 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:30:49 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:30:50 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:30:50 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:30:55 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:30:56 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:30:56 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:31:19 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(25): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:31:37 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:31:44 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:32:14 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:33:12 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:33:12 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:33:43 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:35:00 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:36:19 --> Call to undefined method App\Models\PaketModel::jumlah_belanja_rutin
+#0 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-13 11:36:25 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:36:42 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:36:42 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:36:43 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:36:50 --> Undefined variable: jumlah_paket_belanja_rutin
+#0 C:\xampp7\htdocs\try\app\Views\ppk\dashboardppk.php(38): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 38, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/dashboardpp...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(31): view('ppk/dashboardpp...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-03-13 11:37:02 --> Undefined variable: jumlah_paket_belanja_rutin
+#0 C:\xampp7\htdocs\try\app\Views\ppk\dashboardppk.php(38): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 38, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/dashboardpp...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(31): view('ppk/dashboardpp...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-03-13 11:38:08 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:39:06 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:39:06 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:39:06 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:39:11 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:39:12 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:39:12 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:39:12 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:41:34 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:41:35 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:41:35 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:41:42 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:41:51 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:41:52 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:41:52 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:41:52 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:41:53 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:42:24 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:42:25 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:42:25 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:42:25 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:42:30 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:43:51 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:43:52 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:43:52 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:43:52 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:43:52 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:43:53 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 11:44:13 --> Call to undefined method App\Models\PaketModel::jumlah_belanja_rutin
+#0 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-13 11:44:13 --> Call to undefined method App\Models\PaketModel::jumlah_belanja_rutin
+#0 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-13 11:44:13 --> Call to undefined method App\Models\PaketModel::jumlah_belanja_rutin
+#0 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(24): CodeIgniter\Model->__call('jumlah_belanja_...', Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-13 12:10:38 --> Undefined variable: perencanaan_belanja_rutin
+#0 C:\xampp7\htdocs\try\app\Views\ppk\dashboardppk.php(92): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 92, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/dashboardpp...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(31): view('ppk/dashboardpp...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-03-13 12:12:41 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(33): CodeIgniter\Model->__call('perencanaan_bel...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 12:17:14 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(35): CodeIgniter\Model->__call('pembayaran_bela...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 12:17:16 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(35): CodeIgniter\Model->__call('pembayaran_bela...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 12:17:16 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(35): CodeIgniter\Model->__call('pembayaran_bela...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-13 12:17:16 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Dashboardppk.php(35): CodeIgniter\Model->__call('pembayaran_bela...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardppk->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardppk))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}

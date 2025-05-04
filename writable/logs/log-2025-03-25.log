@@ -1,0 +1,277 @@
+CRITICAL - 2025-03-25 09:22:26 --> Undefined variable: pengadaan
+#0 C:\xampp7\htdocs\try\app\Views\layout\pengadaan.php(97): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 97, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/pengadaa...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Dashboardpp.php(28): view('layout/pengadaa...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardpp->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardpp))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-03-25 09:39:36 --> Undefined variable: tahun_tersedia
+#0 C:\xampp7\htdocs\try\app\Views\layout\pengadaan.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 31, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/pengadaa...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(76): view('layout/pengadaa...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-03-25 09:41:45 --> Undefined variable: jumlah_pengadaan
+#0 C:\xampp7\htdocs\try\app\Views\layout\pengadaan.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 45, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/pengadaa...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(88): view('layout/pengadaa...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-03-25 09:51:30 --> Undefined variable: jumlah_pengadaan
+#0 C:\xampp7\htdocs\try\app\Views\layout\pengadaan.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 43, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/pengadaa...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(106): view('layout/pengadaa...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-03-25 10:16:20 --> Undefined property: App\Controllers\Pengadaan::$input
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 43, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 10:16:21 --> Undefined property: App\Controllers\Pengadaan::$input
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 43, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 10:16:21 --> Undefined property: App\Controllers\Pengadaan::$input
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 43, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 10:16:28 --> Undefined property: App\Controllers\Pengadaan::$input
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 43, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 10:17:03 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::get()
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-03-25 10:17:04 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::get()
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-03-25 10:17:13 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::post()
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-03-25 10:17:14 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::post()
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-03-25 10:17:25 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::post()
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-03-25 10:20:55 --> syntax error, unexpected '$tahun_tersedia' (T_VARIABLE)
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Router\Router.php(160): CodeIgniter\Router\Router->autoRoute('pengadaan/index')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(702): CodeIgniter\Router\Router->handle('pengadaan/index')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 10:20:55 --> syntax error, unexpected '$tahun_tersedia' (T_VARIABLE)
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Router\Router.php(160): CodeIgniter\Router\Router->autoRoute('pengadaan/index')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(702): CodeIgniter\Router\Router->handle('pengadaan/index')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 10:20:56 --> syntax error, unexpected '$tahun_tersedia' (T_VARIABLE)
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Router\Router.php(160): CodeIgniter\Router\Router->autoRoute('pengadaan/index')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(702): CodeIgniter\Router\Router->handle('pengadaan/index')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 10:49:08 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(91): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 91, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 10:49:19 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(91): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 91, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 10:49:34 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(91): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 91, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 11:03:24 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(91): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 91, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 11:04:38 --> syntax error, unexpected 'public' (T_PUBLIC)
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Router\Router.php(160): CodeIgniter\Router\Router->autoRoute('pengadaan')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(702): CodeIgniter\Router\Router->handle('pengadaan')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 11:05:37 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 100, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 11:05:37 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 100, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+ERROR - 2025-03-25 11:07:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+ORDER BY `id` DESC' at line 3
+CRITICAL - 2025-03-25 11:07:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+ORDER BY `id` DESC' at line 3
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\try\app\Models\PengadaanModel.php(40): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(49): App\Models\PengadaanModel->getAllByColumn(NULL)
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+ERROR - 2025-03-25 11:07:28 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+ORDER BY `id` DESC' at line 3
+CRITICAL - 2025-03-25 11:07:28 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+ORDER BY `id` DESC' at line 3
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\try\app\Models\PengadaanModel.php(40): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(49): App\Models\PengadaanModel->getAllByColumn(NULL)
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+CRITICAL - 2025-03-25 11:08:38 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 100, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-25 11:39:34 --> Cannot declare class App\Controllers\User\Profile, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-25 11:40:15 --> Cannot declare class App\Controllers\User\Login, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-25 11:41:09 --> Cannot declare class App\Controllers\User\Login, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-25 11:41:14 --> Cannot declare class App\Controllers\User\Login, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-25 11:54:03 --> Cannot declare class App\Controllers\User\Login, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-25 11:54:05 --> Cannot declare class App\Controllers\User\Login, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-25 11:54:06 --> Cannot declare class App\Controllers\User\Login, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-25 11:54:06 --> Cannot declare class App\Controllers\User\Login, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-03-25 11:54:06 --> Cannot declare class App\Controllers\User\Login, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2025-03-25 14:08:21 --> Table 'try.swakelola' doesn't exist
+ERROR - 2025-03-25 14:09:16 --> Table 'try.swakelola' doesn't exist
+ERROR - 2025-03-25 14:28:02 --> Table 'try.tender' doesn't exist
+CRITICAL - 2025-03-25 14:30:33 --> Undefined index: dipa
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(129): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 129, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->filterByTahun()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}

@@ -1,0 +1,9 @@
+CRITICAL - 2025-02-14 02:28:43 --> Undefined offset: 8
+#0 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(121): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xampp7\\htdoc...', 121, Array)
+#1 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(70): App\Controllers\Ppk\Paket->import_csv_generic('paket_pembayara...', Array)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->import_csv_pembayaran()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#7 {main}

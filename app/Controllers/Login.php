@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 use App\Models\User_levelModel;
+use App\Models\NotifikasiModel;
 
 class Login extends BaseController
 {
@@ -12,6 +13,7 @@ class Login extends BaseController
     {
         $this->userModel = new UserModel();
         $this->user_levelModel = new User_levelModel();
+        $this->notifikasiModel = new \App\Models\NotifikasiModel(); // panggil model
         $this->validation = \Config\Services::validation();
     }
     public function index()
@@ -173,6 +175,8 @@ class Login extends BaseController
             } else {
                 $pass1 = $this->request->getVar('password1');
                 $pass2 = $this->request->getVar('password2');
+                $nama = $this->bersihkan($this->request->getVar('nama'));
+                $username = $this->bersihkan($this->request->getVar('username'));
 
                 if ($pass1 != $pass2) {
                     $psn = 'Password dan konfirmasinya tidak sama, ulangi lagi';
@@ -187,6 +191,11 @@ class Login extends BaseController
                         'photo' => 'avatar.png',
                         'status' => 'Nonaktif'
                     ]);
+                    // Tambah notifikasi internal untuk admin
+                    
+                    $this->notifikasiModel->tambahNotifikasi("User baru mendaftar: <strong>$nama</strong> dengan username <strong>$username</strong>");
+
+
                     $psn = 'Selamat, Registrasi berhasil';
                     echo json_encode(['validasi' => TRUE, 'simpan' => TRUE, 'psn' => $psn]);
                 }

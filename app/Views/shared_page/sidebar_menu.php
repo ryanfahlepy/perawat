@@ -5,7 +5,7 @@ $session = \Config\Services::session();
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <img src="/assets/dist/img/logo.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .9">
-        <span class="brand-text font-weight-light">Disinfolahtal</span>
+        <span class="no-border">NURSE-LEAD</span>
     </a>
 
     <!-- Sidebar -->

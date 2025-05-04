@@ -1,0 +1,371 @@
+CRITICAL - 2025-02-26 11:17:30 --> Undefined variable: data
+#0 C:\xampp7\htdocs\try\app\Views\ppk\dashboardppk.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 24, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/dashboardpp...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Ppk\Dashboardppk.php(23): view('ppk/dashboardpp...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Dashboardppk->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Dashboardppk))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 11:25:01 --> Wrong parameter count for number_format()
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Wrong parameter...', 'C:\\xampp7\\htdoc...', 38, Array)
+#1 C:\xampp7\htdocs\try\app\Views\ppk\dashboardppk.php(38): number_format('2371581000', 0, '.')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/dashboardpp...', Array, true)
+#5 C:\xampp7\htdocs\try\app\Controllers\Ppk\Dashboardppk.php(24): view('ppk/dashboardpp...', Array)
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Dashboardppk->index()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Dashboardppk))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+CRITICAL - 2025-02-26 11:25:21 --> Wrong parameter count for number_format()
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Wrong parameter...', 'C:\\xampp7\\htdoc...', 38, Array)
+#1 C:\xampp7\htdocs\try\app\Views\ppk\dashboardppk.php(38): number_format('2371581000', 0, '.')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/dashboardpp...', Array, true)
+#5 C:\xampp7\htdocs\try\app\Controllers\Ppk\Dashboardppk.php(24): view('ppk/dashboardpp...', Array)
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Dashboardppk->index()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Dashboardppk))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+CRITICAL - 2025-02-26 12:51:23 --> Call to undefined method App\Models\PengadaanModel::jumlah_pengadaan
+#0 C:\xampp7\htdocs\try\app\Controllers\Ppk\Dashboardppk.php(27): CodeIgniter\Model->__call('jumlah_pengadaa...', Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Dashboardppk->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Dashboardppk))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-02-26 12:55:25 --> Undefined variable: jumlah_paket
+#0 C:\xampp7\htdocs\try\app\Views\pokja\dashboardpokja.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 24, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/dashboard...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Dashboardpokja.php(20): view('pokja/dashboard...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Dashboardpokja->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Dashboardpokja))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+ERROR - 2025-02-26 13:09:16 --> Unknown column 'ref_tabel' in 'where clause'
+CRITICAL - 2025-02-26 13:09:16 --> Unknown column 'ref_tabel' in 'where clause'
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1512): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(509): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+#5 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(41): CodeIgniter\Model->countAllResults()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+CRITICAL - 2025-02-26 13:12:13 --> Undefined index: table
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(49): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 13:15:26 --> Undefined variable: table
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(45): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+ERROR - 2025-02-26 13:17:21 --> Unknown column 'ref_tabel' in 'where clause'
+CRITICAL - 2025-02-26 13:17:21 --> Unknown column 'ref_tabel' in 'where clause'
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1512): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(509): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+#5 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(41): CodeIgniter\Model->countAllResults()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+CRITICAL - 2025-02-26 13:23:38 --> Array to string conversion
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(59): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 13:27:59 --> Undefined property: App\Controllers\Pokja\Pengadaan::$tenderModel
+#0 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 35, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-02-26 13:28:27 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(35): CodeIgniter\Model->__call('countAllResult', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-02-26 13:36:00 --> Undefined index: progress
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(34): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 13:47:18 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-02-26 13:49:03 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-02-26 13:51:36 --> Allowed memory size of 2147483648 bytes exhausted (tried to allocate 1265664 bytes)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-02-26 13:52:01 --> Undefined index: progress
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(34): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 13:52:06 --> Undefined index: progress
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(34): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+ERROR - 2025-02-26 13:54:51 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-02-26 13:54:51 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp7\htdocs\try\app\Models\PengadaanModel.php(20): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(24): App\Models\PengadaanModel->getAllPengadaan()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+CRITICAL - 2025-02-26 13:54:51 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php:96
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\xampp7\\htdoc...', 96, Array)
+#1 C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php(96): print_r(Object(App\Controllers\Pokja\Pengadaan), true)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(235): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(132): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-02-26 17:12:43 --> Undefined property: App\Controllers\Pokja\Pengadaan::$dokumenModel
+#0 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(36): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 36, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-02-26 17:12:55 --> Class 'App\Controllers\Pokja\DokumenModel' not found
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(779): App\Controllers\Pokja\Pengadaan->__construct()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-02-26 17:15:37 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-02-26 17:36:57 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(33): CodeIgniter\Model->__call('getAllCount', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-02-26 17:37:10 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(719): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(33): CodeIgniter\Model->__call('getAllCount', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-02-26 19:58:20 --> Class declarations may not be nested
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-02-26 20:00:05 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-02-26 20:06:08 --> Undefined index: dokumen_count
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(44): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 20:06:24 --> Undefined property: CodeIgniter\View\View::$dokumenModel
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(62): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 62, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(44): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 20:07:00 --> Undefined property: CodeIgniter\View\View::$dokumenModel
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(63): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 63, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(44): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 20:09:51 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-02-26 20:11:43 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-02-26 20:11:43 --> Undefined index: dokumen_count
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(41): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 20:11:44 --> Undefined index: dokumen_count
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(41): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 20:11:47 --> Undefined index: dokumen_count
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 57, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(41): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 20:29:24 --> Undefined index: jumlah_ffile
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(59): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 59, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(59): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 20:29:31 --> Undefined index: jumlah_file
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(59): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 59, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(59): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-26 20:29:49 --> Undefined variable: pengadaan
+#0 C:\xampp7\htdocs\try\app\Views\pokja\pengadaan.php(59): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 59, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(59): view('pokja/pengadaan', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}

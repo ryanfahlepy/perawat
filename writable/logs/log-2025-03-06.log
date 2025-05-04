@@ -1,0 +1,14 @@
+ERROR - 2025-03-06 22:47:23 --> Unknown column 'no_urut' in 'order clause'
+CRITICAL - 2025-03-06 22:47:23 --> Unknown column 'no_urut' in 'order clause'
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(40): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(22): App\Models\DokumenModel->getDokumenByTable('tabel_tender')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->index()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}

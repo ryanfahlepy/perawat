@@ -1,0 +1,147 @@
+CRITICAL - 2025-02-22 08:05:59 --> There is no data to insert.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(718): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(620): CodeIgniter\BaseModel->insert(Array, false)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#3 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(96): CodeIgniter\BaseModel->save(Array)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->unggah_dokumen()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+CRITICAL - 2025-02-22 08:06:41 --> There is no data to insert.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(718): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(620): CodeIgniter\BaseModel->insert(Array, false)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#3 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(96): CodeIgniter\BaseModel->save(Array)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->unggah_dokumen()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+ERROR - 2025-02-22 10:20:30 --> Unknown column 'created_at' in 'field list'
+CRITICAL - 2025-02-22 10:20:30 --> Unknown column 'created_at' in 'field list'
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('INSERT INTO `ta...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(239): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(620): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp7\htdocs\try\app\Controllers\Pokja\Pengadaan.php(227): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Pengadaan->simpan_pengadaan()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Pengadaan))
+#11 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#14 {main}
+ERROR - 2025-02-22 11:27:10 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-02-22 11:27:10 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT `tbuser_...', Array, false)
+#2 C:\xampp7\htdocs\try\app\Models\User_level_aksesModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\try\app\Controllers\BaseController.php(59): App\Models\User_level_aksesModel->getMenu_akses('1')
+#4 C:\xampp7\htdocs\try\app\Controllers\User\Profile.php(19): App\Controllers\BaseController->tampil_menu('1')
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\User\Profile->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Profile))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-22 11:27:10 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php:96
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\xampp7\\htdoc...', 96, Array)
+#1 C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php(96): print_r(Object(App\Controllers\User\Profile), true)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(235): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(132): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2025-02-22 11:28:22 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-02-22 11:28:22 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT `tbuser_...', Array, false)
+#2 C:\xampp7\htdocs\try\app\Models\User_level_aksesModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\try\app\Controllers\BaseController.php(59): App\Models\User_level_aksesModel->getMenu_akses('1')
+#4 C:\xampp7\htdocs\try\app\Controllers\User\Profile.php(19): App\Controllers\BaseController->tampil_menu('1')
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\User\Profile->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Profile))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-22 11:28:22 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php:96
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\xampp7\\htdoc...', 96, Array)
+#1 C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php(96): print_r(Object(App\Controllers\User\Profile), true)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(235): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(132): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2025-02-22 11:28:30 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-02-22 11:28:30 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT `tbuser_...', Array, false)
+#2 C:\xampp7\htdocs\try\app\Models\User_level_aksesModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\try\app\Controllers\BaseController.php(59): App\Models\User_level_aksesModel->getMenu_akses('1')
+#4 C:\xampp7\htdocs\try\app\Controllers\User\Profile.php(19): App\Controllers\BaseController->tampil_menu('1')
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\User\Profile->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Profile))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-22 11:28:30 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php:96
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\xampp7\\htdoc...', 96, Array)
+#1 C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php(96): print_r(Object(App\Controllers\User\Profile), true)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(235): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(132): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2025-02-22 11:29:51 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-02-22 11:29:51 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT `tbuser_...', Array, false)
+#2 C:\xampp7\htdocs\try\app\Models\User_level_aksesModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\try\app\Controllers\BaseController.php(59): App\Models\User_level_aksesModel->getMenu_akses('1')
+#4 C:\xampp7\htdocs\try\app\Controllers\User\Profile.php(19): App\Controllers\BaseController->tampil_menu('1')
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\User\Profile->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Profile))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-22 11:29:51 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php:96
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\xampp7\\htdoc...', 96, Array)
+#1 C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php(96): print_r(Object(App\Controllers\User\Profile), true)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(235): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(132): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}

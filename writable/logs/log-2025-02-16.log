@@ -1,0 +1,167 @@
+CRITICAL - 2025-02-16 21:53:28 --> Invalid file: ppk/tambahpaketperencaan.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('ppk/tambahpaket...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/tambahpaket...', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(39): view('ppk/tambahpaket...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->tambah_paket_perencanaan()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-02-16 22:07:28 --> array_keys() expects parameter 1 to be array, string given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'array_keys() ex...', 'C:\\xampp7\\htdoc...', 1649, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): array_keys('2025')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1599): CodeIgniter\Database\BaseBuilder->setInsertBatch(Array, '', true)
+#3 C:\xampp7\htdocs\try\app\Models\PaketModel.php(21): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#4 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(69): App\Models\PaketModel->insertData('paket_perencana...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->tambah_data_paket_perencanaan()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-16 22:10:49 --> Setiap entry dalam data harus berupa array.
+#0 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(69): App\Models\PaketModel->insertData('paket_perencana...', Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->tambah_data_paket_perencanaan()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-02-16 22:33:49 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(545): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(130): CodeIgniter\Model->builder()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '50')
+#3 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(79): CodeIgniter\BaseModel->find('50')
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->edit_data_paket_perencanaan('50')
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+CRITICAL - 2025-02-16 22:35:37 --> Invalid file: ppk/paket/edit_data_paket_perencanaan.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('ppk/paket/edit_...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/paket/edit_...', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(89): view('ppk/paket/edit_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->edit_data_paket_perencanaan('50')
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-02-16 22:36:02 --> Invalid file: ppk/paket/edit_paket_perencanaan.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('ppk/paket/edit_...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/paket/edit_...', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(89): view('ppk/paket/edit_...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->edit_data_paket_perencanaan('50')
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-02-16 22:36:15 --> Undefined variable: dtmenu
+#0 C:\xampp7\htdocs\try\app\Views\shared_page\sidebar_menu.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 28, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(432): CodeIgniter\View\View->render('shared_page/sid...', NULL, true)
+#4 C:\xampp7\htdocs\try\app\Views\shared_page\template.php(20): CodeIgniter\View\View->include('shared_page/sid...')
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(230): CodeIgniter\View\View->render('shared_page/tem...', Array, true)
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/edit_paket_...', Array, true)
+#9 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(89): view('ppk/edit_paket_...', Array)
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->edit_data_paket_perencanaan('50')
+#11 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#12 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#14 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#15 {main}
+CRITICAL - 2025-02-16 22:37:44 --> syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ']'
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Router\Router.php(160): CodeIgniter\Router\Router->autoRoute('ppk/paket/edit_...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(702): CodeIgniter\Router\Router->handle('ppk/paket/edit_...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-02-16 22:37:56 --> Cannot use [] for reading
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->edit_data_paket_perencanaan('50')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-02-16 22:38:05 --> Undefined variable: paket
+#0 C:\xampp7\htdocs\try\app\Views\ppk\edit_paket_perencanaan.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 15, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/edit_paket_...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(95): view('ppk/edit_paket_...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->edit_data_paket_perencanaan('50')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-02-16 22:43:57 --> Allowed fields must be specified for model: App\Models\PaketModel
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(1134): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\Pake...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(841): CodeIgniter\BaseModel->doProtectFields(Array)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(646): CodeIgniter\BaseModel->update(NULL, Array)
+#3 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(126): CodeIgniter\Model->update(NULL, Array)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->update_data_paket_perencanaan('1')
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+CRITICAL - 2025-02-16 22:44:29 --> Allowed fields must be specified for model: App\Models\PaketModel
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(1134): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\Pake...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\BaseModel.php(841): CodeIgniter\BaseModel->doProtectFields(Array)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(646): CodeIgniter\BaseModel->update(NULL, Array)
+#3 C:\xampp7\htdocs\try\app\Controllers\Ppk\Paket.php(126): CodeIgniter\Model->update(NULL, Array)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ppk\Paket->update_data_paket_perencanaan('1')
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ppk\Paket))
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+CRITICAL - 2025-02-16 23:57:31 --> Invalid file: pokja/halawal.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pokja/halawal.p...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/halawal', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Pokja\Home.php(20): view('pokja/halawal', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Home->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Home))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-02-16 23:57:40 --> Invalid file: pokja/pengadaan.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pokja/pengadaan...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Pokja\Home.php(20): view('pokja/pengadaan', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Home->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Home))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-02-16 23:57:45 --> Invalid file: pokja/pengadaan.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pokja/pengadaan...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Pokja\Home.php(20): view('pokja/pengadaan', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Home->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Home))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-02-16 23:57:49 --> Invalid file: pokja/pengadaan.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pokja/pengadaan...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/pengadaan', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Pokja\Home.php(20): view('pokja/pengadaan', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pokja\Home->index()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pokja\Home))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}

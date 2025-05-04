@@ -1,0 +1,24 @@
+CRITICAL - 2021-12-28 10:06:33 --> Undefined property: App\Controllers\Admin\Manmenu::$requestAJAX
+#0 D:\project\login_ajax_lte\app\Controllers\Admin\Manmenu.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\project\\logi...', 28, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmenu->dtmenu()
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmenu))
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#6 {main}
+CRITICAL - 2021-12-28 10:07:15 --> Undefined property: App\Controllers\Admin\Manmenu::$requestAJAX
+#0 D:\project\login_ajax_lte\app\Controllers\Admin\Manmenu.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\project\\logi...', 28, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmenu->dtmenu()
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmenu))
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#6 {main}
+CRITICAL - 2021-12-28 10:07:40 --> Undefined property: App\Controllers\Admin\Manmenu::$requestAJAX
+#0 D:\project\login_ajax_lte\app\Controllers\Admin\Manmenu.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\project\\logi...', 28, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmenu->dtmenu()
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmenu))
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#6 {main}

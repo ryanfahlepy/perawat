@@ -1,0 +1,95 @@
+CRITICAL - 2025-03-19 12:28:33 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\app\Models\PaketModel.php(82): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\app\Controllers\Dashboardpokja.php(23): App\Models\PaketModel->jumlah_paket()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardpokja->index()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardpokja))
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#7 {main}
+CRITICAL - 2025-03-19 12:36:08 --> Invalid file: ppk/tambah_paket.php
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('ppk/tambah_pake...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('ppk/tambah_pake...', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Paket.php(49): view('ppk/tambah_pake...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Paket->tambah_paket()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Paket))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-19 12:36:19 --> You must set the database table to be used with your query.
+#0 C:\xampp7\htdocs\try\app\Models\PaketModel.php(82): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp7\htdocs\try\app\Controllers\Dashboardpokja.php(23): App\Models\PaketModel->jumlah_paket()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardpokja->index()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardpokja))
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#7 {main}
+CRITICAL - 2025-03-19 12:36:58 --> Undefined property: stdClass::$total_perencanaan
+#0 C:\xampp7\htdocs\try\app\Models\PaketModel.php(91): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 91, Array)
+#1 C:\xampp7\htdocs\try\app\Controllers\Dashboardpokja.php(24): App\Models\PaketModel->total_perencanaan()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardpokja->index()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardpokja))
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#7 {main}
+CRITICAL - 2025-03-19 12:37:19 --> Undefined property: stdClass::$total_pelaksanaan
+#0 C:\xampp7\htdocs\try\app\Models\PaketModel.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 100, Array)
+#1 C:\xampp7\htdocs\try\app\Controllers\Dashboardpokja.php(25): App\Models\PaketModel->total_pelaksanaan()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Dashboardpokja->index()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboardpokja))
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#7 {main}
+ERROR - 2025-03-19 12:41:00 --> Table 'try.perencanaan' doesn't exist
+CRITICAL - 2025-03-19 12:41:00 --> Table 'try.perencanaan' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\PaketModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\try\app\Controllers\Paket.php(100): App\Models\PaketModel->getById('perencanaan', '1')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Paket->edit_data_paket('1')
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Paket))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-19 12:43:47 --> Table 'try.perencanaan' doesn't exist
+CRITICAL - 2025-03-19 12:43:47 --> Table 'try.perencanaan' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\PaketModel.php(47): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\try\app\Controllers\Paket.php(100): App\Models\PaketModel->getById('perencanaan', '1')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Paket->edit_data_paket('1')
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Paket))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+CRITICAL - 2025-03-19 12:45:55 --> Too few arguments to function App\Controllers\Paket::__construct(), 0 passed in C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php on line 779 and exactly 1 expected
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(779): App\Controllers\Paket->__construct()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-03-19 12:45:58 --> Too few arguments to function App\Controllers\Paket::__construct(), 0 passed in C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php on line 779 and exactly 1 expected
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(779): App\Controllers\Paket->__construct()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-03-19 12:46:00 --> Too few arguments to function App\Controllers\Paket::__construct(), 0 passed in C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php on line 779 and exactly 1 expected
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(779): App\Controllers\Paket->__construct()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}

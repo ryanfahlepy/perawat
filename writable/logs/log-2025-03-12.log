@@ -1,0 +1,288 @@
+CRITICAL - 2025-03-12 09:29:44 --> Trying to get property 'nama_file' of non-object
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(316): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp7\\htdoc...', 316, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->unduh_semua_dokumen('2')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-12 09:30:46 --> Trying to get property 'nama_file' of non-object
+#0 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(316): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp7\\htdoc...', 316, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->unduh_semua_dokumen('2')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-12 09:49:58 --> syntax error, unexpected 'id' (T_STRING), expecting ';' or ','
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/detail_pe...', Array, true)
+#2 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(122): view('pokja/detail_pe...', Array)
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->detail_pengadaan('2')
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-03-12 10:04:15 --> Undefined variable: jumlah_paket
+#0 C:\xampp7\htdocs\try\app\Views\pokja\detail_pengadaan.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 15, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('pokja/detail_pe...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Pengadaan.php(122): view('pokja/detail_pe...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Pengadaan->detail_pengadaan('2')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengadaan))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-03-12 17:20:41 --> Undefined variable: dokumen
+#0 C:\xampp7\htdocs\try\app\Views\admin\templatedokumen.php(64): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 64, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/templated...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(35): view('admin/templated...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-03-12 17:21:16 --> Undefined variable: table
+#0 C:\xampp7\htdocs\try\app\Views\admin\templatedokumen.php(65): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 65, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/templated...', Array, true)
+#4 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(35): view('admin/templated...', Array)
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->index()
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+ERROR - 2025-03-12 17:34:21 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:34:21 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:34:22 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:34:22 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:34:24 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:34:24 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:34:26 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:34:26 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:34:55 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:34:55 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:34:57 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:34:57 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:34:58 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:34:58 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:35:00 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:35:00 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:35:01 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:35:01 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:35:26 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:35:26 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:35:27 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:35:27 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:36:03 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:36:03 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:36:04 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:36:04 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:36:05 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:36:05 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+ERROR - 2025-03-12 17:36:14 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-12 17:36:14 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `pl...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pl...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pl...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pl...', Array, false)
+#4 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(56): CodeIgniter\Database\BaseBuilder->delete(Array)
+#5 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(78): App\Models\DokumenModel->deleteDokumen('pl', '36')
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#7 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#11 {main}
+CRITICAL - 2025-03-12 17:56:55 --> Undefined property: App\Controllers\Admin\Templatedokumen::$db
+#0 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 100, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-03-12 17:57:03 --> Undefined property: App\Controllers\Admin\Templatedokumen::$db
+#0 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 100, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->delete_document()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}

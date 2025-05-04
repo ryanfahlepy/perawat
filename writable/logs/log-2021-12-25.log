@@ -1,0 +1,66 @@
+CRITICAL - 2021-12-25 22:31:28 --> Call to a member function getVar() on null
+#0 D:\project\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include()
+#1 D:\project\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\project\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/tambah_us...', Array, true)
+#3 D:\project\login_v414\app\Controllers\Admin\Manuser.php(33): view('admin/tambah_us...', Array)
+#4 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->tambah()
+#5 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#6 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\project\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 D:\project\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#9 {main}
+CRITICAL - 2021-12-25 22:31:38 --> Call to a member function getVar() on null
+#0 D:\project\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include()
+#1 D:\project\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\project\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/tambah_us...', Array, true)
+#3 D:\project\login_v414\app\Controllers\Admin\Manuser.php(33): view('admin/tambah_us...', Array)
+#4 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->tambah()
+#5 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#6 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\project\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 D:\project\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#9 {main}
+CRITICAL - 2021-12-25 22:32:29 --> Undefined property: CodeIgniter\View\View::$request
+#0 D:\project\login_v414\app\Views\admin\tambah_user.php(2): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\project\\logi...', 2, Array)
+#1 D:\project\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include('D:\\project\\logi...')
+#2 D:\project\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\project\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/tambah_us...', Array, true)
+#4 D:\project\login_v414\app\Controllers\Admin\Manuser.php(33): view('admin/tambah_us...', Array)
+#5 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->tambah()
+#6 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2021-12-25 23:40:07 --> Call to a member function whereIn() on null
+#0 D:\project\login_v414\app\Controllers\Admin\Manuser.php(204): App\Models\UserModel->updateLevel(Array)
+#1 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->ubah_level()
+#2 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#3 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\project\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\project\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#6 {main}
+CRITICAL - 2021-12-25 23:42:55 --> Call to a member function whereIn() on null
+#0 D:\project\login_v414\app\Controllers\Admin\Manuser.php(205): App\Models\UserModel->updateLevel(Array)
+#1 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->ubah_level()
+#2 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#3 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\project\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\project\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#6 {main}
+CRITICAL - 2021-12-25 23:45:08 --> Call to a member function whereIn() on null
+#0 D:\project\login_v414\app\Controllers\Admin\Manuser.php(205): App\Models\UserModel->updateLevel('2', '3')
+#1 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->ubah_level()
+#2 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#3 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\project\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\project\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#6 {main}
+CRITICAL - 2021-12-25 23:45:11 --> Call to a member function whereIn() on null
+#0 D:\project\login_v414\app\Controllers\Admin\Manuser.php(205): App\Models\UserModel->updateLevel('2', '3')
+#1 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->ubah_level()
+#2 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#3 D:\project\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\project\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\project\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#6 {main}

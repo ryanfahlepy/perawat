@@ -10,7 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\Models\MenuModel;
 use App\Models\User_level_aksesModel;
-use App\Models\UserModel;
+use App\Models\NotifikasiModel;
 
 /**
  * Class BaseController
@@ -45,13 +45,30 @@ class BaseController extends Controller
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
+        $session = session();
+        $level = $session->get('nama_level');
 
-        // E.g.: $this->session = \Config\Services::session();
+        // Jika level adalah Admin, ambil data notifikasi
+        if ($level === 'Admin') {
+            $notifikasiModel = new NotifikasiModel();
+            $this->data['notifikasi'] = $notifikasiModel->where('status', 'belum_dibaca')->orderBy('created_at', 'DESC')->findAll(5);
+            $this->data['jumlahNotif'] = $notifikasiModel->where('status', 'belum_dibaca')->countAllResults();
+        } else {
+            $this->data['notifikasi'] = [];
+            $this->data['jumlahNotif'] = 0;
+        }
+
+        $this->data['level_akses'] = $level;
+        return view('shared_page/right_navbar', $this->data);
     }
+
+    
+
+
+
+
     public function tampil_menu($user_level_id)
     {
         $menuModel = new MenuModel();

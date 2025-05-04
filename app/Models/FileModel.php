@@ -8,7 +8,7 @@ class FileModel extends Model
 {
     protected $table = 'tabel_file';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['ref_id_pengadaan', 'ref_id_dokumen', 'nama_file','pengunggah', 'penghapus','created_at', 'deleted_at'];
+    protected $allowedFields = ['ref_id_pengadaan', 'ref_id_dokumen', 'nama_file', 'checksum', 'pengunggah', 'penghapus','created_at', 'deleted_at'];
 
     /**
      * Ambil semua dokumen berdasarkan id_pengadaan
@@ -22,7 +22,7 @@ class FileModel extends Model
 
     public function get_all_files($id_pengadaan)
     {
-        return $this->where('ref_id_pengadaan', $id_pengadaan)->findAll();
+        return $this->where('ref_id_pengadaan', $id_pengadaan)->where('deleted_at', null)->findAll();
     }
 
 
@@ -30,15 +30,6 @@ class FileModel extends Model
     /**
      * Tambah dokumen baru
      */
-    public function tambahFile($id_pengadaan, $nama_file)
-    {
-        return $this->insert([
-            'id_pengadaan' => $id_pengadaan,
-            'dokumen'      => $nama_file,
-            'created_at'   => date('Y-m-d H:i:s'),
-            'deleted_at'   => null
-        ]);
-    }
 
     /**
      * Hapus dokumen secara logis (soft delete)

@@ -1,0 +1,26 @@
+ERROR - 2025-03-09 21:31:12 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-03-09 21:31:12 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT `tbuser`...', Array, false)
+#2 C:\xampp7\htdocs\try\app\Models\UserModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\try\app\Controllers\User\Login.php(64): App\Models\UserModel->getUser('admin')
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\User\Login->ceklogin()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Login))
+#6 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+CRITICAL - 2025-03-09 21:31:12 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php:96
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\xampp7\\htdoc...', 96, Array)
+#1 C:\xampp7\htdocs\try\app\Views\errors\html\error_exception.php(96): print_r(Object(App\Controllers\User\Login), true)
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(235): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Debug\Exceptions.php(132): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}

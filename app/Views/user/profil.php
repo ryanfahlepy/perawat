@@ -24,7 +24,13 @@ $session = \Config\Services::session();
     </div>
     <h3 class="mt-5 profil-username text-center"><?= $session->nama; ?></h3>
 
+    <div class="text-center mt-4">
+        <a href="/admin/manuser/hal_resset_psswrd" class="btn btn-warning">
+            Ganti Password
+        </a>
+    </div>
 </div>
+
 <!-- Blok content dinamis disini -->
 <!-- /.card-body -->
 

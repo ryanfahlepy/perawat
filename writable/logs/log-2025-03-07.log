@@ -1,0 +1,72 @@
+ERROR - 2025-03-07 09:59:04 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-07 09:59:04 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1457): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', NULL, false)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(720): CodeIgniter\Database\BaseBuilder->countAll()
+#5 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(35): CodeIgniter\Model->__call('countAll', Array)
+#6 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(45): App\Models\DokumenModel->countAllResult('pl')
+#7 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(69): App\Models\DokumenModel->addDokumen('pl', 'Bukti Bayar')
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->add_dokumen()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+ERROR - 2025-03-07 09:59:09 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-07 09:59:09 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1457): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', NULL, false)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(720): CodeIgniter\Database\BaseBuilder->countAll()
+#5 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(35): CodeIgniter\Model->__call('countAll', Array)
+#6 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(45): App\Models\DokumenModel->countAllResult('pl')
+#7 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(69): App\Models\DokumenModel->addDokumen('pl', 'Bukti Bayar')
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->add_dokumen()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+ERROR - 2025-03-07 09:59:56 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-07 09:59:56 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1457): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', NULL, false)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(720): CodeIgniter\Database\BaseBuilder->countAll()
+#5 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(35): CodeIgniter\Model->__call('countAll', Array)
+#6 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(45): App\Models\DokumenModel->countAllResult('pl')
+#7 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(69): App\Models\DokumenModel->addDokumen('pl', 'Ryan')
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->add_dokumen()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+ERROR - 2025-03-07 10:08:11 --> Table 'try.pl' doesn't exist
+CRITICAL - 2025-03-07 10:08:11 --> Table 'try.pl' doesn't exist
+#0 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1457): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', NULL, false)
+#4 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Model.php(720): CodeIgniter\Database\BaseBuilder->countAll()
+#5 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(35): CodeIgniter\Model->__call('countAll', Array)
+#6 C:\xampp7\htdocs\try\app\Models\DokumenModel.php(45): App\Models\DokumenModel->countAllResult('pl')
+#7 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(69): App\Models\DokumenModel->addDokumen('pl', 'Ryan')
+#8 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->add_document()
+#9 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#10 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+CRITICAL - 2025-03-07 13:42:42 --> Undefined index: id
+#0 C:\xampp7\htdocs\try\app\Controllers\Admin\Templatedokumen.php(51): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 51, Array)
+#1 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Templatedokumen->update_order()
+#2 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Templatedokumen))
+#3 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\try\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\try\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}

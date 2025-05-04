@@ -1,0 +1,183 @@
+CRITICAL - 2022-01-01 01:47:21 --> Too few arguments to function App\Controllers\Admin\Manuser::nonaktif(), 0 passed in D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php on line 802 and exactly 1 expected
+#0 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->nonaktif()
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#5 {main}
+CRITICAL - 2022-01-01 02:01:07 --> syntax error, unexpected '}'
+#0 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Router\Router.php(160): CodeIgniter\Router\Router->autoRoute('admin/manuser')
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(702): CodeIgniter\Router\Router->handle('admin/manuser')
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#6 {main}
+CRITICAL - 2022-01-01 02:11:55 --> Trying to get property 'id' of non-object
+#0 D:\project\login_ajax_lte\app\Views\admin\form_edit_menu.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\project\\logi...', 10, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(214): include('D:\\project\\logi...')
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/form_edit...', Array, true)
+#4 D:\project\login_ajax_lte\app\Controllers\Admin\Manmenu.php(123): view('admin/form_edit...', Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmenu->form_edit()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmenu))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 02:15:37 --> Trying to get property 'id' of non-object
+#0 D:\project\login_ajax_lte\app\Views\admin\form_edit_menu.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\project\\logi...', 10, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(214): include('D:\\project\\logi...')
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/form_edit...', Array, true)
+#4 D:\project\login_ajax_lte\app\Controllers\Admin\Manmenu.php(123): view('admin/form_edit...', Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmenu->form_edit()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmenu))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 02:40:35 --> Undefined variable: tootip
+#0 D:\project\login_ajax_lte\app\Views\tabel\user.php(49): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\project\\logi...', 49, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(214): include('D:\\project\\logi...')
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('tabel/user', Array, true)
+#4 D:\project\login_ajax_lte\app\Controllers\Admin\Manuser.php(33): view('tabel/user', Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->dtuser()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 02:40:37 --> Undefined variable: tootip
+#0 D:\project\login_ajax_lte\app\Views\tabel\user.php(49): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\project\\logi...', 49, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(214): include('D:\\project\\logi...')
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('tabel/user', Array, true)
+#4 D:\project\login_ajax_lte\app\Controllers\Admin\Manuser.php(33): view('tabel/user', Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->dtuser()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 02:43:45 --> Too few arguments to function App\Controllers\Admin\Manuser::nonaktif(), 0 passed in D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php on line 802 and exactly 1 expected
+#0 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->nonaktif()
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#5 {main}
+CRITICAL - 2022-01-01 02:49:22 --> Too few arguments to function App\Controllers\Admin\Manuser::nonaktif(), 0 passed in D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php on line 802 and exactly 1 expected
+#0 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->nonaktif()
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#5 {main}
+CRITICAL - 2022-01-01 02:51:34 --> Too few arguments to function App\Controllers\Admin\Manuser::nonaktif(), 0 passed in D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php on line 802 and exactly 1 expected
+#0 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->nonaktif()
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#5 {main}
+CRITICAL - 2022-01-01 02:51:39 --> Too few arguments to function App\Controllers\Admin\Manuser::nonaktif(), 0 passed in D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php on line 802 and exactly 1 expected
+#0 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->nonaktif()
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#5 {main}
+CRITICAL - 2022-01-01 03:01:54 --> Trying to get property 'id' of non-object
+#0 D:\project\login_ajax_lte\app\Views\admin\form_edit_menu.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\project\\logi...', 10, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(214): include('D:\\project\\logi...')
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/form_edit...', Array, true)
+#4 D:\project\login_ajax_lte\app\Controllers\Admin\Manmenu.php(123): view('admin/form_edit...', Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmenu->form_edit()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmenu))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 07:52:41 --> preg_match() expects parameter 2 to be string, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match() ex...', 'D:\\project\\logi...', 256, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Validation\Validation.php(256): preg_match('/(.*?)\\[(.*)\\]/', Array, NULL)
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Validation\Validation.php(151): CodeIgniter\Validation\Validation->processRules('0', '0', NULL, Array, Array)
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Controller.php(160): CodeIgniter\Validation\Validation->run()
+#4 D:\project\login_ajax_lte\app\Controllers\User\Login.php(135): CodeIgniter\Controller->validate(Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\User\Login->simpanregister()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Login))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 07:52:43 --> preg_match() expects parameter 2 to be string, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match() ex...', 'D:\\project\\logi...', 256, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Validation\Validation.php(256): preg_match('/(.*?)\\[(.*)\\]/', Array, NULL)
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Validation\Validation.php(151): CodeIgniter\Validation\Validation->processRules('0', '0', NULL, Array, Array)
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Controller.php(160): CodeIgniter\Validation\Validation->run()
+#4 D:\project\login_ajax_lte\app\Controllers\User\Login.php(135): CodeIgniter\Controller->validate(Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\User\Login->simpanregister()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Login))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 07:52:43 --> preg_match() expects parameter 2 to be string, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match() ex...', 'D:\\project\\logi...', 256, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Validation\Validation.php(256): preg_match('/(.*?)\\[(.*)\\]/', Array, NULL)
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Validation\Validation.php(151): CodeIgniter\Validation\Validation->processRules('0', '0', NULL, Array, Array)
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Controller.php(160): CodeIgniter\Validation\Validation->run()
+#4 D:\project\login_ajax_lte\app\Controllers\User\Login.php(135): CodeIgniter\Controller->validate(Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\User\Login->simpanregister()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Login))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 21:43:21 --> Trying to get property 'username' of non-object
+#0 D:\project\login_ajax_lte\app\Controllers\Admin\Manuser.php(51): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\project\\logi...', 51, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->form_edit()
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#6 {main}
+CRITICAL - 2022-01-01 21:48:08 --> Trying to get property 'nama' of non-object
+#0 D:\project\login_ajax_lte\app\Views\admin\form_edit_user.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\project\\logi...', 12, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(214): include('D:\\project\\logi...')
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/form_edit...', Array, true)
+#4 D:\project\login_ajax_lte\app\Controllers\Admin\Manuser.php(56): view('admin/form_edit...', Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->form_edit()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 21:51:59 --> Trying to get property 'id' of non-object
+#0 D:\project\login_ajax_lte\app\Views\admin\form_edit_user.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\project\\logi...', 10, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(214): include('D:\\project\\logi...')
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/form_edit...', Array, true)
+#4 D:\project\login_ajax_lte\app\Controllers\Admin\Manuser.php(56): view('admin/form_edit...', Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->form_edit()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}
+CRITICAL - 2022-01-01 21:52:06 --> Trying to get property 'id' of non-object
+#0 D:\project\login_ajax_lte\app\Views\admin\form_edit_user.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\project\\logi...', 10, Array)
+#1 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(214): include('D:\\project\\logi...')
+#2 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/form_edit...', Array, true)
+#4 D:\project\login_ajax_lte\app\Controllers\Admin\Manuser.php(56): view('admin/form_edit...', Array)
+#5 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->form_edit()
+#6 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\project\login_ajax_lte\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 D:\project\login_ajax_lte\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('D:\\project\\logi...')
+#10 {main}

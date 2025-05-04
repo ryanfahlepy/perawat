@@ -1,0 +1,68 @@
+CRITICAL - 2021-10-19 22:39:17 --> Call to undefined method App\Models\UserModel::getUsername
+#0 C:\xampp\htdocs\login_v414\app\Controllers\Admin\Manuser.php(39): CodeIgniter\Model->__call('getUsername', Array)
+#1 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->edit('1')
+#2 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#3 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2021-10-19 22:39:56 --> Undefined property: CodeIgniter\Database\MySQLi\Result::$id
+#0 C:\xampp\htdocs\login_v414\app\Views\admin\edit_user.php(17): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 17, Array)
+#1 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/edit_user', Array, true)
+#4 C:\xampp\htdocs\login_v414\app\Controllers\Admin\Manuser.php(45): view('admin/edit_user', Array)
+#5 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->edit('1')
+#6 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2021-10-19 22:40:46 --> Trying to get property 'id' of non-object
+#0 C:\xampp\htdocs\login_v414\app\Views\admin\edit_user.php(17): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 17, Array)
+#1 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/edit_user', Array, true)
+#4 C:\xampp\htdocs\login_v414\app\Controllers\Admin\Manuser.php(45): view('admin/edit_user', Array)
+#5 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->edit('1')
+#6 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2021-10-19 22:41:27 --> Trying to get property 'id' of non-object
+#0 C:\xampp\htdocs\login_v414\app\Views\admin\edit_user.php(17): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 17, Array)
+#1 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/edit_user', Array, true)
+#4 C:\xampp\htdocs\login_v414\app\Controllers\Admin\Manuser.php(45): view('admin/edit_user', Array)
+#5 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->edit('1')
+#6 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2021-10-19 22:41:29 --> Trying to get property 'id' of non-object
+#0 C:\xampp\htdocs\login_v414\app\Views\admin\edit_user.php(17): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 17, Array)
+#1 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/edit_user', Array, true)
+#4 C:\xampp\htdocs\login_v414\app\Controllers\Admin\Manuser.php(45): view('admin/edit_user', Array)
+#5 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->edit('1')
+#6 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2021-10-19 22:41:46 --> Trying to get property 'password' of non-object
+#0 C:\xampp\htdocs\login_v414\app\Views\admin\edit_user.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 31, Array)
+#1 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/edit_user', Array, true)
+#4 C:\xampp\htdocs\login_v414\app\Controllers\Admin\Manuser.php(45): view('admin/edit_user', Array)
+#5 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->edit('1')
+#6 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}

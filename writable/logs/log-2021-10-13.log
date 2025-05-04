@@ -1,0 +1,33 @@
+CRITICAL - 2021-10-13 10:03:13 --> Class 'App\Models\UserModel' not found
+#0 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(779): App\Controllers\User\Login->__construct()
+#1 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2021-10-13 10:40:42 --> include(modal/form_add_menu): failed to open stream: No such file or directory
+#0 C:\xampp\htdocs\login_v414\app\Views\admin\kelolamenu.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(modal/f...', 'C:\\xampp\\htdocs...', 71, Array)
+#1 C:\xampp\htdocs\login_v414\app\Views\admin\kelolamenu.php(71): include()
+#2 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#4 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolamen...', Array, true)
+#5 C:\xampp\htdocs\login_v414\app\Controllers\Admin\Manmenu.php(23): view('admin/kelolamen...', Array)
+#6 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmenu->index()
+#7 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmenu))
+#8 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2021-10-13 10:41:35 --> include(modal/form_add_menu): failed to open stream: No such file or directory
+#0 C:\xampp\htdocs\login_v414\app\Views\admin\kelolamenu.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(modal/f...', 'C:\\xampp\\htdocs...', 71, Array)
+#1 C:\xampp\htdocs\login_v414\app\Views\admin\kelolamenu.php(71): include()
+#2 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#4 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolamen...', Array, true)
+#5 C:\xampp\htdocs\login_v414\app\Controllers\Admin\Manmenu.php(23): view('admin/kelolamen...', Array)
+#6 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmenu->index()
+#7 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmenu))
+#8 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\login_v414\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\login_v414\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
