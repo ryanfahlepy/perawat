@@ -3,7 +3,6 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
 </ul>
-
 <!-- SEARCH FORM uncoment jika mau diberi fitur search-->
 <!-- <form class="form-inline ml-3">
     <div class="input-group input-group-sm">
