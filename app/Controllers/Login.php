@@ -76,8 +76,9 @@ class Login extends BaseController
                     $dtuser = [
                         'photo' => $user->photo,
                         'nama' => $user->nama,
+                        'user_id' => (int) $user->id,
                         'username' => $user->username,
-                        'level' => $user->level_user,
+                        'level' => (int) $user->level_user,
                         'nama_level' => $user->nama_level,
                         'sdh_login' => true
                     ];
