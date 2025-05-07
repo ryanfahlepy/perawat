@@ -89,7 +89,7 @@ class Login extends BaseController
                     if ($user->level_user == 2) {
                         return redirect()->to('/dashboardppk');
                     } elseif ($user->level_user == 3 || $user->level_user == 4) {
-                        return redirect()->to('/pengadaan');
+                        return redirect()->to('/profil');
                     } elseif ($user->level_user == 1) {
                         return redirect()->to('/profil');
                     } else {

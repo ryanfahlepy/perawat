@@ -17,7 +17,7 @@ class Kompetensi extends BaseController
         $data = [
             'level_akses' => $this->session->nama_level,
             'dtmenu' => $this->tampil_menu($this->session->level),
-            'nama_menu' => 'E-Kinerja',
+            'nama_menu' => 'Assesmen Kompetensi',
         ];
         return view('layout/kompetensi', $data
         );
