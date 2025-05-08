@@ -169,6 +169,78 @@ class Mentoring extends BaseController
         return $this->response->setJSON(['status' => 'failed'])->setStatusCode(400);
     }
 
+    public function tambah_kompetensi()
+    {
+        $this->db->table('tabel_kompetensi')->insert([
+            'kategori' => $this->request->getPost('kategori'),
+            'kompetensi' => $this->request->getPost('kompetensi')
+        ]);
+        return redirect()->back()->with('message', 'Kompetensi berhasil ditambahkan.');
+    }
+    
+    public function update()
+    {
+        $id = $this->request->getPost('id');
+        $this->db->table('tabel_kompetensi')->where('id', $id)->update([
+            'kategori' => $this->request->getPost('kategori'),
+            'kompetensi' => $this->request->getPost('kompetensi')
+        ]);
+        return redirect()->back()->with('message', 'Kompetensi berhasil diperbarui.');
+    }
+    
+    public function hapus($id)
+    {
+        $this->db->table('tabel_kompetensi')->where('id', $id)->delete();
+        return redirect()->back()->with('message', 'Kompetensi berhasil dihapus.');
+    }
+    
 
+    public function tambah_kategori()
+    {
+        $kategori = $this->request->getVar('nama');
+        if ($kategori) {
+            $this->prapkModel->insert(['kategori' => $kategori, 'kompetensi' => '']);
+            return redirect()->back()->with('message', 'Kategori berhasil ditambahkan.');
+        }
+        return redirect()->back()->with('error', 'Nama kategori tidak boleh kosong.');
+    }
+    public function edit_kategori()
+    {
+        $old = $this->request->getVar('old');
+        $new = $this->request->getVar('new');
+        if ($old && $new) {
+            $this->prapkModel->where('kategori', $old)->set(['kategori' => $new])->update();
+            return redirect()->back()->with('message', 'Kategori berhasil diperbarui.');
+        }
+        return redirect()->back()->with('error', 'Data kategori tidak valid.');
+    }
+    public function hapus_kategori()
+    {
+        $kategori = $this->request->getVar('kategori');
+        if ($kategori) {
+            $this->prapkModel->where('kategori', $kategori)->delete();
+            return redirect()->back()->with('message', 'Kategori dan semua kompetensi di dalamnya berhasil dihapus.');
+        }
+        return redirect()->back()->with('error', 'Kategori tidak ditemukan.');
+    }
+    public function update_kompetensi()
+    {
+        $id = $this->request->getVar('id');
+        $kompetensi = $this->request->getVar('kompetensi');
+        if ($id && $kompetensi) {
+            $this->prapkModel->update($id, ['kompetensi' => $kompetensi]);
+            return redirect()->back()->with('message', 'Kompetensi berhasil diperbarui.');
+        }
+        return redirect()->back()->with('error', 'Data update tidak valid.');
+    }
+    public function hapus_kompetensi($id)
+    {
+        if ($id) {
+            $this->prapkModel->delete($id);
+            return redirect()->back()->with('message', 'Kompetensi berhasil dihapus.');
+        }
+        return redirect()->back()->with('error', 'ID kompetensi tidak valid.');
+    }
+    
 
 }

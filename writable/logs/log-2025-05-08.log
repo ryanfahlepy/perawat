@@ -1,0 +1,76 @@
+ERROR - 2025-05-08 15:59:28 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-05-08 15:59:28 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT `tabel_u...', Array, false)
+#2 C:\xampp7\htdocs\perawat\app\Models\UserModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\perawat\app\Controllers\Login.php(69): App\Models\UserModel->getUser('admin')
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Login->ceklogin()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+CRITICAL - 2025-05-08 15:59:28 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\xampp7\htdocs\perawat\app\Views\errors\html\error_exception.php:96
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\xampp7\\htdoc...', 96, Array)
+#1 C:\xampp7\htdocs\perawat\app\Views\errors\html\error_exception.php(96): print_r(Object(App\Controllers\Login), true)
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Debug\Exceptions.php(235): include('C:\\xampp7\\htdoc...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Debug\Exceptions.php(132): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2025-05-08 16:27:20 --> Undefined variable: session
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\form_prapk.php(7): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 7, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/form_pra...', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(114): view('layout/form_pra...', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->form('59')
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-08 16:37:45 --> Undefined property: App\Controllers\Mentoring::$db
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(184): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 184, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->update()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+ERROR - 2025-05-08 16:52:39 --> Cannot delete or update a parent row: a foreign key constraint fails (`perawat`.`tabel_prapk_hasil`, CONSTRAINT `FK_prapk_id` FOREIGN KEY (`prapk_id`) REFERENCES `tabel_prapk` (`id`) ON UPDATE CASCADE)
+CRITICAL - 2025-05-08 16:52:39 --> Cannot delete or update a parent row: a foreign key constraint fails (`perawat`.`tabel_prapk_hasil`, CONSTRAINT `FK_prapk_id` FOREIGN KEY (`prapk_id`) REFERENCES `tabel_prapk` (`id`) ON UPDATE CASCADE)
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `ta...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `ta...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `ta...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `ta...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(359): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(963): CodeIgniter\Model->doDelete(NULL, false)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(221): CodeIgniter\BaseModel->delete()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->hapus_kategori()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-08 16:53:15 --> Cannot delete or update a parent row: a foreign key constraint fails (`perawat`.`tabel_prapk_hasil`, CONSTRAINT `FK_prapk_id` FOREIGN KEY (`prapk_id`) REFERENCES `tabel_prapk` (`id`) ON UPDATE CASCADE)
+CRITICAL - 2025-05-08 16:53:15 --> Cannot delete or update a parent row: a foreign key constraint fails (`perawat`.`tabel_prapk_hasil`, CONSTRAINT `FK_prapk_id` FOREIGN KEY (`prapk_id`) REFERENCES `tabel_prapk` (`id`) ON UPDATE CASCADE)
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('DELETE FROM `ta...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `ta...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `ta...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2175): CodeIgniter\Database\BaseConnection->query('DELETE FROM `ta...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(359): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(963): CodeIgniter\Model->doDelete(NULL, false)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(221): CodeIgniter\BaseModel->delete()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->hapus_kategori()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
