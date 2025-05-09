@@ -11,6 +11,56 @@ $level = $session->level;
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script> -->
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    <?php if (session()->getFlashdata('message')): ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: '<?= session('message') ?>',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    <?php elseif (session()->getFlashdata('error')): ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal',
+            text: '<?= session('error') ?>',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    <?php endif; ?>
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.btn-hapus-kompetensi').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault(); // Hindari redirect langsung
+
+                const url = this.getAttribute('data-url');
+
+                Swal.fire({
+                    title: 'Yakin ingin menghapus?',
+                    text: "Data kompetensi akan dihapus permanen",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.value) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        });
+    });
+</script>
+
 
 <div class="card-header">
     <h3 class="card-title">
@@ -114,8 +164,8 @@ $level = $session->level;
                                             data-kompetensi="<?= esc($row['kompetensi']) ?>">
                                             <i class="fas fa-pencil-alt"></i>
                                         </button>
-                                        <a href="<?= site_url('mentoring/hapus_kompetensi/' . $row['id']) ?>"
-                                            class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">
+                                        <a href="#" class="btn btn-sm btn-danger btn-hapus-kompetensi"
+                                            data-url="<?= site_url('mentoring/hapus_kompetensi/' . $row['id']) ?>">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </div>
@@ -145,8 +195,6 @@ $level = $session->level;
         endfor;
         ?>
     </div>
-
-
 </div>
 
 <!-- Modal Edit Kompetensi -->
@@ -271,15 +319,27 @@ $level = $session->level;
         });
 
 
-        // Hapus kategori
+        // Hapus kategori dengan SweetAlert2
         document.querySelectorAll('.hapus-kategori').forEach(btn => {
             btn.addEventListener('click', () => {
                 const k = btn.dataset.kategori;
-                if (confirm(`Hapus semua kompetensi dalam kategori "${k}"?`)) {
-                    window.location.href = `<?= site_url('mentoring/hapus_kategori') ?>?kategori=${encodeURIComponent(k)}`;
-                }
+                Swal.fire({
+                    title: `Hapus semua kompetensi dalam kategori "${k}"?`,
+                    text: "Ini akan menghapus semua kompetensi yang terkait dengan kategori ini",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.value) {
+                        window.location.href = `<?= site_url('mentoring/hapus_kategori') ?>?kategori=${encodeURIComponent(k)}`;
+                    }
+                });
             });
         });
+
     });
 </script>
 <script>

@@ -187,10 +187,10 @@ class Mentoring extends BaseController
                 'no' => $newNo
             ]);
 
-            return redirect()->back()->with('message', 'Kompetensi berhasil ditambahkan.');
+            return redirect()->back()->with('message', 'Kompetensi berhasil ditambahkan');
         }
 
-        return redirect()->back()->with('error', 'Kategori dan kompetensi tidak boleh kosong.');
+        return redirect()->back()->with('error', 'Kategori dan kompetensi tidak boleh kosong');
     }
 
 
@@ -201,13 +201,13 @@ class Mentoring extends BaseController
             'kategori' => $this->request->getPost('kategori'),
             'kompetensi' => $this->request->getPost('kompetensi')
         ]);
-        return redirect()->back()->with('message', 'Kompetensi berhasil diperbarui.');
+        return redirect()->back()->with('message', 'Kompetensi berhasil diperbarui');
     }
 
     public function hapus($id)
     {
         $this->db->table('tabel_kompetensi')->where('id', $id)->delete();
-        return redirect()->back()->with('message', 'Kompetensi berhasil dihapus.');
+        return redirect()->back()->with('message', 'Kompetensi berhasil dihapus');
     }
 
 
@@ -228,10 +228,10 @@ class Mentoring extends BaseController
                 'no' => $newNo
             ]);
 
-            return redirect()->back()->with('message', 'Kategori berhasil ditambahkan.');
+            return redirect()->back()->with('message', 'Kategori berhasil ditambahkan');
         }
 
-        return redirect()->back()->with('error', 'Nama kategori tidak boleh kosong.');
+        return redirect()->back()->with('error', 'Nama kategori tidak boleh kosong');
     }
 
     public function edit_kategori()
@@ -240,9 +240,9 @@ class Mentoring extends BaseController
         $new = $this->request->getVar('new');
         if ($old && $new) {
             $this->prapkModel->where('kategori', $old)->set(['kategori' => $new])->update();
-            return redirect()->back()->with('message', 'Kategori berhasil diperbarui.');
+            return redirect()->back()->with('message', 'Kategori berhasil diperbarui');
         }
-        return redirect()->back()->with('error', 'Data kategori tidak valid.');
+        return redirect()->back()->with('error', 'Data kategori tidak valid');
     }
     public function hapus_kategori()
     {
@@ -260,10 +260,10 @@ class Mentoring extends BaseController
             // Hapus data utama dari tabel_prapk
             $this->prapkModel->where('kategori', $kategori)->delete();
 
-            return redirect()->back()->with('message', 'Kategori dan semua kompetensi di dalamnya berhasil dihapus.');
+            return redirect()->back()->with('message', 'Kategori dan semua kompetensi di dalamnya berhasil dihapus');
         }
 
-        return redirect()->back()->with('error', 'Kategori tidak ditemukan.');
+        return redirect()->back()->with('error', 'Kategori tidak ditemukan');
     }
 
     public function update_kompetensi()
@@ -272,9 +272,9 @@ class Mentoring extends BaseController
         $kompetensi = $this->request->getVar('kompetensi');
         if ($id && $kompetensi) {
             $this->prapkModel->update($id, ['kompetensi' => $kompetensi]);
-            return redirect()->back()->with('message', 'Kompetensi berhasil diperbarui.');
+            return redirect()->back()->with('message', 'Kompetensi berhasil diperbarui');
         }
-        return redirect()->back()->with('error', 'Data update tidak valid.');
+        return redirect()->back()->with('error', 'Data update tidak valid');
     }
     public function hapus_kompetensi($id)
     {
@@ -282,7 +282,7 @@ class Mentoring extends BaseController
         $kompetensi = $this->prapkModel->find($id);
 
         if (!$kompetensi) {
-            return redirect()->back()->with('error', 'ID kompetensi tidak ditemukan.');
+            return redirect()->back()->with('error', 'ID kompetensi tidak ditemukan');
         }
 
         $noHapus = $kompetensi['no'];
@@ -306,7 +306,7 @@ class Mentoring extends BaseController
             $this->prapkModel->update($item['id'], ['no' => $item['no'] - 1]);
         }
 
-        return redirect()->back()->with('message', 'Kompetensi berhasil dihapus dan nomor diperbarui.');
+        return redirect()->back()->with('message', 'Kompetensi berhasil dihapus dan nomor diperbarui');
     }
 
 
