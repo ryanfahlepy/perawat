@@ -171,12 +171,28 @@ class Mentoring extends BaseController
 
     public function tambah_kompetensi()
     {
-        $this->db->table('tabel_kompetensi')->insert([
-            'kategori' => $this->request->getPost('kategori'),
-            'kompetensi' => $this->request->getPost('kompetensi')
-        ]);
-        return redirect()->back()->with('message', 'Kompetensi berhasil ditambahkan.');
+        $kategori = $this->request->getVar('kategori');
+        $kompetensi = $this->request->getVar('kompetensi');
+
+        if ($kategori && $kompetensi) {
+            // Ambil nilai 'no' terbesar dari tabel
+            $lastData = $this->prapkModel->orderBy('no', 'DESC')->first();
+            $lastNo = $lastData ? (int) $lastData['no'] : 0;
+            $newNo = $lastNo + 1;
+
+            // Simpan data kompetensi baru
+            $this->prapkModel->insert([
+                'kategori' => $kategori,
+                'kompetensi' => $kompetensi,
+                'no' => $newNo
+            ]);
+
+            return redirect()->back()->with('message', 'Kompetensi berhasil ditambahkan.');
+        }
+
+        return redirect()->back()->with('error', 'Kategori dan kompetensi tidak boleh kosong.');
     }
+
 
     public function update()
     {
@@ -231,12 +247,25 @@ class Mentoring extends BaseController
     public function hapus_kategori()
     {
         $kategori = $this->request->getVar('kategori');
+
         if ($kategori) {
+            // Ambil semua data prapk yang memiliki kategori ini
+            $dataKategori = $this->prapkModel->where('kategori', $kategori)->findAll();
+
+            foreach ($dataKategori as $row) {
+                // Gunakan model untuk hapus data hasil
+                $this->prapkHasilModel->where('prapk_id', $row['id'])->delete();
+            }
+
+            // Hapus data utama dari tabel_prapk
             $this->prapkModel->where('kategori', $kategori)->delete();
+
             return redirect()->back()->with('message', 'Kategori dan semua kompetensi di dalamnya berhasil dihapus.');
         }
+
         return redirect()->back()->with('error', 'Kategori tidak ditemukan.');
     }
+
     public function update_kompetensi()
     {
         $id = $this->request->getVar('id');
@@ -249,12 +278,37 @@ class Mentoring extends BaseController
     }
     public function hapus_kompetensi($id)
     {
-        if ($id) {
-            $this->prapkModel->delete($id);
-            return redirect()->back()->with('message', 'Kompetensi berhasil dihapus.');
+        // Ambil data kompetensi sebelum dihapus
+        $kompetensi = $this->prapkModel->find($id);
+
+        if (!$kompetensi) {
+            return redirect()->back()->with('error', 'ID kompetensi tidak ditemukan.');
         }
-        return redirect()->back()->with('error', 'ID kompetensi tidak valid.');
+
+        $noHapus = $kompetensi['no'];
+        $kategori = $kompetensi['kategori'];
+
+        // Hapus dulu hasilnya
+        $this->prapkHasilModel->where('prapk_id', $id)->delete();
+
+        // Hapus kompetensinya
+        $this->prapkModel->delete($id);
+
+        // Ambil semua kompetensi di kategori yang sama dan no > yang dihapus
+        $kompetensiSetelah = $this->prapkModel
+            ->where('kategori', $kategori)
+            ->where('no >', $noHapus)
+            ->orderBy('no', 'ASC')
+            ->findAll();
+
+        // Turunkan semua nomornya 1 tingkat
+        foreach ($kompetensiSetelah as $item) {
+            $this->prapkModel->update($item['id'], ['no' => $item['no'] - 1]);
+        }
+
+        return redirect()->back()->with('message', 'Kompetensi berhasil dihapus dan nomor diperbarui.');
     }
+
 
 
 }

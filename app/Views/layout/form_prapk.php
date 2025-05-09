@@ -10,7 +10,7 @@ $level = $session->level;
 <!-- Font Awesome untuk ikon -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script> -->
 
 <div class="card-header">
     <h3 class="card-title">
@@ -171,6 +171,30 @@ $level = $session->level;
         </form>
     </div>
 </div>
+
+<div class="modal fade" id="editKategoriModal" tabindex="-1" aria-labelledby="editKategoriModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="<?= site_url('mentoring/edit_kategori') ?>" method="get" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editKategoriModalLabel">Edit Kategori</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="old" id="edit-old-kategori">
+                <div class="mb-3">
+                    <label for="edit-new-kategori" class="form-label">Nama Kategori Baru</label>
+                    <input type="text" class="form-control" id="edit-new-kategori" name="new" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- Menambahkan jQuery jika belum ada -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -200,12 +224,12 @@ $level = $session->level;
             });
         });
 
-        // Drag & Drop Kompetensi
-        document.querySelectorAll('.kompetensi-list').forEach(el => {
-            new Sortable(el, { group: 'kompetensi', animation: 150 });
-        });
-        // Drag & Drop Kategori
-        new Sortable(document.getElementById('kategori-list'), { group: 'kategori', animation: 150 });
+        // // Drag & Drop Kompetensi
+        // document.querySelectorAll('.kompetensi-list').forEach(el => {
+        //     new Sortable(el, { group: 'kompetensi', animation: 150 });
+        // });
+        // // Drag & Drop Kategori
+        // new Sortable(document.getElementById('kategori-list'), { group: 'kategori', animation: 150 });
 
         // Tambah kategori
         const formKat = document.getElementById('form-tambah-kategori');
@@ -240,13 +264,12 @@ $level = $session->level;
         // Edit kategori (prompt)
         document.querySelectorAll('.edit-kategori').forEach(btn => {
             btn.addEventListener('click', () => {
-                const k = btn.dataset.kategori;
-                const n = prompt('Edit nama kategori:', k);
-                if (n && n !== k) {
-                    window.location.href = `<?= site_url('mentoring/edit_kategori') ?>?old=${encodeURIComponent(k)}&new=${encodeURIComponent(n)}`;
-                }
+                document.getElementById('edit-old-kategori').value = btn.dataset.kategori;
+                document.getElementById('edit-new-kategori').value = btn.dataset.kategori;
+                new bootstrap.Modal(document.getElementById('editKategoriModal')).show();
             });
         });
+
 
         // Hapus kategori
         document.querySelectorAll('.hapus-kategori').forEach(btn => {
