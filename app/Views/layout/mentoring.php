@@ -6,13 +6,8 @@ $level = $session->level;
 <?php $this->extend('shared_page/template'); ?>
 <?php $this->section('content'); ?>
 
-<div class="card-header">
-    <h3 class="card-title">Hallo <b><?= esc($session->nama); ?></b>, Selamat datang</h3>
-</div>
-
-
 <div class="card-body">
-    <h4>Daftar User (Level 4, 5, 6)</h4>
+    <h4>Daftar Mentees anda <b><?= esc($session->nama); ?></b></h4>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -28,7 +23,8 @@ $level = $session->level;
                     <tr>
                         <td class="text-center">
                             <?php if (!empty($user['photo'])): ?>
-                                <img src="<?= base_url('uploads/' . esc($user['photo'])) ?>" width="50" height="50" alt="User Photo">
+                                <img src="<?= base_url('uploads/' . esc($user['photo'])) ?>" width="50" height="50"
+                                    alt="User Photo">
                             <?php else: ?>
                                 <span class="text-muted">Tidak ada foto</span>
                             <?php endif; ?>
@@ -36,7 +32,8 @@ $level = $session->level;
                         <td><?= esc($user['nama'] ?? '-') ?></td>
                         <td><?= esc($user['nama_level'] ?? '-') ?></td>
                         <td class="text-center">
-                            <a href="<?= site_url('mentoring/form/' . esc($user['id'] ?? 0)) ?>" class="btn btn-info btn-sm w" title="Info">
+                            <a href="<?= site_url('mentoring/form/' . esc($user['id'] ?? 0)) ?>" class="btn btn-info btn-sm w"
+                                title="Info">
                                 <i class="fas fa-info-circle text-white"></i>
                             </a>
                         </td>

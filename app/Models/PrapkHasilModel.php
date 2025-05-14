@@ -7,20 +7,25 @@ use CodeIgniter\Model;
 class PrapkHasilModel extends Model
 {
     protected $table = 'tabel_prapk_hasil';
-    protected $allowedFields = ['user_id', 'prapk_id', 'nilai_id', 'tanggal_mulai', 'tanggal_berakhir', 'tanggal_terakhir_penilaian', 'kompetensi_snapshot'];
+    protected $allowedFields = ['user_id', 'mentor_id', 'kompetensi_id', 'nilai_id', 'tanggal_mulai', 'tanggal_berakhir', 'tanggal_terakhir_penilaian', 'kompetensi_snapshot'];
 
 
-
-
-    public function simpanData($userId, $prapkId, $nilaiId)
+    public function simpanData($userId, $kompetensiId, $nilaiId, $mentorId)
     {
-        $existing = $this->where(['user_id' => $userId, 'prapk_id' => $prapkId])->first();
+        $existing = $this->where(['user_id' => $userId, 'kompetensi_id' => $kompetensiId])->first();
+
+        // Menyiapkan data untuk insert/update
+        $data = [
+            'user_id' => $userId,
+            'kompetensi_id' => $kompetensiId,
+            'nilai_id' => $nilaiId,
+            'mentor_id' => $mentorId,  // Menambahkan mentor_id
+            'tanggal_terakhir_penilaian' => date('Y-m-d H:i:s')
+        ];
 
         if ($existing) {
-            $this->update($existing['id'], [
-                'nilai_id' => $nilaiId,
-                'tanggal_terakhir_penilaian' => date('Y-m-d H:i:s')
-            ]);
+            // Update data jika sudah ada
+            $this->update($existing['id'], $data);
 
             if ($this->db->affectedRows() > 0) {
                 return true;
@@ -29,14 +34,11 @@ class PrapkHasilModel extends Model
                 return false;
             }
         } else {
-            $this->insert([
-                'user_id' => $userId,
-                'prapk_id' => $prapkId,
-                'nilai_id' => $nilaiId,
-                'tanggal_mulai' => date('Y-m-d'),
-                'tanggal_terakhir_penilaian' => date('Y-m-d H:i:s'),
-                'kompetensi_snapshot' => ''
-            ]);
+            // Insert data baru
+            $data['tanggal_mulai'] = date('Y-m-d');
+            $data['kompetensi_snapshot'] = ''; // Menambahkan kompetensi_snapshot jika perlu
+
+            $this->insert($data);
 
             if ($this->db->affectedRows() > 0) {
                 return true;
@@ -45,11 +47,10 @@ class PrapkHasilModel extends Model
                 return false;
             }
         }
-
     }
-    public function getHasilByUserAndPrapk($userId, $prapkId)
+    public function getHasilByUserAndPrapk($userId, $kompetensiId)
     {
-        return $this->where(['user_id' => $userId, 'prapk_id' => $prapkId])->first();
+        return $this->where(['user_id' => $userId, 'kompetensi_id' => $kompetensiId])->first();
     }
 
     public function getAllHasilByUser($userId)
@@ -57,7 +58,7 @@ class PrapkHasilModel extends Model
         $rows = $this->where('user_id', $userId)->findAll();
         $result = [];
         foreach ($rows as $row) {
-            $result[$row['prapk_id']] = $row;
+            $result[$row['kompetensi_id']] = $row;
         }
         return $result;
     }
