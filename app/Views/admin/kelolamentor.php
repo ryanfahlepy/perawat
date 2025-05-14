@@ -29,7 +29,7 @@ $level = $session->level;
                     <tr>
                         <td class="text-center">
                             <?php if (!empty($user['photo'])): ?>
-                                <img src="<?= base_url('uploads/' . esc($user['photo'])) ?>" width="50" height="50"
+                                <img src="<?= base_url('assets/dist/img/user/' . esc($user['photo'])) ?>" width="50" height="50"
                                     alt="User Photo">
                             <?php else: ?>
                                 <span class="text-muted">Tidak ada foto</span>
