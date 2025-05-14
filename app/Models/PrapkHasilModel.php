@@ -53,9 +53,9 @@ class PrapkHasilModel extends Model
         return $this->where(['user_id' => $userId, 'kompetensi_id' => $kompetensiId])->first();
     }
 
-    public function getAllHasilByUser($userId)
+    public function getAllHasilByUserAndMentor($userId, $mentorId)
     {
-        $rows = $this->where('user_id', $userId)->findAll();
+        $rows = $this->where('user_id', $userId)->where('mentor_id', $mentorId)->findAll();
         $result = [];
         foreach ($rows as $row) {
             $result[$row['kompetensi_id']] = $row;

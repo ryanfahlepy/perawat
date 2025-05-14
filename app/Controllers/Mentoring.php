@@ -83,6 +83,9 @@ class Mentoring extends BaseController
 
     public function form($pkId = null)
     {
+        $pkId = (int) $pkId;
+        $mentorId = (int) $this->session->get('user_id');
+
         // Check if pkId is provided
         if ($pkId) {
             // Fetch user data using pkId
@@ -95,23 +98,20 @@ class Mentoring extends BaseController
                 $dataPk2 = $this->pk2Model->orderBy('no ASC')->findAll();
                 $dataPk3 = $this->pk3Model->orderBy('no ASC')->findAll();
 
-                // Fetch data hasil based on the current user
-                $userId = $this->session->get('user_id');
-
                 // Depending on the user level, use the appropriate model for fetching results
                 $dataHasil = [];
                 switch ($userData->level_user) {
                     case 3:
-                        $dataHasilRaw = $this->pk3HasilModel->getAllHasilByUser($userId); // Use PK3 model
+                        $dataHasilRaw = $this->pk3HasilModel->getAllHasilByUserAndMentor($pkId, $mentorId); // Use PK3 model
                         break;
                     case 4:
-                        $dataHasilRaw = $this->pk2HasilModel->getAllHasilByUser($userId); // Use PK2 model
+                        $dataHasilRaw = $this->pk2HasilModel->getAllHasilByUserAndMentor($pkId, $mentorId); // Use PK2 model
                         break;
                     case 5:
-                        $dataHasilRaw = $this->pk1HasilModel->getAllHasilByUser($userId); // Use PK1 model
+                        $dataHasilRaw = $this->pk1HasilModel->getAllHasilByUserAndMentor($pkId, $mentorId); // Use PK1 model
                         break;
                     case 6:
-                        $dataHasilRaw = $this->prapkHasilModel->getAllHasilByUser($userId); // Use Prapk model
+                        $dataHasilRaw = $this->prapkHasilModel->getAllHasilByUserAndMentor($pkId, $mentorId); // Use Prapk model
                         break;
                     default:
                         return redirect()->to('/mentoring');
@@ -132,7 +132,7 @@ class Mentoring extends BaseController
                             'nama_menu' => 'Mentoring',
                             'dataPrapk' => $dataPk3,
                             'dataHasil' => $dataHasil, // Data hasil for PK3
-                            'userId' => $userId,  // Pastikan userId juga dikirim ke view
+                            'pkId' => $pkId,  // Pastikan userId juga dikirim ke view
                         ];
                         return view('layout/form', $data); // View for PK3
                         break;
@@ -145,7 +145,7 @@ class Mentoring extends BaseController
                             'nama_menu' => 'Mentoring',
                             'dataPrapk' => $dataPk2,
                             'dataHasil' => $dataHasil, // Data hasil for PK2
-                            'userId' => $userId,  // Pastikan userId juga dikirim ke view
+                            'pkId' => $pkId,  // Pastikan userId juga dikirim ke view
                         ];
                         return view('layout/form', $data); // View for PK2
                         break;
@@ -158,7 +158,7 @@ class Mentoring extends BaseController
                             'nama_menu' => 'Mentoring',
                             'dataPrapk' => $dataPk1,
                             'dataHasil' => $dataHasil, // Data hasil for PK1
-                            'userId' => $userId,  // Pastikan userId juga dikirim ke view
+                            'pkId' => $pkId,  // Pastikan userId juga dikirim ke view
                         ];
                         return view('layout/form', $data); // View for PK1
                         break;
@@ -171,7 +171,7 @@ class Mentoring extends BaseController
                             'nama_menu' => 'Mentoring',
                             'dataPrapk' => $dataPrapk,
                             'dataHasil' => $dataHasil, // Data hasil for Prapk
-                            'userId' => $userId,  // Pastikan userId juga dikirim ke view
+                            'pkId' => $pkId,  // Pastikan userId juga dikirim ke view
                         ];
                         return view('layout/form', $data); // View for Prapk
                         break;
@@ -199,8 +199,10 @@ class Mentoring extends BaseController
                 $userId = (int) $this->request->getPost('user_id');
                 $kompetensiId = (int) $this->request->getPost('kompetensi_id');
                 $nilaiId = (int) $this->request->getPost('nilai_id');
-                $mentorId = $this->session->get('user_id'); // ID mentor
-                $levelUser = (int) $this->session->get('level');
+                $mentorId = $this->session->get('user_id');
+                $user = $this->userModel->getUserById($userId);
+                $levelUser = (int) $user->level_user;
+
 
                 // Pilih model sesuai level peserta (bukan level mentor)
                 switch ($levelUser) {
@@ -237,6 +239,7 @@ class Mentoring extends BaseController
                 // Cek apakah sudah ada data
                 $existing = $model->where([
                     'user_id' => $userId,
+                    'mentor_id' => $mentorId,
                     'kompetensi_id' => $kompetensiId
                 ])->first();
 
@@ -252,12 +255,10 @@ class Mentoring extends BaseController
                 } else {
                     $model->insert($data);
                 }
-
-                
                 // Kirim data dalam format JSON ke JavaScript
                 return $this->response->setJSON([
                     'status' => 'ok',
-                    'data' => $data // Pastikan ini adalah format JSON yang valid
+                    'data' => $data
                 ]);
 
             } catch (\Throwable $e) {

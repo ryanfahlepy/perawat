@@ -68,7 +68,7 @@ $level = $session->level;
     </h3>
 </div>
 
-<div class="card-body" id="nilai-form" data-userid="<?= esc($userId) ?>">
+<div class="card-body" id="nilai-form" data-userid="<?= esc($pkId) ?>">
 
 
     <!-- Form Tambah Kategori -->
@@ -267,26 +267,35 @@ $level = $session->level;
                 // Log untuk memastikan nilai yang dikirim
                 console.log(`id: ${id}, toSend: ${toSend}, userId: ${userId}`);
 
+                // Menyiapkan body data untuk dikirim
+                const bodyData = `kompetensi_id=${id}&nilai_id=${toSend}&user_id=${userId}`;
+                console.log('Data yang dikirim ke server:', bodyData);  // Log data yang dikirim ke server
+
                 fetch("<?= site_url('mentoring/simpan') ?>", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                         'X-Requested-With': 'XMLHttpRequest'
                     },
-                    body: `kompetensi_id=${id}&nilai_id=${toSend}&user_id=${userId}`
+                    body: bodyData
                 })
                     .then(r => r.json())
                     .then(d => {
                         // Log untuk melihat respons dari server
-                        console.log(d);
+                        console.log('Response dari server:', d);
 
                         if (d.status !== 'ok') {
                             alert('Gagal menyimpan: ' + (d.message || ''));
                         }
+                    })
+                    .catch(error => {
+                        // Menangani jika ada error saat request ke server
+                        console.error('Error terjadi pada saat request:', error);
                     });
             });
         });
     });
+
 
 
     // Tambah kategori

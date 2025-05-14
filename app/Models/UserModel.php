@@ -16,7 +16,10 @@ class UserModel extends Model
     protected $dateFormat = 'datetime';
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
-
+    public function getUserById($id)
+    {
+        return $this->find($id);
+    }
     public function getUser($username = false)
     {
         $this->builder()->select('tabel_user.*, tabel_user_level.nama_level');
