@@ -1,0 +1,498 @@
+CRITICAL - 2025-05-12 03:03:20 --> Class 'App\Models\UserLevelAksesModel' not found
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(779): App\Controllers\Mentoring->__construct()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-05-12 03:04:34 --> Undefined property: App\Controllers\Mentoring::$userlevelaksesModel
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 71, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->setMentor()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+ERROR - 2025-05-12 03:06:19 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:06:19 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:06:20 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:06:20 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:06:56 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:06:56 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:06:58 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:06:58 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:06:59 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:06:59 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:06:59 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:06:59 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:25 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:25 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:26 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:26 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:26 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:26 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:26 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:26 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:27 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:27 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:27 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:27 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:27 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:27 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:27 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:27 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:28 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:28 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:28 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:28 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:50 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:50 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:51 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:51 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:07:52 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:07:52 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:08:07 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:08:07 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+ERROR - 2025-05-12 03:08:14 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+CRITICAL - 2025-05-12 03:08:14 --> Unknown column 'tabel_user_mentor_akses.deleted_at' in 'where clause'
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+CRITICAL - 2025-05-12 15:06:27 --> Class 'App\Models\PengadaanModel' not found
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(779): App\Controllers\Dashboardkaru->__construct()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-05-12 15:14:35 --> Undefined property: App\Controllers\Admin\Manmentor::$userModel
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Manmentor.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 19, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmentor->index()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmentor))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-05-12 15:15:03 --> Undefined property: App\Controllers\Admin\Manmentor::$userModel
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Manmentor.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 20, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmentor->index()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmentor))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-05-12 15:15:25 --> Class 'App\Controllers\Admin\PrapkModel' not found
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(779): App\Controllers\Admin\Manmentor->__construct()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-05-12 15:15:43 --> Class 'App\Controllers\Admin\PrapkHasilModel' not found
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(779): App\Controllers\Admin\Manmentor->__construct()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-05-12 15:23:58 --> Cannot use object of type App\Entities\Output as array
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-05-12 15:24:40 --> Call to undefined method App\Models\UserMentorAksesModel::getResultArray
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(31): CodeIgniter\Model->__call('getResultArray', Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-05-12 15:25:05 --> Call to a member function getResultArray() on array
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-05-12 15:25:10 --> Cannot use object of type App\Entities\Output as array
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#5 {main}
+CRITICAL - 2025-05-12 15:25:37 --> Cannot use object of type App\Entities\Output as array
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/mentorin...', Array, true)
+#3 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(80): view('layout/mentorin...', Array)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+CRITICAL - 2025-05-12 15:25:38 --> Cannot use object of type App\Entities\Output as array
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/mentorin...', Array, true)
+#3 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(80): view('layout/mentorin...', Array)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+CRITICAL - 2025-05-12 15:25:38 --> Cannot use object of type App\Entities\Output as array
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/mentorin...', Array, true)
+#3 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(80): view('layout/mentorin...', Array)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#9 {main}
+CRITICAL - 2025-05-12 15:26:30 --> Trying to get property 'level_user' of non-object
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(52): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp7\\htdoc...', 52, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-05-12 15:26:30 --> Trying to get property 'level_user' of non-object
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(52): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp7\\htdoc...', 52, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+CRITICAL - 2025-05-12 15:26:31 --> Trying to get property 'level_user' of non-object
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(52): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp7\\htdoc...', 52, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+ERROR - 2025-05-12 15:29:51 --> Table 'perawat.tabel_tingkat_pk' doesn't exist
+CRITICAL - 2025-05-12 15:29:51 --> Table 'perawat.tabel_tingkat_pk' doesn't exist
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT `tabel_u...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tabel_u...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tabel_u...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT `tabel_u...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(42): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#12 {main}
+CRITICAL - 2025-05-12 15:38:35 --> Invalid file: layout/kelolamentor.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/kelolame...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/kelolame...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Manmentor.php(63): view('layout/kelolame...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manmentor->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manmentor))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-12 15:49:59 --> Invalid file: layout/form_pk1.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/form_pk1...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/form_pk1', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(194): view('layout/form_pk1', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->form('58')
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-12 15:50:04 --> Invalid file: layout/form_pk2.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/form_pk2...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/form_pk2', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(182): view('layout/form_pk2', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->form('57')
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
