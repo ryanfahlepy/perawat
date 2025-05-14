@@ -5,7 +5,7 @@ namespace App\Controllers;
 
 
 
-class Kompetensi extends BaseController
+class Pelatihan extends BaseController
 {
     public function __construct()
     {
@@ -17,9 +17,9 @@ class Kompetensi extends BaseController
         $data = [
             'level_akses' => $this->session->nama_level,
             'dtmenu' => $this->tampil_menu($this->session->level),
-            'nama_menu' => 'Assesmen Kompetensi',
+            'nama_menu' => 'Pelatihan',
         ];
-        return view('layout/kompetensi', $data
+        return view('layout/pelatihan', $data
         );
     }
 
