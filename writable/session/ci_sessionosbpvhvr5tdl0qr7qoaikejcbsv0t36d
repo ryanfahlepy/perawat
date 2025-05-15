@@ -1,1 +1,0 @@
-__ci_last_regenerate|i:1747193417;_ci_previous_url|s:27:"http://localhost:8080/login";color|s:6:"danger";error|s:20:"User tidak terdaftar";__ci_vars|a:2:{s:5:"error";s:3:"old";s:13:"_ci_old_input";s:3:"old";}_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:3:{s:14:"csrf_test_name";s:32:"6ae3b1c211fb76949b9ed5ae72b6b696";s:8:"username";s:4:"karu";s:8:"password";s:5:"12345";}}
