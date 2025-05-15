@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class PrapkHasilModel extends Model
 {
     protected $table = 'tabel_prapk_hasil';
-    protected $allowedFields = ['user_id', 'mentor_id', 'kompetensi_id', 'nilai_id', 'tanggal_mulai', 'tanggal_berakhir', 'tanggal_terakhir_penilaian', 'kompetensi_snapshot'];
+    protected $allowedFields = ['user_id', 'mentor_id', 'kompetensi_id', 'nilai_id', 'tanggal_mulai', 'tanggal_berakhir', 'tanggal_terakhir_penilaian', 'kompetensi_snapshot', 'catatan'];
 
 
     public function simpanData($userId, $kompetensiId, $nilaiId, $mentorId)

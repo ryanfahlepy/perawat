@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class Pk3HasilModel extends Model
 {
     protected $table = 'tabel_pk3_hasil';
-    protected $allowedFields = ['user_id', 'mentor_id', 'kompetensi_id', 'nilai_id', 'tanggal_mulai', 'tanggal_berakhir', 'tanggal_terakhir_penilaian', 'kompetensi_snapshot'];
+    protected $allowedFields = ['user_id', 'mentor_id', 'kompetensi_id', 'nilai_id', 'tanggal_mulai', 'tanggal_berakhir', 'tanggal_terakhir_penilaian', 'kompetensi_snapshot', 'catatan'];
 
 
 

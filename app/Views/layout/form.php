@@ -64,37 +64,28 @@ $level = $session->level;
 
 <div class="card-header">
     <h3 class="card-title">
-        Halo <b><?= esc($session->nama) ?></b>, Selamat datang
+        Rincian Kewenangan Klinik Perawat untuk <b><?= esc($userData->nama) ?></b>
     </h3>
 </div>
 
-<div class="card-body" id="nilai-form" data-userid="<?= esc($pkId) ?>">
+<div class="" id="nilai-form" data-userid="<?= esc($pkId) ?>">
 
 
-    <!-- Form Tambah Kategori -->
-    <?php if ($level == 1): ?>
-        <form id="form-tambah-kategori" class="mb-3 d-flex gap-2">
-            <input type="text" id="kategori-baru" class="form-control" placeholder="Nama Kategori Baru" required />
-            <button type="submit" class="btn btn-primary">
-                <i class="fas fa-plus"></i>
-            </button>
-        </form>
-    <?php endif; ?>
 
     <!-- List Kategori dan Kompetensi -->
     <div id="kategori-list">
         <?php
-        usort($dataPrapk, function ($a, $b) {
+        usort($dataPk, function ($a, $b) {
             return $a['no'] <=> $b['no'];
         });
 
-        for ($i = 0; $i < count($dataPrapk); $i++):
-            $row = $dataPrapk[$i];
+        for ($i = 0; $i < count($dataPk); $i++):
+            $row = $dataPk[$i];
             $kategori = $row['kategori'];
-            $lastKategori = $i > 0 ? $dataPrapk[$i - 1]['kategori'] : null;
-            $nextKategori = isset($dataPrapk[$i + 1]) ? $dataPrapk[$i + 1]['kategori'] : null;
+            $lastKategori = $i > 0 ? $dataPk[$i - 1]['kategori'] : null;
+            $nextKategori = isset($dataPk[$i + 1]) ? $dataPk[$i + 1]['kategori'] : null;
             $isKategoriBaru = ($i == 0) || ($kategori !== $lastKategori);
-            $isKategoriBerakhir = ($i == count($dataPrapk) - 1) || ($kategori !== $nextKategori);
+            $isKategoriBerakhir = ($i == count($dataPk) - 1) || ($kategori !== $nextKategori);
 
             if ($isKategoriBaru):
                 ?>
@@ -102,30 +93,19 @@ $level = $session->level;
                 <div class="card mb-4 kategori-item" data-kategori="<?= esc($kategori) ?>">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <strong><?= $kategori ? esc($kategori) : 'Tanpa Kategori' ?></strong>
-                        <?php if ($level == 1 && $kategori): ?>
-                            <div class="btn-group ms-auto">
-                                <button class="btn btn-sm text-white edit-kategori" data-kategori="<?= esc($kategori) ?>"
-                                    style="background-color: #f1c40f;">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                                <button class="btn btn-sm btn-danger hapus-kategori" data-kategori="<?= esc($kategori) ?>">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        <?php endif; ?>
+
                     </div>
                     <div class="card-body p-2">
                         <!-- Header Kolom -->
                         <div class="d-flex fw-bold px-3 py-2 border-bottom bg-light text-center">
                             <div style="width: 50px;">No</div>
                             <div class="flex-grow-1 text-start">Kompetensi</div>
-                            <div style="width: 120px;">Mampu</div>
-                            <div style="width: 120px;">Didampingi</div>
-                            <div style="width: 130px;">Tidak Mampu</div>
-                            <?php if ($level == 1): ?>
-                                <div style="width: 90px;"></div>
-                            <?php endif; ?>
+                            <div style="width: 150px;">Mampu</div>
+                            <div style="width: 150px;">Didampingi</div>
+                            <div style="width: 150px;">Tidak Mampu</div>
+                            <div style="width: 200px;">Catatan</div>
                         </div>
+
                         <ul class="list-group kompetensi-list" data-kategori="<?= esc($kategori) ?>">
                         <?php endif; ?>
 
@@ -147,31 +127,26 @@ $level = $session->level;
                             <div class="d-flex align-items-center text-center">
                                 <div style="width: 50px;"><?= esc($row['no']) ?></div>
                                 <div class="flex-grow-1 text-start"><?= esc($row['kompetensi']) ?></div>
-                                <div style="width: 120px;">
-                                    <input type="checkbox" class="nilai-checkbox" name="nilai_<?= $row['id'] ?>[]" value="1"
+                                <div style="width: 150px;">
+                                    <input type="checkbox" class="nilai-checkbox" name="nilai_<?= $row['id'] ?>" value="1"
                                         data-id="<?= $row['id'] ?>" <?= isset($dataHasil[$row['id']]) && $dataHasil[$row['id']]['nilai_id'] == 1 ? 'checked' : '' ?> />
                                 </div>
-                                <div style="width: 120px;">
-                                    <input type="checkbox" class="nilai-checkbox" name="nilai_<?= $row['id'] ?>[]" value="2"
+                                <div style="width: 150px;">
+                                    <input type="checkbox" class="nilai-checkbox" name="nilai_<?= $row['id'] ?>" value="2"
                                         data-id="<?= $row['id'] ?>" <?= isset($dataHasil[$row['id']]) && $dataHasil[$row['id']]['nilai_id'] == 2 ? 'checked' : '' ?> />
                                 </div>
-                                <div style="width: 130px;">
-                                    <input type="checkbox" class="nilai-checkbox" name="nilai_<?= $row['id'] ?>[]" value="3"
+                                <div style="width: 150px;">
+                                    <input type="checkbox" class="nilai-checkbox" name="nilai_<?= $row['id'] ?>" value="3"
                                         data-id="<?= $row['id'] ?>" <?= isset($dataHasil[$row['id']]) && $dataHasil[$row['id']]['nilai_id'] == 3 ? 'checked' : '' ?> />
                                 </div>
 
-                                <?php if ($level == 1): ?>
-                                    <div class="btn-group" style="width: 90px;">
-                                        <button class="btn btn-sm btn-primary edit-kompetensi" data-id="<?= $row['id'] ?>"
-                                            data-kompetensi="<?= esc($row['kompetensi']) ?>">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </button>
-                                        <a href="#" class="btn btn-sm btn-danger btn-hapus-kompetensi"
-                                            data-url="<?= site_url('mentoring/hapus_kompetensi/' . $row['id']) ?>">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </div>
-                                <?php endif; ?>
+                                <div style="width: 200px;">
+                                    <textarea class="form-control form-control-sm catatan-textarea"
+                                        data-id="<?= $row['id'] ?>" rows="1"
+                                        placeholder="Catatan..."><?= isset($dataHasil[$row['id']]['catatan']) ? esc($dataHasil[$row['id']]['catatan']) : '' ?></textarea>
+                                </div>
+
+
                             </div>
                         </li>
 
@@ -199,52 +174,6 @@ $level = $session->level;
     </div>
 </div>
 
-<!-- Modal Edit Kompetensi -->
-<div class="modal fade" id="editModal" tabindex="-1">
-    <div class="modal-dialog">
-        <form method="post" action="<?= site_url('mentoring/update_kompetensi') ?>">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>Edit Kompetensi</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="id" id="edit-id" />
-                    <input type="text" name="kompetensi" id="edit-kompetensi" class="form-control" required />
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary">
-                        <i class="fas fa-save"></i> Simpan
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="modal fade" id="editKategoriModal" tabindex="-1" aria-labelledby="editKategoriModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="<?= site_url('mentoring/edit_kategori') ?>" method="get" class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editKategoriModalLabel">Edit Kategori</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" name="old" id="edit-old-kategori">
-                <div class="mb-3">
-                    <label for="edit-new-kategori" class="form-label">Nama Kategori Baru</label>
-                    <input type="text" class="form-control" id="edit-new-kategori" name="new" required>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-            </div>
-        </form>
-    </div>
-</div>
-
 <!-- Menambahkan jQuery jika belum ada -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -253,114 +182,65 @@ $level = $session->level;
     document.addEventListener('DOMContentLoaded', function () {
         const userId = document.getElementById('nilai-form').dataset.userid;
 
+        function kirimData(id) {
+            const checkboxes = document.querySelectorAll(`.nilai-checkbox[data-id="${id}"]`);
+            let nilai_id = 0;
+
+            checkboxes.forEach(cb => {
+                if (cb.checked) nilai_id = parseInt(cb.value);
+            });
+
+            const catatanElem = document.querySelector(`.catatan-textarea[data-id="${id}"]`);
+            const catatan = catatanElem ? catatanElem.value.trim() : '';
+
+            const bodyData = new URLSearchParams({
+                kompetensi_id: id,
+                nilai_id: nilai_id,
+                user_id: userId,
+                catatan: catatan
+            });
+
+            fetch("<?= site_url('mentoring/simpan') ?>", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: bodyData.toString()
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status !== 'ok') {
+                        alert('Gagal menyimpan: ' + (data.message || ''));
+                    }
+                })
+                .catch(err => {
+                    console.error('Error saat kirim data:', err);
+                });
+        }
+
+        // Checkbox perubahan
         document.querySelectorAll('.nilai-checkbox').forEach(cb => {
             cb.addEventListener('change', function () {
                 const id = this.dataset.id;
-                const val = this.value;
 
-                // Uncheck checkbox lain di baris yang sama
+                // Uncheck yang lain
                 document.querySelectorAll(`.nilai-checkbox[data-id="${id}"]`)
                     .forEach(x => { if (x !== this) x.checked = false });
 
-                const toSend = this.checked ? val : 0;
+                kirimData(id);
+            });
+        });
 
-                // Log untuk memastikan nilai yang dikirim
-                console.log(`id: ${id}, toSend: ${toSend}, userId: ${userId}`);
-
-                // Menyiapkan body data untuk dikirim
-                const bodyData = `kompetensi_id=${id}&nilai_id=${toSend}&user_id=${userId}`;
-                console.log('Data yang dikirim ke server:', bodyData);  // Log data yang dikirim ke server
-
-                fetch("<?= site_url('mentoring/simpan') ?>", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: bodyData
-                })
-                    .then(r => r.json())
-                    .then(d => {
-                        // Log untuk melihat respons dari server
-                        console.log('Response dari server:', d);
-
-                        if (d.status !== 'ok') {
-                            alert('Gagal menyimpan: ' + (d.message || ''));
-                        }
-                    })
-                    .catch(error => {
-                        // Menangani jika ada error saat request ke server
-                        console.error('Error terjadi pada saat request:', error);
-                    });
+        // Catatan perubahan
+        document.querySelectorAll('.catatan-textarea').forEach(area => {
+            area.addEventListener('change', function () {
+                const id = this.dataset.id;
+                kirimData(id);
             });
         });
     });
 
-
-
-    // Tambah kategori
-    const formKat = document.getElementById('form-tambah-kategori');
-    if (formKat) {
-        formKat.addEventListener('submit', e => {
-            e.preventDefault();
-            const k = document.getElementById('kategori-baru').value.trim();
-            if (k) window.location.href = `<?= site_url('mentoring/tambah_kategori?nama=') ?>${encodeURIComponent(k)}`;
-        });
-    }
-
-    // Tambah kompetensi
-    document.querySelectorAll('.form-tambah-kompetensi').forEach(f => {
-        f.addEventListener('submit', e => {
-            e.preventDefault();
-            const kpt = f.querySelector('[name="kompetensi"]').value;
-            const kat = f.dataset.kategori;
-            if (kpt) window.location.href =
-                `<?= site_url('mentoring/tambah_kompetensi') ?>?kategori=${encodeURIComponent(kat)}&kompetensi=${encodeURIComponent(kpt)}`;
-        });
-    });
-
-    // Edit kompetensi (modal)
-    document.querySelectorAll('.edit-kompetensi').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.getElementById('edit-id').value = btn.dataset.id;
-            document.getElementById('edit-kompetensi').value = btn.dataset.kompetensi;
-            new bootstrap.Modal(document.getElementById('editModal')).show();
-        });
-    });
-
-    // Edit kategori (prompt)
-    document.querySelectorAll('.edit-kategori').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.getElementById('edit-old-kategori').value = btn.dataset.kategori;
-            document.getElementById('edit-new-kategori').value = btn.dataset.kategori;
-            new bootstrap.Modal(document.getElementById('editKategoriModal')).show();
-        });
-    });
-
-
-    // Hapus kategori dengan SweetAlert2
-    document.querySelectorAll('.hapus-kategori').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const k = btn.dataset.kategori;
-            Swal.fire({
-                title: `Hapus semua kompetensi dalam kategori "${k}"?`,
-                text: "Ini akan menghapus semua kompetensi yang terkait dengan kategori ini",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Ya, hapus!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = `<?= site_url('mentoring/hapus_kategori') ?>?kategori=${encodeURIComponent(k)}`;
-                }
-            });
-        });
-    });
-
-</script>
-<script>
     $(document).ready(function () {
         $('.nilai-checkbox').on('change', function () {
             const row = $(this).closest('li');

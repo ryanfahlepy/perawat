@@ -130,9 +130,10 @@ class Mentoring extends BaseController
                             'level_akses' => $this->session->get('level'),
                             'dtmenu' => $this->tampil_menu($this->session->get('level')),
                             'nama_menu' => 'Mentoring',
-                            'dataPrapk' => $dataPk3,
+                            'dataPk' => $dataPk3,
                             'dataHasil' => $dataHasil, // Data hasil for PK3
-                            'pkId' => $pkId,  // Pastikan userId juga dikirim ke view
+                            'pkId' => $pkId, 
+                            'userData'=>$userData
                         ];
                         return view('layout/form', $data); // View for PK3
                         break;
@@ -143,9 +144,10 @@ class Mentoring extends BaseController
                             'level_akses' => $this->session->get('level'),
                             'dtmenu' => $this->tampil_menu($this->session->get('level')),
                             'nama_menu' => 'Mentoring',
-                            'dataPrapk' => $dataPk2,
+                            'dataPk' => $dataPk2,
                             'dataHasil' => $dataHasil, // Data hasil for PK2
-                            'pkId' => $pkId,  // Pastikan userId juga dikirim ke view
+                            'pkId' => $pkId,
+                            'userData'=>$userData  // Pastikan userId juga dikirim ke view
                         ];
                         return view('layout/form', $data); // View for PK2
                         break;
@@ -156,9 +158,10 @@ class Mentoring extends BaseController
                             'level_akses' => $this->session->get('level'),
                             'dtmenu' => $this->tampil_menu($this->session->get('level')),
                             'nama_menu' => 'Mentoring',
-                            'dataPrapk' => $dataPk1,
+                            'dataPk' => $dataPk1,
                             'dataHasil' => $dataHasil, // Data hasil for PK1
-                            'pkId' => $pkId,  // Pastikan userId juga dikirim ke view
+                            'pkId' => $pkId,
+                            'userData'=>$userData  // Pastikan userId juga dikirim ke view
                         ];
                         return view('layout/form', $data); // View for PK1
                         break;
@@ -169,9 +172,10 @@ class Mentoring extends BaseController
                             'level_akses' => $this->session->get('level'),
                             'dtmenu' => $this->tampil_menu($this->session->get('level')),
                             'nama_menu' => 'Mentoring',
-                            'dataPrapk' => $dataPrapk,
+                            'dataPk' => $dataPrapk,
                             'dataHasil' => $dataHasil, // Data hasil for Prapk
-                            'pkId' => $pkId,  // Pastikan userId juga dikirim ke view
+                            'pkId' => $pkId,
+                            'userData'=>$userData  // Pastikan userId juga dikirim ke view
                         ];
                         return view('layout/form', $data); // View for Prapk
                         break;
@@ -202,6 +206,7 @@ class Mentoring extends BaseController
                 $mentorId = $this->session->get('user_id');
                 $user = $this->userModel->getUserById($userId);
                 $levelUser = (int) $user->level_user;
+                $catatan = trim((string) $this->request->getPost('catatan'));
 
 
                 // Pilih model sesuai level peserta (bukan level mentor)
@@ -240,14 +245,15 @@ class Mentoring extends BaseController
                 $existing = $model->where([
                     'user_id' => $userId,
                     'mentor_id' => $mentorId,
-                    'kompetensi_id' => $kompetensiId
+                    'kompetensi_id' => $kompetensiId,
                 ])->first();
 
                 $data = [
                     'user_id' => $userId,
                     'mentor_id' => $mentorId,
                     'kompetensi_id' => $kompetensiId,
-                    'nilai_id' => $nilaiId
+                    'nilai_id' => $nilaiId,
+                    'catatan' => $catatan
                 ];
 
                 if ($existing) {
