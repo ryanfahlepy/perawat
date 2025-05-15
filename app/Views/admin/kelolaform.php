@@ -38,7 +38,7 @@ $level = $session->level;
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.btn-hapus-kompetensi').forEach(function (btn) {
             btn.addEventListener('click', function (e) {
-                e.preventDefault(); // Hindari redirect langsung
+                e.preventDefault();
 
                 const url = this.getAttribute('data-url');
 
@@ -59,20 +59,22 @@ $level = $session->level;
             });
         });
     });
+
 </script>
 
 <div class="card-header">
     <h3 class="card-title">Kelola Kompetensi Untuk <b><?= esc($namaLevel) ?></b></h3>
 </div>
-
 <div class="card-body" id="nilai-form" data-userid="<?= esc($levelId) ?>">
 
     <?php if ($level_akses == 1): ?>
         <!-- Form Tambah Kategori -->
         <form id="form-tambah-kategori" class="mb-3 d-flex gap-2">
+            <input type="hidden" id="levelId" value="<?= esc($levelId) ?>">
             <input type="text" id="kategori-baru" class="form-control" placeholder="Nama Kategori Baru" required />
             <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
         </form>
+
     <?php endif; ?>
 
     <div id="kategori-list">
@@ -83,19 +85,24 @@ $level = $session->level;
         foreach ($dataKompetensi as $i => $row):
             $kategori = $row['kategori'] ?: 'Tanpa Kategori';
             $isKategoriBaru = $kategori !== $lastKategori;
-            $nextKategori = ($dataKompetensi[$i + 1]['kategori'] ?? '') ?: 'Tanpa Kategori';
-            $isKategoriBerakhir = $kategori !== $nextKategori;
+            $nextKategori = isset($dataKompetensi[$i + 1]) ? ($dataKompetensi[$i + 1]['kategori'] ?: 'Tanpa Kategori') : null;
+            $isKategoriBerakhir = is_null($nextKategori) || $kategori !== $nextKategori;
+
+
             if ($isKategoriBaru):
                 ?>
                 <div class="card mb-4 kategori-item" data-kategori="<?= esc($kategori) ?>">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <strong><?= $kategori ? esc($kategori) : 'Tanpa Kategori' ?></strong>
+                        <strong><?= esc($kategori) ?></strong>
                         <?php if ($level_akses == 1 && $kategori): ?>
                             <div class="btn-group ms-auto">
                                 <button class="btn btn-sm text-white edit-kategori" data-kategori="<?= esc($kategori) ?>"
                                     style="background-color: #f1c40f;"><i class="fas fa-pencil-alt"></i></button>
-                                <button class="btn btn-sm btn-danger hapus-kategori" data-kategori="<?= esc($kategori) ?>"><i
-                                        class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-sm btn-danger hapus-kategori" data-kategori="<?= esc($kategori) ?>"
+                                    data-level="<?= esc($levelId) ?>">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+
                             </div>
                         <?php endif; ?>
                     </div>
@@ -103,11 +110,9 @@ $level = $session->level;
                         <div class="d-flex fw-bold px-3 py-2 border-bottom bg-light text-center">
                             <div style="width: 50px;">No</div>
                             <div class="flex-grow-1 text-start">Kompetensi</div>
-                            <div style="width: 120px;">Mampu</div>
-                            <div style="width: 120px;">Didampingi</div>
-                            <div style="width: 130px;">Tidak Mampu</div>
                             <?php if ($level_akses == 1): ?>
-                                <div style="width: 90px;"></div><?php endif; ?>
+                                <div style="width: 90px;">Aksi</div>
+                            <?php endif; ?>
                         </div>
                         <ul class="list-group kompetensi-list" data-kategori="<?= esc($kategori) ?>">
                         <?php endif; ?>
@@ -129,23 +134,16 @@ $level = $session->level;
                             <div class="d-flex align-items-center text-center">
                                 <div style="width: 50px;"><?= esc($row['no']) ?></div>
                                 <div class="flex-grow-1 text-start"><?= esc($row['kompetensi']) ?></div>
-                                <div style="width: 120px;"><input type="checkbox" class="nilai-checkbox"
-                                        name="nilai_<?= $row['id'] ?>[]" value="1" data-id="<?= $row['id'] ?>"
-                                        <?= isset($dataHasil[$row['id']]) && $dataHasil[$row['id']]['nilai_id'] == 1 ? 'checked' : '' ?> /></div>
-                                <div style="width: 120px;"><input type="checkbox" class="nilai-checkbox"
-                                        name="nilai_<?= $row['id'] ?>[]" value="2" data-id="<?= $row['id'] ?>"
-                                        <?= isset($dataHasil[$row['id']]) && $dataHasil[$row['id']]['nilai_id'] == 2 ? 'checked' : '' ?> /></div>
-                                <div style="width: 130px;"><input type="checkbox" class="nilai-checkbox"
-                                        name="nilai_<?= $row['id'] ?>[]" value="3" data-id="<?= $row['id'] ?>"
-                                        <?= isset($dataHasil[$row['id']]) && $dataHasil[$row['id']]['nilai_id'] == 3 ? 'checked' : '' ?> /></div>
                                 <?php if ($level_akses == 1): ?>
                                     <div class="btn-group" style="width: 90px;">
-                                        <button class="btn btn-sm btn-primary edit-kompetensi" data-id="<?= $row['id'] ?>"
-                                            data-kompetensi="<?= esc($row['kompetensi']) ?>"><i
-                                                class="fas fa-pencil-alt"></i></button>
-                                        <a href="#" class="btn btn-sm btn-danger btn-hapus-kompetensi"
-                                            data-url="<?= site_url('mentoring/hapus_kompetensi/' . $row['id']) ?>"><i
-                                                class="fas fa-trash-alt"></i></a>
+                                        <button style="background-color: #f1c40f;" class="btn btn-warning btn-sm text-white edit-kompetensi" data-id="<?= $row['id'] ?>"
+                                            data-kompetensi="<?= esc($row['kompetensi']) ?>" data-level-id="<?= $levelId ?>">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </button>
+                                        <button href="#" class="btn btn-sm btn-danger btn-hapus-kompetensi"
+                                            data-url="<?= site_url('admin/manmentor/hapus_kompetensi/' . $row['id'] . '/' . $levelId) ?>">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -154,11 +152,13 @@ $level = $session->level;
                         <?php if ($isKategoriBerakhir): ?>
                         </ul>
                         <?php if ($level_akses == 1): ?>
-                            <form class="mt-3 form-tambah-kompetensi" data-kategori="<?= esc($kategori) ?>">
+                            <form class="mt-3 form-tambah-kompetensi" data-kategori="<?= esc($kategori) ?>" method="post"
+                                action="<?= site_url('admin/manmentor/tambah_kompetensi/' . $levelId) ?>">
                                 <div class="d-flex gap-2">
+                                    <input type="hidden" name="level_id" value="<?= esc($levelId) ?>">
                                     <input type="text" name="kompetensi" class="form-control" placeholder="Kompetensi baru"
                                         required />
-                                    <button class="btn btn-success"><i class="fas fa-plus"></i></button>
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i></button>
                                 </div>
                             </form>
                         <?php endif; ?>
@@ -168,27 +168,16 @@ $level = $session->level;
                         endif;
                         $lastKategori = $kategori;
         endforeach;
-        // Tambahkan penutup kategori terakhir jika ada
-        if (!empty($dataKompetensi)) {
-            ?>
-            </ul>
-            <?php if ($level_akses == 1): ?>
-                <form class="mt-3 form-tambah-kompetensi" data-kategori="<?= esc($lastKategori) ?>">
-                    <div class="d-flex gap-2">
-                        <input type="text" name="kompetensi" class="form-control" placeholder="Kompetensi baru" required />
-                        <button class="btn btn-success"><i class="fas fa-plus"></i></button>
-                    </div>
-                </form>
-            <?php endif; ?>
-        </div> <!-- Tutup .card-body -->
-    </div> <!-- Tutup .card -->
-<?php } ?>
-</div>
-</div>
+        ?>
+    </div> <!-- Tutup #kategori-list -->
+
+</div> <!-- Tutup .card-body -->
+
+
 <!-- Modal Edit Kompetensi -->
 <div class="modal fade" id="editModal" tabindex="-1">
     <div class="modal-dialog">
-        <form method="post" action="<?= site_url('manmentor/update_kompetensi') ?>">
+        <form method="post" action="<?= site_url('admin/manmentor/update_kompetensi') ?>">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>Edit Kompetensi</h5>
@@ -196,10 +185,14 @@ $level = $session->level;
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="id" id="edit-id" />
+                    <input type="hidden" name="level_id" id="edit-level-id" />
                     <input type="text" name="kompetensi" id="edit-kompetensi" class="form-control" required />
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Simpan
                     </button>
                 </div>
@@ -208,28 +201,35 @@ $level = $session->level;
     </div>
 </div>
 
+
 <div class="modal fade" id="editKategoriModal" tabindex="-1" aria-labelledby="editKategoriModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
-        <form action="<?= site_url('manmentor/edit_kategori') ?>" method="get" class="modal-content">
+        <form action="<?= site_url('admin/manmentor/edit_kategori/' . $levelId) ?>" method="post" class="modal-content">
+
             <div class="modal-header">
                 <h5 class="modal-title" id="editKategoriModalLabel">Edit Kategori</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
             <div class="modal-body">
-                <input type="hidden" name="old" id="edit-old-kategori">
+                <input type="hidden" name="old" id="edit-old-kategori" />
                 <div class="mb-3">
                     <label for="edit-new-kategori" class="form-label">Nama Kategori Baru</label>
-                    <input type="text" class="form-control" id="edit-new-kategori" name="new" required>
+                    <input type="text" class="form-control" id="edit-new-kategori" name="new" required />
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times"></i> Batal
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Simpan
+                </button>
             </div>
         </form>
     </div>
 </div>
+
 
 <!-- Menambahkan jQuery jika belum ada -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -290,46 +290,60 @@ $level = $session->level;
         formKat.addEventListener('submit', e => {
             e.preventDefault();
             const k = document.getElementById('kategori-baru').value.trim();
-            if (k) window.location.href = `<?= site_url('manmentor/tambah_kategori?nama=') ?>${encodeURIComponent(k)}`;
+            const levelId = document.getElementById('levelId').value;
+            if (k) {
+                window.location.href = `<?= site_url('admin/manmentor/tambah_kategori') ?>?nama=${encodeURIComponent(k)}&levelId=${encodeURIComponent(levelId)}`;
+            }
         });
     }
 
-    // Tambah kompetensi
+
     document.querySelectorAll('.form-tambah-kompetensi').forEach(f => {
         f.addEventListener('submit', e => {
             e.preventDefault();
             const kpt = f.querySelector('[name="kompetensi"]').value;
             const kat = f.dataset.kategori;
-            if (kpt) window.location.href =
-                `<?= site_url('manmentor/tambah_kompetensi') ?>?kategori=${encodeURIComponent(kat)}&kompetensi=${encodeURIComponent(kpt)}`;
+            const levelId = f.querySelector('[name="level_id"]').value;
+            if (kpt && levelId) {
+                window.location.href =
+                    `<?= site_url('admin/manmentor/tambah_kompetensi') ?>/${levelId}?kategori=${encodeURIComponent(kat)}&kompetensi=${encodeURIComponent(kpt)}`;
+            }
         });
     });
+
 
     // Edit kompetensi (modal)
     document.querySelectorAll('.edit-kompetensi').forEach(btn => {
         btn.addEventListener('click', () => {
             document.getElementById('edit-id').value = btn.dataset.id;
             document.getElementById('edit-kompetensi').value = btn.dataset.kompetensi;
+            document.getElementById('edit-level-id').value = btn.dataset.levelId;
             new bootstrap.Modal(document.getElementById('editModal')).show();
         });
     });
 
+
     // Edit kategori (prompt)
     document.querySelectorAll('.edit-kategori').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.getElementById('edit-old-kategori').value = btn.dataset.kategori;
-            document.getElementById('edit-new-kategori').value = btn.dataset.kategori;
-            new bootstrap.Modal(document.getElementById('editKategoriModal')).show();
+            const oldKategori = btn.dataset.kategori;
+            document.getElementById('edit-old-kategori').value = oldKategori;
+            document.getElementById('edit-new-kategori').value = oldKategori;
+            const modal = new bootstrap.Modal(document.getElementById('editKategoriModal'));
+            modal.show();
         });
     });
+
 
 
     // Hapus kategori dengan SweetAlert2
     document.querySelectorAll('.hapus-kategori').forEach(btn => {
         btn.addEventListener('click', () => {
-            const k = btn.dataset.kategori;
+            const kategori = btn.dataset.kategori;
+            const levelId = btn.dataset.level;
+
             Swal.fire({
-                title: `Hapus semua kompetensi dalam kategori "${k}"?`,
+                title: `Hapus semua kompetensi dalam kategori "${kategori}"?`,
                 text: "Ini akan menghapus semua kompetensi yang terkait dengan kategori ini",
                 icon: 'warning',
                 showCancelButton: true,
@@ -339,11 +353,14 @@ $level = $session->level;
                 cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = `<?= site_url('manmentor/hapus_kategori') ?>?kategori=${encodeURIComponent(k)}`;
+                    // Kirim parameter kategori dan level_id ke controller
+                    const url = `<?= site_url('admin/manmentor/hapus_kategori') ?>?kategori=${encodeURIComponent(kategori)}&level_id=${encodeURIComponent(levelId)}`;
+                    window.location.href = url;
                 }
             });
         });
     });
+
 
 </script>
 <script>
