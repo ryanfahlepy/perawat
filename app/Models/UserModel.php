@@ -20,6 +20,8 @@ class UserModel extends Model
     {
         return $this->find($id);
     }
+
+
     public function getUser($username = false)
     {
         $this->builder()->select('tabel_user.*, tabel_user_level.nama_level');

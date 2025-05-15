@@ -20,7 +20,7 @@ class Manuser extends BaseController
         $data = [
             'level_akses' => $this->session->nama_level,
             'dtmenu' => $this->tampil_menu($this->session->level),
-            'nama_menu' => 'Kelola User'
+            'nama_menu' => 'Kelola Pengguna'
         ];
         return view('admin/kelolauser', $data);
     }

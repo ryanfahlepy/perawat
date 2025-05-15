@@ -6,10 +6,39 @@ $level = $session->level;
 <?php $this->extend('shared_page/template'); ?>
 <?php $this->section('content'); ?>
 
-<div class="card-header">
-    <h3 class="card-title">Hallo <b><?= esc($session->nama); ?></b>, Selamat datang</h3>
-</div>
 
+
+<div class="card-body">
+    <h4>Daftar Level (3, 4, 5, 6)</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center">Tingkat PK</th>
+                <th class="text-center">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($dataLevel)): ?>
+                <?php foreach ($dataLevel as $level): ?>
+                    <tr>
+
+                        <td><?= esc($level->nama_level ?? '-') ?></td>
+                        <td class="text-center">
+                            <a href="<?= site_url('admin/manmentor/kelolaform/' . esc($level->id ?? 0)) ?>"
+                                class="btn btn-info btn-sm w" title="Info">
+                                <i class="fas fa-info-circle text-white"></i>
+                            </a>
+                        </td>
+
+                    <?php endforeach; ?>
+                <?php else: ?>
+                <tr>
+                    <td colspan="4" class="text-center">Tidak ada data user untuk level 4, 5, atau 6.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
 
 <div class="card-body">
     <h4>Daftar User (Level 2, 3, 4, 5, 6)</h4>
@@ -20,7 +49,6 @@ $level = $session->level;
                 <th class="text-center">Nama</th>
                 <th class="text-center">Tingkat PK</th>
                 <th class="text-center">Mentor</th>
-                <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -49,13 +77,6 @@ $level = $session->level;
                                     <?php endforeach; ?>
                                 </select>
                             </form>
-                        </td>
-
-                        <td class="text-center">
-                            <a href="<?= site_url('mentoring/form/' . esc($user['id'] ?? 0)) ?>" class="btn btn-info btn-sm w"
-                                title="Info">
-                                <i class="fas fa-info-circle text-white"></i>
-                            </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
