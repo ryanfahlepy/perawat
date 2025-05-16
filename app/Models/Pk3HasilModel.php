@@ -56,7 +56,7 @@ class Pk3HasilModel extends Model
         return $this->where(['user_id' => $userId, 'kompetensi_id' => $kompetensiId])->first();
     }
 
-    public function getAllHasilByUserAndMentor($userId, $mentorId)
+    public function getAllHasilByUserAndMentor($userId, $mentorId=null)
     {
         $rows = $this->where('user_id', $userId)->where('mentor_id', $mentorId)->findAll();
         $result = [];

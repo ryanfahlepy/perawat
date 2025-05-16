@@ -74,14 +74,16 @@ $level = $session->level;
                         <td class="text-center">
                             <form action="<?= site_url('admin/manmentor/setMentor') ?>" method="post">
                                 <input type="hidden" name="user_id" value="<?= $userId ?>">
-                                <select name="mentor_id" class="form-control form-control-sm" onchange="this.form.submit()">
-                                    <option value="">Pilih Mentor</option>
-                                    <?php foreach ($mentorOptions[$userId] as $mentor): ?>
-                                        <option value="<?= esc($mentor['id']) ?>" <?= (isset($userMentorMapping[$userId]) && $userMentorMapping[$userId] == $mentor['id']) ? 'selected' : '' ?>>
-                                            <?= esc($mentor['nama']) ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <div class="custom-select-wrapper">
+                                    <select name="mentor_id" class="form-control form-control-sm" onchange="this.form.submit()">
+                                        <option value="">Pilih Mentor</option>
+                                        <?php foreach ($mentorOptions[$userId] as $mentor): ?>
+                                            <option value="<?= esc($mentor['id']) ?>" <?= (isset($userMentorMapping[$userId]) && $userMentorMapping[$userId] == $mentor['id']) ? 'selected' : '' ?>>
+                                                <?= esc($mentor['nama']) ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
                             </form>
                         </td>
                         <td class="text-center">
@@ -222,5 +224,28 @@ $level = $session->level;
     });
 
 </script>
+<style>
+.custom-select-wrapper {
+    position: relative;
+    width: 200px;
+}
+.custom-select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 12px;
+    color: #555;
+}
+.custom-select-wrapper select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 25px;
+}
+</style>
 
 <?php $this->endSection(); ?>

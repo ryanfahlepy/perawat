@@ -70,8 +70,6 @@ $level = $session->level;
 
 <div class="" id="nilai-form" data-userid="<?= esc($pkId) ?>">
 
-
-
     <!-- List Kategori dan Kompetensi -->
     <div id="kategori-list">
         <?php
