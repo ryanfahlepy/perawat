@@ -33,6 +33,17 @@ class UserModel extends Model
         }
     }
 
+    public function getAllUsersWithLevel()
+    {
+        return $this->select('tabel_user.*, tabel_user_level.nama_level')
+            ->join('tabel_user_level', 'tabel_user.level_user = tabel_user_level.id')
+            ->where('tabel_user.level_user !=', 1)
+            ->orderBy('tabel_user.level_user', 'ASC')
+            ->findAll();
+    }
+
+
+
     public function getUserByLevel($level_ids = [])
     {
         $this->builder()

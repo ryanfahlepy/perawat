@@ -67,7 +67,7 @@ $level = $session->level;
         <div class="mt-4">
             <div><strong>Level:</strong> <?= esc($level) ?></div>
             <div><strong>Nama Perawat:</strong> <?= esc($session->nama) ?></div>
-            <div><strong>Nama Mentor:</strong> <?= esc($mentorNama->nama) ?></div>
+            <div><strong>Nama Mentor:</strong> <?= isset($mentorNama->nama) && $mentorNama->nama !== null ? esc($mentorNama->nama) : '-' ?></div>
         </div>
     </div>
 
