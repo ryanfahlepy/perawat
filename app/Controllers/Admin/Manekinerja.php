@@ -36,7 +36,7 @@ class Manekinerja extends BaseController
         $this->kinerjaModel = new KinerjaModel(); // Inisialisasi model User
 
     }
-    public function index() 
+    public function index()
     {
         $dataKinerja = $this->kinerjaModel
             ->select('tabel_kinerja.*, tabel_user_level.nama_level')
@@ -92,25 +92,44 @@ class Manekinerja extends BaseController
     public function ajax_update_field()
     {
         if ($this->request->isAJAX()) {
-            $id = $this->request->getPost('id');
+            $userId = $this->session->get('user_id');
+            $kinerjaId = $this->request->getPost('id'); // ini sebenarnya ID dari data_kinerja
             $field = $this->request->getPost('field');
             $value = $this->request->getPost('value');
 
-            $allowedFields = ['indikator', 'kode_kpi', 'formula', 'sumber_data', 'periode_assesment', 'bobot', 'target', 'deskripsi_target'];
-
+            // Validasi field yang diperbolehkan
+            $allowedFields = ['hasil'];
             if (!in_array($field, $allowedFields)) {
                 return $this->response->setJSON(['success' => false, 'message' => 'Field tidak diperbolehkan']);
             }
 
-            $model = new \App\Models\KinerjaModel();
-            $model->update($id, [$field => $value]);
+            // Cek apakah data hasil_kinerja sudah ada
+            $existing = $this->hasilKinerjaModel
+                ->where('user_id', $userId)
+                ->where('kinerja_id', $kinerjaId)
+                ->first();
+
+            if ($existing) {
+                // Update
+                $this->hasilKinerjaModel->update($existing['id'], ['hasil' => $value]);
+            } else {
+                // Insert baru
+                $this->hasilKinerjaModel->insert([
+                    'user_id' => $userId,
+                    'kinerja_id' => $kinerjaId,
+                    'hasil' => $value
+                ]);
+            }
 
             return $this->response->setJSON(['success' => true]);
         }
+
+        return $this->response->setJSON(['success' => false, 'message' => 'Bukan permintaan AJAX']);
     }
+
     public function lihat_hasil()
     {
-        
+
 
         $data = [
             'level_akses' => $this->session->get('level'),
