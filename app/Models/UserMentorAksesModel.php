@@ -12,4 +12,11 @@ class UserMentorAksesModel extends Model
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
+
+    public function getMentorIdByUserId($userId)
+{
+    return $this->where(['user_id' => $userId])->first();
+}
+
+
 }

@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class Pk2HasilModel extends Model
 {
     protected $table = 'tabel_pk2_hasil';
-    protected $allowedFields = ['user_id', 'mentor_id', 'kompetensi_id', 'nilai_id', 'tanggal_mulai', 'tanggal_berakhir', 'tanggal_terakhir_penilaian', 'kompetensi_snapshot', 'catatan'];
+    protected $allowedFields = ['form_id', 'user_id', 'mentor_id', 'kompetensi_id', 'nilai_id', 'tanggal_mulai', 'tanggal_berakhir', 'tanggal_terakhir_penilaian', 'kompetensi_snapshot', 'catatan', 'remedial'];
 
 
 
@@ -56,9 +56,9 @@ class Pk2HasilModel extends Model
         return $this->where(['user_id' => $userId, 'kompetensi_id' => $kompetensiId])->first();
     }
 
-    public function getAllHasilByUserAndMentor($userId, $mentorId)
+    public function getAllHasilByUserAndMentor($userId, $mentorId, $formId=null)
     {
-        $rows = $this->where('user_id', $userId)->where('mentor_id', $mentorId)->findAll();
+        $rows = $this->where('user_id', $userId)->where('mentor_id', $mentorId)->where('form_id', $formId)->findAll();
         $result = [];
         foreach ($rows as $row) {
             $result[$row['kompetensi_id']] = $row;
