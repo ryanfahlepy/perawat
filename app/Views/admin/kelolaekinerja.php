@@ -87,9 +87,10 @@ $level = $session->level;
                         <td><?= esc($item['hasil_aktual']) ?></td>
 
                         <td class="text-center">
-                            <a href="<?= base_url('admin/manekinerja/lihat_hasil/' . $item['id']) ?>" class="btn btn-sm btn-info" title="Lihat Hasil">
-    <i class="fas fa-eye text-white"></i>
-</a>
+                            <a href="<?= base_url('admin/manekinerja/lihat_hasil/' . $item['id']) ?>"
+                                class="btn btn-sm btn-info" title="Lihat Hasil">
+                                <i class="fas fa-eye text-white"></i>
+                            </a>
 
                             <?php if ($level_akses == 1): ?>
                                 <!-- <a href="<?= base_url('admin/manekinerja/delete/' . $item['id']) ?>" class="btn btn-sm btn-danger"
@@ -193,7 +194,7 @@ $level = $session->level;
     }
 
     th {
-        
+
         font-weight: bold;
         text-align: center;
     }
@@ -203,7 +204,7 @@ $level = $session->level;
     }
 
     td.editable {
-        
+
         cursor: text;
     }
 

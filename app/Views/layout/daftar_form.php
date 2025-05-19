@@ -39,7 +39,11 @@ $session = \Config\Services::session();
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($daftarForms as $index => $form): ?>
+                                <?php
+                                usort($daftarForms, function ($a, $b) {
+                                    return $a['id'] <=> $b['id'];
+                                });
+                                foreach ($daftarForms as $index => $form): ?>
                                     <tr>
                                         <td class="text-center"><?= $index + 1 ?></td>
                                         <td class="text-center"><?= $form['nama'] ?></td>

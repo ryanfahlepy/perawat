@@ -36,6 +36,18 @@ class Mentoring extends BaseController
     }
 
     // Fungsi index untuk menampilkan daftar user dan data mentoring
+    private function getFirstFormIdByUser($userId)
+    {
+        // Ganti 'form' sesuai nama tabel aslinya
+        return $this->db->table('tabel_daftar_form')
+            ->select('id')
+            ->where('user_id', $userId)
+            ->orderBy('id', 'ASC')
+            ->limit(1)
+            ->get()
+            ->getRow('id');
+    }
+
     public function index()
     {
         $session = $this->session;
@@ -135,9 +147,7 @@ class Mentoring extends BaseController
             $formId = (int) $form['id'];
             $form['tanggal_mulai_formatted'] = date('d-m-Y H:i', strtotime($form['tanggal_mulai']));
             $form['tanggal_berakhir_formatted'] = $form['tanggal_berakhir'] ? date('d-m-Y H:i', strtotime($form['tanggal_berakhir'])) : '-';
-
             $kompetensiTerpenuhi = [];
-
             foreach ($dataHasilRaw as $hasil) {
                 if ((int) $hasil['form_id'] === $formId) {  // **tidak filter nilai_id, terima semua nilai_id**
                     $kompetensiId = (int) $hasil['kompetensi_id'];
@@ -146,9 +156,7 @@ class Mentoring extends BaseController
                     }
                 }
             }
-
             $jumlahTerpenuhi = count($kompetensiTerpenuhi);
-
             $form['progress'] = ($totalKompetensi > 0) ? round(($jumlahTerpenuhi / $totalKompetensi) * 100, 2) : 0;
         }
         unset($form);
@@ -304,239 +312,175 @@ class Mentoring extends BaseController
         $formId = (int) $formId;
         $mentorId = (int) $this->session->get('user_id');
 
-        // Check if pkId is provided
-        if ($pkId) {
-            // Fetch user data using pkId
-            $userData = $this->userModel->find($pkId);
-
-            if ($userData) {
-                // Fetch data for Prapk, PK1, PK2, PK3
-                $dataPrapk = $this->prapkModel->orderBy('no ASC')->findAll();
-                $dataPk1 = $this->pk1Model->orderBy('no ASC')->findAll();
-                $dataPk2 = $this->pk2Model->orderBy('no ASC')->findAll();
-                $dataPk3 = $this->pk3Model->orderBy('no ASC')->findAll();
-
-                // Depending on the user level, use the appropriate model for fetching results
-                $dataHasil = [];
-                switch ($userData->level_user) {
-                    case 3:
-                        $dataHasilRaw = $this->pk3HasilModel->getAllHasilByUserAndMentor($pkId, $mentorId, $formId); // Use PK3 model
-                        break;
-                    case 4:
-                        $dataHasilRaw = $this->pk2HasilModel->getAllHasilByUserAndMentor($pkId, $mentorId, $formId); // Use PK2 model
-                        break;
-                    case 5:
-                        $dataHasilRaw = $this->pk1HasilModel->getAllHasilByUserAndMentor($pkId, $mentorId, $formId); // Use PK1 model
-                        break;
-                    case 6:
-                        $dataHasilRaw = $this->prapkHasilModel->getAllHasilByUserAndMentor($pkId, $mentorId, $formId); // Use Prapk model
-                        break;
-                    default:
-                        return redirect()->to('/mentoring');
-                }
-
-                // Ubah jadi array dengan key = kompetensi_id
-                foreach ($dataHasilRaw as $row) {
-                    $dataHasil[$row['kompetensi_id']] = $row;
-                }
-
-                // Now check the user level and prepare data accordingly
-                switch ($userData->level_user) {
-                    case 3:
-                        // Redirect to PK3 page (case 3)
-                        $data = [
-                            'level_akses' => $this->session->get('level'),
-                            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-                            'nama_menu' => 'Mentoring',
-                            'dataPk' => $dataPk3,
-                            'dataHasil' => $dataHasil, // Data hasil for PK3
-                            'pkId' => $pkId,
-                            'formid' => $formId,
-                            'userData' => $userData
-                        ];
-                        return view('layout/form', $data); // View for PK3
-                        break;
-
-                    case 4:
-                        // Redirect to PK2 page (case 4)
-                        $data = [
-                            'level_akses' => $this->session->get('level'),
-                            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-                            'nama_menu' => 'Mentoring',
-                            'dataPk' => $dataPk2,
-                            'dataHasil' => $dataHasil, // Data hasil for PK2
-                            'pkId' => $pkId,
-                            'formid' => $formId,
-                            'userData' => $userData  // Pastikan userId juga dikirim ke view
-                        ];
-                        return view('layout/form', $data); // View for PK2
-                        break;
-
-                    case 5:
-                        // Redirect to PK1 page (case 5)
-                        $data = [
-                            'level_akses' => $this->session->get('level'),
-                            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-                            'nama_menu' => 'Mentoring',
-                            'dataPk' => $dataPk1,
-                            'dataHasil' => $dataHasil, // Data hasil for PK1
-                            'pkId' => $pkId,
-                            'formid' => $formId,
-                            'userData' => $userData  // Pastikan userId juga dikirim ke view
-                        ];
-                        return view('layout/form', $data); // View for PK1
-                        break;
-
-                    case 6:
-                        // Redirect to Prapk page (case 6)
-                        $data = [
-                            'level_akses' => $this->session->get('level'),
-                            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-                            'nama_menu' => 'Mentoring',
-                            'dataPk' => $dataPrapk,
-                            'dataHasil' => $dataHasil, // Data hasil for Prapk
-                            'pkId' => $pkId,
-                            'formid' => $formId,
-                            'userData' => $userData  // Pastikan userId juga dikirim ke view
-                        ];
-                        return view('layout/form', $data); // View for Prapk
-                        break;
-
-                    default:
-                        // If the level doesn't match any of the expected ones, redirect to a default page
-                        return redirect()->to('/mentoring');
-                }
-
-            } else {
-                // If no user is found, redirect to a default page
-                return redirect()->to('/mentoring');
-            }
-        } else {
-            // If pkId is not provided, redirect to a default page
+        if (!$pkId) {
             return redirect()->to('/mentoring');
         }
+
+        $userData = $this->userModel->find($pkId);
+        if (!$userData) {
+            return redirect()->to('/mentoring');
+        }
+
+        // Ambil semua data kompetensi berdasarkan level
+        $dataPkAll = [
+            3 => $this->pk3Model->orderBy('no ASC')->findAll(),
+            4 => $this->pk2Model->orderBy('no ASC')->findAll(),
+            5 => $this->pk1Model->orderBy('no ASC')->findAll(),
+            6 => $this->prapkModel->orderBy('no ASC')->findAll(),
+        ];
+
+        // Mapping model hasil
+        $hasilModels = [
+            3 => $this->pk3HasilModel,
+            4 => $this->pk2HasilModel,
+            5 => $this->pk1HasilModel,
+            6 => $this->prapkHasilModel,
+        ];
+
+        $level = (int) $userData->level_user;
+        if (!isset($dataPkAll[$level]) || !isset($hasilModels[$level])) {
+            return redirect()->to('/mentoring');
+        }
+
+        $dataPk = $dataPkAll[$level];
+        $hasilModel = $hasilModels[$level];
+
+        // Ambil semua hasil user dan mentor
+        $allHasil = $hasilModel
+            ->where('user_id', $pkId)
+            ->where('mentor_id', $mentorId)
+            ->orderBy('form_id', 'ASC')
+            ->findAll();
+
+        // Ambil form_id pertama dari hasil (jika ada)
+        $formIdPertama = $allHasil[0]['form_id'] ?? $formId;
+
+        // Susun hasil untuk form sekarang
+        $dataHasilRaw = array_filter($allHasil, fn($row) => $row['form_id'] == $formId);
+        $dataHasil = [];
+        foreach ($dataHasilRaw as $row) {
+            $dataHasil[$row['kompetensi_id']] = $row;
+        }
+
+        // Jika bukan form pertama → filter kompetensi remedial dari form sebelumnya
+        if ($formId != $formIdPertama) {
+            // Ambil form_id sebelumnya
+            $formIdSebelumnya = null;
+            foreach ($allHasil as $row) {
+                if ($row['form_id'] < $formId) {
+                    $formIdSebelumnya = $row['form_id'];
+                } elseif ($row['form_id'] == $formId) {
+                    break;
+                }
+            }
+
+            // Ambil hasil dari form sebelumnya
+            $hasilSebelumnya = array_filter($allHasil, fn($row) => $row['form_id'] == $formIdSebelumnya);
+
+            // Ambil kompetensi_id yang nilai_id nya 2 atau 3
+            $kompetensiRemedial = array_column(array_filter($hasilSebelumnya, fn($r) => in_array((int) $r['nilai_id'], [2, 3])), 'kompetensi_id');
+
+            // Filter dataPk hanya yang remedial
+            $dataPk = array_filter($dataPk, fn($k) => in_array($k['id'], $kompetensiRemedial));
+        }
+
+        // Kirim ke view
+        $data = [
+            'level_akses' => $this->session->get('level'),
+            'dtmenu' => $this->tampil_menu($this->session->get('level')),
+            'nama_menu' => 'Mentoring',
+            'dataPk' => $dataPk,
+            'dataHasil' => $dataHasil,
+            'pkId' => $pkId,
+            'formid' => $formId,
+            'userData' => $userData
+        ];
+
+        return view('layout/form', $data);
     }
+
+
     public function form_hasil($pkId = null, $formId)
     {
         $pkId = (int) $pkId;
         $formId = (int) $formId;
         $mentorId = (int) $this->userMentorAksesModel->getMentorId($pkId);
 
-
-        // Check if pkId is provided
-        if ($pkId) {
-            // Fetch user data using pkId
-            $userData = $this->userModel->find($pkId);
-
-            if ($userData) {
-                // Fetch data for Prapk, PK1, PK2, PK3
-                $dataPrapk = $this->prapkModel->orderBy('no ASC')->findAll();
-                $dataPk1 = $this->pk1Model->orderBy('no ASC')->findAll();
-                $dataPk2 = $this->pk2Model->orderBy('no ASC')->findAll();
-                $dataPk3 = $this->pk3Model->orderBy('no ASC')->findAll();
-
-                // Depending on the user level, use the appropriate model for fetching results
-                $dataHasil = [];
-                switch ($userData->level_user) {
-                    case 3:
-                        $dataHasilRaw = $this->pk3HasilModel->getAllHasilByUserAndMentor($pkId, $mentorId, $formId); // Use PK3 model
-                        break;
-                    case 4:
-                        $dataHasilRaw = $this->pk2HasilModel->getAllHasilByUserAndMentor($pkId, $mentorId, $formId); // Use PK2 model
-                        break;
-                    case 5:
-                        $dataHasilRaw = $this->pk1HasilModel->getAllHasilByUserAndMentor($pkId, $mentorId, $formId); // Use PK1 model
-                        break;
-                    case 6:
-                        $dataHasilRaw = $this->prapkHasilModel->getAllHasilByUserAndMentor($pkId, $mentorId, $formId); // Use Prapk model
-                        break;
-                    default:
-                        return redirect()->to('/mentoring');
-                }
-
-                // Ubah jadi array dengan key = kompetensi_id
-                foreach ($dataHasilRaw as $row) {
-                    $dataHasil[$row['kompetensi_id']] = $row;
-                }
-
-
-
-                // Now check the user level and prepare data accordingly
-                switch ($userData->level_user) {
-                    case 3:
-                        // Redirect to PK3 page (case 3)
-                        $data = [
-                            'level_akses' => $this->session->get('level'),
-                            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-                            'nama_menu' => 'Mentoring',
-                            'dataPk' => $dataPk3,
-                            'dataHasil' => $dataHasil, // Data hasil for PK3
-                            'pkId' => $pkId,
-                            'formid' => $formId,
-                            'userData' => $userData
-                        ];
-                        return view('layout/form_hasil', $data); // View for PK3
-                        break;
-
-                    case 4:
-                        // Redirect to PK2 page (case 4)
-                        $data = [
-                            'level_akses' => $this->session->get('level'),
-                            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-                            'nama_menu' => 'Mentoring',
-                            'dataPk' => $dataPk2,
-                            'dataHasil' => $dataHasil, // Data hasil for PK2
-                            'pkId' => $pkId,
-                            'formid' => $formId,
-                            'userData' => $userData  // Pastikan userId juga dikirim ke view
-                        ];
-                        return view('layout/form_hasil', $data); // View for PK2
-                        break;
-
-                    case 5:
-                        // Redirect to PK1 page (case 5)
-                        $data = [
-                            'level_akses' => $this->session->get('level'),
-                            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-                            'nama_menu' => 'Mentoring',
-                            'dataPk' => $dataPk1,
-                            'dataHasil' => $dataHasil, // Data hasil for PK1
-                            'pkId' => $pkId,
-                            'formid' => $formId,
-                            'userData' => $userData  // Pastikan userId juga dikirim ke view
-                        ];
-                        return view('layout/form_hasil', $data); // View for PK1
-                        break;
-
-                    case 6:
-                        // Redirect to Prapk page (case 6)
-                        $data = [
-                            'level_akses' => $this->session->get('level'),
-                            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-                            'nama_menu' => 'Mentoring',
-                            'dataPk' => $dataPrapk,
-                            'dataHasil' => $dataHasil, // Data hasil for Prapk
-                            'pkId' => $pkId,
-                            'formid' => $formId,
-                            'userData' => $userData  // Pastikan userId juga dikirim ke view
-                        ];
-                        return view('layout/form_hasil', $data); // View for Prapk
-                        break;
-
-                    default:
-                        // If the level doesn't match any of the expected ones, redirect to a default page
-                        return redirect()->to('/mentoring');
-                }
-
-            } else {
-                // If no user is found, redirect to a default page
-                return redirect()->to('/mentoring');
-            }
-        } else {
-            // If pkId is not provided, redirect to a default page
+        if (!$pkId) {
             return redirect()->to('/mentoring');
         }
+
+        $userData = $this->userModel->find($pkId);
+        if (!$userData) {
+            return redirect()->to('/mentoring');
+        }
+
+        // Semua data kompetensi berdasarkan level
+        $dataPkAll = [
+            3 => $this->pk3Model->orderBy('no ASC')->findAll(),
+            4 => $this->pk2Model->orderBy('no ASC')->findAll(),
+            5 => $this->pk1Model->orderBy('no ASC')->findAll(),
+            6 => $this->prapkModel->orderBy('no ASC')->findAll(),
+        ];
+
+        // Model hasil berdasarkan level
+        $hasilModels = [
+            3 => $this->pk3HasilModel,
+            4 => $this->pk2HasilModel,
+            5 => $this->pk1HasilModel,
+            6 => $this->prapkHasilModel,
+        ];
+
+        $level = (int) $userData->level_user;
+        if (!isset($dataPkAll[$level]) || !isset($hasilModels[$level])) {
+            return redirect()->to('/mentoring');
+        }
+
+        $dataPk = $dataPkAll[$level];
+        $hasilModel = $hasilModels[$level];
+
+        // Ambil semua hasil untuk user dan mentor (urutan form_id ASC)
+        $allHasil = $hasilModel
+            ->where('user_id', $pkId)
+            ->where('mentor_id', $mentorId)
+            ->orderBy('form_id', 'ASC')
+            ->findAll();
+
+        // Form pertama yang pernah ada untuk user ini
+        $formIdPertama = $allHasil[0]['form_id'] ?? $formId;
+
+        // Ambil hasil untuk form saat ini
+        $dataHasilRaw = array_filter($allHasil, fn($row) => $row['form_id'] == $formId);
+
+        // Susun data hasil dengan key kompetensi_id
+        $dataHasil = [];
+        foreach ($dataHasilRaw as $row) {
+            $dataHasil[$row['kompetensi_id']] = $row;
+        }
+
+        // Filter dataPk hanya untuk form selain form pertama
+        if ($formId != $formIdPertama) {
+            $kompetensiIds = array_keys($dataHasil);
+            $dataPk = array_filter($dataPk, fn($k) => in_array($k['id'], $kompetensiIds));
+        }
+        // Jika form pertama, tampilkan semua dataPk tanpa filter
+
+        // Siapkan data untuk view
+        $data = [
+            'level_akses' => $this->session->get('level'),
+            'dtmenu' => $this->tampil_menu($this->session->get('level')),
+            'nama_menu' => 'Mentoring',
+            'dataPk' => $dataPk,
+            'dataHasil' => $dataHasil,
+            'pkId' => $pkId,
+            'formid' => $formId,
+            'userData' => $userData,
+        ];
+
+        return view('layout/form_hasil', $data);
     }
+
+
 
     public function simpan()
     {
