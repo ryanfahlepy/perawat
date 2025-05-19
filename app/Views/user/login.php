@@ -57,8 +57,8 @@
 
     
     <div class="wrapper-center">
-    <h2 class="title">NURSE-LEAD</h2>
-    <h2 class="title">Nursing Leadership Informatics Dashboard</h2>
+    <h2 class="title">PERO_LINE</h2>
+    <h2 class="title">Performance of Nurse Online</h2>
         <div class="login-box">
             <div class="login-logo">
             </div>
@@ -66,7 +66,7 @@
             <div class="card">
                 <div class="card-body login-card-body">
                     <div class="text-center mb-4">
-                        <img src="/assets/dist/img/logo.png" width="200" class="img-circle" alt="User Image">
+                        <img src="/assets/dist/img/bg.png" width="200" class="img" alt="User Image">
                     </div>
                     <form action="/login/ceklogin" method="POST">
                         <?= csrf_field(); ?>

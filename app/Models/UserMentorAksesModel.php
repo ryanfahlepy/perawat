@@ -14,9 +14,21 @@ class UserMentorAksesModel extends Model
     protected $updatedField = 'updated_at';
 
     public function getMentorIdByUserId($userId)
-{
-    return $this->where(['user_id' => $userId])->first();
-}
+    {
+        return $this->where(['user_id' => $userId])->first();
+    }
+
+    public function getMentorId($userId)
+    {
+        $data = $this->where('user_id', $userId)->first();
+
+        // Jika data dalam bentuk array, akses pakai array
+        return isset($data['mentor_id']) ? $data['mentor_id'] : null;
+    }
+
+
+
+
 
 
 }

@@ -42,14 +42,22 @@ class Mentoring extends BaseController
         $loggedInUserId = $session->get('user_id');
         $level = $session->get('level');
 
+        // Ambil semua form ID milik user (array)
+        $formIds = $this->daftarFormModel->getIdByUserId($loggedInUserId);
+
+        // Jika kosong, set default array agar tidak error saat query
+        if (empty($formIds)) {
+            $formIds = [0];
+        }
+
         // Ambil data user sendiri
         $userData = $this->userModel->find($loggedInUserId);
-        $levelUser = $userData->level_user ?? null;
+        $levelUser = (int) ($userData->level_user ?? null);
 
-        // Ambil daftar mentees untuk user yang jadi mentor
+        // Ambil daftar mentees dengan level name
         $dataUser = $this->userModel->getMenteesWithLevelName($loggedInUserId)->asArray()->findAll();
 
-        // Ambil data mentor level 2 & 3 untuk opsi mentor
+        // Ambil mentor level 2 & 3 untuk opsi mentor
         $mentorLevel2 = $this->userModel->getUserByLevel([2])->getResultArray();
         $mentorLevel3 = $this->userModel->getUserByLevel([3])->getResultArray();
 
@@ -64,15 +72,18 @@ class Mentoring extends BaseController
             }
         }
 
-        // Ambil mapping user → mentor yang sudah diset
+        // Mapping user → mentor yang sudah diset
         $aksesData = $this->userMentorAksesModel->findAll();
         $userMentorMapping = [];
         foreach ($aksesData as $a) {
             $userMentorMapping[$a['user_id']] = $a['mentor_id'];
         }
 
+        // Ambil mentorId untuk user yang login
         $mentorData = $this->userMentorAksesModel->getMentorIdByUserId($loggedInUserId);
-        $mentorId = $mentorData['mentor_id'] ?? null; // Pastikan hanya ambil ID-nya
+        $mentorId = (int) ($mentorData['mentor_id'] ?? null);
+
+        // Ambil data mentor nama
         $mentorNama = $this->userModel->getUserById($mentorId);
 
         // Default kosong
@@ -80,34 +91,70 @@ class Mentoring extends BaseController
         $dataHasilRaw = [];
 
         if ($mentorId) {
+            // Ambil data kompetensi dan hasil berdasarkan level user
             switch ($levelUser) {
                 case 3:
                     $dataPk = $this->pk3Model->findAll();
                     $dataHasilRaw = $this->pk3HasilModel->getAllHasilByUserAndMentor($loggedInUserId, $mentorId);
                     break;
                 case 4:
-                    $dataPk = $this->pk3Model->findAll();
+                    $dataPk = $this->pk2Model->findAll();
                     $dataHasilRaw = $this->pk2HasilModel->getAllHasilByUserAndMentor($loggedInUserId, $mentorId);
                     break;
                 case 5:
-                    $dataPk = $this->pk3Model->findAll();
+                    $dataPk = $this->pk1Model->findAll();
                     $dataHasilRaw = $this->pk1HasilModel->getAllHasilByUserAndMentor($loggedInUserId, $mentorId);
                     break;
                 case 6:
-                    $dataPk = $this->pk3Model->findAll();
+                    $dataPk = $this->prapkModel->findAll();
                     $dataHasilRaw = $this->prapkHasilModel->getAllHasilByUserAndMentor($loggedInUserId, $mentorId);
                     break;
                 default:
-                    // Level tidak dikenali
                     $dataPk = [];
                     $dataHasilRaw = [];
                     break;
             }
-        } else {
-            // Kalau mentor belum diset, biar kosong saja
-            $dataPk = [];
-            $dataHasilRaw = [];
         }
+
+
+        // Ambil daftar form user dan mentor yang sedang aktif
+        $daftarForms = $this->daftarFormModel
+            ->where('user_id', $loggedInUserId)
+            ->where('mentor_id', $mentorId)
+            ->orderBy('tanggal_mulai', 'DESC')
+            ->findAll();
+
+        // Ambil semua kompetensi_id dari dataPk
+        $listKompetensiId = [];
+        foreach ($dataPk as $pk) {
+            $listKompetensiId[] = (int) $pk['id'];
+        }
+        $totalKompetensi = count($listKompetensiId);
+
+        foreach ($daftarForms as &$form) {
+            $formId = (int) $form['id'];
+            $form['tanggal_mulai_formatted'] = date('d-m-Y H:i', strtotime($form['tanggal_mulai']));
+            $form['tanggal_berakhir_formatted'] = $form['tanggal_berakhir'] ? date('d-m-Y H:i', strtotime($form['tanggal_berakhir'])) : '-';
+
+            $kompetensiTerpenuhi = [];
+
+            foreach ($dataHasilRaw as $hasil) {
+                if ((int) $hasil['form_id'] === $formId) {  // **tidak filter nilai_id, terima semua nilai_id**
+                    $kompetensiId = (int) $hasil['kompetensi_id'];
+                    if (in_array($kompetensiId, $listKompetensiId)) {
+                        $kompetensiTerpenuhi[$kompetensiId] = true; // tandai sudah diisi nilai apapun
+                    }
+                }
+            }
+
+            $jumlahTerpenuhi = count($kompetensiTerpenuhi);
+
+            $form['progress'] = ($totalKompetensi > 0) ? round(($jumlahTerpenuhi / $totalKompetensi) * 100, 2) : 0;
+        }
+        unset($form);
+
+
+
 
 
         // Susun data hasil indexed by kompetensi_id agar mudah akses di view
@@ -116,39 +163,7 @@ class Mentoring extends BaseController
             $dataHasil[$hasil['kompetensi_id']] = $hasil;
         }
 
-        
-        $daftarForms = $this->daftarFormModel->where('user_id', (int) $loggedInUserId)
-            ->where('mentor_id', $mentorId)
-            ->orderBy('tanggal_mulai', 'DESC')
-            ->findAll();
-
-        
-
-        // Tambahkan formatting tanggal dan progress ke setiap form
-        foreach ($daftarForms as &$form) {
-            $form['tanggal_mulai_formatted'] = date('d-m-Y H:i', strtotime($form['tanggal_mulai']));
-            $form['tanggal_berakhir_formatted'] = $form['tanggal_berakhir'] ? date('d-m-Y H:i', strtotime($form['tanggal_berakhir'])) : '-';
-
-            // Contoh hitung progress: misal berdasarkan tanggal berakhir dan sekarang
-            if ($form['tanggal_berakhir']) {
-                $start = strtotime($form['tanggal_mulai']);
-                $end = strtotime($form['tanggal_berakhir']);
-                $now = time();
-                if ($now >= $end) {
-                    $progress = 100;
-                } elseif ($now <= $start) {
-                    $progress = 0;
-                } else {
-                    $progress = round((($now - $start) / ($end - $start)) * 100);
-                }
-            } else {
-                $progress = 0;
-            }
-            $form['progress'] = $progress;
-        }
-        unset($form); // break reference
-
-        // Kirim semua data ke view
+        // Siapkan data untuk dikirim ke view
         $data = [
             'level_akses' => $level,
             'dtmenu' => $this->tampil_menu($level),
@@ -158,7 +173,7 @@ class Mentoring extends BaseController
             'userMentorMapping' => $userMentorMapping,
             'dataPk' => $dataPk,
             'dataHasil' => $dataHasil,
-            'userId' => $this->session->get('user_id'),
+            'userId' => $loggedInUserId,
             'session' => $session,
             'level' => $level,
             'daftarForms' => $daftarForms,
@@ -166,9 +181,122 @@ class Mentoring extends BaseController
             'mentorNama' => $mentorNama,
         ];
 
-
         return view('layout/mentoring', $data);
     }
+
+
+    public function daftar_form($userId = null)
+    {
+        $session = session();
+        $loggedInUserId = $session->get('user_id');
+        $level = $session->get('level');
+
+        if ($userId === null) {
+            return redirect()->to('/mentoring')->with('error', 'User ID tidak valid');
+        }
+
+        // Ambil data user target
+        $userData = $this->userModel->find($userId);
+        if (!$userData) {
+            return redirect()->to('/mentoring')->with('error', 'User tidak ditemukan');
+        }
+
+        // Cek apakah logged-in user adalah mentor dari user target
+        $mentorData = $this->userMentorAksesModel->where('user_id', $userId)->first();
+        if (!$mentorData || $mentorData['mentor_id'] != $loggedInUserId) {
+            return redirect()->to('/mentoring')->with('error', 'Anda bukan mentor dari user ini');
+        }
+
+        // Ambil level user target, karena data pk dan hasil tergantung level mentee
+        $levelUser = (int) $userData->level_user ?? null;
+
+        // Ambil hasil mentoring user target dan mentor logged-in
+        $mentorId = $loggedInUserId; // mentor adalah user yang login saat ini
+
+        $dataPk = [];
+        $dataHasilRaw = [];
+
+        if ($mentorId) {
+            switch ($levelUser) {
+                case 3:
+                    $dataPk = $this->pk3Model->findAll();
+                    $dataHasilRaw = $this->pk3HasilModel->getAllHasilByUserAndMentor($userId, $mentorId);
+                    break;
+                case 4:
+                    $dataPk = $this->pk2Model->findAll();
+                    $dataHasilRaw = $this->pk2HasilModel->getAllHasilByUserAndMentor($userId, $mentorId);
+                    break;
+                case 5:
+                    $dataPk = $this->pk1Model->findAll();
+                    $dataHasilRaw = $this->pk1HasilModel->getAllHasilByUserAndMentor($userId, $mentorId);
+                    break;
+                case 6:
+                    $dataPk = $this->prapkModel->findAll();
+                    $dataHasilRaw = $this->prapkHasilModel->getAllHasilByUserAndMentor($userId, $mentorId);
+                    break;
+                default:
+                    $dataPk = [];
+                    $dataHasilRaw = [];
+                    break;
+            }
+        }
+
+        // Susun hasil indexed by kompetensi_id agar mudah akses di view
+        $dataHasil = [];
+        foreach ($dataHasilRaw as $hasil) {
+            $dataHasil[$hasil['kompetensi_id']] = $hasil;
+        }
+
+        // Ambil daftar form untuk user target dan mentor logged-in
+        $daftarForms = $this->daftarFormModel->where('user_id', $userId)
+            ->where('mentor_id', $mentorId)
+            ->orderBy('tanggal_mulai', 'DESC')
+            ->findAll();
+
+        // Format tanggal dan hitung progress tiap form
+        $listKompetensiId = [];
+        foreach ($dataPk as $pk) {
+            $listKompetensiId[] = (int) $pk['id'];
+        }
+        $totalKompetensi = count($listKompetensiId);
+
+        foreach ($daftarForms as &$form) {
+            $formId = (int) $form['id'];
+            $form['tanggal_mulai_formatted'] = date('d-m-Y H:i', strtotime($form['tanggal_mulai']));
+            $form['tanggal_berakhir_formatted'] = $form['tanggal_berakhir'] ? date('d-m-Y H:i', strtotime($form['tanggal_berakhir'])) : '-';
+
+            $kompetensiTerpenuhi = [];
+
+            foreach ($dataHasilRaw as $hasil) {
+                if ((int) $hasil['form_id'] === $formId) {  // **tidak filter nilai_id, terima semua nilai_id**
+                    $kompetensiId = (int) $hasil['kompetensi_id'];
+                    if (in_array($kompetensiId, $listKompetensiId)) {
+                        $kompetensiTerpenuhi[$kompetensiId] = true; // tandai sudah diisi nilai apapun
+                    }
+                }
+            }
+
+            $jumlahTerpenuhi = count($kompetensiTerpenuhi);
+
+            $form['progress'] = ($totalKompetensi > 0) ? round(($jumlahTerpenuhi / $totalKompetensi) * 100, 2) : 0;
+        }
+        unset($form);
+
+        $data = [
+            'level_akses' => $level,
+            'dtmenu' => $this->tampil_menu($level),
+            'nama_menu' => 'Daftar Form',
+            'daftarForms' => $daftarForms,
+            'dataPk' => $dataPk,
+            'dataHasil' => $dataHasil,
+            'userData' => $userData,
+            'session' => $session,
+            'mentorId' => $mentorId,
+        ];
+
+        return view('layout/daftar_form', $data);
+    }
+
 
     public function form($pkId = null, $formId)
     {
@@ -292,7 +420,8 @@ class Mentoring extends BaseController
     {
         $pkId = (int) $pkId;
         $formId = (int) $formId;
-        $mentorId = (int) $this->session->get('user_id');
+        $mentorId = (int) $this->userMentorAksesModel->getMentorId($pkId);
+
 
         // Check if pkId is provided
         if ($pkId) {
@@ -329,6 +458,8 @@ class Mentoring extends BaseController
                 foreach ($dataHasilRaw as $row) {
                     $dataHasil[$row['kompetensi_id']] = $row;
                 }
+
+
 
                 // Now check the user level and prepare data accordingly
                 switch ($userData->level_user) {
@@ -493,66 +624,7 @@ class Mentoring extends BaseController
         return $this->response->setJSON(['status' => 'failed'])->setStatusCode(400);
     }
 
-    public function daftar_form($userId = null)
-    {
-        $session = session();
-        $loggedInUserId = $session->get('user_id');
-        $level = $session->get('level');
 
-        if ($userId === null) {
-            return redirect()->to('/mentoring')->with('error', 'User ID tidak valid');
-        }
-
-        $userData = $this->userModel->find($userId);
-        if (!$userData) {
-            return redirect()->to('/mentoring')->with('error', 'User tidak ditemukan');
-        }
-
-        $mentorData = $this->userMentorAksesModel->where('user_id', $userId)->first();
-        if (!$mentorData || $mentorData['mentor_id'] != $loggedInUserId) {
-            return redirect()->to('/mentoring')->with('error', 'Anda bukan mentor dari user ini');
-        }
-
-        $daftarForms = $this->daftarFormModel->where('user_id', $userId)
-            ->where('mentor_id', $loggedInUserId)
-            ->orderBy('tanggal_mulai', 'DESC')
-            ->findAll();
-
-        // Tambahkan formatting tanggal dan progress ke setiap form
-        foreach ($daftarForms as &$form) {
-            $form['tanggal_mulai_formatted'] = date('d-m-Y H:i', strtotime($form['tanggal_mulai']));
-            $form['tanggal_berakhir_formatted'] = $form['tanggal_berakhir'] ? date('d-m-Y H:i', strtotime($form['tanggal_berakhir'])) : '-';
-
-            // Contoh hitung progress: misal berdasarkan tanggal berakhir dan sekarang
-            if ($form['tanggal_berakhir']) {
-                $start = strtotime($form['tanggal_mulai']);
-                $end = strtotime($form['tanggal_berakhir']);
-                $now = time();
-                if ($now >= $end) {
-                    $progress = 100;
-                } elseif ($now <= $start) {
-                    $progress = 0;
-                } else {
-                    $progress = round((($now - $start) / ($end - $start)) * 100);
-                }
-            } else {
-                $progress = 0;
-            }
-            $form['progress'] = $progress;
-        }
-        unset($form); // break reference
-
-        $data = [
-            'level_akses' => $level,
-            'dtmenu' => $this->tampil_menu($level),
-            'nama_menu' => 'Daftar Form',
-            'daftarForms' => $daftarForms,
-            'userData' => $userData,
-            'session' => $session,
-        ];
-
-        return view('layout/daftar_form', $data);
-    }
 
     public function buat_form($userId)
     {

@@ -58,13 +58,22 @@ class Pk1HasilModel extends Model
 
     public function getAllHasilByUserAndMentor($userId, $mentorId, $formId = null)
     {
-        $rows = $this->where('user_id', $userId)->where('mentor_id', $mentorId)->where('form_id', $formId)->findAll();
+        $this->where('user_id', $userId)
+            ->where('mentor_id', $mentorId);
+
+        if ($formId !== null) {
+            $this->where('form_id', $formId);
+        }
+
+        $rows = $this->findAll();
+
         $result = [];
         foreach ($rows as $row) {
             $result[$row['kompetensi_id']] = $row;
         }
         return $result;
     }
+
 
 
 

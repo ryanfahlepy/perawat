@@ -112,11 +112,14 @@ $level = $session->level;
                         $warna = '';
                         if (isset($dataHasil[$row['id']])) {
                             switch ($dataHasil[$row['id']]['nilai_id']) {
+                                case 1:
+                                    $warna = 'bg-success text-dark';
+                                    break;
                                 case 2:
-                                    $warna = 'bg-warning';
+                                    $warna = 'bg-warning text-dark';
                                     break;
                                 case 3:
-                                    $warna = 'bg-danger text-white';
+                                    $warna = 'bg-danger text-dark';
                                     break;
                             }
                         }
@@ -126,22 +129,22 @@ $level = $session->level;
                                 <div style="width: 50px;"><?= esc($row['no']) ?></div>
                                 <div class="flex-grow-1 text-start"><?= esc($row['kompetensi']) ?></div>
                                 <div style="width: 150px;">
-                                    <input type="checkbox" class="nilai-checkbox" name="nilai_<?= $row['id'] ?>" value="1"
+                                    <input  type="checkbox" class="nilai-checkbox readonly-checkbox" name="nilai_<?= $row['id'] ?>" value="1"
                                         data-id="<?= $row['id'] ?>" <?= isset($dataHasil[$row['id']]) && $dataHasil[$row['id']]['nilai_id'] == 1 ? 'checked' : '' ?> />
                                 </div>
                                 <div style="width: 150px;">
-                                    <input type="checkbox" class="nilai-checkbox" name="nilai_<?= $row['id'] ?>" value="2"
+                                    <input type="checkbox" class="nilai-checkbox readonly-checkbox" name="nilai_<?= $row['id'] ?>" value="2"
                                         data-id="<?= $row['id'] ?>" <?= isset($dataHasil[$row['id']]) && $dataHasil[$row['id']]['nilai_id'] == 2 ? 'checked' : '' ?> />
                                 </div>
                                 <div style="width: 150px;">
-                                    <input type="checkbox" class="nilai-checkbox" name="nilai_<?= $row['id'] ?>" value="3"
+                                    <input type="checkbox" class="nilai-checkbox readonly-checkbox" name="nilai_<?= $row['id'] ?>" value="3"
                                         data-id="<?= $row['id'] ?>" <?= isset($dataHasil[$row['id']]) && $dataHasil[$row['id']]['nilai_id'] == 3 ? 'checked' : '' ?> />
                                 </div>
 
                                 <div style="width: 200px;">
-                                    <textarea class="form-control form-control-sm catatan-textarea"
+                                    <textarea readonly class="form-control form-control-sm catatan-textarea"
                                         data-id="<?= $row['id'] ?>" rows="1"
-                                        placeholder="Catatan..."><?= isset($dataHasil[$row['id']]['catatan']) ? esc($dataHasil[$row['id']]['catatan']) : '' ?></textarea>
+                                        ><?= isset($dataHasil[$row['id']]['catatan']) ? esc($dataHasil[$row['id']]['catatan']) : '' ?></textarea>
                                 </div>
 
 
@@ -166,100 +169,18 @@ $level = $session->level;
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Script untuk AJAX checkbox, drag-drop, dan tombol aksi -->
-<script>
+
+  <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const userId = document.getElementById('nilai-form').dataset.userid;
-        const formId = <?= json_encode($formid) ?>;
-        function kirimData(id) {
-            const checkboxes = document.querySelectorAll(`.nilai-checkbox[data-id="${id}"]`);
-            let nilai_id = 0;
-
-            checkboxes.forEach(cb => {
-                if (cb.checked) nilai_id = parseInt(cb.value);
-            });
-
-            const catatanElem = document.querySelector(`.catatan-textarea[data-id="${id}"]`);
-            const catatan = catatanElem ? catatanElem.value.trim() : '';
-
-            const bodyData = new URLSearchParams({
-                form_id: formId,
-                kompetensi_id: id,
-                nilai_id: nilai_id,
-                user_id: userId,
-                catatan: catatan
-            });
-
-            fetch("<?= site_url('mentoring/simpan') ?>", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                body: bodyData.toString()
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status !== 'ok') {
-                        alert('Gagal menyimpan: ' + (data.message || ''));
-                    }
-                })
-                .catch(err => {
-                    console.error('Error saat kirim data:', err);
-                });
-        }
-
-        // Checkbox perubahan
-        document.querySelectorAll('.nilai-checkbox').forEach(cb => {
-            cb.addEventListener('change', function () {
-                const id = this.dataset.id;
-
-                // Uncheck yang lain
-                document.querySelectorAll(`.nilai-checkbox[data-id="${id}"]`)
-                    .forEach(x => { if (x !== this) x.checked = false });
-
-                kirimData(id);
-            });
-        });
-
-        // Catatan perubahan
-        document.querySelectorAll('.catatan-textarea').forEach(area => {
-            area.addEventListener('change', function () {
-                const id = this.dataset.id;
-                kirimData(id);
+        document.querySelectorAll('.readonly-checkbox').forEach(cb => {
+            cb.addEventListener('click', function (e) {
+                // Cegah perubahan status checkbox
+                e.preventDefault();
             });
         });
     });
 
-    $(document).ready(function () {
-        $('.nilai-checkbox').on('change', function () {
-            const row = $(this).closest('li');
-            const checkboxes = row.find('.nilai-checkbox');
 
-            // Reset warna
-            row.removeClass('bg-success bg-warning bg-danger text-white');
-
-            // Deteksi nilai yang diceklis
-            checkboxes.each(function () {
-                if ($(this).is(':checked')) {
-                    const val = $(this).val();
-                    // Reset background
-                    row.removeClass('bg-warning bg-danger bg-success');
-
-                    if (val == '1') {
-                        row.addClass('bg-success text-dark');
-                    } else if (val == '2') {
-                        row.addClass('bg-warning text-dark'); // Kuning
-                    } else if (val == '3') {
-                        row.addClass('bg-danger text-dark'); // Merah
-                    }
-                }
-
-            });
-        });
-
-        // Trigger sekali biar warnanya langsung sesuai data awal
-        $('.nilai-checkbox').trigger('change');
-    });
 </script>
 <style>
     .bg-warning {
@@ -276,6 +197,13 @@ $level = $session->level;
         background-color: rgba(40, 167, 69, 0.50) !important;
         /* Hijau dengan transparansi 75% */
     }
+    textarea[readonly] {
+    background-color: #fff !important;  /* Atau sesuaikan warna normal kamu */
+    color: #212529;                     /* Warna teks default */
+    cursor: default;                   /* Cursor tetap seperti biasa */
+    opacity: 1;                        /* Pastikan tidak transparan */
+}
+
 </style>
 
 

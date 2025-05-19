@@ -1,16 +1,17 @@
 <?php
 
 $session = \Config\Services::session();
+$level = $session->level;
+
 ?>
+
 <?php $this->extend('shared_page/template'); ?>
 <?php $this->section('content'); ?>
 
-
-<div class="card-header">
-
-    <h3 class="card-title">Hallo <b><?= $session->nama; ?></b>, Selamat datang</h3>
-</div>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="card-body">
     <table border="1" cellpadding="8" cellspacing="0" width="100%">
@@ -212,4 +213,3 @@ $session = \Config\Services::session();
 </style>
 
 <?php $this->endSection(); ?>
-
