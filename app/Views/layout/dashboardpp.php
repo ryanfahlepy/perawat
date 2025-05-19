@@ -4,7 +4,7 @@ $session = \Config\Services::session();
 <?php $this->extend('shared_page/template'); ?>
 <?php $this->section('content'); ?>
 <div class="card-header">
-                                <h5 class="ml-2 mb-3"></h5>
+    <h5 class="ml-2 mb-3"></h5>
                                 <h3 class="card-title"> Hallo <b><?= $session->nama; ?></b>, Selamat datang </h3>
 
                                 <!-- <div class="card-tools">

@@ -27,6 +27,7 @@ class EInovasi extends BaseController
         $voteModel = new VoteModel();
         $komentarModel = new KomentarModel();
         $persetujuanModel = new PersetujuanInovasiModel();
+        $userId = $this->session->get('user_id'); 
 
         $inovasiList = $statusFilter
             ? $inovasiModel->where('status', $statusFilter)->findAll()
@@ -53,6 +54,11 @@ class EInovasi extends BaseController
                 ->where('inovasi_id', $item['id'])
                 ->first();
 
+            $userVote = $voteModel->where([
+                'user_id' => $userId,
+                'inovasi_id' => $item['id']
+            ])->first();
+                
             $inovasiData[] = [
                 'id' => $item['id'],
                 'judul' => $item['judul'],
@@ -63,47 +69,29 @@ class EInovasi extends BaseController
                 'pengusul' => $pengusul->nama ?? 'Unknown',
                 'photo' => $pengusul->photo ?? null,
                 'grade' => $pengusul->grade ?? '-',
+                'user_vote' => $userVote['vote'] ?? null,
                 'jumlah_setuju' => $jumlahSetuju,
                 'jumlah_tidak_setuju' => $jumlahTidakSetuju,
                 'komentar' => $komentar,
-                'persetujuan' => $persetujuan
+                'persetujuan' => $persetujuan,
+                'catatan' => $persetujuan['catatan'] ?? ''
+
             ];
         }
+
+        $levelUser = (int) $this->session->get('level');
+
 
         $data = [
             'level_akses' => $this->session->nama_level,
             'dtmenu' => $this->tampil_menu($this->session->level),
             'nama_menu' => 'E-Inovasi',
             'inovasi' => $inovasiData,
-            'status_filter' => $statusFilter
+            'status_filter' => $statusFilter,
+            'level_user' => $levelUser,
         ];
 
         return view('layout/einovasi', $data);
-    }
-
-
-    public function tanggapiKaru()
-    {
-        $inovasiId = $this->request->getPost('inovasi_id');
-        $status = $this->request->getPost('status');
-        $catatan = $this->request->getPost('catatan');
-        $karuId = $this->session->get('user_id');
-
-        $persetujuanModel = new PersetujuanInovasiModel();
-        $persetujuanModel->save([
-            'inovasi_id' => $inovasiId,
-            'user_id' => $karuId,
-            'status' => $status,
-            'catatan' => $catatan,
-            'created_at' => date('Y-m-d H:i:s')
-        ]);
-
-        $inovasiModel = new InovasiModel();
-        $inovasiModel->update($inovasiId, [
-            'status' => $status
-        ]);
-
-        return redirect()->to('/einovasi')->with('success', 'Persetujuan Karu berhasil disimpan.');
     }
 
     public function simpan()
@@ -145,35 +133,93 @@ class EInovasi extends BaseController
     
 
     public function vote()
-    {
-        $voteModel = new VoteModel();
-        $inovasiId = $this->request->getPost('inovasi_id');
-        $vote = $this->request->getPost('vote');
-        $userId = $this->session->user_id;
+{
+    $voteModel = new VoteModel();
+    $inovasiId = $this->request->getPost('inovasi_id');
+    $vote = $this->request->getPost('vote');
+    $userId = session()->get('user_id');
 
-        // Cek apakah user sudah pernah vote
-        $existingVote = $voteModel
-            ->where(['inovasi_id' => $inovasiId, 'user_id' => $userId])
-            ->first();
+    // Cek apakah user sudah pernah vote
+    $existingVote = $voteModel
+        ->where(['inovasi_id' => $inovasiId, 'user_id' => $userId])
+        ->first();
 
-        if ($existingVote) {
-            // Update vote yang sudah ada
+    if ($existingVote) {
+        if ($existingVote['vote'] === $vote) {
+            // Jika vote sama, hapus (batalkan vote)
+            $voteModel->delete($existingVote['id']);
+        } else {
+            // Jika vote beda, update
             $voteModel->update($existingVote['id'], [
                 'vote' => $vote,
                 'created_at' => date('Y-m-d H:i:s')
             ]);
+        }
+    } else {
+        // Simpan vote baru
+        $voteModel->save([
+            'inovasi_id' => $inovasiId,
+            'user_id' => $userId,
+            'vote' => $vote,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+    }
+
+    return redirect()->back()->with('success', 'Voting berhasil dikirim.');
+}
+
+public function voteAjax()
+{
+    if (!$this->request->isAJAX()) {
+        return $this->response->setStatusCode(403)->setJSON(['error' => 'Invalid request']);
+    }
+
+    $voteModel = new VoteModel();
+    $inovasiId = $this->request->getPost('inovasi_id');
+    $vote = $this->request->getPost('vote');
+    $userId = session()->get('user_id');
+
+    // Cek apakah user sudah pernah vote
+    $existingVote = $voteModel->where([
+        'inovasi_id' => $inovasiId,
+        'user_id' => $userId
+    ])->first();
+
+    $userVote = null;
+
+    if ($existingVote) {
+        if ($existingVote['vote'] === $vote) {
+            $voteModel->delete($existingVote['id']); // batal vote
         } else {
-            // Simpan vote baru
-            $voteModel->save([
-                'inovasi_id' => $inovasiId,
-                'user_id' => $userId,
+            $voteModel->update($existingVote['id'], [
                 'vote' => $vote,
                 'created_at' => date('Y-m-d H:i:s')
             ]);
+            $userVote = $vote;
         }
-
-        return redirect()->back()->with('success', 'Voting berhasil dikirim.');
+    } else {
+        $voteModel->save([
+            'inovasi_id' => $inovasiId,
+            'user_id' => $userId,
+            'vote' => $vote,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+        $userVote = $vote;
     }
+
+    // Hitung jumlah terbaru
+    $jumlah_setuju = $voteModel->where(['inovasi_id' => $inovasiId, 'vote' => 'setuju'])->countAllResults();
+    $jumlah_tidak_setuju = $voteModel->where(['inovasi_id' => $inovasiId, 'vote' => 'tidak_setuju'])->countAllResults();
+
+    return $this->response->setJSON([
+        'success' => true,
+        'user_vote' => $userVote,
+        'jumlah_setuju' => $jumlah_setuju,
+        'jumlah_tidak_setuju' => $jumlah_tidak_setuju
+    ]);
+}
+
+ 
 
     public function kirimkomentar()
     {
@@ -197,9 +243,74 @@ class EInovasi extends BaseController
         $komentarModel->insert($data);
         
         return redirect()->back()->with('success', 'Komentar berhasil dikirim.');
-    }        
+    }   
 
+    public function persetujuan()
+    {
+        $inovasiId = $this->request->getPost('inovasi_id');
+        $aksi = $this->request->getPost('aksi'); // 'setujui' atau 'tolak'
+        $userId = $this->session->user_id;
 
+        $persetujuanModel = new PersetujuanInovasiModel();
+        $inovasiModel = new InovasiModel();
+        $catatan = $this->request->getPost('catatan');
+
+        // Simpan atau update persetujuan
+        $existing = $persetujuanModel
+            ->where(['inovasi_id' => $inovasiId])
+            ->first();
+
+        $status = $aksi === 'setujui' ? 'disetujui' : 'ditolak';
+
+        if ($existing) {
+            $persetujuanModel->update($existing['id'], [
+                'status' => $status,
+                'user_id' => $userId,
+                'catatan' => $catatan,
+            ]);
+        } else {
+            $persetujuanModel->insert([
+                'inovasi_id' => $inovasiId,
+                'user_id' => $userId,
+                'status' => $status,
+                'catatan' => $catatan,
+                'created_at' => date('Y-m-d H:i:s'),
+            ]);
+        }
+
+        // Update status inovasi
+        $inovasiModel->update($inovasiId, ['status' => $status]);
+
+        return redirect()->back()->with('success', 'Persetujuan berhasil disimpan.');
+    }
+
+    public function hapus()
+    {
+        $request = service('request');
+        $id = $request->getPost('inovasi_id');
+
+        if ($id) {
+            // Inisialisasi semua model terkait
+            $voteModel = new \App\Models\VoteModel();
+            $komentarModel = new \App\Models\KomentarModel();
+            $persetujuanModel = new \App\Models\PersetujuanInovasiModel();
+            $inovasiModel = new \App\Models\InovasiModel();
+
+            // Hapus data terkait terlebih dahulu
+            $voteModel->where('inovasi_id', $id)->delete();
+            $komentarModel->where('inovasi_id', $id)->delete();
+            $persetujuanModel->where('inovasi_id', $id)->delete();
+
+            // Hapus data inovasi terakhir
+            $inovasiModel->delete($id);
+
+            return redirect()->to(site_url('EInovasi/index'))->with('success', 'Inovasi dan data terkait berhasil dihapus.');
+        }
+
+        return redirect()->to(site_url('EInovasi/index'))->with('error', 'Gagal menghapus inovasi.');
+    }
+
+    
 
 }
 

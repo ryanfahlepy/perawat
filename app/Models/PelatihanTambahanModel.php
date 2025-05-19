@@ -14,8 +14,10 @@ class PelatihanTambahanModel extends Model
     protected $allowedFields = [
         'user_id',
         'judul',
+        'jenis',
         'lokasi',
         'tanggal',
+        'berlaku',
         'sertifikat',
         'created_at'
     ];
