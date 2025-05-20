@@ -212,7 +212,7 @@ button[type="submit"] {
 </style>
 
 <div class="card-header">
-    <h3 class="card-title">Halo <b><?= esc($session->nama); ?></b>, Selamat datang</h3>
+    <h3 class="card-title">Pelatihan untuk <b><?= esc($user->nama); ?></b></h3>
 </div>
 
 <div class="card-body">

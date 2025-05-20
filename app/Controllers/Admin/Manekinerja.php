@@ -88,38 +88,20 @@ class Manekinerja extends BaseController
         return $this->response->setJSON(['success' => false, 'message' => 'Bukan request AJAX']);
     }
 
-
-    public function ajax_update_field()
+    public function ajax_update_data_kinerja()
     {
         if ($this->request->isAJAX()) {
-            $userId = $this->session->get('user_id');
-            $kinerjaId = $this->request->getPost('id'); // ini sebenarnya ID dari data_kinerja
+            $id = $this->request->getPost('id');
             $field = $this->request->getPost('field');
             $value = $this->request->getPost('value');
 
-            // Validasi field yang diperbolehkan
-            $allowedFields = ['hasil'];
+            $allowedFields = ['indikator', 'kode_kpi', 'formula', 'sumber_data', 'periode_assesment', 'bobot', 'target', 'deskripsi_target'];
+
             if (!in_array($field, $allowedFields)) {
                 return $this->response->setJSON(['success' => false, 'message' => 'Field tidak diperbolehkan']);
             }
 
-            // Cek apakah data hasil_kinerja sudah ada
-            $existing = $this->hasilKinerjaModel
-                ->where('user_id', $userId)
-                ->where('kinerja_id', $kinerjaId)
-                ->first();
-
-            if ($existing) {
-                // Update
-                $this->hasilKinerjaModel->update($existing['id'], ['hasil' => $value]);
-            } else {
-                // Insert baru
-                $this->hasilKinerjaModel->insert([
-                    'user_id' => $userId,
-                    'kinerja_id' => $kinerjaId,
-                    'hasil' => $value
-                ]);
-            }
+            $this->kinerjaModel->update($id, [$field => $value]);
 
             return $this->response->setJSON(['success' => true]);
         }

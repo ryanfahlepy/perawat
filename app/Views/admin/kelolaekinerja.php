@@ -27,7 +27,7 @@ $level = $session->level;
                 <th style="width: 5%;">Bobot</th>
                 <th style="width: 7%;">Target</th>
                 <th style="width: 10%;">Deskripsi Target</th>
-                <th style="width: 7%;">Hasil Aktual</th>
+               
                 <th style="width: 6%;">Aksi</th>
 
             </tr>
@@ -73,7 +73,7 @@ $level = $session->level;
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="deskripsi_target">
                             <?= esc($item['deskripsi_target']) ?>
                         </td>
-                        <td><?= esc($item['hasil_aktual']) ?></td>
+                
                         <td class="text-center">
                             <a href="<?= base_url('admin/manekinerja/lihat_hasil/' . $item['id']) ?>"
                                 class="btn btn-sm btn-info" title="Lihat Hasil">
@@ -107,7 +107,7 @@ $level = $session->level;
             formData.append('field', field);
             formData.append('value', value);
 
-            fetch("<?= base_url('admin/manekinerja/ajax_update_field') ?>", {
+            fetch("<?= base_url('admin/manekinerja/ajax_update_data_kinerja') ?>", {
                 method: 'POST',
                 body: formData,
                 headers: {

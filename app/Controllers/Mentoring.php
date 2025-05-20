@@ -613,17 +613,22 @@ class Mentoring extends BaseController
             'tanggal_berakhir' => $this->request->getPost('tanggal_berakhir') ?: null,
         ]);
 
-        $mentorNama = $mentorData['nama'] ?? 'Mentor';
+        // Ambil nama mentor dari userModel
+        $mentorUser = $this->userModel->find($mentorId);
+        $namaMentor = $mentorUser ? $mentorUser->nama : 'Mentor Tidak Diketahui';
+
         $tanggalBerakhir = $this->request->getPost('tanggal_berakhir');
 
         $tanggalBerakhirFormatted = $tanggalBerakhir
             ? date('d-m-Y H:i', strtotime($tanggalBerakhir))
             : 'Tidak ditentukan';
+        // $url = base_url('mentoring/detail/' . $mentoringId);
 
         $this->notifikasiModel->insert([
             'user_tujuan_id' => $userId,
-            'pesan' => "Assesment <strong>$nama</strong> telah dibuat oleh mentor <strong>$mentorNama</strong>. Tanggal berakhir: <strong>$tanggalBerakhirFormatted</strong>.",
+            'pesan' => "Assesment <strong>$nama</strong> telah dibuat oleh mentor <strong>$namaMentor</strong>. Tanggal berakhir: <strong>$tanggalBerakhirFormatted</strong>.",
             'status' => 'belum_dibaca',
+            // 'url' => '',
         ]);
 
 

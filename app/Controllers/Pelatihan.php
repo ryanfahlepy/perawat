@@ -26,60 +26,135 @@ class Pelatihan extends BaseController
     }
 
     public function index()
-{
-    $session = session();
-    $user_id = $session->get('user_id');
-    $nama = $session->get('nama');
-    $level = $session->get('level'); // tambahkan ini agar tidak perlu panggil lagi
+    {
+        $session = session();
+        $user_id = $session->get('user_id');
+        $nama = $session->get('nama');
+        $level = $session->get('level'); // tambahkan ini agar tidak perlu panggil lagi
 
-    // Ambil level_user dari tabel user
-    $user = $this->userModel->find($user_id);
-    $level_user = $user->level_user ?? null;
 
-    $nama_level = null;
+        // Ambil level_user dari tabel user
+        $user = $this->userModel->find($user_id);
+        $level_user = $user->level_user ?? null;
 
-    // Hanya jika bukan admin (level != 1), ambil nama_level
-    if ($level != 1) {
-        $userLevelModel = new \App\Models\User_levelModel();
-        $user_level_data = $userLevelModel->where('id', $level_user)->first();
-        $nama_level = $user_level_data->nama_level ?? null;
-    }
+        $nama_level = null;
 
-    // Ambil daftar pelatihan wajib
-    if ($level == 1) {
-        // ADMIN: ambil semua pelatihan wajib
-        $pelatihan_wajib = $this->pelatihanWajibModel->findAll();
-    } else {
-        // USER: ambil berdasarkan level user
-        $pelatihan_wajib = $this->pelatihanWajibModel
-            ->where('level', $nama_level)
+        // Hanya jika bukan admin (level != 1), ambil nama_level
+        if ($level != 1) {
+            $userLevelModel = new \App\Models\User_levelModel();
+            $user_level_data = $userLevelModel->where('id', $level_user)->first();
+            $nama_level = $user_level_data->nama_level ?? null;
+        }
+
+        // Ambil daftar pelatihan wajib
+        if ($level == 1) {
+            // ADMIN: ambil semua pelatihan wajib
+            $pelatihan_wajib = $this->pelatihanWajibModel->findAll();
+        } else {
+            // USER: ambil berdasarkan level user
+            $pelatihan_wajib = $this->pelatihanWajibModel
+                ->where('level', $nama_level)
+                ->findAll();
+        }
+
+        // Ambil pelatihan hasil yang sudah diisi user
+        $pelatihan_terisi = $this->pelatihanHasilModel
+            ->where('user_id', $user_id)
             ->findAll();
+
+        $pelatihan_map = [];
+        foreach ($pelatihan_terisi as $item) {
+            $pelatihan_map[$item['pelatihan_id']] = $item;
+        }
+
+        // Ambil pelatihan tambahan yang sudah diisi user
+        $pelatihan_tambahan = $this->pelatihanTambahanModel
+            ->where('user_id', $user_id)
+            ->findAll();
+
+        $users = $this->userModel->getAllUsersWithLevel();
+        if ($level == 2) {
+            return view('/layout/daftar_pelatihan_perawat', [
+                'dtmenu' => $this->tampil_menu($level),
+                'nama_menu' => 'Pelatihan',
+                'user' => $user,
+                'nama' => $nama,
+                'users' => $users,
+                'pelatihan_wajib' => $pelatihan_wajib,
+                'pelatihan_map' => $pelatihan_map,
+                'pelatihan_tambahan' => $pelatihan_tambahan,
+            ]);
+        }
+
+        return view('/layout/pelatihan', [
+
+            'dtmenu' => $this->tampil_menu($level),
+            'nama_menu' => 'Pelatihan',
+            'user' => $user,
+            'nama' => $nama,
+            'pelatihan_wajib' => $pelatihan_wajib,
+            'pelatihan_map' => $pelatihan_map,
+            'pelatihan_tambahan' => $pelatihan_tambahan,
+        ]);
     }
 
-    // Ambil pelatihan hasil yang sudah diisi user
-    $pelatihan_terisi = $this->pelatihanHasilModel
-        ->where('user_id', $user_id)
-        ->findAll();
+    public function lihat_pelatihan($user_id)
+    {
+        $session = session();
+        $nama = $session->get('nama');
+        $level = $session->get('level'); // tambahkan ini agar tidak perlu panggil lagi
 
-    $pelatihan_map = [];
-    foreach ($pelatihan_terisi as $item) {
-        $pelatihan_map[$item['pelatihan_id']] = $item;
+
+        // Ambil level_user dari tabel user
+        $user = $this->userModel->find($user_id);
+        $level_user = $user->level_user ?? null;
+
+        $nama_level = null;
+
+        // Hanya jika bukan admin (level != 1), ambil nama_level
+        if ($level != 1) {
+            $userLevelModel = new \App\Models\User_levelModel();
+            $user_level_data = $userLevelModel->where('id', $level_user)->first();
+            $nama_level = $user_level_data->nama_level ?? null;
+        }
+
+        // Ambil daftar pelatihan wajib
+        if ($level == 1) {
+            // ADMIN: ambil semua pelatihan wajib
+            $pelatihan_wajib = $this->pelatihanWajibModel->findAll();
+        } else {
+            // USER: ambil berdasarkan level user
+            $pelatihan_wajib = $this->pelatihanWajibModel
+                ->where('level', $nama_level)
+                ->findAll();
+        }
+
+        // Ambil pelatihan hasil yang sudah diisi user
+        $pelatihan_terisi = $this->pelatihanHasilModel
+            ->where('user_id', $user_id)
+            ->findAll();
+
+        $pelatihan_map = [];
+        foreach ($pelatihan_terisi as $item) {
+            $pelatihan_map[$item['pelatihan_id']] = $item;
+        }
+
+        // Ambil pelatihan tambahan yang sudah diisi user
+        $pelatihan_tambahan = $this->pelatihanTambahanModel
+            ->where('user_id', $user_id)
+            ->findAll();
+
+        return view('/layout/pelatihan', [
+
+            'dtmenu' => $this->tampil_menu($level),
+            'nama_menu' => 'Pelatihan',
+            'user' => $user,
+            'nama' => $nama,
+            'pelatihan_wajib' => $pelatihan_wajib,
+            'pelatihan_map' => $pelatihan_map,
+            'pelatihan_tambahan' => $pelatihan_tambahan,
+        ]);
     }
-
-    // Ambil pelatihan tambahan yang sudah diisi user
-    $pelatihan_tambahan = $this->pelatihanTambahanModel
-        ->where('user_id', $user_id)
-        ->findAll();
-
-    return view('/layout/pelatihan', [
-        'dtmenu' => $this->tampil_menu($level),
-        'nama_menu' => 'Pelatihan dan Seminar',
-        'nama' => $nama,
-        'pelatihan_wajib' => $pelatihan_wajib,
-        'pelatihan_map' => $pelatihan_map,
-        'pelatihan_tambahan' => $pelatihan_tambahan,
-    ]);
-}
 
     public function detail($pelatihan_id)
     {
@@ -103,7 +178,7 @@ class Pelatihan extends BaseController
 
         return view('/layout/detail_pelatihan', [
             'dtmenu' => $this->tampil_menu($this->session->get('level')),
-            'nama_menu'=> 'Detail',
+            'nama_menu' => 'Detail',
             'pelatihan' => $pelatihan,
             'kategori' => $kategori,
             'pelatihan_list' => $pelatihan_dijalani,
@@ -151,7 +226,7 @@ class Pelatihan extends BaseController
         $this->pelatihanHasilModel->insert($data);
 
         return redirect()->to('/pelatihan/detail/' . $pelatihan_id)
-                 ->with('success', 'Pelatihan berhasil ditambahkan!');
+            ->with('success', 'Pelatihan berhasil ditambahkan!');
     }
     public function simpanPelatihanTambahan()
     {

@@ -19,7 +19,7 @@ $session = \Config\Services::session();
                 <th class="text-center" style="width: 15%">Tanggal Mulai</th>
                 <th class="text-center" style="width: 15%">Tanggal Berakhir</th>
                 <th class="text-center" style="width: 15%">Countdown</th>
-                <th class="text-center" style="width: 15%">Progress</th>
+                <!-- <th class="text-center" style="width: 15%">Progress</th> -->
                 <th class="text-center" style="width: 10%">Aksi</th>
             </tr>
         </thead>
@@ -40,7 +40,7 @@ $session = \Config\Services::session();
                             Loading...
                         </span>
                     </td>
-                    <td class="text-center">
+                    <!-- <td class="text-center">
                         <div class="progress">
                             <div class="progress-bar <?= $form['progress'] == 100 ? 'bg-success' : 'bg-primary' ?>"
                                 role="progressbar" style="width: <?= $form['progress'] ?>%"
@@ -48,7 +48,7 @@ $session = \Config\Services::session();
                                 <?= $form['progress'] ?>%
                             </div>
                         </div>
-                    </td>
+                    </td> -->
                     <td class="text-center">
                         <a href="<?= base_url('/mentoring/form_hasil/' . $userData->id . '/' . $form['id']) ?>"
                             class="btn btn-sm btn-info" title="Lihat Detail">
