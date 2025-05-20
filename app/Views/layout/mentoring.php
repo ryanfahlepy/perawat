@@ -72,13 +72,8 @@ $level = $session->level;
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-
-
                     </div>
                     <div class="card-body">
-
-
-
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -124,7 +119,6 @@ $level = $session->level;
                                                 class="btn btn-sm btn-info" title="Lihat Detail">
                                                 <i class="text-white fas fa-eye"></i>
                                             </a>
-
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

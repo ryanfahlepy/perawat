@@ -8,8 +8,8 @@ class NotifikasiModel extends Model
 {
     protected $table = 'tabel_notifikasi';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['pesan', 'status', 'created_at'];
-    protected $useTimestamps = false; // kalau pakai 'created_at' manual
+    protected $allowedFields = ['user_tujuan_id','pesan', 'status', 'created_at'];
+    protected $useTimestamps = false;
 
     public function tambahNotifikasi($pesan)
     {

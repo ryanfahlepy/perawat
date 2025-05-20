@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\NotifikasiModel;
 use App\Models\PrapkModel;
 use App\Models\Pk1Model;
 use App\Models\Pk2Model;
@@ -33,6 +34,7 @@ class Mentoring extends BaseController
         $this->userModel = new UserModel(); // Inisialisasi model User
         $this->userMentorAksesModel = new UserMentorAksesModel(); // Inisialisasi model User
         $this->daftarFormModel = new DaftarFormModel(); // tambahkan ini
+        $this->notifikasiModel = new NotifikasiModel(); // tambahkan ini
     }
 
     // Fungsi index untuk menampilkan daftar user dan data mentoring
@@ -610,6 +612,20 @@ class Mentoring extends BaseController
             'tanggal_mulai' => $this->request->getPost('tanggal_mulai'),
             'tanggal_berakhir' => $this->request->getPost('tanggal_berakhir') ?: null,
         ]);
+
+        $mentorNama = $mentorData['nama'] ?? 'Mentor';
+        $tanggalBerakhir = $this->request->getPost('tanggal_berakhir');
+
+        $tanggalBerakhirFormatted = $tanggalBerakhir
+            ? date('d-m-Y H:i', strtotime($tanggalBerakhir))
+            : 'Tidak ditentukan';
+
+        $this->notifikasiModel->insert([
+            'user_tujuan_id' => $userId,
+            'pesan' => "Assesment <strong>$nama</strong> telah dibuat oleh mentor <strong>$mentorNama</strong>. Tanggal berakhir: <strong>$tanggalBerakhirFormatted</strong>.",
+            'status' => 'belum_dibaca',
+        ]);
+
 
         return redirect()->to('/mentoring/daftar_form/' . $userId)
             ->with('success', 'Form baru berhasil dibuat');

@@ -40,16 +40,12 @@ $level = $session->level;
             <?php else: ?>
                 <?php foreach ($data_kinerja as $item): ?>
                     <tr>
-
-
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="indikator">
                             <?= esc($item['indikator']) ?>
                         </td>
-
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="kode_kpi">
                             <?= esc($item['kode_kpi']) ?>
                         </td>
-
                         <td>
                             <?php foreach ($user_levels as $lvl): ?>
                                 <div class="form-check">
@@ -59,39 +55,30 @@ $level = $session->level;
                                 </div>
                             <?php endforeach; ?>
                         </td>
-
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="formula">
                             <?= esc($item['formula']) ?>
                         </td>
-
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="sumber_data">
                             <?= esc($item['sumber_data']) ?>
                         </td>
-
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="periode_assesment">
                             <?= esc($item['periode_assesment']) ?>
                         </td>
-
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="bobot">
                             <?= esc($item['bobot']) ?>
                         </td>
-
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="target">
                             <?= esc($item['target']) ?>
                         </td>
-
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="deskripsi_target">
                             <?= esc($item['deskripsi_target']) ?>
                         </td>
-
                         <td><?= esc($item['hasil_aktual']) ?></td>
-
                         <td class="text-center">
                             <a href="<?= base_url('admin/manekinerja/lihat_hasil/' . $item['id']) ?>"
                                 class="btn btn-sm btn-info" title="Lihat Hasil">
                                 <i class="fas fa-eye text-white"></i>
                             </a>
-
                             <?php if ($level_akses == 1): ?>
                                 <!-- <a href="<?= base_url('admin/manekinerja/delete/' . $item['id']) ?>" class="btn btn-sm btn-danger"
                                     onclick="return confirm('Yakin ingin menghapus data ini?')">
@@ -107,14 +94,7 @@ $level = $session->level;
 </div>
 
 <script>
-    // Check all checkboxes
-    document.getElementById('checkAll').addEventListener('change', function () {
-        let checkboxes = document.querySelectorAll('.row-check');
-        for (let checkbox of checkboxes) {
-            checkbox.checked = this.checked;
-        }
-    });
-
+    
     // Inline edit save via blur
     document.querySelectorAll('.editable').forEach(function (cell) {
         cell.addEventListener('blur', function () {

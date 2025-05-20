@@ -48,23 +48,27 @@ class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         $session = session();
+        $userId = $session->get('user_id');
         $level = $session->get('nama_level');
 
-        // Jika level adalah Admin, ambil data notifikasi
-        if ($level === 'Admin') {
-            $notifikasiModel = new NotifikasiModel();
-            $this->data['notifikasi'] = $notifikasiModel->where('status', 'belum_dibaca')->orderBy('created_at', 'DESC')->findAll(5);
-            $this->data['jumlahNotif'] = $notifikasiModel->where('status', 'belum_dibaca')->countAllResults();
-        } else {
-            $this->data['notifikasi'] = [];
-            $this->data['jumlahNotif'] = 0;
-        }
+        // Ambil notifikasi yang ditujukan ke user saat ini (berdasarkan session user_id)
+        $notifikasiModel = new NotifikasiModel();
+        $this->data['notifikasi'] = $notifikasiModel
+            ->where('user_tujuan_id', $userId)
+            ->where('status', 'belum_dibaca')
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
+        $this->data['jumlahNotif'] = $notifikasiModel
+            ->where('user_tujuan_id', $userId)
+            ->where('status', 'belum_dibaca')
+            ->countAllResults();
 
         $this->data['level_akses'] = $level;
         return view('shared_page/right_navbar', $this->data);
     }
 
-    
+
 
 
 

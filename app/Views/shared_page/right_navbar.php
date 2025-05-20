@@ -11,59 +11,58 @@ $session = \Config\Services::session();
 <ul class="navbar-nav ml-auto">
 
     <!-- Messages Dropdown Menu -->
-    <?php if ($level_akses === 'Admin'): ?>
-        <li class="nav-item dropdown">
-            <a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-bell"></i>
-                <span id="jumlahNotif"
-                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    <?php echo $jumlahNotif; ?>
-                </span>
-            </a>
-            <style>
-                .dropdown-item {
-                    word-wrap: break-word;
-                    white-space: normal;
-                }
-            </style>
 
-            <div class="dropdown-menu dropdown-menu-lg" style="right: 0; left: auto; width: 350px;">
-                <!-- Loop untuk menampilkan notifikasi -->
+    <li class="nav-item dropdown">
+        <a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-bell"></i>
+            <span id="jumlahNotif"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <?php echo $jumlahNotif; ?>
+            </span>
+        </a>
+        <style>
+            .dropdown-item {
+                word-wrap: break-word;
+                white-space: normal;
+            }
+        </style>
 
-                <?php if (empty($notifikasi)): ?>
-                    <p class="dropdown-item text-center">Tidak ada notifikasi</p>
-                <?php else: ?>
-                    <?php foreach ($notifikasi as $notif): ?>
-                        <a href="#" class="dropdown-item">
-                            <!-- Notifikasi Start -->
-                            <div class="media">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        <?php echo $notif['pesan']; ?>
-                                    </h3>
-                                    <p class="text-sm">
-                                        <!-- Menampilkan waktu notifikasi atau keterangan lainnya -->
-                                        <?php echo $notif['created_at']; ?>
-                                    </p>
-                                </div>
-                                <!-- Tombol Close untuk menandai notifikasi sebagai dibaca -->
-                                <button class="btn-close float-end" data-id="<?php echo $notif['id']; ?>"
-                                    onclick="tandaiDibaca(this)"></button>
+        <div class="dropdown-menu dropdown-menu-lg" style="right: 0; left: auto; width: 350px;">
+            <!-- Loop untuk menampilkan notifikasi -->
+
+            <?php if (empty($notifikasi)): ?>
+                <p class="dropdown-item text-center">Tidak ada notifikasi</p>
+            <?php else: ?>
+                <?php foreach ($notifikasi as $notif): ?>
+                    <a href="#" class="dropdown-item">
+                        <!-- Notifikasi Start -->
+                        <div class="media">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    <?php echo $notif['pesan']; ?>
+                                </h3>
+                                <p class="text-sm">
+                                    <!-- Menampilkan waktu notifikasi atau keterangan lainnya -->
+                                    <?php echo $notif['created_at']; ?>
+                                </p>
                             </div>
-                            <!-- Notifikasi End -->
-                        </a>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                            <!-- Tombol Close untuk menandai notifikasi sebagai dibaca -->
+                            <button class="btn-close float-end" data-id="<?php echo $notif['id']; ?>"
+                                onclick="tandaiDibaca(this)"></button>
+                        </div>
+                        <!-- Notifikasi End -->
+                    </a>
+                <?php endforeach; ?>
+            <?php endif; ?>
 
 
 
-            </div>
+        </div>
 
-        </li>
+    </li>
 
 
 
-    <?php endif; ?>
 
     <script>
         function tandaiDibaca(button) {

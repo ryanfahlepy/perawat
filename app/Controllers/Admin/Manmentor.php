@@ -55,29 +55,14 @@ class Manmentor extends BaseController
             }
         }
 
-        // Ambil data mentor dan tanggal mulai/berakhir dari tabel akses
+        // Ambil data mentor dari tabel akses saja (tanpa tanggal)
         $aksesData = $this->userMentorAksesModel->findAll();
 
         $userMentorMapping = [];
-        $userTanggalMapping = [];
-
         foreach ($aksesData as $a) {
             $userMentorMapping[$a['user_id']] = $a['mentor_id'];
-            $userTanggalMapping[$a['user_id']] = [
-                'tanggal_mulai' => $a['tanggal_mulai'],
-                'tanggal_berakhir' => $a['tanggal_berakhir'],
-            ];
         }
 
-        // Gabungkan tanggal mulai dan berakhir ke $dataUser agar bisa tampil di view
-        foreach ($dataUser as &$user) {
-            $id = $user['id'];
-            $user['tanggal_mulai'] = $userTanggalMapping[$id]['tanggal_mulai'] ?? null;
-            $user['tanggal_berakhir'] = $userTanggalMapping[$id]['tanggal_berakhir'] ?? null;
-        }
-        unset($user);
-
-        // Kirim data ke view
         $data = [
             'level_akses' => $this->session->get('level'),
             'dtmenu' => $this->tampil_menu($this->session->get('level')),
@@ -90,6 +75,7 @@ class Manmentor extends BaseController
 
         return view('admin/kelolamentor', $data);
     }
+
 
 
     public function setMentor()

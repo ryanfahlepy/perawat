@@ -45,13 +45,10 @@ $level = $session->level;
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th class="text-center">Foto</th>
-                <th class="text-center">Nama</th>
-                <th class="text-center">Tingkat PK</th>
-                <th class="text-center">Mentor</th>
-                <th class="text-center">Tanggal Mulai</th>
-                <th class="text-center">Tanggal Berakhir</th>
-                <th class="text-center">Sisa Waktu</th>
+                <th class="text-center align-middle" style="width: 70px;">Foto</th>
+                <th class="text-center align-middle" style="width: 25%;">Nama</th>
+                <th class="text-center align-middle" style="width: 25%;">Tingkat PK</th>
+                <th class="text-center align-middle" style="width: 30%;">Mentor</th>
             </tr>
         </thead>
         <tbody>
@@ -71,12 +68,14 @@ $level = $session->level;
                         </td>
                         <td><?= esc($user['nama'] ?? '-') ?></td>
                         <td><?= esc($user['nama_level'] ?? '-') ?></td>
-                        <td class="text-center">
-                            <form action="<?= site_url('admin/manmentor/setMentor') ?>" method="post">
+                        <td class="text-center align-middle">
+                            <form action="<?= site_url('admin/manmentor/setMentor') ?>" method="post" class="d-inline">
                                 <input type="hidden" name="user_id" value="<?= $userId ?>">
-                                <div class="custom-select-wrapper">
-                                    <select name="mentor_id" class="form-control form-control-sm" onchange="this.form.submit()">
-                                        <option value="">Pilih Mentor</option>
+                                <div class="position-relative" style="min-width: 220px;">
+                                    <select name="mentor_id" class="form-select form-select-sm border rounded-pill px-3 py-2"
+                                        onchange="this.form.submit()">
+                                        <option value="" disabled <?= !isset($userMentorMapping[$userId]) ? 'selected' : '' ?>>
+                                            Pilih Mentor</option>
                                         <?php foreach ($mentorOptions[$userId] as $mentor): ?>
                                             <option value="<?= esc($mentor['id']) ?>" <?= (isset($userMentorMapping[$userId]) && $userMentorMapping[$userId] == $mentor['id']) ? 'selected' : '' ?>>
                                                 <?= esc($mentor['nama']) ?>
@@ -86,24 +85,7 @@ $level = $session->level;
                                 </div>
                             </form>
                         </td>
-                        <td class="text-center">
-                            <input type="datetime-local" class="form-control form-control-sm tanggal-mulai"
-                                data-userid="<?= $user['id'] ?>"
-                                value="<?= !empty($user['tanggal_mulai']) && $user['tanggal_mulai'] != '0000-00-00 00:00:00' ? esc(date('Y-m-d\TH:i', strtotime($user['tanggal_mulai']))) : '' ?>">
-                        </td>
-                        <td class="text-center">
-                            <input type="datetime-local" class="form-control form-control-sm tanggal-berakhir"
-                                data-userid="<?= $user['id'] ?>"
-                                value="<?= !empty($user['tanggal_berakhir']) && $user['tanggal_berakhir'] != '0000-00-00 00:00:00' ? esc(date('Y-m-d\TH:i', strtotime($user['tanggal_berakhir']))) : '' ?>">
-                        </td>
-                        <td class="text-center">
-                            <?php if (!empty($user['tanggal_berakhir']) && $user['tanggal_berakhir'] != '0000-00-00 00:00:00'): ?>
-                                <?php $deadlineISO = date('c', strtotime($user['tanggal_berakhir'])); ?>
-                                <span id="countdown-<?= $user['id'] ?>" data-deadline="<?= esc($deadlineISO) ?>"></span>
-                            <?php else: ?>
-                                <span id="countdown-<?= $user['id'] ?>" data-deadline="">-</span>
-                            <?php endif; ?>
-                        </td>
+
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -225,27 +207,29 @@ $level = $session->level;
 
 </script>
 <style>
-.custom-select-wrapper {
-    position: relative;
-    width: 200px;
-}
-.custom-select-wrapper::after {
-    content: '▼';
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    font-size: 12px;
-    color: #555;
-}
-.custom-select-wrapper select {
-    width: 100%;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding-right: 25px;
-}
+    .custom-select-wrapper {
+        position: relative;
+        width: 200px;
+    }
+
+    .custom-select-wrapper::after {
+        content: '▼';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        font-size: 12px;
+        color: #555;
+    }
+
+    .custom-select-wrapper select {
+        width: 100%;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        padding-right: 25px;
+    }
 </style>
 
 <?php $this->endSection(); ?>
