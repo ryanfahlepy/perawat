@@ -36,18 +36,51 @@ class Dashboardkaru extends BaseController
     public function index()
     {
         $users = $this->userModel->getAllUsersWithLevel();
-        // Ambil semua user dari DB
 
+        // Hitung jumlah per nama_level secara dinamis
+        $countByLevel = [];
+        $daftarFormModel = new \App\Models\DaftarFormModel();
+
+        // Gunakan query builder dari model
+        // Query aktivitas mentoring per bulan
+        $query = $daftarFormModel->select("DATE_FORMAT(tanggal_mulai, '%Y-%m') as bulan, COUNT(*) as total")
+            ->groupBy("bulan")
+            ->orderBy("bulan", "ASC")
+            ->findAll();
+
+        $mentoringLabels = [];
+        $mentoringCounts = [];
+
+        foreach ($query as $row) {
+            // Format label menjadi Nama Bulan (contoh: '2025-05' => 'Mei 2025')
+            $timestamp = strtotime($row['bulan'] . "-01");
+            $mentoringLabels[] = date('F Y', $timestamp); // atau date('M Y') untuk singkat
+            $mentoringCounts[] = $row['total'];
+        }
+
+
+        foreach ($users as $user) {
+            $nama_level = $user->nama_level;
+            if (!isset($countByLevel[$nama_level])) {
+                $countByLevel[$nama_level] = 0;
+            }
+            $countByLevel[$nama_level]++;
+        }
 
         $data = [
             'level_akses' => $this->session->nama_level,
             'dtmenu' => $this->tampil_menu($this->session->level),
             'nama_menu' => 'Dashboard Karu',
-            'users' => $users, // Kirim ke view
+            'users' => $users,
+            'countByLevel' => $countByLevel,
+            'mentoringLabels' => $mentoringLabels,
+            'mentoringCounts' => $mentoringCounts
+            // Kirim ke view
         ];
 
         return view('layout/dashboardkaru', $data);
     }
+
 
     public function resume_mentoring($userId = null)
     {
