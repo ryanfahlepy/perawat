@@ -25,7 +25,7 @@
 
 
 <div class="card-header">
-    <h3 class="card-title">Hallo <b><?= esc($session->nama); ?></b>, Selamat datang</h3>
+    <h3 class="card-title">Hasil Kinerja untuk <b><?= esc($user->nama); ?></b></h3>
 </div>
 
 <div class="card-body">

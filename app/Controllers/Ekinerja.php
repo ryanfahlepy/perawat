@@ -130,6 +130,7 @@ class Ekinerja extends BaseController
     public function lihat_kinerja($user_id)
     {
 
+
         $level = $this->session->get('level');
 
         $tahun = $this->request->getGet('tahun');
@@ -202,13 +203,13 @@ class Ekinerja extends BaseController
             }
         }
 
-
-
+        $user = $this->userModel->find($user_id);
 
         $data = [
             'level_akses' => $level,
             'dtmenu' => $this->tampil_menu($level),
             'nama_menu' => 'Kinerja',
+            'user' => $user,
             'data_kinerja' => $dataKinerja,
             'user_levels' => $this->user_levelModel->findAll(),
             'daftar_tahun' => [],
