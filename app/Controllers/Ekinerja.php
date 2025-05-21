@@ -6,6 +6,7 @@ use App\Models\KinerjaModel;
 use App\Models\HasilKinerjaModel;
 use App\Models\User_levelModel;
 use App\Models\PicaKinerjaModel;
+use App\Models\UserModel;
 
 class Ekinerja extends BaseController
 {
@@ -22,10 +23,113 @@ class Ekinerja extends BaseController
         $this->user_levelModel = new User_levelModel();
         $this->hasilKinerjaModel = new HasilKinerjaModel();
         $this->picaModel = new PicaKinerjaModel();
+        $this->userModel = new UserModel();
     }
     public function index()
     {
         $user_id = $this->session->get('user_id');
+        $level = $this->session->get('level');
+
+        $tahun = $this->request->getGet('tahun');
+        if (!$tahun) {
+            $tahun = date('Y');
+        }
+
+        // Ambil data kinerja yang join ke hasil_kinerja berdasarkan user dan tahun
+        $builder = $this->kinerjaModel
+            ->select('tabel_kinerja.*, tabel_user_level.nama_level')
+            ->join('tabel_user_level', 'tabel_user_level.id = tabel_kinerja.level_user', 'left');
+
+        $dataKinerja = $builder->asArray()->findAll();
+
+
+        $dataKinerja = $builder->asArray()->findAll();
+
+        // Ambil semua hasil kinerja user ini untuk tahun terpilih
+        $hasilKinerjaSemua = $this->hasilKinerjaModel
+            ->where('user_id', $user_id)
+            ->where('tahun', $tahun)
+            ->findAll();
+
+        // Buat map hasil per kinerja_id dan bulan
+        $mapHasil = [];
+        foreach ($hasilKinerjaSemua as $row) {
+            $bulan = $row['bulan'] ?? null;
+            if ($bulan) {
+                $mapHasil[$row['kinerja_id']][$bulan] = [
+                    'hasil' => $row['hasil'],
+                    'status' => $row['status'] ?? '',
+                ];
+            } else {
+                $mapHasil[$row['kinerja_id']]['tahunan'] = [
+                    'hasil' => $row['hasil'],
+                    'status' => $row['status'] ?? '',
+                ];
+            }
+        }
+
+        // ⬇️ TARUH DI SINI
+        foreach ($dataKinerja as &$item) {
+            $id = $item['id'];
+            $periode = strtolower($item['periode_assesment']);
+
+            if ($periode == 'bulanan') {
+                $item['hasil_bulanan'] = [];
+                $item['status_bulanan'] = [];
+                for ($b = 1; $b <= 12; $b++) {
+                    if (isset($mapHasil[$id][$b])) {
+                        $hasil = $mapHasil[$id][$b]['hasil'];
+                        $status = $mapHasil[$id][$b]['status'] ?? null;
+                        $item['hasil_bulanan'][$b] = ($status === 'disetujui') ? $hasil : ucfirst($status ?? '-');
+                        $item['status_bulanan'][$b] = $status ?? 'Tidak Ada Data';
+                    } else {
+                        $item['hasil_bulanan'][$b] = '-';
+                        $item['status_bulanan'][$b] = 'Tidak Ada Data';
+                    }
+                }
+            } else {
+                if (isset($mapHasil[$id]['tahunan'])) {
+                    $hasil = $mapHasil[$id]['tahunan']['hasil'];
+                    $status = $mapHasil[$id]['tahunan']['status'] ?? null;
+                    $item['hasil_aktual'] = ($status === 'disetujui') ? $hasil : ucfirst($status ?? '-');
+                    $item['status_tahunan'] = $status ?? 'Tidak Ada Data';
+                } else {
+                    $item['hasil_aktual'] = '-';
+                    $item['status_tahunan'] = 'Tidak Ada Data';
+                }
+            }
+        }
+        $user = $this->userModel->find($user_id);
+        $users = $this->userModel->getAllUsersWithLevel();
+        if ($level == 2) {
+            return view('/layout/daftar_kinerja_perawat', [
+                'dtmenu' => $this->tampil_menu($level),
+                'nama_menu' => 'Kinerja',
+                'user' => $user,
+
+                'users' => $users,
+
+            ]);
+        }
+
+
+
+        $data = [
+            'level_akses' => $level,
+            'dtmenu' => $this->tampil_menu($level),
+            'nama_menu' => 'Kinerja',
+            'data_kinerja' => $dataKinerja,
+            'user_levels' => $this->user_levelModel->findAll(),
+            'daftar_tahun' => [],
+            'tahun_terpilih' => $tahun,
+        ];
+
+        return view('layout/ekinerja', $data);
+    }
+
+    public function lihat_kinerja($user_id)
+    {
+
         $level = $this->session->get('level');
 
         $tahun = $this->request->getGet('tahun');
