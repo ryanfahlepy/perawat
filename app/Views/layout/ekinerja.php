@@ -461,18 +461,18 @@
                                         Swal.fire({
                                             icon: 'error',
                                             title: 'Gagal',
-                                            text: data.message || 'Terjadi kesalahan saat menyimpan data.',
+                                            text: data.message || 'Terjadi kesalahan saat menyimpan data',
                                         });
                                     }
 
                                 } catch (e) {
                                     console.error('Respon bukan JSON:\n', text);
-                                    alert('Terjadi kesalahan: Respon server tidak valid.');
+                                    alert('Terjadi kesalahan: Respon server tidak valid');
                                 }
                             })
                             .catch(err => {
                                 console.error('Fetch gagal:', err);
-                                alert('Terjadi kesalahan saat mengirim data.');
+                                alert('Terjadi kesalahan saat mengirim data');
                             });
 
                     } else {

@@ -260,7 +260,7 @@ class Ekinerja extends BaseController
         if ($this->request->isAJAX()) {
             return $this->response->setJSON([
                 'status' => 'ok',
-                'message' => 'Data berhasil disimpan.'
+                'message' => 'Data berhasil disimpan'
             ]);
         } else {
             // Untuk akses biasa dari form non-AJAX (jaga-jaga)
