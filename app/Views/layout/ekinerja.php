@@ -317,10 +317,8 @@
 
                     const tahun = document.getElementById('inputTahun').value;
 
-                    // Set status badge
                     document.getElementById('statusBadge').textContent = status || 'Belum Dinilai';
 
-                    // Set ID dan default kosongkan semua field
                     document.getElementById('inputKinerjaId').value = kinerjaId;
                     document.getElementById('inputBulan').value = bulan;
                     document.getElementById('inputHasil').value = '';
@@ -333,13 +331,12 @@
                     const inputTarget = document.getElementById('inputTarget');
                     const inputNilai = document.getElementById('inputNilai');
                     const inputPoint = document.getElementById('inputPoint');
+                    const hasilIdField = document.getElementById('hasil_id');
+                    const userId = document.getElementById('user_id').value;
 
-                    // Ambil data KPI dari server
+                    // Ambil data KPI terlebih dahulu
                     fetch(`<?= base_url('ekinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`)
-                        .then(res => {
-                            if (!res.ok) throw new Error('Gagal memuat data hasil KPI');
-                            return res.json();
-                        })
+                        .then(res => res.json())
                         .then(data => {
                             const targetValue = parseFloat(data.target) || 0;
                             inputTarget.value = targetValue;
@@ -347,17 +344,19 @@
                             if (data.hasil !== null) inputHasil.value = data.hasil;
                             if (data.catatan !== null) document.getElementById('inputCatatan').value = data.catatan;
 
-                            // Event handler untuk menghitung nilai dan point
+                            // Simpan hasil_id dari server
+                            const hasilId = data.id || '';
+                            hasilIdField.value = hasilId;
+
+                            // Perhitungan otomatis
                             inputHasil.addEventListener('input', () => {
                                 const hasil = parseFloat(inputHasil.value);
                                 let nilai = 0, point = 0;
 
                                 if (!isNaN(hasil) && !isNaN(targetValue)) {
-                                    if (targetValue === 0) {
-                                        nilai = (hasil === 0) ? 100 : 0;
-                                    } else {
-                                        nilai = (hasil / targetValue) * 100;
-                                    }
+                                    nilai = (targetValue === 0)
+                                        ? (hasil === 0 ? 100 : 0)
+                                        : (hasil / targetValue) * 100;
                                     point = nilai * 0.1;
 
                                     inputNilai.value = nilai.toFixed(2);
@@ -370,33 +369,31 @@
                                 }
                             });
 
-                            // Trigger perhitungan jika data sudah ada
                             inputHasil.dispatchEvent(new Event('input'));
-                        })
-                        .catch(err => {
-                            console.error('Error:', err);
-                            alert('Gagal mengambil data KPI.');
-                        });
 
-                    // Ambil user_id dan hasil_id
-                    const userId = document.getElementById('user_id').value;
-                    const hasilId = document.getElementById('hasil_id').value;
+                            // Hanya fetch PICA jika hasil_id tersedia
+                            if (hasilId) {
+                                console.log('DEBUG get_pica_by_kinerja =>', {
+                                    kinerja_id: kinerjaId,
+                                    user_id: userId,
+                                    hasil_id: hasilId
+                                });
 
-                    // Ambil data PICA jika ada
-                    fetch(`<?= base_url('ekinerja/get_pica_by_kinerja') ?>?kinerja_id=${kinerjaId}&user_id=${userId}&hasil_id=${hasilId}`)
-                        .then(res => {
-                            if (!res.ok) throw new Error('Gagal mengambil data PICA');
-                            return res.json();
-                        })
-                        .then(pica => {
-                            if (pica) {
-                                document.getElementById('problem_identification').value = pica.problem_identification || '';
-                                document.getElementById('corrective_action').value = pica.corrective_action || '';
-                                document.getElementById('due_date').value = pica.due_date || '';
+                                fetch(`<?= base_url('ekinerja/get_pica_by_kinerja') ?>?kinerja_id=${kinerjaId}&user_id=${userId}&hasil_id=${hasilId}`)
+                                    .then(res => res.json())
+                                    .then(pica => {
+                                        document.getElementById('problem_identification').value = pica.problem_identification || '';
+                                        document.getElementById('corrective_action').value = pica.corrective_action || '';
+                                        document.getElementById('due_date').value = pica.due_date || '';
+                                    })
+                                    .catch(err => console.error('Gagal mengambil data PICA:', err));
+                            } else {
+                                console.warn('hasil_id tidak ditemukan, data PICA tidak diambil.');
                             }
                         })
                         .catch(err => {
-                            console.error('Gagal memuat PICA:', err);
+                            console.error('Gagal mengambil data KPI:', err);
+                            alert('Gagal mengambil data KPI.');
                         });
                 }
 

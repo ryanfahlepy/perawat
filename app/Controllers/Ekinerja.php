@@ -40,12 +40,6 @@ class Ekinerja extends BaseController
 
         $dataKinerja = $builder->asArray()->findAll();
 
-        // // Ambil daftar tahun unik dari tabel hasil_kinerja
-        // $daftarTahun = $this->hasilKinerjaModel
-        //     ->select('tahun')
-        //     ->distinct()
-        //     ->orderBy('tahun', 'DESC')
-        //     ->findAll();
 
         $dataKinerja = $builder->asArray()->findAll();
 
@@ -139,11 +133,13 @@ class Ekinerja extends BaseController
             ->first();
 
         $response = [
+            'id' => $hasilData['id'] ?? '',
             'target' => $target,
             'hasil' => $hasilData['hasil'] ?? '',
             'catatan' => $hasilData['catatan'] ?? '',
             'berkas' => $hasilData['berkas'] ?? '',
         ];
+
 
         return $this->response->setJSON($response);
     }
