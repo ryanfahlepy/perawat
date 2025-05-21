@@ -175,6 +175,10 @@
                     <div class="row">
                         <!-- Left -->
                         <div class="col-md-8">
+                        <input type="hidden" id="user_id" value="<?= esc($session->user_id) ?>">
+                        <input type="hidden" id="hasil_id" value="">
+                        <input type="hidden" name="kinerja_id" id="inputKinerjaId">
+
                             <div class="mb-3">
                                 <label for="problem_identification" class="form-label">Problem Identification</label>
                                 <textarea name="problem_identification" id="problem_identification" class="form-control" required></textarea>
@@ -204,7 +208,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+            </div>
     </div>
 
     <div class="modal-footer bg-light border-top">
@@ -259,7 +263,6 @@
         font-size: 14px;
     }
 </style>
-
 <!-- JavaScript -->
 <script>
 function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = '', point = '', catatan = '', status = '') {
@@ -268,7 +271,10 @@ function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = ''
 
     const tahun = document.getElementById('inputTahun').value;
 
-    // Kosongkan input terlebih dahulu
+    // Set status badge
+    document.getElementById('statusBadge').textContent = status || 'Belum Dinilai';
+
+    // Set ID dan default kosongkan semua field
     document.getElementById('inputKinerjaId').value = kinerjaId;
     document.getElementById('inputBulan').value = bulan;
     document.getElementById('inputHasil').value = '';
@@ -276,110 +282,94 @@ function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = ''
     document.getElementById('inputNilai').value = '';
     document.getElementById('inputPoint').value = '';
     document.getElementById('inputCatatan').value = '';
-    document.getElementById('statusBadge').textContent = status || 'Belum Dinilai';
 
     const inputHasil = document.getElementById('inputHasil');
     const inputTarget = document.getElementById('inputTarget');
     const inputNilai = document.getElementById('inputNilai');
     const inputPoint = document.getElementById('inputPoint');
 
-    // Ambil data dari server
-    const url = `<?= base_url('ekinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`;
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Gagal memuat data hasil');
-            }
-            return response.json();
+    // Ambil data KPI dari server
+    fetch(`<?= base_url('ekinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`)
+        .then(res => {
+            if (!res.ok) throw new Error('Gagal memuat data hasil KPI');
+            return res.json();
         })
         .then(data => {
-            const targetValue = parseFloat(data.target);
+            const targetValue = parseFloat(data.target) || 0;
             inputTarget.value = targetValue;
 
-            // Isi nilai dan catatan jika ada
             if (data.hasil !== null) inputHasil.value = data.hasil;
             if (data.catatan !== null) document.getElementById('inputCatatan').value = data.catatan;
 
+            // Event handler untuk menghitung nilai dan point
             inputHasil.addEventListener('input', () => {
-            const hasil = parseFloat(inputHasil.value);
+                const hasil = parseFloat(inputHasil.value);
+                let nilai = 0, point = 0;
 
-            if (!isNaN(hasil) && !isNaN(targetValue)) {
-                let nilai, point;
-
-                if (targetValue === 0) {
-                    if (hasil === 0) {
-                        nilai = 100;
-                        point = 10;
+                if (!isNaN(hasil) && !isNaN(targetValue)) {
+                    if (targetValue === 0) {
+                        nilai = (hasil === 0) ? 100 : 0;
                     } else {
-                        nilai = 0;
-                        point = 0;
+                        nilai = (hasil / targetValue) * 100;
                     }
-                } else {
-                    nilai = (hasil / targetValue) * 100;
                     point = nilai * 0.1;
+
+                    inputNilai.value = nilai.toFixed(2);
+                    inputPoint.value = point.toFixed(2);
+                    handlePicaActivation(nilai);
+                } else {
+                    inputNilai.value = '';
+                    inputPoint.value = '';
+                    handlePicaActivation(null);
                 }
+            });
 
-                inputNilai.value = nilai.toFixed(2);
-                inputPoint.value = point.toFixed(2);
-
-                // === PERIKSA NILAI UNTUK AKTIFKAN / NONAKTIFKAN PICA ===
-                handlePicaActivation(nilai);
-            } else {
-                inputNilai.value = '';
-                inputPoint.value = '';
-
-                // Jika nilai kosong atau tidak valid, nonaktifkan PICA
-                handlePicaActivation(null);
-            }
-        });
-
-        function handlePicaActivation(nilai) {
-            const picaTab = document.getElementById('pica-tab');
-            const picaForm = document.getElementById('formPica');
-
-            const disablePica = (nilai === null || nilai >= 100);
-
-            if (disablePica) {
-                picaTab.classList.add('disabled');
-                picaTab.disabled = true;
-
-                // Nonaktifkan input di form PICA
-                picaForm.querySelectorAll('input, textarea, button').forEach(el => {
-                    el.disabled = true;
-                });
-            } else {
-                picaTab.classList.remove('disabled');
-                picaTab.disabled = false;
-
-                picaForm.querySelectorAll('input, textarea, button').forEach(el => {
-                    el.disabled = false;
-                });
-            }
-        }
-
-
-
-            // Trigger perhitungan awal jika hasil sudah terisi
+            // Trigger perhitungan jika data sudah ada
             inputHasil.dispatchEvent(new Event('input'));
         })
-        .catch(error => {
-            console.error('Error:', error);
+        .catch(err => {
+            console.error('Error:', err);
             alert('Gagal mengambil data KPI.');
         });
-    
-    // Ambil data PICA dari endpoint
-fetch(`<?= base_url('ekinerja/get_pica_by_kinerja/') ?>${kinerjaId}`)
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('problem_identification').value = data.problem || '';
-        document.getElementById('corrective_action').value = data.action || '';
-        document.getElementById('due_date').value = data.due_date || '';
-        document.getElementById('catatanKaruPica').value = data.catatan_karu || '';
-    });
 
+    // Ambil user_id dan hasil_id
+    const userId = document.getElementById('user_id').value;
+    const hasilId = document.getElementById('hasil_id').value;
 
+    // Ambil data PICA jika ada
+    fetch(`<?= base_url('ekinerja/get_pica_by_kinerja') ?>?kinerja_id=${kinerjaId}&user_id=${userId}&hasil_id=${hasilId}`)
+        .then(res => {
+            if (!res.ok) throw new Error('Gagal mengambil data PICA');
+            return res.json();
+        })
+        .then(pica => {
+            if (pica) {
+                document.getElementById('problem_identification').value = pica.problem_identification || '';
+                document.getElementById('corrective_action').value = pica.corrective_action || '';
+                document.getElementById('due_date').value = pica.due_date || '';
+            }
+        })
+        .catch(err => {
+            console.error('Gagal memuat PICA:', err);
+        });
 }
 
+// Fungsi untuk aktif/nonaktifkan form PICA berdasarkan nilai
+function handlePicaActivation(nilai) {
+    const picaTab = document.getElementById('pica-tab');
+    const picaForm = document.getElementById('formPica');
+
+    const disable = nilai === null || nilai >= 100;
+
+    picaTab.classList.toggle('disabled', disable);
+    picaTab.disabled = disable;
+
+    picaForm.querySelectorAll('input, textarea, button').forEach(el => {
+        el.disabled = disable;
+    });
+}
+
+// Fungsi submit form gabungan KPI + PICA
 function submitCombinedForm() {
     const hasil = parseFloat(document.getElementById('inputHasil').value);
     const kpiForm = document.getElementById('formAktual');
@@ -391,21 +381,25 @@ function submitCombinedForm() {
     }
 
     if (hasil < 100) {
-        // Gabungkan form KPI dan PICA dalam satu FormData
         const formData = new FormData(kpiForm);
 
-        // Ambil data dari form PICA dan tambahkan ke FormData
+        // Tambahkan data PICA
         formData.append('problem_identification', document.getElementById('problem_identification').value);
         formData.append('corrective_action', document.getElementById('corrective_action').value);
         formData.append('due_date', document.getElementById('due_date').value);
         formData.append('pic', document.getElementById('pic').value);
 
-        // Kirim ke endpoint gabungan (buat endpoint baru untuk handle ini)
+        // Submit ke endpoint gabungan
         fetch("<?= base_url('ekinerja/update_hasil') ?>", {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok || res.headers.get("content-type")?.includes("html")) {
+                throw new Error("Respon bukan JSON");
+            }
+            return res.json();
+        })
         .then(data => {
             if (data.status === 'ok') {
                 alert('Data KPI dan PICA berhasil disimpan');
@@ -418,9 +412,8 @@ function submitCombinedForm() {
             console.error(err);
             alert('Terjadi kesalahan saat mengirim data.');
         });
-
     } else {
-        // Jika hasil >= 100, hanya kirim form KPI saja
+        // Jika hasil >= 100 hanya kirim KPI
         kpiForm.submit();
     }
 }

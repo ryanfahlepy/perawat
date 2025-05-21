@@ -148,11 +148,27 @@ class Ekinerja extends BaseController
     return $this->response->setJSON($response);
 }
 
-public function get_pica_by_kinerja($id)
+public function get_pica_by_kinerja()
 {
-    $data = $this->picaModel->where('kinerja_id', $id)->first();
-    return $this->response->setJSON($data ?? []);
+    $kinerja_id = $this->request->getGet('kinerja_id');
+    $user_id = $this->request->getGet('user_id');
+    $hasil_id = $this->request->getGet('hasil_id');
+
+    $picaData = $this->picaModel
+        ->where('kinerja_id', $kinerja_id)
+        ->where('user_id', $user_id)
+        ->where('hasil_id', $hasil_id)
+        ->first();
+
+    $response = [
+        'problem_identification' => $picaData['problem_identification'] ?? '',
+        'corrective_action' => $picaData['corrective_action'] ?? '',
+        'due_date' => $picaData['due_date'] ?? '',
+    ];
+
+    return $this->response->setJSON($response);
 }
+
 
 
 public function update_hasil()
