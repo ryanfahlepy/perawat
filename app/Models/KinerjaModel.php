@@ -19,7 +19,6 @@ class KinerjaModel extends Model
         'bobot',
         'target',
         'deskripsi_target',
-        'hasil_aktual',
         'level_user'
     ];
 

@@ -12,8 +12,13 @@ $level = $session->level;
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <div class="card-body">
+    <div class="mb-3">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambahKinerja">+ Tambah Kinerja</button>
+    </div>
     <table border="1" cellpadding="8" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -27,7 +32,6 @@ $level = $session->level;
                 <th style="width: 5%;">Bobot</th>
                 <th style="width: 7%;">Target</th>
                 <th style="width: 10%;">Deskripsi Target</th>
-                <th style="width: 7%;">Hasil Aktual</th>
                 <th style="width: 6%;">Aksi</th>
 
             </tr>
@@ -65,7 +69,7 @@ $level = $session->level;
                             <?= esc($item['periode_assesment']) ?>
                         </td>
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="bobot">
-                            <?= esc($item['bobot']) ?>
+                            <?= esc($item['bobot']) ?>%
                         </td>
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="target">
                             <?= esc($item['target']) ?>
@@ -73,17 +77,16 @@ $level = $session->level;
                         <td contenteditable="true" class="editable" data-id="<?= $item['id'] ?>" data-field="deskripsi_target">
                             <?= esc($item['deskripsi_target']) ?>
                         </td>
-                        <td><?= esc($item['hasil_aktual']) ?></td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/manekinerja/lihat_hasil/' . $item['id']) ?>"
                                 class="btn btn-sm btn-info" title="Lihat Hasil">
                                 <i class="fas fa-eye text-white"></i>
                             </a>
                             <?php if ($level_akses == 1): ?>
-                                <!-- <a href="<?= base_url('admin/manekinerja/delete/' . $item['id']) ?>" class="btn btn-sm btn-danger"
-                                    onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                <button type="button" class="btn btn-sm btn-danger btn-hapus" data-id="<?= $item['id'] ?>" title="Hapus Data">
                                     <i class="fas fa-trash-alt"></i>
-                                </a> -->
+                                </button>
+
                             <?php endif; ?>
                         </td>
                     </tr>
@@ -92,6 +95,78 @@ $level = $session->level;
         </tbody>
     </table>
 </div>
+
+
+<!-- Modal Tambah Kinerja -->
+<div class="modal fade" id="modalTambahKinerja" tabindex="-1" aria-labelledby="modalTambahKinerjaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form id="formTambahKinerja" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTambahKinerjaLabel">Tambah Kinerja</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Indikator</label>
+            <input type="text" name="indikator" class="form-control" placeholder="Indikator" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Kode KPI</label>
+            <input type="text" name="kode_kpi" class="form-control" placeholder="Kode KPI" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Formula</label>
+            <input type="text" name="formula" class="form-control" placeholder="Formula" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Sumber Data</label>
+            <input type="text" name="sumber_data" class="form-control" placeholder="Sumber Data" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Periode Assessment</label>
+            <select name="periode_assesment" class="form-select" required>
+                <option value="">-- Pilih Periode --</option>
+                <option value="Bulanan">Bulanan</option>
+                <option value="Tahunan">Tahunan</option>
+            </select>
+            </div>
+
+
+            <div class="mb-3">
+            <label class="form-label">Bobot (%)</label>
+            <div class="input-group">
+                <input type="number" step="0.01" min="0" max="100" name="bobot" class="form-control" placeholder="Contoh: 25" required>
+                <span class="input-group-text">%</span>
+            </div>
+            </div>
+
+
+            <div class="mb-3">
+            <label class="form-label">Target (Desimal)</label>
+            <input type="number" step="0.01" name="target" class="form-control" placeholder="Contoh: 0.75" required>
+            </div>
+
+
+          <div class="mb-3">
+            <label class="form-label">Deskripsi Target</label>
+            <input type="text" name="deskripsi_target" class="form-control" placeholder="Deskripsi Target" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 <script>
     
@@ -107,7 +182,7 @@ $level = $session->level;
             formData.append('field', field);
             formData.append('value', value);
 
-            fetch("<?= base_url('admin/manekinerja/ajax_update_field') ?>", {
+            fetch("<?= base_url('admin/manekinerja/ajax_update_data_kinerja') ?>", {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -158,6 +233,96 @@ $level = $session->level;
                 });
         });
     });
+</script>
+<script>
+document.querySelectorAll('.btn-hapus').forEach(function(button) {
+    button.addEventListener('click', function () {
+        const id = this.getAttribute('data-id');
+
+        Swal.fire({
+            title: 'Yakin ingin menghapus?',
+            text: 'Data yang dihapus tidak dapat dikembalikan.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`<?= base_url('admin/manekinerja/delete/') ?>${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: '_method=DELETE'
+                })
+
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire('Terhapus!', 'Data berhasil dihapus.', 'success').then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire('Gagal', data.message || 'Gagal menghapus data.', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Fetch Error:', error);
+                    Swal.fire('Error', 'Terjadi kesalahan saat menghapus data.', 'error');
+                });
+            }
+        });
+    });
+});
+</script>
+
+
+
+<script>
+    function showCreateForm() {
+        document.getElementById('createForm').style.display = 'block';
+    }
+
+    document.getElementById('formTambahKinerja').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    // Jika bobot masih dalam format string "%", hilangkan %
+    let bobot = formData.get('bobot');
+    if (typeof bobot === 'string' && bobot.includes('%')) {
+        formData.set('bobot', bobot.replace('%', '').trim());
+    }
+
+    fetch("<?= base_url('admin/manekinerja/create') ?>", {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire('Sukses', 'Data berhasil ditambahkan', 'success').then(() => {
+                location.reload();
+            });
+        } else {
+            Swal.fire('Gagal', data.message || 'Gagal menambahkan data', 'error');
+        }
+    })
+    .catch(err => {
+        console.error('AJAX Error:', err);
+        Swal.fire('Error', 'Terjadi kesalahan jaringan', 'error');
+    });
+});
+
 </script>
 
 <style>

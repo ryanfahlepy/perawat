@@ -1,14 +1,18 @@
 <?php
 
-
 namespace App\Controllers;
+
 use App\Models\KinerjaModel;
 use App\Models\HasilKinerjaModel;
 use App\Models\User_levelModel;
 
-
 class Ekinerja extends BaseController
 {
+    protected $session;
+    protected $kinerjaModel;
+    protected $hasilKinerjaModel;
+    protected $user_levelModel;
+
     public function __construct()
     {
         $this->session = \Config\Services::session();
@@ -19,65 +23,165 @@ class Ekinerja extends BaseController
 
     public function index()
     {
-        $dataKinerja = $this->kinerjaModel
-            ->select('tabel_kinerja.*, tabel_user_level.nama_level, tabel_hasil_kinerja.hasil AS hasil_aktual')
-            ->join('tabel_user_level', 'tabel_user_level.id = tabel_kinerja.level_user', 'left')
-            ->join('tabel_hasil_kinerja', 'tabel_hasil_kinerja.kinerja_id = tabel_kinerja.id AND tabel_hasil_kinerja.user_id = ' . $this->session->get('user_id'), 'left')
-            ->asArray()
+        $user_id = $this->session->get('user_id');
+        $level = $this->session->get('level');
+
+        $tahun = $this->request->getGet('tahun');
+        if (!$tahun) {
+            $tahun = date('Y');
+        }
+
+        // Ambil data kinerja yang join ke hasil_kinerja berdasarkan user dan tahun
+        $builder = $this->kinerjaModel
+            ->select('tabel_kinerja.*, tabel_user_level.nama_level')
+            ->join('tabel_user_level', 'tabel_user_level.id = tabel_kinerja.level_user', 'left');
+            
+        $dataKinerja = $builder->asArray()->findAll();
+
+        // // Ambil daftar tahun unik dari tabel hasil_kinerja
+        // $daftarTahun = $this->hasilKinerjaModel
+        //     ->select('tahun')
+        //     ->distinct()
+        //     ->orderBy('tahun', 'DESC')
+        //     ->findAll();
+
+        $dataKinerja = $builder->asArray()->findAll();
+
+        // Ambil semua hasil kinerja user ini untuk tahun terpilih
+        $hasilKinerjaSemua = $this->hasilKinerjaModel
+            ->where('user_id', $user_id)
+            ->where('tahun', $tahun)
             ->findAll();
 
+        // Buat map hasil per kinerja_id dan bulan
+        $mapHasil = [];
+        foreach ($hasilKinerjaSemua as $row) {
+            $bulan = $row['bulan'] ?? null;
+            if ($bulan) {
+                $mapHasil[$row['kinerja_id']][$bulan] = [
+                    'hasil' => $row['hasil'],
+                    'status' => $row['status'] ?? '',
+                ];
+            } else {
+                $mapHasil[$row['kinerja_id']]['tahunan'] = [
+                    'hasil' => $row['hasil'],
+                    'status' => $row['status'] ?? '',
+                ];
+            }
+        }
 
+        // ⬇️ TARUH DI SINI
+        foreach ($dataKinerja as &$item) {
+            $id = $item['id'];
+            $periode = strtolower($item['periode_assesment']);
+        
+            if ($periode == 'bulanan') {
+                $item['hasil_bulanan'] = [];
+                $item['status_bulanan'] = [];
+                for ($b = 1; $b <= 12; $b++) {
+                    if (isset($mapHasil[$id][$b])) {
+                        $hasil = $mapHasil[$id][$b]['hasil'];
+                        $status = $mapHasil[$id][$b]['status'] ?? null;
+                        $item['hasil_bulanan'][$b] = ($status === 'disetujui') ? $hasil : ucfirst($status ?? '-');
+                        $item['status_bulanan'][$b] = $status ?? 'Tidak Ada Data';
+                    } else {
+                        $item['hasil_bulanan'][$b] = '-';
+                        $item['status_bulanan'][$b] = 'Tidak Ada Data';
+                    }
+                }
+            } else {
+                if (isset($mapHasil[$id]['tahunan'])) {
+                    $hasil = $mapHasil[$id]['tahunan']['hasil'];
+                    $status = $mapHasil[$id]['tahunan']['status'] ?? null;
+                    $item['hasil_aktual'] = ($status === 'disetujui') ? $hasil : ucfirst($status ?? '-');
+                    $item['status_tahunan'] = $status ?? 'Tidak Ada Data';
+                } else {
+                    $item['hasil_aktual'] = '-';
+                    $item['status_tahunan'] = 'Tidak Ada Data';
+                }
+            }
+        }
+        
+        
+    
 
         $data = [
-            'level_akses' => $this->session->get('level'),
-            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-            'nama_menu' => 'E-Kinerja',
+            'level_akses' => $level,
+            'dtmenu' => $this->tampil_menu($level),
+            'nama_menu' => 'Kinerja',
             'data_kinerja' => $dataKinerja,
             'user_levels' => $this->user_levelModel->findAll(),
+            'daftar_tahun' => [],
+            'tahun_terpilih' => $tahun,
         ];
-
-
 
         return view('layout/ekinerja', $data);
     }
-    public function ajax_update_field()
+
+    public function update_hasil()
     {
-        if ($this->request->isAJAX()) {
-            $kinerja_id = $this->request->getPost('id'); // ini adalah ID dari tabel_kinerja
-            $field = $this->request->getPost('field');
-            $value = $this->request->getPost('value');
-            $user_id = $this->session->get('user_id');
+        $user_id = $this->session->get('user_id');
+        $kinerja_id = $this->request->getPost('kinerja_id');
+        $hasil = $this->request->getPost('hasil');
+        $tahun = $this->request->getPost('tahun') ?: date('Y');
+        $bulan = $this->request->getPost('bulan');
 
-            // Validasi field
-            $allowedFields = ['hasil'];
-            if (!in_array($field, $allowedFields)) {
-                return $this->response->setJSON(['success' => false, 'message' => 'Field tidak diperbolehkan']);
-            }
+        $dataToSave = [
+            'user_id' => $user_id,
+            'kinerja_id' => $kinerja_id,
+            'hasil' => $hasil,
+            'tahun' => $tahun
+        ];
 
-            // Cari apakah data hasil_kinerja sudah ada
-            $existing = $this->hasilKinerjaModel
-                ->where('user_id', $user_id)
-                ->where('kinerja_id', $kinerja_id)
-                ->first();
-
-            $dataToSave = [
-                'user_id' => $user_id,
-                'kinerja_id' => $kinerja_id,
-                'hasil' => $value
-            ];
-
-            if ($existing) {
-                // update
-                $this->hasilKinerjaModel->update($existing['id'], $dataToSave);
-            } else {
-                // insert
-                $this->hasilKinerjaModel->insert($dataToSave);
-            }
-
-            return $this->response->setJSON(['success' => true]);
+        if (!empty($bulan)) {
+            $dataToSave['bulan'] = $bulan;
         }
 
-        return $this->response->setJSON(['success' => false, 'message' => 'Bukan permintaan AJAX']);
+        // Cek jika data sudah ada
+        $existing = $this->hasilKinerjaModel
+            ->where('user_id', $user_id)
+            ->where('kinerja_id', $kinerja_id)
+            ->where('tahun', $tahun)
+            ->first();
+
+        if ($existing) {
+            $this->hasilKinerjaModel->update($existing['id'], $dataToSave);
+        } else {
+            $this->hasilKinerjaModel->insert($dataToSave);
+        }
+
+        return redirect()->to(base_url('ekinerja?tahun=' . $tahun))->with('success', 'Data berhasil disimpan.');
     }
 
+    public function get_hasil()
+{
+    $kinerja_id = $this->request->getGet('kinerja_id');
+    $tahun = $this->request->getGet('tahun');
+    $bulan = $this->request->getGet('bulan');
+
+    // Ambil target dari tabel_kinerja
+    $kinerjaModel = new \App\Models\KinerjaModel();
+    $target = $kinerjaModel->find($kinerja_id)['target'] ?? '';
+
+    // Ambil hasil dari tabel_hasil_kinerja
+    $hasilModel = new \App\Models\HasilKinerjaModel();
+    $hasilData = $hasilModel
+        ->where('kinerja_id', $kinerja_id)
+        ->where('tahun', $tahun)
+        ->where('bulan', $bulan ?: null)
+        ->first();
+
+    $response = [
+        'target' => $target,
+        'hasil' => $hasilData['hasil'] ?? '',
+        'catatan' => $hasilData['catatan'] ?? '',
+        'berkas' => $hasilData['berkas'] ?? '',
+    ];
+
+    return $this->response->setJSON($response);
+}
+
+
+
+    
 }

@@ -47,7 +47,7 @@ class Manekinerja extends BaseController
         $data = [
             'level_akses' => $this->session->get('level'),
             'dtmenu' => $this->tampil_menu($this->session->get('level')),
-            'nama_menu' => 'Kelola E-Kinerja',
+            'nama_menu' => 'Kelola Kinerja',
             'data_kinerja' => $dataKinerja,
             'user_levels' => $this->user_levelModel->findAll(),
         ];
@@ -89,43 +89,88 @@ class Manekinerja extends BaseController
     }
 
 
-    public function ajax_update_field()
+    public function ajax_update_data_kinerja()
     {
         if ($this->request->isAJAX()) {
-            $userId = $this->session->get('user_id');
-            $kinerjaId = $this->request->getPost('id'); // ini sebenarnya ID dari data_kinerja
+            $id = $this->request->getPost('id');
             $field = $this->request->getPost('field');
             $value = $this->request->getPost('value');
 
-            // Validasi field yang diperbolehkan
-            $allowedFields = ['hasil'];
+            $allowedFields = ['indikator', 'kode_kpi', 'formula', 'sumber_data', 'periode_assesment', 'bobot', 'target', 'deskripsi_target'];
+
             if (!in_array($field, $allowedFields)) {
                 return $this->response->setJSON(['success' => false, 'message' => 'Field tidak diperbolehkan']);
             }
 
-            // Cek apakah data hasil_kinerja sudah ada
-            $existing = $this->hasilKinerjaModel
-                ->where('user_id', $userId)
-                ->where('kinerja_id', $kinerjaId)
-                ->first();
-
-            if ($existing) {
-                // Update
-                $this->hasilKinerjaModel->update($existing['id'], ['hasil' => $value]);
-            } else {
-                // Insert baru
-                $this->hasilKinerjaModel->insert([
-                    'user_id' => $userId,
-                    'kinerja_id' => $kinerjaId,
-                    'hasil' => $value
-                ]);
-            }
+            $this->kinerjaModel->update($id, [$field => $value]);
 
             return $this->response->setJSON(['success' => true]);
         }
 
         return $this->response->setJSON(['success' => false, 'message' => 'Bukan permintaan AJAX']);
     }
+
+    public function create()
+    {
+        if ($this->request->isAJAX()) {
+            // Bersihkan bobot dari simbol %
+            $bobotInput = $this->request->getPost('bobot');
+            $bobotClean = str_replace('%', '', $bobotInput);
+            $bobot = floatval(trim($bobotClean));
+
+            $target = $this->request->getPost('target');
+
+            $data = [
+                'indikator'         => $this->request->getPost('indikator'),
+                'kode_kpi'          => $this->request->getPost('kode_kpi'),
+                'formula'           => $this->request->getPost('formula'),
+                'sumber_data'       => $this->request->getPost('sumber_data'),
+                'periode_assesment' => $this->request->getPost('periode_assesment'),
+                'bobot'             => $bobot,
+                'target'            => floatval($target), // nilai bebas, bisa desimal
+                'deskripsi_target'  => $this->request->getPost('deskripsi_target'),
+                'level_user'        => ''
+            ];
+
+            // Validasi data
+            $this->validation->setRules([
+                'indikator'         => 'required',
+                'kode_kpi'          => 'required',
+                'formula'           => 'required',
+                'sumber_data'       => 'required',
+                'periode_assesment' => 'required|in_list[Bulanan,Tahunan]',
+                'bobot'             => 'required|numeric|greater_than_equal_to[0]|less_than_equal_to[100]',
+                'target'            => 'required|numeric', // desimal OK, tidak dibatasi range
+                'deskripsi_target'  => 'required',
+            ]);
+
+            if (!$this->validation->run($data)) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => $this->validation->getErrors()
+                ]);
+            }
+
+            // Simpan ke database
+            if ($this->kinerjaModel->insert($data)) {
+                return $this->response->setJSON([
+                    'success' => true,
+                    'message' => 'Data berhasil ditambahkan'
+                ]);
+            } else {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Gagal menyimpan data'
+                ]);
+            }
+        }
+
+        return $this->response->setJSON([
+            'success' => false,
+            'message' => 'Bukan permintaan AJAX'
+        ]);
+    }
+
 
     public function lihat_hasil()
     {
@@ -140,6 +185,25 @@ class Manekinerja extends BaseController
 
         return view('admin/kelolaekinerja', $data);
     }
+
+    public function delete($id = null)
+    {
+        if (!$this->request->isAJAX()) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Invalid request']);
+        }
+
+        $model = new \App\Models\KinerjaModel();
+
+        if ($model->delete($id)) {
+            return $this->response->setJSON(['success' => true]);
+        } else {
+            return $this->response->setJSON(['success' => false, 'message' => 'Gagal menghapus data']);
+        }
+    }
+
+
+
+
 
 }
 
