@@ -2,6 +2,9 @@
 <?php $this->extend('shared_page/template'); ?>
 <?php $this->section('content'); ?>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <div class="card-header">
     <h3 class="card-title">Hallo <b><?= esc($session->nama); ?></b>, Selamat datang</h3>
 </div>
@@ -97,24 +100,33 @@
 <!-- Modal Form -->
 <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content shadow-sm border-0 rounded-3">
-            <form id="formAktual" method="POST" enctype="multipart/form-data" action="<?= base_url('ekinerja/update_hasil') ?>">
-                
-                <!-- Header Modal -->
-                <div class="modal-header bg-light border-bottom">
-                    <div>
-                        <h5 class="modal-title fw-semibold d-flex align-items-center gap-2" id="modalTitle">
-                            Formulir Hasil KPI
-                            <span id="statusBadge" class="badge text-bg-secondary text-capitalize fs-6 fw-normal"></span>
-                        </h5>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                </div>
+    <div class="modal-content shadow-sm border-0 rounded-3">
+    <div class="modal-header bg-light border-bottom">
+        <h5 class="modal-title fw-semibold d-flex align-items-center gap-2">
+            Formulir Kinerja & PICA
+            <span id="statusBadge" class="badge text-bg-secondary text-capitalize fs-6 fw-normal"></span>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+    </div>
 
-                <!-- Body Modal -->
-                <div class="modal-body bg-white">
+    <div class="modal-body bg-white">
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs mb-3" id="modalTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="kpi-tab" data-bs-toggle="tab" data-bs-target="#kpi-tab-pane" type="button" role="tab">KPI</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pica-tab" data-bs-toggle="tab" data-bs-target="#pica-tab-pane" type="button" role="tab">PICA</button>
+            </li>
+        </ul>
+
+        <!-- Tab Contents -->
+        <div class="tab-content" id="modalTabContent">
+            <!-- KPI Form -->
+            <div class="tab-pane fade show active" id="kpi-tab-pane" role="tabpanel">
+                <form id="formAktual" method="POST" enctype="multipart/form-data" action="<?= base_url('ekinerja/update_hasil') ?>">
                     <div class="row">
-                        <!-- Kolom Kiri -->
+                        <!-- Left -->
                         <div class="col-md-8">
                             <input type="hidden" name="kinerja_id" id="inputKinerjaId">
                             <input type="hidden" name="bulan" id="inputBulan">
@@ -146,29 +158,68 @@
                             </div>
                         </div>
 
-                        <!-- Kolom Kanan -->
+                        <!-- Right -->
                         <div class="col-md-4">
-                            <label for="inputCatatan" class="form-label fw-semibold">Catatan Karu</label>
+                            <label class="form-label fw-semibold">Catatan Karu</label>
                             <textarea id="inputCatatan" class="form-control bg-light" readonly rows="13"></textarea>
                         </div>
                     </div>
-                </div>
+                </form>
+            </div>
 
-                <!-- Footer Modal -->
-                <div class="modal-footer bg-light border-top">
-                    <?php if ($level_akses != 2): ?>
-                        <button type="submit" class="btn btn-outline-success">
-                            <i class="fas fa-save me-1"></i> Simpan
-                        </button>
-                    <?php endif; ?>
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="fas fa-times me-1"></i> Tutup
-                    </button>
-                </div>
-            </form>
+            <!-- PICA Form -->
+            <div class="tab-pane fade" id="pica-tab-pane" role="tabpanel">
+                <form id="formPica" method="POST" action="<?= base_url('pica/simpan') ?>">
+                    <input type="hidden" name="kinerja_id" id="picaKinerjaId">
+
+                    <div class="row">
+                        <!-- Left -->
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label for="problem_identification" class="form-label">Problem Identification</label>
+                                <textarea name="problem_identification" id="problem_identification" class="form-control" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="corrective_action" class="form-label">Corrective Action</label>
+                                <textarea name="corrective_action" id="corrective_action" class="form-control" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="due_date" class="form-label">Due Date</label>
+                                <input type="date" name="due_date" id="due_date" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="pic" class="form-label">PIC</label>
+                                <input type="text" name="pic" id="pic" class="form-control" value="Karu" readonly>
+                            </div>
+                        </div>
+
+                        <!-- Right -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">Catatan Karu</label>
+                            <textarea id="catatanKaruPica" class="form-control bg-light" readonly rows="13"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
+    <div class="modal-footer bg-light border-top">
+        <?php if ($level_akses != 2): ?>
+            <button type="button" class="btn btn-outline-success" onclick="submitCombinedForm()">
+                <i class="fas fa-save me-1"></i> Simpan
+            </button>
+        <?php endif; ?>
+
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <i class="fas fa-times me-1"></i> Tutup
+        </button>
+    </div>
 </div>
+
 
 <!-- CSS -->
 <style>
@@ -211,17 +262,15 @@
 
 <!-- JavaScript -->
 <script>
-    function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = '', point = '', catatan = '', status = '') {
+function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = '', point = '', catatan = '', status = '') {
     const modal = new bootstrap.Modal(document.getElementById('modalForm'));
     modal.show();
 
     const tahun = document.getElementById('inputTahun').value;
 
-    // Isi input hidden
+    // Kosongkan input terlebih dahulu
     document.getElementById('inputKinerjaId').value = kinerjaId;
     document.getElementById('inputBulan').value = bulan;
-
-    // Kosongkan sementara nilai input
     document.getElementById('inputHasil').value = '';
     document.getElementById('inputTarget').value = '';
     document.getElementById('inputNilai').value = '';
@@ -229,7 +278,12 @@
     document.getElementById('inputCatatan').value = '';
     document.getElementById('statusBadge').textContent = status || 'Belum Dinilai';
 
-    // Ambil data dari endpoint
+    const inputHasil = document.getElementById('inputHasil');
+    const inputTarget = document.getElementById('inputTarget');
+    const inputNilai = document.getElementById('inputNilai');
+    const inputPoint = document.getElementById('inputPoint');
+
+    // Ambil data dari server
     const url = `<?= base_url('ekinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`;
     fetch(url)
         .then(response => {
@@ -239,21 +293,122 @@
             return response.json();
         })
         .then(data => {
-            if (data) {
-                document.getElementById('inputHasil').value = data.hasil ?? '';
-                document.getElementById('inputTarget').value = data.target ?? '';
-                document.getElementById('inputCatatan').value = data.catatan ?? '';
-                // Nilai dan point dikosongkan sementara seperti permintaan
-                document.getElementById('inputNilai').value = '';
-                document.getElementById('inputPoint').value = '';
+            const targetValue = parseFloat(data.target);
+            inputTarget.value = targetValue;
+
+            // Isi nilai dan catatan jika ada
+            if (data.hasil !== null) inputHasil.value = data.hasil;
+            if (data.catatan !== null) document.getElementById('inputCatatan').value = data.catatan;
+
+            // Hitung otomatis saat hasil diubah
+            inputHasil.addEventListener('input', () => {
+    const hasil = parseFloat(inputHasil.value);
+
+    if (!isNaN(hasil) && !isNaN(targetValue)) {
+        let nilai, point;
+
+        if (targetValue === 0) {
+            if (hasil === 0) {
+                nilai = 100;
+                point = 10;
+            } else {
+                nilai = 0;
+                point = 0;
             }
+        } else {
+            nilai = (hasil / targetValue) * 100;
+            point = nilai * 0.1;
+        }
+
+        inputNilai.value = nilai.toFixed(2);
+        inputPoint.value = point.toFixed(2);
+
+        // === PENGATURAN PICA ===
+        const picaTab = document.getElementById('pica-tab');
+        const picaForm = document.getElementById('formPica');
+        
+        if (nilai < 100) {
+            picaTab.classList.remove('disabled');
+            picaTab.disabled = false;
+            picaForm.querySelectorAll('input, textarea, button').forEach(el => el.disabled = false);
+        } else {
+            picaTab.classList.add('disabled');
+            picaTab.disabled = true;
+            picaForm.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
+        }
+
+    } else {
+        inputNilai.value = '';
+        inputPoint.value = '';
+    }
+});
+
+            // Trigger perhitungan awal jika hasil sudah terisi
+            inputHasil.dispatchEvent(new Event('input'));
         })
         .catch(error => {
-            console.error('Terjadi kesalahan:', error);
-            alert('Gagal mengambil data hasil kinerja.');
+            console.error('Error:', error);
+            alert('Gagal mengambil data KPI.');
         });
+    
+    // Ambil data PICA dari endpoint
+fetch(`<?= base_url('ekinerja/get_pica_by_kinerja/') ?>${kinerjaId}`)
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('inputProblem').value = data.problem || '';
+        document.getElementById('inputAction').value = data.action || '';
+        document.getElementById('inputDueDate').value = data.due_date || '';
+        document.getElementById('inputCatatanPica').value = data.catatan_karu || '';
+    });
+
+}
+
+function submitCombinedForm() {
+    const hasil = parseFloat(document.getElementById('inputHasil').value);
+    const kpiForm = document.getElementById('formAktual');
+    const picaForm = document.getElementById('formPica');
+
+    if (isNaN(hasil)) {
+        alert('Nilai KPI tidak valid!');
+        return;
+    }
+
+    if (hasil < 100) {
+        // Gabungkan form KPI dan PICA dalam satu FormData
+        const formData = new FormData(kpiForm);
+
+        // Ambil data dari form PICA dan tambahkan ke FormData
+        formData.append('problem_identification', document.getElementById('problem_identification').value);
+        formData.append('corrective_action', document.getElementById('corrective_action').value);
+        formData.append('due_date', document.getElementById('due_date').value);
+        formData.append('pic', document.getElementById('pic').value);
+
+        // Kirim ke endpoint gabungan (buat endpoint baru untuk handle ini)
+        fetch("<?= base_url('ekinerja/update_hasil') ?>", {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'ok') {
+                alert('Data KPI dan PICA berhasil disimpan');
+                location.reload();
+            } else {
+                alert('Gagal menyimpan data: ' + data.message);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Terjadi kesalahan saat mengirim data.');
+        });
+
+    } else {
+        // Jika hasil >= 100, hanya kirim form KPI saja
+        kpiForm.submit();
+    }
 }
 </script>
+
 
 
 
@@ -343,6 +498,11 @@
     text-align: center;
     color: #0f5132;
     display: inline-block;
+}
+
+.nav-link.disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 </style>

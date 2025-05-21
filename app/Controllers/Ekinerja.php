@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\KinerjaModel;
 use App\Models\HasilKinerjaModel;
 use App\Models\User_levelModel;
+use App\Models\PicaKinerjaModel;
 
 class Ekinerja extends BaseController
 {
@@ -118,41 +119,6 @@ class Ekinerja extends BaseController
         return view('layout/ekinerja', $data);
     }
 
-    public function update_hasil()
-    {
-        $user_id = $this->session->get('user_id');
-        $kinerja_id = $this->request->getPost('kinerja_id');
-        $hasil = $this->request->getPost('hasil');
-        $tahun = $this->request->getPost('tahun') ?: date('Y');
-        $bulan = $this->request->getPost('bulan');
-
-        $dataToSave = [
-            'user_id' => $user_id,
-            'kinerja_id' => $kinerja_id,
-            'hasil' => $hasil,
-            'tahun' => $tahun
-        ];
-
-        if (!empty($bulan)) {
-            $dataToSave['bulan'] = $bulan;
-        }
-
-        // Cek jika data sudah ada
-        $existing = $this->hasilKinerjaModel
-            ->where('user_id', $user_id)
-            ->where('kinerja_id', $kinerja_id)
-            ->where('tahun', $tahun)
-            ->first();
-
-        if ($existing) {
-            $this->hasilKinerjaModel->update($existing['id'], $dataToSave);
-        } else {
-            $this->hasilKinerjaModel->insert($dataToSave);
-        }
-
-        return redirect()->to(base_url('ekinerja?tahun=' . $tahun))->with('success', 'Data berhasil disimpan.');
-    }
-
     public function get_hasil()
 {
     $kinerja_id = $this->request->getGet('kinerja_id');
@@ -179,6 +145,105 @@ class Ekinerja extends BaseController
     ];
 
     return $this->response->setJSON($response);
+}
+
+public function get_pica_by_kinerja($id)
+{
+    $model = new \App\Models\PicaKinerjaModel();
+    $data = $model->where('kinerja_id', $id)->first();
+
+    return $this->response->setJSON($data ?? []);
+}
+
+
+public function update_hasil()
+{
+    $user_id = $this->session->get('user_id');
+    $kinerja_id = $this->request->getPost('kinerja_id');
+    $hasil = $this->request->getPost('hasil');
+    $tahun = $this->request->getPost('tahun') ?: date('Y');
+    $bulan = $this->request->getPost('bulan') ?: null;
+    $nilai = null;
+    $berkasPath = null;
+
+    // Validasi awal
+    if (!$kinerja_id || !$hasil || !$user_id) {
+        return redirect()->back()->with('error', 'Data tidak lengkap untuk menyimpan hasil kinerja.');
+    }
+
+    // Cek kinerja
+    $kinerja = $this->kinerjaModel->find($kinerja_id);
+    if (!$kinerja) {
+        return redirect()->back()->with('error', 'Data kinerja tidak ditemukan.');
+    }
+
+    $target = $kinerja['target'];
+
+    if (is_numeric($hasil) && is_numeric($target) && $target != 0) {
+        $nilai = ($hasil / $target) * 100;
+    }
+
+    // Proses upload berkas
+    $berkas = $this->request->getFile('berkas');
+    if ($berkas && $berkas->isValid() && !$berkas->hasMoved()) {
+        $newName = $berkas->getRandomName();
+        $uploadPath = 'uploads/berkas_kinerja';
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0777, true); // Pastikan folder ada
+        }
+        $berkas->move($uploadPath, $newName);
+        $berkasPath = $uploadPath . '/' . $newName;
+    }
+
+    // Cek apakah data hasil kinerja sudah ada
+    $where = [
+        'user_id' => $user_id,
+        'kinerja_id' => $kinerja_id,
+        'tahun' => $tahun,
+        'bulan' => $bulan,
+    ];
+
+    $existing = $this->hasilKinerjaModel->where($where)->first();
+
+    $dataToSave = [
+        'user_id' => $user_id,
+        'kinerja_id' => $kinerja_id,
+        'tahun' => $tahun,
+        'bulan' => $bulan,
+        'hasil' => $hasil,
+        'nilai' => $nilai,
+        'status' => 'diajukan',
+    ];
+
+    if ($berkasPath !== null) {
+        $dataToSave['berkas'] = $berkasPath;
+    }
+
+    if ($existing) {
+        $this->hasilKinerjaModel->update($existing['id'], $dataToSave);
+        $hasilId = $existing['id'];
+    } else {
+        $this->hasilKinerjaModel->insert($dataToSave);
+        $hasilId = $this->hasilKinerjaModel->getInsertID();
+    }
+
+    // Tambah PICA jika belum ada
+    $picaModel = new \App\Models\PicaKinerjaModel();
+    $existingPica = $picaModel
+        ->where('kinerja_id', $kinerja_id)
+        ->where('hasil_id', $hasilId)
+        ->first();
+
+    if (!$existingPica) {
+        $picaModel->insert([
+            'user_id' => $user_id,
+            'kinerja_id' => $kinerja_id,
+            'hasil_id' => $hasilId,
+            'status' => 'diajukan',
+        ]);
+    }
+
+    return redirect()->to(base_url('ekinerja'))->with('success', 'Data hasil kinerja berhasil disimpan.');
 }
 
 
