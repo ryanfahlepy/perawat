@@ -371,11 +371,12 @@ function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = ''
 fetch(`<?= base_url('ekinerja/get_pica_by_kinerja/') ?>${kinerjaId}`)
     .then(response => response.json())
     .then(data => {
-        document.getElementById('inputProblem').value = data.problem || '';
-        document.getElementById('inputAction').value = data.action || '';
-        document.getElementById('inputDueDate').value = data.due_date || '';
-        document.getElementById('inputCatatanPica').value = data.catatan_karu || '';
+        document.getElementById('problem_identification').value = data.problem || '';
+        document.getElementById('corrective_action').value = data.action || '';
+        document.getElementById('due_date').value = data.due_date || '';
+        document.getElementById('catatanKaruPica').value = data.catatan_karu || '';
     });
+
 
 }
 

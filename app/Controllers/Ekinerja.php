@@ -13,6 +13,7 @@ class Ekinerja extends BaseController
     protected $kinerjaModel;
     protected $hasilKinerjaModel;
     protected $user_levelModel;
+    protected $picaModel;
 
     public function __construct()
     {
@@ -20,8 +21,8 @@ class Ekinerja extends BaseController
         $this->kinerjaModel = new KinerjaModel();
         $this->user_levelModel = new User_levelModel();
         $this->hasilKinerjaModel = new HasilKinerjaModel();
+        $this->picaModel = new PicaKinerjaModel();
     }
-
     public function index()
     {
         $user_id = $this->session->get('user_id');
@@ -149,66 +150,57 @@ class Ekinerja extends BaseController
 
 public function get_pica_by_kinerja($id)
 {
-    $model = new \App\Models\PicaKinerjaModel();
-    $data = $model->where('kinerja_id', $id)->first();
-
+    $data = $this->picaModel->where('kinerja_id', $id)->first();
     return $this->response->setJSON($data ?? []);
 }
+
 
 public function update_hasil()
 {
     $user_id = $this->session->get('user_id');
     $kinerja_id = $this->request->getPost('kinerja_id');
     $hasil = $this->request->getPost('hasil');
-    $catatan = $this->request->getPost('catatan') ?? null;
-    $tahun = $this->request->getPost('tahun') ?: date('Y');
-    $bulan = $this->request->getPost('bulan') ?: null;
+    $tahun = $this->request->getPost('tahun') ?? date('Y');
+    $bulan = $this->request->getPost('bulan');
     $nilai = null;
     $berkasPath = null;
 
-    if (!$kinerja_id || !$hasil || !$user_id) {
-        return redirect()->back()->with('error', 'Data tidak lengkap untuk menyimpan hasil kinerja.');
-    }
+    $target = $this->kinerjaModel->find($kinerja_id)['target'] ?? null;
 
-    $kinerja = $this->kinerjaModel->find($kinerja_id);
-    if (!$kinerja) {
-        return redirect()->back()->with('error', 'Data kinerja tidak ditemukan.');
-    }
-
-    $target = $kinerja['target'];
     if (is_numeric($hasil) && is_numeric($target) && $target != 0) {
         $nilai = ($hasil / $target) * 100;
     }
 
-    // Upload berkas
     $berkas = $this->request->getFile('berkas');
     if ($berkas && $berkas->isValid() && !$berkas->hasMoved()) {
         $newName = $berkas->getRandomName();
-        $uploadPath = 'uploads/berkas_kinerja';
-        if (!is_dir($uploadPath)) {
-            mkdir($uploadPath, 0777, true);
-        }
-        $berkas->move($uploadPath, $newName);
-        $berkasPath = $uploadPath . '/' . $newName;
+        $berkas->move('uploads/berkas_kinerja', $newName);
+        $berkasPath = 'uploads/berkas_kinerja/' . $newName;
     }
+
+    $problemidentification = $this->request->getPost('problem_identification');
+    $correctiveaction = $this->request->getPost('corrective_action');
+    $due = $this->request->getPost('due_date');
 
     $where = [
         'user_id' => $user_id,
         'kinerja_id' => $kinerja_id,
         'tahun' => $tahun,
-        'bulan' => $bulan,
     ];
+    if (!empty($bulan)) {
+        $where['bulan'] = $bulan;
+    }
 
     $existing = $this->hasilKinerjaModel->where($where)->first();
+    $hasilId = null;
 
     $dataToSave = [
         'user_id' => $user_id,
         'kinerja_id' => $kinerja_id,
         'tahun' => $tahun,
-        'bulan' => $bulan,
+        'bulan' => $bulan ?: null,
         'hasil' => $hasil,
         'nilai' => $nilai,
-        'catatan' => $catatan,
         'status' => 'diajukan',
     ];
 
@@ -224,23 +216,29 @@ public function update_hasil()
         $hasilId = $this->hasilKinerjaModel->getInsertID();
     }
 
-    // Tambahkan PICA jika belum ada
-    $picaModel = new \App\Models\PicaKinerjaModel();
-    $existingPica = $picaModel
-        ->where('kinerja_id', $kinerja_id)
-        ->where('hasil_id', $hasilId)
-        ->first();
-
-    if (!$existingPica) {
-        $picaModel->insert([
+    if ($nilai < 100) {
+        $dataPica = [
             'user_id' => $user_id,
             'kinerja_id' => $kinerja_id,
             'hasil_id' => $hasilId,
             'status' => 'diajukan',
-        ]);
+            'problem_identification' => $problemidentification,
+            'corrective_action' => $correctiveaction,
+            'due_date' => $due,
+        ];
+
+        $existingPica = $this->picaModel
+            ->where('kinerja_id', $kinerja_id)
+            ->where('hasil_id', $hasilId)
+            ->first();
+
+        if ($existingPica) {
+            $this->picaModel->update($existingPica['id'], $dataPica);
+        } else {
+            $this->picaModel->insert($dataPica);
+        }
     }
 
     return redirect()->to(base_url('ekinerja'))->with('success', 'Data hasil kinerja berhasil disimpan.');
 }
-    
 }
