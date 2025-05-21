@@ -448,11 +448,23 @@
                                 try {
                                     const data = JSON.parse(text);
                                     if (data.status === 'ok') {
-                                        alert('Data KPI dan PICA berhasil disimpan');
-                                        location.reload();
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Berhasil',
+                                            text: data.message,
+                                            timer: 2000,
+                                            showConfirmButton: false
+                                        }).then(() => {
+                                            location.reload();
+                                        });
                                     } else {
-                                        alert('Gagal menyimpan data: ' + data.message);
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Gagal',
+                                            text: data.message || 'Terjadi kesalahan saat menyimpan data.',
+                                        });
                                     }
+
                                 } catch (e) {
                                     console.error('Respon bukan JSON:\n', text);
                                     alert('Terjadi kesalahan: Respon server tidak valid.');
