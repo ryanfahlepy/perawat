@@ -128,147 +128,146 @@
             </tbody>
         </table>
     </div>
+<!-- Modal Form -->
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content shadow-sm border-0 rounded-3">
+            <div class="modal-header bg-light border-bottom">
+                <h5 class="modal-title fw-semibold d-flex align-items-center gap-2">
+                    Formulir Kinerja & PICA
+                    <span id="statusBadge" class="badge text-bg-secondary text-capitalize fs-6 fw-normal"></span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
 
-    <!-- Modal Form -->
-    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content shadow-sm border-0 rounded-3">
-                <div class="modal-header bg-light border-bottom">
-                    <h5 class="modal-title fw-semibold d-flex align-items-center gap-2">
-                        Formulir Kinerja & PICA
-                        <span id="statusBadge" class="badge text-bg-secondary text-capitalize fs-6 fw-normal"></span>
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                </div>
+            <div class="modal-body bg-white">
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs mb-3" id="modalTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="kpi-tab" data-bs-toggle="tab" data-bs-target="#kpi-tab-pane" type="button" role="tab">KPI</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pica-tab" data-bs-toggle="tab" data-bs-target="#pica-tab-pane" type="button" role="tab">PICA</button>
+                    </li>
+                </ul>
 
-                <div class="modal-body bg-white">
-                    <!-- Tab Navigation -->
-                    <ul class="nav nav-tabs mb-3" id="modalTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="kpi-tab" data-bs-toggle="tab"
-                                data-bs-target="#kpi-tab-pane" type="button" role="tab">KPI</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pica-tab" data-bs-toggle="tab" data-bs-target="#pica-tab-pane"
-                                type="button" role="tab">PICA</button>
-                        </li>
-                    </ul>
+                <!-- Tab Contents -->
+                <div class="tab-content" id="modalTabContent">
+                    <!-- KPI Form -->
+                    <div class="tab-pane fade show active" id="kpi-tab-pane" role="tabpanel">
+                        <form id="formAktual" method="POST" enctype="multipart/form-data" action="<?= base_url('ekinerja/update_hasil') ?>">
+                            <div class="row">
+                                <!-- Left -->
+                                <div class="col-md-8">
+                                    <input type="hidden" name="kinerja_id" id="inputKinerjaId">
+                                    <input type="hidden" name="bulan" id="inputBulan">
+                                    <input type="hidden" name="tahun" id="inputTahun" value="<?= esc($tahun_terpilih) ?>">
 
-                    <!-- Tab Contents -->
-                    <div class="tab-content" id="modalTabContent">
-                        <!-- KPI Form -->
-                        <div class="tab-pane fade show active" id="kpi-tab-pane" role="tabpanel">
-                            <form id="formAktual" method="POST" enctype="multipart/form-data"
-                                action="<?= base_url('ekinerja/update_hasil') ?>">
-                                <div class="row">
-                                    <!-- Left -->
-                                    <div class="col-md-8">
-                                        <input type="hidden" name="kinerja_id" id="inputKinerjaId">
-                                        <input type="hidden" name="bulan" id="inputBulan">
-                                        <input type="hidden" name="tahun" id="inputTahun"
-                                            value="<?= esc($tahun_terpilih) ?>">
-
-                                        <div class="mb-3">
-                                            <label for="inputHasil" class="form-label">Hasil Aktual KPI <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="number" name="hasil" id="inputHasil" class="form-control"
-                                                required>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="inputBerkas" class="form-label">Berkas Pendukung <small
-                                                    class="text-muted">(opsional)</small></label>
-                                            <input type="file" name="berkas" id="inputBerkas" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="inputTarget" class="form-label">Target KPI</label>
-                                            <input type="text" id="inputTarget" class="form-control" readonly>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="inputNilai" class="form-label">Nilai KPI</label>
-                                            <input type="text" id="inputNilai" class="form-control" readonly>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="inputPoint" class="form-label">Point KPI</label>
-                                            <input type="text" id="inputPoint" class="form-control" readonly>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="inputHasil" class="form-label">Hasil Aktual KPI <span class="text-danger">*</span></label>
+                                        <input type="number" name="hasil" id="inputHasil" class="form-control" <?= ($level_akses == 2) ? 'readonly' : '' ?> required>
                                     </div>
 
-                                    <!-- Right -->
-                                    <div class="col-md-4">
-                                        <label class="form-label fw-semibold">Catatan Karu</label>
-                                        <textarea id="inputCatatan" class="form-control bg-light" readonly
-                                            rows="13"></textarea>
+                                    <div class="mb-3">
+                                        <label for="inputBerkas" class="form-label">Berkas Pendukung <small class="text-muted">(opsional)</small></label>
+                                        <input type="file" name="berkas" id="inputBerkas" class="form-control" <?= ($level_akses == 2) ? 'disabled' : '' ?>>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="inputTarget" class="form-label">Target KPI</label>
+                                        <input type="text" id="inputTarget" class="form-control" readonly>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="inputNilai" class="form-label">Nilai KPI</label>
+                                        <input type="text" id="inputNilai" class="form-control" readonly>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="inputPoint" class="form-label">Point KPI</label>
+                                        <input type="text" id="inputPoint" class="form-control" readonly>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
 
-                        <!-- PICA Form -->
-                        <div class="tab-pane fade" id="pica-tab-pane" role="tabpanel">
-                            <form id="formPica" method="POST" action="<?= base_url('pica/simpan') ?>">
-                                <input type="hidden" name="kinerja_id" id="picaKinerjaId">
+                                <!-- Right -->
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Catatan Karu</label>
+                                    <textarea id="inputCatatan" class="form-control bg-light" <?= ($level_akses != 2) ? '' : 'readonly' ?> rows="13"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
-                                <div class="row">
-                                    <!-- Left -->
-                                    <div class="col-md-8">
-                                        <input type="hidden" id="user_id" value="<?= esc($session->user_id) ?>">
-                                        <input type="hidden" id="hasil_id" value="">
-                                        <input type="hidden" name="kinerja_id" id="inputKinerjaId">
+                    <!-- PICA Form -->
+                    <div class="tab-pane fade" id="pica-tab-pane" role="tabpanel">
+                        <form id="formPica" method="POST" action="<?= base_url('pica/simpan') ?>">
+                            <input type="hidden" name="kinerja_id" id="picaKinerjaId">
 
-                                        <div class="mb-3">
-                                            <label for="problem_identification" class="form-label">Problem
-                                                Identification</label>
-                                            <textarea name="problem_identification" id="problem_identification"
-                                                class="form-control" required></textarea>
-                                        </div>
+                            <div class="row">
+                                <!-- Left -->
+                                <div class="col-md-8">
+                                    <input type="hidden" id="user_id" value="<?= esc($session->user_id) ?>">
+                                    <input type="hidden" id="hasil_id" value="">
+                                    <input type="hidden" name="kinerja_id" id="inputKinerjaId">
 
-                                        <div class="mb-3">
-                                            <label for="corrective_action" class="form-label">Corrective Action</label>
-                                            <textarea name="corrective_action" id="corrective_action"
-                                                class="form-control" required></textarea>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="due_date" class="form-label">Due Date</label>
-                                            <input type="date" name="due_date" id="due_date" class="form-control"
-                                                required>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="pic" class="form-label">PIC</label>
-                                            <input type="text" name="pic" id="pic" class="form-control" value="Karu"
-                                                readonly>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="problem_identification" class="form-label">Problem Identification</label>
+                                        <textarea name="problem_identification" id="problem_identification" class="form-control" <?= ($level_akses == 2) ? 'readonly' : '' ?> required></textarea>
                                     </div>
 
-                                    <!-- Right -->
-                                    <div class="col-md-4">
-                                        <label class="form-label fw-semibold">Catatan Karu</label>
-                                        <textarea id="catatanKaruPica" class="form-control bg-light" readonly
-                                            rows="13"></textarea>
+                                    <div class="mb-3">
+                                        <label for="corrective_action" class="form-label">Corrective Action</label>
+                                        <textarea name="corrective_action" id="corrective_action" class="form-control" <?= ($level_akses == 2) ? 'readonly' : '' ?> required></textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="due_date" class="form-label">Due Date</label>
+                                        <input type="date" name="due_date" id="due_date" class="form-control" <?= ($level_akses == 2) ? 'readonly' : '' ?> required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="pic" class="form-label">PIC</label>
+                                        <input type="text" name="pic" id="pic" class="form-control" value="Karu" readonly>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+
+                                <!-- Right -->
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Catatan Karu</label>
+                                    <textarea id="catatanKaruPica" class="form-control bg-light" <?= ($level_akses != 2) ? '' : 'readonly' ?>></textarea>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
-                <div class="modal-footer bg-light border-top">
-                    <?php if ($level_akses != 2): ?>
-                        <button type="button" class="btn btn-outline-success" onclick="submitCombinedForm()">
-                            <i class="fas fa-save me-1"></i> Simpan
-                        </button>
-                    <?php endif; ?>
-
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="fas fa-times me-1"></i> Tutup
-                    </button>
-                </div>
             </div>
+
+            <div class="modal-footer bg-light border-top">
+                <?php if ($level_akses != 2): ?>
+                    <button type="button" class="btn btn-outline-success" onclick="submitCombinedForm()">
+                        <i class="fas fa-save me-1"></i> Simpan
+                    </button>
+                <?php endif; ?>
+
+                <?php if ($level_akses == 2): ?>
+                    <button type="button" class="btn btn-success" onclick="setujuiData()">
+                        <i class="fas fa-check me-1"></i> Setujui
+                    </button>
+                    <button type="button" class="btn btn-danger" onclick="tolakData()">
+                        <i class="fas fa-times me-1"></i> Tolak
+                    </button>
+                <?php endif; ?>
+
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-1"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+
 
 
             <!-- CSS -->
@@ -311,10 +310,11 @@
             </style>
             <!-- JavaScript -->
             <script>
+                const levelAkses = <?= $level_akses ?>;
                 function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = '', point = '', catatan = '', status = '') {
                     const modal = new bootstrap.Modal(document.getElementById('modalForm'));
                     modal.show();
-
+                    
                     const tahun = document.getElementById('inputTahun').value;
 
                     document.getElementById('statusBadge').textContent = status || 'Belum Dinilai';
@@ -477,6 +477,7 @@
                         kpiForm.submit();
                     }
                 }
+                
             </script>
 
 
