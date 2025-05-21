@@ -119,6 +119,7 @@ class Ekinerja extends BaseController
             'dtmenu' => $this->tampil_menu($level),
             'nama_menu' => 'Kinerja',
             'data_kinerja' => $dataKinerja,
+            'user' => $user,
             'user_levels' => $this->user_levelModel->findAll(),
             'daftar_tahun' => [],
             'tahun_terpilih' => $tahun,
