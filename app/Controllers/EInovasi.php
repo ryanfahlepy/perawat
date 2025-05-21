@@ -85,7 +85,7 @@ class EInovasi extends BaseController
         $data = [
             'level_akses' => $this->session->nama_level,
             'dtmenu' => $this->tampil_menu($this->session->level),
-            'nama_menu' => 'e-Inovasi',
+            'nama_menu' => 'Inovasi',
             'inovasi' => $inovasiData,
             'status_filter' => $statusFilter,
             'level_user' => $levelUser,
