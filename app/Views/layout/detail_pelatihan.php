@@ -171,6 +171,7 @@
     </div>
     <div class="card-body">
         <!-- Form Tambah Pelatihan -->
+        <?php if (session('level') != 2): ?>
         <div class="tambah-pelatihan-section mb-5">
             <h5 class="section-title">Tambah Pelatihan Baru</h5>
             <form action="<?= base_url('pelatihan/simpan') ?>" method="post" enctype="multipart/form-data">
@@ -210,8 +211,10 @@
                 </div>
             </form>
         </div>
+        
 
         <hr class="my-4">
+        <?php endif; ?>
 
         <!-- Riwayat Pelatihan -->
         <h5 class="section-title">Riwayat Pelatihan</h5>

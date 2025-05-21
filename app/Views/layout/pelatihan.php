@@ -377,10 +377,12 @@ button[type="submit"] {
             </div>
         <?php endforeach; ?>
 
+        <?php if ($session->level != 2): ?>
         <div class="pelatihan-box tambah" id="btnTambahPelatihan">
             <div style="font-size: 2rem;">+</div>
             <div>Tambah Pelatihan Lain</div>
         </div>
+        <?php endif; ?>
     </div>
 </div>
 
