@@ -51,8 +51,70 @@ class BaseController extends Controller
         $userId = $session->get('user_id');
         $level = $session->get('nama_level');
 
-        // Ambil notifikasi yang ditujukan ke user saat ini (berdasarkan session user_id)
-        $notifikasiModel = new NotifikasiModel();
+        // Inisialisasi model
+        $pelatihanhasilModel = new \App\Models\PelatihanHasilModel();
+        $pelatihantambahanModel = new \App\Models\PelatihanTambahanModel();
+        $notifikasiModel = new \App\Models\NotifikasiModel();
+
+        $url_pelatihan = base_url("pelatihan/");
+
+        // ===== Cek pelatihan hasil yang hampir kadaluarsa =====
+        $pelatihanHampirKadaluarsa = $pelatihanhasilModel
+            ->where('user_id', $userId)
+            ->where('berlaku IS NOT NULL')
+            ->where('berlaku <=', date('Y-m-d', strtotime('+1 month')))
+            ->where('berlaku >=', date('Y-m-d')) // pastikan belum kadaluarsa
+            ->findAll();
+        
+        foreach ($pelatihanHampirKadaluarsa as $p) {
+            
+            $pesan = "Sertifikat pelatihan wajib anda hampir kadaluarsa";
+
+            $sudahAda = $notifikasiModel
+                ->where('user_tujuan_id', $userId)
+                ->where('status', 'belum_dibaca')
+                ->where('pesan', $pesan)
+                ->first();
+
+            if (!$sudahAda) {
+                $notifikasiModel->insert([
+                    'user_tujuan_id' => $userId,
+                    'pesan' => $pesan,
+                    'status' => 'belum_dibaca',
+                    'url' => $url_pelatihan,
+                ]);
+            }
+        }
+        $pelatihanTambahanHampirKadaluarsa = $pelatihantambahanModel
+            ->where('user_id', $userId)
+            ->where('berlaku IS NOT NULL')
+            ->where('berlaku <=', date('Y-m-d', strtotime('+1 month')))
+            ->where('berlaku >=', date('Y-m-d')) // pastikan belum kadaluarsa
+            ->findAll();
+
+
+        foreach ($pelatihanTambahanHampirKadaluarsa as $pt) {
+        
+            $pesan = "Setifikat pelatihan tambahan anda hampir kadaluarsa";
+
+            $sudahAdaTambahan = $notifikasiModel
+                ->where('user_tujuan_id', $userId)
+                ->where('status', 'belum_dibaca')
+                ->where('pesan', $pesan)
+                ->first();
+
+            if (!$sudahAdaTambahan) {
+                $notifikasiModel->insert([
+                    'user_tujuan_id' => $userId,
+                    'pesan' => $pesan,
+                    'status' => 'belum_dibaca',
+                    'url' => $url_pelatihan,
+                ]);
+            }
+        }
+
+
+        // ===== Ambil notifikasi untuk user =====
         $this->data['notifikasi'] = $notifikasiModel
             ->where('user_tujuan_id', $userId)
             ->where('status', 'belum_dibaca')
@@ -65,8 +127,10 @@ class BaseController extends Controller
             ->countAllResults();
 
         $this->data['level_akses'] = $level;
+
         return view('shared_page/right_navbar', $this->data);
     }
+
 
 
 

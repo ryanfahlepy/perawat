@@ -623,12 +623,13 @@ class Mentoring extends BaseController
             ? date('d-m-Y H:i', strtotime($tanggalBerakhir))
             : 'Tidak ditentukan';
         // $url = base_url('mentoring/detail/' . $mentoringId);
+        $url = base_url("mentoring/");
 
         $this->notifikasiModel->insert([
             'user_tujuan_id' => $userId,
-            'pesan' => "Assesment <strong>$nama</strong> telah dibuat oleh mentor <strong>$namaMentor</strong>. Tanggal berakhir: <strong>$tanggalBerakhirFormatted</strong>.",
+            'pesan' => "Assesment <strong>$nama</strong> telah dibuat oleh mentor <strong>$namaMentor</strong>. Tanggal berakhir: <strong>$tanggalBerakhirFormatted</strong>",
             'status' => 'belum_dibaca',
-            // 'url' => '',
+            'url' => $url,
         ]);
 
 

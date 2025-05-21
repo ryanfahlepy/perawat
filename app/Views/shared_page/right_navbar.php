@@ -53,17 +53,20 @@
                 <p class="dropdown-item text-center">Tidak ada notifikasi</p>
             <?php else: ?>
                 <?php foreach ($notifikasi as $notif): ?>
-                    <a href="#" class="dropdown-item unread">
+                    <a href="<?= $notif['url'] ?>"
+                        class="dropdown-item <?= $notif['status'] == 'belum_dibaca' ? 'unread' : '' ?>">
                         <div class="media">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title"><?= $notif['pesan']; ?></h3>
                                 <p class="text-sm"><?= $notif['created_at']; ?></p>
                             </div>
-                            <button class="btn-close float-end" data-id="<?= $notif['id']; ?>"
-                                onclick="tandaiDibaca(this)"></button>
+                            <button type="button" class="btn-close float-end" data-id="<?= $notif['id']; ?>"
+                                onclick="tandaiDibaca(event, this)">
+                            </button>
                         </div>
                     </a>
                 <?php endforeach; ?>
+
             <?php endif; ?>
         </div>
     </li>
@@ -92,30 +95,52 @@
 </ul>
 
 <script>
-    function tandaiDibaca(button) {
-        var notifId = button.getAttribute('data-id');
+    function tandaiDibaca(event, button) {
+        event.stopPropagation(); // cegah klik href
 
-        var xhr = new XMLHttpRequest();
+        const notifId = button.getAttribute('data-id');
+
+        const xhr = new XMLHttpRequest();
         xhr.open('POST', 'http://localhost:8080/notifikasi/tandaiDibaca', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
         xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.status === 'success') {
-                    let item = button.closest('.dropdown-item');
-                    item.classList.remove('unread');
-                    item.style.opacity = '1';
-                    updateNotificationCount();
+            if (xhr.readyState === 4) {
+                console.log(xhr.responseText); // bantu debug
+
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.status === 'success') {
+                        const item = button.closest('.dropdown-item');
+                        item.classList.remove('unread');
+                        item.style.opacity = '1';
+
+                        // Update badge jumlah notifikasi
+                        updateNotificationCount();
+                    }
                 }
             }
         };
+
         xhr.send('notif_id=' + notifId);
     }
 
+
     function updateNotificationCount() {
-        var count = document.querySelectorAll('.dropdown-item.unread').length;
-        document.getElementById('jumlahNotif').textContent = count;
+        const unreadItems = document.querySelectorAll('.dropdown-item.unread').length;
+        const badge = document.getElementById('jumlahNotif');
+
+        if (badge) {
+            badge.textContent = unreadItems;
+
+            if (unreadItems === 0) {
+                badge.style.display = 'none';
+            } else {
+                badge.style.display = 'inline-block';
+            }
+        }
     }
+
 </script>
 
 
