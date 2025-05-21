@@ -3,6 +3,25 @@
 <?php $this->section('content'); ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    <?php if (session()->getFlashdata('message')): ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: '<?= session('message') ?>',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    <?php elseif (session()->getFlashdata('error')): ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal',
+            text: '<?= session('error') ?>',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    <?php endif; ?>
+</script>
 
 
 <div class="card-header">
