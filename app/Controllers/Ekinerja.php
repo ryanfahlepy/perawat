@@ -155,47 +155,43 @@ public function get_pica_by_kinerja($id)
     return $this->response->setJSON($data ?? []);
 }
 
-
 public function update_hasil()
 {
     $user_id = $this->session->get('user_id');
     $kinerja_id = $this->request->getPost('kinerja_id');
     $hasil = $this->request->getPost('hasil');
+    $catatan = $this->request->getPost('catatan') ?? null;
     $tahun = $this->request->getPost('tahun') ?: date('Y');
     $bulan = $this->request->getPost('bulan') ?: null;
     $nilai = null;
     $berkasPath = null;
 
-    // Validasi awal
     if (!$kinerja_id || !$hasil || !$user_id) {
         return redirect()->back()->with('error', 'Data tidak lengkap untuk menyimpan hasil kinerja.');
     }
 
-    // Cek kinerja
     $kinerja = $this->kinerjaModel->find($kinerja_id);
     if (!$kinerja) {
         return redirect()->back()->with('error', 'Data kinerja tidak ditemukan.');
     }
 
     $target = $kinerja['target'];
-
     if (is_numeric($hasil) && is_numeric($target) && $target != 0) {
         $nilai = ($hasil / $target) * 100;
     }
 
-    // Proses upload berkas
+    // Upload berkas
     $berkas = $this->request->getFile('berkas');
     if ($berkas && $berkas->isValid() && !$berkas->hasMoved()) {
         $newName = $berkas->getRandomName();
         $uploadPath = 'uploads/berkas_kinerja';
         if (!is_dir($uploadPath)) {
-            mkdir($uploadPath, 0777, true); // Pastikan folder ada
+            mkdir($uploadPath, 0777, true);
         }
         $berkas->move($uploadPath, $newName);
         $berkasPath = $uploadPath . '/' . $newName;
     }
 
-    // Cek apakah data hasil kinerja sudah ada
     $where = [
         'user_id' => $user_id,
         'kinerja_id' => $kinerja_id,
@@ -212,6 +208,7 @@ public function update_hasil()
         'bulan' => $bulan,
         'hasil' => $hasil,
         'nilai' => $nilai,
+        'catatan' => $catatan,
         'status' => 'diajukan',
     ];
 
@@ -227,7 +224,7 @@ public function update_hasil()
         $hasilId = $this->hasilKinerjaModel->getInsertID();
     }
 
-    // Tambah PICA jika belum ada
+    // Tambahkan PICA jika belum ada
     $picaModel = new \App\Models\PicaKinerjaModel();
     $existingPica = $picaModel
         ->where('kinerja_id', $kinerja_id)
@@ -245,8 +242,5 @@ public function update_hasil()
 
     return redirect()->to(base_url('ekinerja'))->with('success', 'Data hasil kinerja berhasil disimpan.');
 }
-
-
-
     
 }

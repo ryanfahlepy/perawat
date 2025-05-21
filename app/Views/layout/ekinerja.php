@@ -300,48 +300,64 @@ function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = ''
             if (data.hasil !== null) inputHasil.value = data.hasil;
             if (data.catatan !== null) document.getElementById('inputCatatan').value = data.catatan;
 
-            // Hitung otomatis saat hasil diubah
             inputHasil.addEventListener('input', () => {
-    const hasil = parseFloat(inputHasil.value);
+            const hasil = parseFloat(inputHasil.value);
 
-    if (!isNaN(hasil) && !isNaN(targetValue)) {
-        let nilai, point;
+            if (!isNaN(hasil) && !isNaN(targetValue)) {
+                let nilai, point;
 
-        if (targetValue === 0) {
-            if (hasil === 0) {
-                nilai = 100;
-                point = 10;
+                if (targetValue === 0) {
+                    if (hasil === 0) {
+                        nilai = 100;
+                        point = 10;
+                    } else {
+                        nilai = 0;
+                        point = 0;
+                    }
+                } else {
+                    nilai = (hasil / targetValue) * 100;
+                    point = nilai * 0.1;
+                }
+
+                inputNilai.value = nilai.toFixed(2);
+                inputPoint.value = point.toFixed(2);
+
+                // === PERIKSA NILAI UNTUK AKTIFKAN / NONAKTIFKAN PICA ===
+                handlePicaActivation(nilai);
             } else {
-                nilai = 0;
-                point = 0;
+                inputNilai.value = '';
+                inputPoint.value = '';
+
+                // Jika nilai kosong atau tidak valid, nonaktifkan PICA
+                handlePicaActivation(null);
             }
-        } else {
-            nilai = (hasil / targetValue) * 100;
-            point = nilai * 0.1;
+        });
+
+        function handlePicaActivation(nilai) {
+            const picaTab = document.getElementById('pica-tab');
+            const picaForm = document.getElementById('formPica');
+
+            const disablePica = (nilai === null || nilai >= 100);
+
+            if (disablePica) {
+                picaTab.classList.add('disabled');
+                picaTab.disabled = true;
+
+                // Nonaktifkan input di form PICA
+                picaForm.querySelectorAll('input, textarea, button').forEach(el => {
+                    el.disabled = true;
+                });
+            } else {
+                picaTab.classList.remove('disabled');
+                picaTab.disabled = false;
+
+                picaForm.querySelectorAll('input, textarea, button').forEach(el => {
+                    el.disabled = false;
+                });
+            }
         }
 
-        inputNilai.value = nilai.toFixed(2);
-        inputPoint.value = point.toFixed(2);
 
-        // === PENGATURAN PICA ===
-        const picaTab = document.getElementById('pica-tab');
-        const picaForm = document.getElementById('formPica');
-        
-        if (nilai < 100) {
-            picaTab.classList.remove('disabled');
-            picaTab.disabled = false;
-            picaForm.querySelectorAll('input, textarea, button').forEach(el => el.disabled = false);
-        } else {
-            picaTab.classList.add('disabled');
-            picaTab.disabled = true;
-            picaForm.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
-        }
-
-    } else {
-        inputNilai.value = '';
-        inputPoint.value = '';
-    }
-});
 
             // Trigger perhitungan awal jika hasil sudah terisi
             inputHasil.dispatchEvent(new Event('input'));
