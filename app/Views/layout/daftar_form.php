@@ -6,56 +6,51 @@ $session = \Config\Services::session();
 <?php $this->section('content'); ?>
 
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Daftar Form untuk <?= $userData->nama ?></h3>
-                    <div class="card-tools">
-                        <a href="<?= base_url('/mentoring/form/' . $userData->id) ?>" class="btn btn-primary"
-                            id="btnBuatForm">
-                            <i class="fas fa-plus"></i> Buat Form Baru
-                        </a>
+<div class="card-header">
+    <h3 class="card-title">Daftar Form untuk <?= $userData->nama ?></h3>
+    <div class="card-tools">
+        <a href="<?= base_url('/mentoring/form/' . $userData->id) ?>" class="btn btn-primary" id="btnBuatForm">
+            <i class="fas fa-plus"></i> Buat Form Baru
+        </a>
 
-                    </div>
-                </div>
-                <div class="card-body">
-                    <?php if (empty($daftarForms)): ?>
-                        <div class="alert alert-info">
-                            <i class="fas fa-info-circle"></i> Belum ada form yang dibuat
-                        </div>
-                    <?php else: ?>
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="text-center" style="width: 5%">No</th>
-                                    <th class="text-center" style="width: 25%">Nama</th>
-                                    <th class="text-center" style="width: 15%">Tanggal Mulai</th>
-                                    <th class="text-center" style="width: 15%">Tanggal Berakhir</th>
-                                    <th class="text-center" style="width: 15%">Countdown</th>
-                                    <!-- <th class="text-center" style="width: 15%">Progress</th> -->
-                                    <th class="text-center" style="width: 10%">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                usort($daftarForms, function ($a, $b) {
-                                    return $a['id'] <=> $b['id'];
-                                });
-                                foreach ($daftarForms as $index => $form): ?>
-                                    <tr>
-                                        <td class="text-center"><?= $index + 1 ?></td>
-                                        <td class="text-center"><?= $form['nama'] ?></td>
-                                        <td class="text-center"><?= $form['tanggal_mulai_formatted'] ?></td>
-                                        <td class="text-center"><?= $form['tanggal_berakhir_formatted'] ?></td>
-                                        <td class="text-center">
-                                            <span class="countdown" data-endtime="<?= $form['tanggal_berakhir'] ?>"
-                                                id="countdown-<?= $form['id'] ?>">
-                                                Loading...
-                                            </span>
-                                        </td>
-                                        <!-- <td class="text-center">
+    </div>
+</div>
+<div class="card-body">
+    <?php if (empty($daftarForms)): ?>
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> Belum ada form yang dibuat
+        </div>
+    <?php else: ?>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 5%">No</th>
+                    <th class="text-center" style="width: 25%">Nama</th>
+                    <th class="text-center" style="width: 15%">Tanggal Mulai</th>
+                    <th class="text-center" style="width: 15%">Tanggal Berakhir</th>
+                    <th class="text-center" style="width: 15%">Countdown</th>
+                    <!-- <th class="text-center" style="width: 15%">Progress</th> -->
+                    <th class="text-center" style="width: 10%">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                usort($daftarForms, function ($a, $b) {
+                    return $a['id'] <=> $b['id'];
+                });
+                foreach ($daftarForms as $index => $form): ?>
+                    <tr>
+                        <td class="text-center"><?= $index + 1 ?></td>
+                        <td class="text-center"><?= $form['nama'] ?></td>
+                        <td class="text-center"><?= $form['tanggal_mulai_formatted'] ?></td>
+                        <td class="text-center"><?= $form['tanggal_berakhir_formatted'] ?></td>
+                        <td class="text-center">
+                            <span class="countdown" data-endtime="<?= $form['tanggal_berakhir'] ?>"
+                                id="countdown-<?= $form['id'] ?>">
+                                Loading...
+                            </span>
+                        </td>
+                        <!-- <td class="text-center">
                                             <div class="progress">
                                                 <div class="progress-bar <?= $form['progress'] == 100 ? 'bg-success' : 'bg-primary' ?>"
                                                     role="progressbar" style="width: <?= $form['progress'] ?>%"
@@ -65,27 +60,23 @@ $session = \Config\Services::session();
                                                 </div>
                                             </div>
                                         </td> -->
-                                        <td class="text-center">
-                                            <a href="<?= base_url('/mentoring/form/' . $userData->id . '/' . $form['id']) ?>"
-                                                class="btn btn-sm btn-info" title="Lihat Detail">
-                                                <i class="text-white fas fa-eye"></i>
-                                            </a>
+                        <td class="text-center">
+                            <a href="<?= base_url('/mentoring/form/' . $userData->id . '/' . $form['id']) ?>"
+                                class="btn btn-sm btn-info" title="Lihat Detail">
+                                <i class="text-white fas fa-eye"></i>
+                            </a>
 
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    <?php endif; ?>
-                </div>
-                <div class="card-footer">
-                    <a href="<?= base_url('/mentoring') ?>" class="btn btn-default">
-                        <i class="fas fa-arrow-left"></i> Kembali ke Daftar Mentee
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+</div>
+<div class="card-footer">
+    <a href="<?= base_url('/mentoring') ?>" class="btn btn-default">
+        <i class="fas fa-arrow-left"></i> Kembali ke Daftar Mentee
+    </a>
 </div>
 
 <!-- Modal untuk Buat Form Baru -->

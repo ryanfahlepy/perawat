@@ -37,7 +37,7 @@ class Ekinerja extends BaseController
         $builder = $this->kinerjaModel
             ->select('tabel_kinerja.*, tabel_user_level.nama_level')
             ->join('tabel_user_level', 'tabel_user_level.id = tabel_kinerja.level_user', 'left');
-            
+
         $dataKinerja = $builder->asArray()->findAll();
 
         // // Ambil daftar tahun unik dari tabel hasil_kinerja
@@ -76,7 +76,7 @@ class Ekinerja extends BaseController
         foreach ($dataKinerja as &$item) {
             $id = $item['id'];
             $periode = strtolower($item['periode_assesment']);
-        
+
             if ($periode == 'bulanan') {
                 $item['hasil_bulanan'] = [];
                 $item['status_bulanan'] = [];
@@ -103,9 +103,9 @@ class Ekinerja extends BaseController
                 }
             }
         }
-        
-        
-    
+
+
+
 
         $data = [
             'level_akses' => $level,
@@ -121,140 +121,152 @@ class Ekinerja extends BaseController
     }
 
     public function get_hasil()
-{
-    $kinerja_id = $this->request->getGet('kinerja_id');
-    $tahun = $this->request->getGet('tahun');
-    $bulan = $this->request->getGet('bulan');
+    {
+        $kinerja_id = $this->request->getGet('kinerja_id');
+        $tahun = $this->request->getGet('tahun');
+        $bulan = $this->request->getGet('bulan');
 
-    // Ambil target dari tabel_kinerja
-    $kinerjaModel = new \App\Models\KinerjaModel();
-    $target = $kinerjaModel->find($kinerja_id)['target'] ?? '';
+        // Ambil target dari tabel_kinerja
+        $kinerjaModel = new \App\Models\KinerjaModel();
+        $target = $kinerjaModel->find($kinerja_id)['target'] ?? '';
 
-    // Ambil hasil dari tabel_hasil_kinerja
-    $hasilModel = new \App\Models\HasilKinerjaModel();
-    $hasilData = $hasilModel
-        ->where('kinerja_id', $kinerja_id)
-        ->where('tahun', $tahun)
-        ->where('bulan', $bulan ?: null)
-        ->first();
-
-    $response = [
-        'target' => $target,
-        'hasil' => $hasilData['hasil'] ?? '',
-        'catatan' => $hasilData['catatan'] ?? '',
-        'berkas' => $hasilData['berkas'] ?? '',
-    ];
-
-    return $this->response->setJSON($response);
-}
-
-public function get_pica_by_kinerja()
-{
-    $kinerja_id = $this->request->getGet('kinerja_id');
-    $user_id = $this->request->getGet('user_id');
-    $hasil_id = $this->request->getGet('hasil_id');
-
-    $picaData = $this->picaModel
-        ->where('kinerja_id', $kinerja_id)
-        ->where('user_id', $user_id)
-        ->where('hasil_id', $hasil_id)
-        ->first();
-
-    $response = [
-        'problem_identification' => $picaData['problem_identification'] ?? '',
-        'corrective_action' => $picaData['corrective_action'] ?? '',
-        'due_date' => $picaData['due_date'] ?? '',
-    ];
-
-    return $this->response->setJSON($response);
-}
-
-
-
-public function update_hasil()
-{
-    $user_id = $this->session->get('user_id');
-    $kinerja_id = $this->request->getPost('kinerja_id');
-    $hasil = $this->request->getPost('hasil');
-    $tahun = $this->request->getPost('tahun') ?? date('Y');
-    $bulan = $this->request->getPost('bulan');
-    $nilai = null;
-    $berkasPath = null;
-
-    $target = $this->kinerjaModel->find($kinerja_id)['target'] ?? null;
-
-    if (is_numeric($hasil) && is_numeric($target) && $target != 0) {
-        $nilai = ($hasil / $target) * 100;
-    }
-
-    $berkas = $this->request->getFile('berkas');
-    if ($berkas && $berkas->isValid() && !$berkas->hasMoved()) {
-        $newName = $berkas->getRandomName();
-        $berkas->move('uploads/berkas_kinerja', $newName);
-        $berkasPath = 'uploads/berkas_kinerja/' . $newName;
-    }
-
-    $problemidentification = $this->request->getPost('problem_identification');
-    $correctiveaction = $this->request->getPost('corrective_action');
-    $due = $this->request->getPost('due_date');
-
-    $where = [
-        'user_id' => $user_id,
-        'kinerja_id' => $kinerja_id,
-        'tahun' => $tahun,
-    ];
-    if (!empty($bulan)) {
-        $where['bulan'] = $bulan;
-    }
-
-    $existing = $this->hasilKinerjaModel->where($where)->first();
-    $hasilId = null;
-
-    $dataToSave = [
-        'user_id' => $user_id,
-        'kinerja_id' => $kinerja_id,
-        'tahun' => $tahun,
-        'bulan' => $bulan ?: null,
-        'hasil' => $hasil,
-        'nilai' => $nilai,
-        'status' => 'diajukan',
-    ];
-
-    if ($berkasPath !== null) {
-        $dataToSave['berkas'] = $berkasPath;
-    }
-
-    if ($existing) {
-        $this->hasilKinerjaModel->update($existing['id'], $dataToSave);
-        $hasilId = $existing['id'];
-    } else {
-        $this->hasilKinerjaModel->insert($dataToSave);
-        $hasilId = $this->hasilKinerjaModel->getInsertID();
-    }
-
-    if ($nilai < 100) {
-        $dataPica = [
-            'user_id' => $user_id,
-            'kinerja_id' => $kinerja_id,
-            'hasil_id' => $hasilId,
-            'status' => 'diajukan',
-            'problem_identification' => $problemidentification,
-            'corrective_action' => $correctiveaction,
-            'due_date' => $due,
-        ];
-
-        $existingPica = $this->picaModel
+        // Ambil hasil dari tabel_hasil_kinerja
+        $hasilModel = new \App\Models\HasilKinerjaModel();
+        $hasilData = $hasilModel
             ->where('kinerja_id', $kinerja_id)
-            ->where('hasil_id', $hasilId)
+            ->where('tahun', $tahun)
+            ->where('bulan', $bulan ?: null)
             ->first();
 
-        if ($existingPica) {
-            $this->picaModel->update($existingPica['id'], $dataPica);
-        } else {
-            $this->picaModel->insert($dataPica);
-        }
+        $response = [
+            'target' => $target,
+            'hasil' => $hasilData['hasil'] ?? '',
+            'catatan' => $hasilData['catatan'] ?? '',
+            'berkas' => $hasilData['berkas'] ?? '',
+        ];
+
+        return $this->response->setJSON($response);
     }
 
-    return redirect()->to(base_url('ekinerja'))->with('success', 'Data hasil kinerja berhasil disimpan.');
-}
+    public function get_pica_by_kinerja()
+    {
+        $kinerja_id = $this->request->getGet('kinerja_id');
+        $user_id = $this->request->getGet('user_id');
+        $hasil_id = $this->request->getGet('hasil_id');
+
+        $picaData = $this->picaModel
+            ->where('kinerja_id', $kinerja_id)
+            ->where('user_id', $user_id)
+            ->where('hasil_id', $hasil_id)
+            ->first();
+
+        $response = [
+            'problem_identification' => $picaData['problem_identification'] ?? '',
+            'corrective_action' => $picaData['corrective_action'] ?? '',
+            'due_date' => $picaData['due_date'] ?? '',
+        ];
+
+        return $this->response->setJSON($response);
+    }
+
+
+
+    public function update_hasil()
+    {
+        $user_id = $this->session->get('user_id');
+        $kinerja_id = $this->request->getPost('kinerja_id');
+        $hasil = $this->request->getPost('hasil');
+        $tahun = $this->request->getPost('tahun') ?? date('Y');
+        $bulan = $this->request->getPost('bulan');
+        $nilai = null;
+        $berkasPath = null;
+
+        $target = $this->kinerjaModel->find($kinerja_id)['target'] ?? null;
+
+        if (is_numeric($hasil) && is_numeric($target) && $target != 0) {
+            $nilai = ($hasil / $target) * 100;
+        } else {
+            $nilai = 0; // ← default value supaya tidak error di database
+        }
+
+
+        $berkas = $this->request->getFile('berkas');
+        if ($berkas && $berkas->isValid() && !$berkas->hasMoved()) {
+            $newName = $berkas->getRandomName();
+            $berkas->move('uploads/berkas_kinerja', $newName);
+            $berkasPath = 'uploads/berkas_kinerja/' . $newName;
+        }
+
+        $problemidentification = $this->request->getPost('problem_identification');
+        $correctiveaction = $this->request->getPost('corrective_action');
+        $due = $this->request->getPost('due_date');
+
+        $where = [
+            'user_id' => $user_id,
+            'kinerja_id' => $kinerja_id,
+            'tahun' => $tahun,
+        ];
+        if (!empty($bulan)) {
+            $where['bulan'] = $bulan;
+        }
+
+        $existing = $this->hasilKinerjaModel->where($where)->first();
+        $hasilId = null;
+
+        $dataToSave = [
+            'user_id' => $user_id,
+            'kinerja_id' => $kinerja_id,
+            'tahun' => $tahun,
+            'bulan' => $bulan ?: null,
+            'hasil' => $hasil,
+            'nilai' => $nilai,
+            'status' => 'diajukan',
+        ];
+
+        if ($berkasPath !== null) {
+            $dataToSave['berkas'] = $berkasPath;
+        }
+
+        if ($existing) {
+            $this->hasilKinerjaModel->update($existing['id'], $dataToSave);
+            $hasilId = $existing['id'];
+        } else {
+            $this->hasilKinerjaModel->insert($dataToSave);
+            $hasilId = $this->hasilKinerjaModel->getInsertID();
+        }
+
+        if ($nilai < 100) {
+            $dataPica = [
+                'user_id' => $user_id,
+                'kinerja_id' => $kinerja_id,
+                'hasil_id' => $hasilId,
+                'status' => 'diajukan',
+                'problem_identification' => $problemidentification,
+                'corrective_action' => $correctiveaction,
+                'due_date' => $due,
+            ];
+
+            $existingPica = $this->picaModel
+                ->where('kinerja_id', $kinerja_id)
+                ->where('hasil_id', $hasilId)
+                ->first();
+
+            if ($existingPica) {
+                $this->picaModel->update($existingPica['id'], $dataPica);
+            } else {
+                $this->picaModel->insert($dataPica);
+            }
+        }
+        if ($this->request->isAJAX()) {
+            return $this->response->setJSON([
+                'status' => 'ok',
+                'message' => 'Data berhasil disimpan.'
+            ]);
+        } else {
+            // Untuk akses biasa dari form non-AJAX (jaga-jaga)
+            return redirect()->to(base_url('ekinerja'))->with('success', 'Data hasil kinerja berhasil disimpan.');
+        }
+
+
+    }
 }

@@ -17,7 +17,8 @@ $level = $session->level;
 
 <div class="card-body">
     <div class="mb-3">
-        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambahKinerja">+ Tambah Kinerja</button>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambahKinerja">+ Tambah
+            Kinerja</button>
     </div>
     <table border="1" cellpadding="8" cellspacing="0" width="100%">
         <thead>
@@ -83,7 +84,8 @@ $level = $session->level;
                                 <i class="fas fa-eye text-white"></i>
                             </a>
                             <?php if ($level_akses == 1): ?>
-                                <button type="button" class="btn btn-sm btn-danger btn-hapus" data-id="<?= $item['id'] ?>" title="Hapus Data">
+                                <button type="button" class="btn btn-sm btn-danger btn-hapus" data-id="<?= $item['id'] ?>"
+                                    title="Hapus Data">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
 
@@ -98,78 +100,82 @@ $level = $session->level;
 
 
 <!-- Modal Tambah Kinerja -->
-<div class="modal fade" id="modalTambahKinerja" tabindex="-1" aria-labelledby="modalTambahKinerjaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <form id="formTambahKinerja" method="post">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalTambahKinerjaLabel">Tambah Kinerja</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+<div class="modal fade" id="modalTambahKinerja" tabindex="-1" aria-labelledby="modalTambahKinerjaLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form id="formTambahKinerja" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTambahKinerjaLabel">Tambah Kinerja</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Indikator</label>
+                        <input type="text" name="indikator" class="form-control" placeholder="Indikator" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Kode KPI</label>
+                        <input type="text" name="kode_kpi" class="form-control" placeholder="Kode KPI" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Formula</label>
+                        <input type="text" name="formula" class="form-control" placeholder="Formula" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Sumber Data</label>
+                        <input type="text" name="sumber_data" class="form-control" placeholder="Sumber Data" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Periode Assessment</label>
+                        <select name="periode_assesment" class="form-select" required>
+                            <option value="">-- Pilih Periode --</option>
+                            <option value="Bulanan">Bulanan</option>
+                            <option value="Tahunan">Tahunan</option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Bobot (%)</label>
+                        <div class="input-group">
+                            <input type="number" step="0.01" min="0" max="100" name="bobot" class="form-control"
+                                placeholder="Contoh: 25" required>
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Target (Desimal)</label>
+                        <input type="number" step="0.01" name="target" class="form-control" placeholder="Contoh: 0.75"
+                            required>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Deskripsi Target</label>
+                        <input type="text" name="deskripsi_target" class="form-control" placeholder="Deskripsi Target"
+                            required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                </div>
+            </form>
         </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Indikator</label>
-            <input type="text" name="indikator" class="form-control" placeholder="Indikator" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Kode KPI</label>
-            <input type="text" name="kode_kpi" class="form-control" placeholder="Kode KPI" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Formula</label>
-            <input type="text" name="formula" class="form-control" placeholder="Formula" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Sumber Data</label>
-            <input type="text" name="sumber_data" class="form-control" placeholder="Sumber Data" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Periode Assessment</label>
-            <select name="periode_assesment" class="form-select" required>
-                <option value="">-- Pilih Periode --</option>
-                <option value="Bulanan">Bulanan</option>
-                <option value="Tahunan">Tahunan</option>
-            </select>
-            </div>
-
-
-            <div class="mb-3">
-            <label class="form-label">Bobot (%)</label>
-            <div class="input-group">
-                <input type="number" step="0.01" min="0" max="100" name="bobot" class="form-control" placeholder="Contoh: 25" required>
-                <span class="input-group-text">%</span>
-            </div>
-            </div>
-
-
-            <div class="mb-3">
-            <label class="form-label">Target (Desimal)</label>
-            <input type="number" step="0.01" name="target" class="form-control" placeholder="Contoh: 0.75" required>
-            </div>
-
-
-          <div class="mb-3">
-            <label class="form-label">Deskripsi Target</label>
-            <input type="text" name="deskripsi_target" class="form-control" placeholder="Deskripsi Target" required>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Simpan</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
 
 
 <script>
-    
+
     // Inline edit save via blur
     document.querySelectorAll('.editable').forEach(function (cell) {
         cell.addEventListener('blur', function () {
@@ -235,51 +241,51 @@ $level = $session->level;
     });
 </script>
 <script>
-document.querySelectorAll('.btn-hapus').forEach(function(button) {
-    button.addEventListener('click', function () {
-        const id = this.getAttribute('data-id');
+    document.querySelectorAll('.btn-hapus').forEach(function (button) {
+        button.addEventListener('click', function () {
+            const id = this.getAttribute('data-id');
 
-        Swal.fire({
-            title: 'Yakin ingin menghapus?',
-            text: 'Data yang dihapus tidak dapat dikembalikan.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Ya, hapus!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                fetch(`<?= base_url('admin/manekinerja/delete/') ?>${id}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: '_method=DELETE'
-                })
+            Swal.fire({
+                title: 'Yakin ingin menghapus?',
+                text: 'Data yang dihapus tidak dapat dikembalikan.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`<?= base_url('admin/manekinerja/delete/') ?>${id}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: '_method=DELETE'
+                    })
 
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire('Terhapus!', 'Data berhasil dihapus.', 'success').then(() => {
-                            location.reload();
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! Status: ${response.status}`);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire('Terhapus!', 'Data berhasil dihapus.', 'success').then(() => {
+                                    location.reload();
+                                });
+                            } else {
+                                Swal.fire('Gagal', data.message || 'Gagal menghapus data.', 'error');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Fetch Error:', error);
+                            Swal.fire('Error', 'Terjadi kesalahan saat menghapus data.', 'error');
                         });
-                    } else {
-                        Swal.fire('Gagal', data.message || 'Gagal menghapus data.', 'error');
-                    }
-                })
-                .catch(error => {
-                    console.error('Fetch Error:', error);
-                    Swal.fire('Error', 'Terjadi kesalahan saat menghapus data.', 'error');
-                });
-            }
+                }
+            });
         });
     });
-});
 </script>
 
 
@@ -290,38 +296,38 @@ document.querySelectorAll('.btn-hapus').forEach(function(button) {
     }
 
     document.getElementById('formTambahKinerja').addEventListener('submit', function (e) {
-    e.preventDefault();
+        e.preventDefault();
 
-    const formData = new FormData(this);
+        const formData = new FormData(this);
 
-    // Jika bobot masih dalam format string "%", hilangkan %
-    let bobot = formData.get('bobot');
-    if (typeof bobot === 'string' && bobot.includes('%')) {
-        formData.set('bobot', bobot.replace('%', '').trim());
-    }
-
-    fetch("<?= base_url('admin/manekinerja/create') ?>", {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest'
+        // Jika bobot masih dalam format string "%", hilangkan %
+        let bobot = formData.get('bobot');
+        if (typeof bobot === 'string' && bobot.includes('%')) {
+            formData.set('bobot', bobot.replace('%', '').trim());
         }
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            Swal.fire('Sukses', 'Data berhasil ditambahkan', 'success').then(() => {
-                location.reload();
+
+        fetch("<?= base_url('admin/manekinerja/create') ?>", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Sukses', 'Data berhasil ditambahkan', 'success').then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire('Gagal', data.message || 'Gagal menambahkan data', 'error');
+                }
+            })
+            .catch(err => {
+                console.error('AJAX Error:', err);
+                Swal.fire('Error', 'Terjadi kesalahan jaringan', 'error');
             });
-        } else {
-            Swal.fire('Gagal', data.message || 'Gagal menambahkan data', 'error');
-        }
-    })
-    .catch(err => {
-        console.error('AJAX Error:', err);
-        Swal.fire('Error', 'Terjadi kesalahan jaringan', 'error');
     });
-});
 
 </script>
 
