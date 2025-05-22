@@ -243,7 +243,7 @@ class Kinerja extends BaseController
             'id' => $hasilData['id'] ?? '',
             'target' => $target,
             'hasil' => $hasilData['hasil'] ?? '',
-            'catatan' => $hasilData['catatan'] ?? '',
+            'catatan' => $hasilData['catatan_karu'] ?? '',
             'berkas' => $hasilData['berkas'] ?? '',
         ];
 
@@ -267,6 +267,7 @@ class Kinerja extends BaseController
             'problem_identification' => $picaData['problem_identification'] ?? '',
             'corrective_action' => $picaData['corrective_action'] ?? '',
             'due_date' => $picaData['due_date'] ?? '',
+            'catatan_karu' => $picaData['catatan_karu'] ?? '',
         ];
 
         return $this->response->setJSON($response);
@@ -379,18 +380,18 @@ class Kinerja extends BaseController
 
             $hasil_id = $data->hasil_id ?? null;
             $status = $data->status ?? null;
+            $catatanKaru = $data->catatan_karu ?? '';
+            $catatanKaruPica = $data->catatan_karu_pica ?? '';
 
             if (!$hasil_id || !$status) {
                 return $this->response->setJSON(['success' => false, 'message' => 'Data tidak lengkap']);
             }
 
+            // Update tabel_hasil_kinerja
+            $successKpi = $this->hasilKinerjaModel->update_status_by_hasil_id($hasil_id, $status, $catatanKaru);
 
-
-            // Update tabel_hasil_kinerja (berdasarkan hasil_id)
-            $successKpi = $this->hasilKinerjaModel->update_status_by_hasil_id($hasil_id, $status);
-
-            // Update tabel_pica_kinerja (berdasarkan hasil_id)
-            $successPica = $this->picaModel->update_status_pica($hasil_id, $status);
+            // Update tabel_pica_kinerja
+            $successPica = $this->picaModel->update_status_pica($hasil_id, $status, $catatanKaruPica);
 
             if ($successKpi && $successPica) {
                 return $this->response->setJSON(['success' => true]);
@@ -401,6 +402,7 @@ class Kinerja extends BaseController
 
         return $this->response->setStatusCode(403, 'Forbidden');
     }
+
 
 
 }

@@ -200,7 +200,7 @@
                                     <!-- Right -->
                                     <div class="col-md-4">
                                         <label class="form-label fw-semibold">Catatan Karu</label>
-                                        <textarea id="inputCatatan" class="form-control bg-light" <?= ($level_akses != 2) ? '' : 'readonly' ?> rows="13"></textarea>
+                                        <textarea id="inputCatatan" disabled class="form-control bg-light" rows="13"></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -249,7 +249,7 @@
                                     <!-- Right -->
                                     <div class="col-md-4">
                                         <label class="form-label fw-semibold">Catatan Karu</label>
-                                        <textarea id="catatanKaruPica" class="form-control bg-light" <?= ($level_akses != 2) ? '' : 'readonly' ?>></textarea>
+                                        <textarea disabled id="catatanKaruPica" class="form-control bg-light" rows="13"></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -320,77 +320,40 @@
 
         document.getElementById('statusBadge').textContent = status || 'Belum Dinilai';
 
-        // Tentukan apakah form harus disabled
-        const isDisabled = (status.toLowerCase() === 'disetujui');
-        const btnSimpan = document.getElementById('btnSimpan');
-
-        if (isDisabled) {
-            btnSimpan.style.display = 'none'; // sembunyikan tombol simpan
-        } else {
-            btnSimpan.style.display = 'inline-block'; // tampilkan tombol simpan
-        }
-
-
         document.getElementById('inputKinerjaId').value = kinerjaId;
         document.getElementById('inputBulan').value = bulan;
+        document.getElementById('inputHasil').value = '';
+        document.getElementById('inputTarget').value = '';
+        document.getElementById('inputNilai').value = '';
+        document.getElementById('inputPoint').value = '';
+        document.getElementById('inputCatatan').value = '';
 
-        // Input KPI
         const inputHasil = document.getElementById('inputHasil');
-        const inputBerkas = document.getElementById('inputBerkas');
         const inputTarget = document.getElementById('inputTarget');
         const inputNilai = document.getElementById('inputNilai');
         const inputPoint = document.getElementById('inputPoint');
+        const hasilIdField = document.getElementById('hasil_id');
         const inputCatatan = document.getElementById('inputCatatan');
 
-        // Set default values
-        inputHasil.value = '';
-        inputTarget.value = '';
-        inputNilai.value = '';
-        inputPoint.value = '';
-        inputCatatan.value = '';
-
-        // Set atribut disabled/readonly sesuai status
-        inputHasil.readOnly = isDisabled;
-        inputBerkas.disabled = isDisabled;
-        // inputTarget, inputNilai, inputPoint memang readonly dari awal
-        inputCatatan.readOnly = !isDisabled ? false : true;
-
-        // Hidden field for hasil_id
-        const hasilIdField = document.getElementById('hasil_id');
         const userId = document.getElementById('user_id').value;
+        console.log(userId);
 
-        // Input PICA
-        const problemIdentification = document.getElementById('problem_identification');
-        const correctiveAction = document.getElementById('corrective_action');
-        const dueDate = document.getElementById('due_date');
-        const pic = document.getElementById('pic');
-        const catatanKaruPica = document.getElementById('catatanKaruPica');
-
-        // Set atribut disabled/readonly untuk PICA
-        problemIdentification.readOnly = isDisabled;
-        correctiveAction.readOnly = isDisabled;
-        dueDate.readOnly = isDisabled;
-        // pic readonly sudah di HTML, biarkan saja
-        catatanKaruPica.readOnly = !isDisabled ? false : true;
-
-        // Fetch data KPI
+        // Ambil data KPI terlebih dahulu
         fetch(`<?= base_url('kinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`)
             .then(res => res.json())
             .then(data => {
                 const targetValue = parseFloat(data.target) || 0;
                 inputTarget.value = targetValue;
 
-                if (data.hasil !== null) inputHasil.value = data.hasil;
-                if (data.catatan !== null) inputCatatan.value = data.catatan;
 
+                inputHasil.value = data.hasil || '';
+                inputCatatan.value = data.catatan || '';
                 // Simpan hasil_id dari server
                 const hasilId = data.id || '';
                 hasilIdField.value = hasilId;
 
                 // Perhitungan otomatis
                 inputHasil.addEventListener('input', () => {
-                    if (isDisabled) return; // Jika disabled, jangan hitung
-
                     const hasil = parseFloat(inputHasil.value);
                     let nilai = 0, point = 0;
 
@@ -412,14 +375,21 @@
 
                 inputHasil.dispatchEvent(new Event('input'));
 
-                // Fetch PICA data jika ada hasilId
+                // Hanya fetch PICA jika hasil_id tersedia
                 if (hasilId) {
+                    console.log('DEBUG get_pica_by_kinerja =>', {
+                        kinerja_id: kinerjaId,
+                        user_id: userId,
+                        hasil_id: hasilId
+                    });
+
                     fetch(`<?= base_url('kinerja/get_pica_by_kinerja') ?>?kinerja_id=${kinerjaId}&user_id=${userId}&hasil_id=${hasilId}`)
                         .then(res => res.json())
                         .then(pica => {
-                            problemIdentification.value = pica.problem_identification || '';
-                            correctiveAction.value = pica.corrective_action || '';
-                            dueDate.value = pica.due_date || '';
+                            document.getElementById('problem_identification').value = pica.problem_identification || '';
+                            document.getElementById('corrective_action').value = pica.corrective_action || '';
+                            document.getElementById('due_date').value = pica.due_date || '';
+                            document.getElementById('catatanKaruPica').value = pica.catatan_karu || '';
                         })
                         .catch(err => console.error('Gagal mengambil data PICA:', err));
                 } else {
@@ -431,8 +401,6 @@
                 alert('Gagal mengambil data KPI.');
             });
     }
-
-
     // Fungsi untuk aktif/nonaktifkan form PICA berdasarkan nilai
     function handlePicaActivation(nilai) {
         const picaTab = document.getElementById('pica-tab');

@@ -199,8 +199,7 @@
                                     <!-- Right -->
                                     <div class="col-md-4">
                                         <label class="form-label fw-semibold">Catatan Karu</label>
-                                        <textarea id="inputCatatan" class="form-control bg-light" readonly
-                                            rows="13"></textarea>
+                                        <textarea id="inputCatatan" class="form-control" rows="13"></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -247,8 +246,7 @@
                                     <!-- Right -->
                                     <div class="col-md-4">
                                         <label class="form-label fw-semibold">Catatan Karu</label>
-                                        <textarea id="catatanKaruPica" class="form-control bg-light" readonly
-                                            rows="13"></textarea>
+                                        <textarea id="catatanKaruPica" class="form-control" rows="13"></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -339,13 +337,21 @@
     }
 
     function updateStatus(hasil_id, status) {
+        let catatanKaru = document.getElementById('inputCatatan').value;
+        let catatanKaruPica = document.getElementById('catatanKaruPica').value;
+
         fetch('<?= base_url('kinerja/update_status') ?>', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
             },
-            body: JSON.stringify({ hasil_id: hasil_id, status: status })
+            body: JSON.stringify({
+                hasil_id: hasil_id,
+                status: status,
+                catatan_karu: catatanKaru,
+                catatan_karu_pica: catatanKaruPica
+            })
         })
             .then(response => response.json())
             .then(data => {
@@ -357,8 +363,7 @@
                         timer: 4000,
                         showConfirmButton: false
                     });
-                    // Contoh: tutup modal, reload page, atau update UI
-                    $('#modalForm').modal('hide'); // jQuery example kalau modal bootstrap
+                    $('#modalForm').modal('hide');
                     location.reload();
                 } else {
                     Swal.fire({
@@ -377,7 +382,6 @@
                 });
             });
     }
-
 
 </script>
 
@@ -404,6 +408,7 @@
         const inputNilai = document.getElementById('inputNilai');
         const inputPoint = document.getElementById('inputPoint');
         const hasilIdField = document.getElementById('hasil_id');
+        const inputCatatan = document.getElementById('inputCatatan');
 
         const userId = document.getElementById('user_id').value;
         console.log(userId);
@@ -415,9 +420,9 @@
                 const targetValue = parseFloat(data.target) || 0;
                 inputTarget.value = targetValue;
 
-                if (data.hasil !== null) inputHasil.value = data.hasil;
-                if (data.catatan !== null) document.getElementById('inputCatatan').value = data.catatan;
 
+                inputHasil.value = data.hasil || '';
+                inputCatatan.value = data.catatan || '';
                 // Simpan hasil_id dari server
                 const hasilId = data.id || '';
                 hasilIdField.value = hasilId;
@@ -459,6 +464,7 @@
                             document.getElementById('problem_identification').value = pica.problem_identification || '';
                             document.getElementById('corrective_action').value = pica.corrective_action || '';
                             document.getElementById('due_date').value = pica.due_date || '';
+                            document.getElementById('catatanKaruPica').value = pica.catatan_karu || '';
                         })
                         .catch(err => console.error('Gagal mengambil data PICA:', err));
                 } else {
@@ -487,70 +493,8 @@
     }
 
     // Fungsi submit form gabungan KPI + PICA
-    function submitCombinedForm() {
-        const hasil = parseFloat(document.getElementById('inputHasil').value);
-        const kpiForm = document.getElementById('formAktual');
-        const picaForm = document.getElementById('formPica');
 
-        if (isNaN(hasil)) {
-            alert('Nilai KPI tidak valid!');
-            return;
-        }
 
-        if (hasil < 100) {
-            const formData = new FormData(kpiForm);
-
-            // Tambahkan data PICA
-            formData.append('problem_identification', document.getElementById('problem_identification').value);
-            formData.append('corrective_action', document.getElementById('corrective_action').value);
-            formData.append('due_date', document.getElementById('due_date').value);
-            formData.append('pic', document.getElementById('pic').value);
-
-            // Submit ke endpoint gabungan
-            fetch("<?= base_url('kinerja/update_hasil') ?>", {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'  // <--- Tambahkan ini
-                }
-            })
-                .then(res => res.text())
-                .then(text => {
-                    try {
-                        const data = JSON.parse(text);
-                        if (data.status === 'ok') {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                                text: data.message,
-                                timer: 2000,
-                                showConfirmButton: false
-                            }).then(() => {
-                                location.reload();
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Gagal',
-                                text: data.message || 'Terjadi kesalahan saat menyimpan data',
-                            });
-                        }
-
-                    } catch (e) {
-                        console.error('Respon bukan JSON:\n', text);
-                        alert('Terjadi kesalahan: Respon server tidak valid');
-                    }
-                })
-                .catch(err => {
-                    console.error('Fetch gagal:', err);
-                    alert('Terjadi kesalahan saat mengirim data');
-                });
-
-        } else {
-            // Jika hasil >= 100 hanya kirim KPI
-            kpiForm.submit();
-        }
-    }
 </script>
 
 

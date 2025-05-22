@@ -12,10 +12,16 @@ class HasilKinerjaModel extends Model
     protected $useTimestamps = false;
 
 
-    public function update_status_by_hasil_id($hasil_id, $status)
+    public function update_status_by_hasil_id($hasil_id, $status, $catatanKaru)
     {
-        return $this->where('id', $hasil_id)->set(['status' => $status])->update();
+        return $this->where('id', $hasil_id)
+            ->set([
+                'status' => $status,
+                'catatan_karu' => $catatanKaru
+            ])
+            ->update();
     }
+
 
 
 }
