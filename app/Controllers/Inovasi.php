@@ -9,7 +9,7 @@ Use App\Models\VoteModel;
 Use App\Models\KomentarModel;
 Use App\Models\PersetujuanInovasiModel;
 
-class EInovasi extends BaseController
+class Inovasi extends BaseController
 {
 
     protected $session;
@@ -91,7 +91,7 @@ class EInovasi extends BaseController
             'level_user' => $levelUser,
         ];
 
-        return view('layout/einovasi', $data);
+        return view('layout/inovasi', $data);
     }
 
     public function simpan()
@@ -128,7 +128,7 @@ class EInovasi extends BaseController
         ]);
         
     
-        return redirect()->to('/einovasi')->with('success', 'Saran berhasil diajukan!');
+        return redirect()->to('/inovasi')->with('success', 'Saran berhasil diajukan!');
     }
     
 
@@ -304,10 +304,10 @@ public function voteAjax()
             // Hapus data inovasi terakhir
             $inovasiModel->delete($id);
 
-            return redirect()->to(site_url('EInovasi/index'))->with('success', 'Inovasi dan data terkait berhasil dihapus.');
+            return redirect()->to(site_url('Inovasi/index'))->with('success', 'Inovasi dan data terkait berhasil dihapus.');
         }
 
-        return redirect()->to(site_url('EInovasi/index'))->with('error', 'Gagal menghapus inovasi.');
+        return redirect()->to(site_url('Inovasi/index'))->with('error', 'Gagal menghapus inovasi.');
     }
 
     

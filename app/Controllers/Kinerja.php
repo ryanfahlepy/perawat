@@ -8,7 +8,7 @@ use App\Models\User_levelModel;
 use App\Models\PicaKinerjaModel;
 use App\Models\UserModel;
 
-class Ekinerja extends BaseController
+class Kinerja extends BaseController
 {
     protected $session;
     protected $kinerjaModel;
@@ -125,7 +125,7 @@ class Ekinerja extends BaseController
             'tahun_terpilih' => $tahun,
         ];
 
-        return view('layout/ekinerja', $data);
+        return view('layout/kinerja', $data);
     }
 
     public function lihat_kinerja($user_id)
@@ -218,7 +218,7 @@ class Ekinerja extends BaseController
             'tahun_terpilih' => $tahun,
         ];
 
-        return view('layout/ekinerja_karu', $data);
+        return view('layout/kinerja_karu', $data);
     }
 
     public function get_hasil()
@@ -367,7 +367,7 @@ class Ekinerja extends BaseController
             ]);
         } else {
             // Untuk akses biasa dari form non-AJAX (jaga-jaga)
-            return redirect()->to(base_url('ekinerja'))->with('success', 'Data hasil kinerja berhasil disimpan.');
+            return redirect()->to(base_url('kinerja'))->with('success', 'Data hasil kinerja berhasil disimpan.');
         }
 
 
@@ -384,7 +384,7 @@ class Ekinerja extends BaseController
                 return $this->response->setJSON(['success' => false, 'message' => 'Data tidak lengkap']);
             }
 
-          
+
 
             // Update tabel_hasil_kinerja (berdasarkan hasil_id)
             $successKpi = $this->hasilKinerjaModel->update_status_by_hasil_id($hasil_id, $status);

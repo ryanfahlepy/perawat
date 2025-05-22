@@ -87,12 +87,12 @@ $level = $session->level;
                         <td><?= esc($item['hasil_aktual']) ?></td>
 
                         <td class="text-center">
-                            <a href="<?= base_url('admin/manekinerja/lihat_hasil/' . $item['id']) ?>" class="btn btn-sm btn-info" title="Lihat Hasil">
+                            <a href="<?= base_url('admin/mankinerja/lihat_hasil/' . $item['id']) ?>" class="btn btn-sm btn-info" title="Lihat Hasil">
     <i class="fas fa-eye text-white"></i>
 </a>
 
                             <?php if ($level_akses == 1): ?>
-                                <!-- <a href="<?= base_url('admin/manekinerja/delete/' . $item['id']) ?>" class="btn btn-sm btn-danger"
+                                <!-- <a href="<?= base_url('admin/mankinerja/delete/' . $item['id']) ?>" class="btn btn-sm btn-danger"
                                     onclick="return confirm('Yakin ingin menghapus data ini?')">
                                     <i class="fas fa-trash-alt"></i>
                                 </a> -->
@@ -126,7 +126,7 @@ $level = $session->level;
             formData.append('field', field);
             formData.append('value', value);
 
-            fetch("<?= base_url('admin/manekinerja/ajax_update_field') ?>", {
+            fetch("<?= base_url('admin/mankinerja/ajax_update_field') ?>", {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -158,7 +158,7 @@ $level = $session->level;
             formData.append('level_id', level);
             formData.append('checked', checked ? '1' : '0');
 
-            fetch("<?= base_url('admin/manekinerja/ajax_update_level') ?>", {
+            fetch("<?= base_url('admin/mankinerja/ajax_update_level') ?>", {
                 method: 'POST',
                 body: formData,
                 headers: {

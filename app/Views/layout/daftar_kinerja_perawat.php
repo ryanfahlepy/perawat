@@ -32,7 +32,7 @@ $session = \Config\Services::session();
                         <td><?= esc($user->nama); ?></td>
                         <td><?= esc($user->nama_level); ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url('/ekinerja/lihat_kinerja/' . $user->id) ?>" class="btn btn-sm btn-info"
+                            <a href="<?= base_url('/kinerja/lihat_kinerja/' . $user->id) ?>" class="btn btn-sm btn-info"
                                 title="Lihat Pelatihan Perawat">
                                 <i class="text-white fas fa-info-circle"></i>
                             </a>

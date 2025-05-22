@@ -28,7 +28,7 @@
 </div>
 
 <div class="card-body">
-    <form method="GET" action="<?= base_url('ekinerja') ?>" class="mb-4">
+    <form method="GET" action="<?= base_url('kinerja') ?>" class="mb-4">
         <div class="filter-bar">
             <label for="tahun"><strong>Filter Tahun:</strong></label>
             <select name="tahun" id="tahun" onchange="this.form.submit()">
@@ -116,7 +116,7 @@
                                 <?php endif; ?>
                             </td>
                             <td class="text-center">
-                                <a href="<?= base_url('admin/manekinerja/lihat_hasil/' . $item['id']) ?>"
+                                <a href="<?= base_url('admin/mankinerja/lihat_hasil/' . $item['id']) ?>"
                                     class="btn btn-sm btn-info" title="Lihat Hasil">
                                     <i class="fas fa-eye text-white"></i>
                                 </a>
@@ -158,7 +158,7 @@
                         <!-- KPI Form -->
                         <div class="tab-pane fade show active" id="kpi-tab-pane" role="tabpanel">
                             <form id="formAktual" method="POST" enctype="multipart/form-data"
-                                action="<?= base_url('ekinerja/update_hasil') ?>">
+                                action="<?= base_url('kinerja/update_hasil') ?>">
                                 <div class="row">
                                     <!-- Left -->
                                     <div class="col-md-8">
@@ -339,7 +339,7 @@
     }
 
     function updateStatus(hasil_id, status) {
-        fetch('<?= base_url('ekinerja/update_status') ?>', {
+        fetch('<?= base_url('kinerja/update_status') ?>', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -409,7 +409,7 @@
         console.log(userId);
 
         // Ambil data KPI terlebih dahulu
-        fetch(`<?= base_url('ekinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`)
+        fetch(`<?= base_url('kinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`)
             .then(res => res.json())
             .then(data => {
                 const targetValue = parseFloat(data.target) || 0;
@@ -453,7 +453,7 @@
                         hasil_id: hasilId
                     });
 
-                    fetch(`<?= base_url('ekinerja/get_pica_by_kinerja') ?>?kinerja_id=${kinerjaId}&user_id=${userId}&hasil_id=${hasilId}`)
+                    fetch(`<?= base_url('kinerja/get_pica_by_kinerja') ?>?kinerja_id=${kinerjaId}&user_id=${userId}&hasil_id=${hasilId}`)
                         .then(res => res.json())
                         .then(pica => {
                             document.getElementById('problem_identification').value = pica.problem_identification || '';
@@ -507,7 +507,7 @@
             formData.append('pic', document.getElementById('pic').value);
 
             // Submit ke endpoint gabungan
-            fetch("<?= base_url('ekinerja/update_hasil') ?>", {
+            fetch("<?= base_url('kinerja/update_hasil') ?>", {
                 method: 'POST',
                 body: formData,
                 headers: {

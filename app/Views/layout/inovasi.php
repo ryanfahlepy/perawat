@@ -250,7 +250,7 @@ function timeAgo($datetime) {
         <!-- FORM AJUKAN INOVASI -->
         <div class="mb-5">
             <h4 class="mb-3">Ajukan Saran Baru</h4>
-            <form action="<?= site_url('EInovasi/simpan') ?>" method="post" class="p-3 border rounded shadow-sm" enctype="multipart/form-data">
+            <form action="<?= site_url('Inovasi/simpan') ?>" method="post" class="p-3 border rounded shadow-sm" enctype="multipart/form-data">
                 <?= csrf_field() ?>
                 <div class="mb-3">
                     <label for="judul" class="form-label">Judul Inovasi</label>
@@ -280,19 +280,19 @@ function timeAgo($datetime) {
             <h4 class="mb-0">Daftar Saran Perawat</h4>
             <div>
                 <div class="filter-tabs">
-                    <a href="<?= site_url('EInovasi/index') ?>"
+                    <a href="<?= site_url('Inovasi/index') ?>"
                     class="<?= !isset($_GET['status']) ? 'active' : '' ?>">
                         <i class="bi bi-list"></i> Semua
                     </a>
-                    <a href="<?= site_url('EInovasi/index?status=diajukan') ?>"
+                    <a href="<?= site_url('Inovasi/index?status=diajukan') ?>"
                     class="<?= ($_GET['status'] ?? '') === 'diajukan' ? 'active' : '' ?>">
                         <i class="bi bi-hourglass-split"></i> Diajukan
                     </a>
-                    <a href="<?= site_url('EInovasi/index?status=disetujui') ?>"
+                    <a href="<?= site_url('Inovasi/index?status=disetujui') ?>"
                     class="<?= ($_GET['status'] ?? '') === 'disetujui' ? 'active' : '' ?>">
                         <i class="bi bi-check-circle"></i> Disetujui
                     </a>
-                    <a href="<?= site_url('EInovasi/index?status=ditolak') ?>"
+                    <a href="<?= site_url('Inovasi/index?status=ditolak') ?>"
                     class="<?= ($_GET['status'] ?? '') === 'ditolak' ? 'active' : '' ?>">
                         <i class="bi bi-x-circle"></i> Ditolak
                     </a>
@@ -384,7 +384,7 @@ function timeAgo($datetime) {
                                     </div>
 
                                     <!-- Form Tambah Komentar -->
-                                    <form action="<?= site_url('EInovasi/kirimkomentar') ?>" method="post" class="mt-2">
+                                    <form action="<?= site_url('Inovasi/kirimkomentar') ?>" method="post" class="mt-2">
                                         <input type="hidden" name="inovasi_id" value="<?= esc($item['id']) ?>">
                                         <div class="input-group">
                                             <input type="text" name="komentar" class="form-control" placeholder="Tulis komentar..." required>
@@ -449,7 +449,7 @@ function timeAgo($datetime) {
             <!-- Modal Persetujuan Karu -->
             <div class="modal fade" id="modalPersetujuan<?= $item['id'] ?>" tabindex="-1" aria-labelledby="modalPersetujuanLabel<?= $item['id'] ?>" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form action="<?= site_url('EInovasi/persetujuan') ?>" method="post" class="modal-content">
+                    <form action="<?= site_url('Inovasi/persetujuan') ?>" method="post" class="modal-content">
                         <?= csrf_field() ?>
                         <input type="hidden" name="inovasi_id" value="<?= $item['id'] ?>">
                         <input type="hidden" name="aksi" id="aksiInput<?= $item['id'] ?>">
@@ -473,7 +473,7 @@ function timeAgo($datetime) {
             <!-- Modal Hapus Inovasi -->
             <div class="modal fade" id="modalHapus<?= $item['id'] ?>" tabindex="-1" aria-labelledby="modalHapusLabel<?= $item['id'] ?>" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form action="<?= site_url('EInovasi/hapus') ?>" method="post" class="modal-content">
+                    <form action="<?= site_url('Inovasi/hapus') ?>" method="post" class="modal-content">
                         <?= csrf_field() ?>
                         <input type="hidden" name="inovasi_id" value="<?= $item['id'] ?>">
                         <div class="modal-header">
@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const inovasiId = this.getAttribute('data-id');
             const voteType = this.getAttribute('data-vote');
 
-            fetch("<?= site_url('EInovasi/voteAjax') ?>", {
+            fetch("<?= site_url('Inovasi/voteAjax') ?>", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

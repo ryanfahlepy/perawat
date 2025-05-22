@@ -16,7 +16,7 @@ use App\Models\Pk1HasilModel;
 use App\Models\Pk2HasilModel;
 use App\Models\Pk3HasilModel;
 
-class Manekinerja extends BaseController
+class Mankinerja extends BaseController
 {
     public function __construct()
     {
@@ -52,7 +52,7 @@ class Manekinerja extends BaseController
             'user_levels' => $this->user_levelModel->findAll(),
         ];
 
-        return view('admin/kelolaekinerja', $data);
+        return view('admin/kelolakinerja', $data);
     }
 
     public function ajax_update_level()
@@ -183,7 +183,7 @@ class Manekinerja extends BaseController
             'user_levels' => $this->user_levelModel->findAll(),
         ];
 
-        return view('admin/kelolaekinerja', $data);
+        return view('admin/kelolakinerja', $data);
     }
 
     public function delete($id = null)
