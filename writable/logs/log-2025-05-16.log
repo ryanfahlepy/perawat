@@ -1,0 +1,88 @@
+CRITICAL - 2025-05-16 10:05:45 --> Undefined variable: 61
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(72): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 72, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#6 {main}
+ERROR - 2025-05-16 10:06:43 --> Illegal parameter data types int and row for operation '='
+CRITICAL - 2025-05-16 10:06:43 --> Illegal parameter data types int and row for operation '='
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Models\Pk3HasilModel.php(61): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(81): App\Models\Pk3HasilModel->getAllHasilByUserAndMentor(61, Array)
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#10 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+ERROR - 2025-05-16 10:06:44 --> Illegal parameter data types int and row for operation '='
+CRITICAL - 2025-05-16 10:06:44 --> Illegal parameter data types int and row for operation '='
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Models\Pk3HasilModel.php(61): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(81): App\Models\Pk3HasilModel->getAllHasilByUserAndMentor(61, Array)
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#10 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+ERROR - 2025-05-16 10:14:13 --> Illegal parameter data types int and row for operation '='
+CRITICAL - 2025-05-16 10:14:13 --> Illegal parameter data types int and row for operation '='
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Models\Pk3HasilModel.php(61): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(81): App\Models\Pk3HasilModel->getAllHasilByUserAndMentor(61, Array)
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#10 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+ERROR - 2025-05-16 10:14:14 --> Illegal parameter data types int and row for operation '='
+CRITICAL - 2025-05-16 10:14:14 --> Illegal parameter data types int and row for operation '='
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Models\Pk3HasilModel.php(61): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(81): App\Models\Pk3HasilModel->getAllHasilByUserAndMentor(61, Array)
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#10 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}
+ERROR - 2025-05-16 10:14:14 --> Illegal parameter data types int and row for operation '='
+CRITICAL - 2025-05-16 10:14:14 --> Illegal parameter data types int and row for operation '='
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp7\htdocs\perawat\app\Models\Pk3HasilModel.php(61): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp7\htdocs\perawat\app\Controllers\Mentoring.php(81): App\Models\Pk3HasilModel->getAllHasilByUserAndMentor(61, Array)
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Mentoring->index()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mentoring))
+#10 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#13 {main}

@@ -57,8 +57,6 @@
 
     
     <div class="wrapper-center">
-    <h2 class="title">PERO_LINE</h2>
-    <h2 class="title">Performance of Nurse Online</h2>
         <div class="login-box">
             <div class="login-logo">
             </div>

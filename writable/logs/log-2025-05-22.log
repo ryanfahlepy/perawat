@@ -1,15 +1,268 @@
-CRITICAL - 2025-05-22 00:54:18 --> Undefined property: App\Controllers\Ekinerja::$userModel
-#0 C:\xampp7\htdocs\perawat\app\Controllers\Ekinerja.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 100, Array)
-#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ekinerja->index()
-#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ekinerja))
+CRITICAL - 2025-05-22 00:54:18 --> Undefined property: App\Controllers\Kinerja::$userModel
+#0 C:\xampp7\htdocs\perawat\app\Controllers\Kinerja.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp7\\htdoc...', 100, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Kinerja->index()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kinerja))
 #3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #4 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
 #5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
 #6 {main}
 CRITICAL - 2025-05-22 00:56:52 --> Call to undefined method CodeIgniter\Session\Session::getGet()
-#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Ekinerja->lihat_kinerja('59')
-#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ekinerja))
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Kinerja->lihat_kinerja('59')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kinerja))
 #2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #3 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
 #4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
 #5 {main}
+CRITICAL - 2025-05-22 01:03:27 --> Trying to get property 'nama' of non-object
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\kinerja.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp7\\htdoc...', 28, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/kinerja', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Kinerja.php(220): view('layout/kinerja', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Kinerja->lihat_kinerja(NULL)
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kinerja))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+ERROR - 2025-05-22 06:58:31 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-05-22 06:58:31 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\BaseController.php(67): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(780): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+ERROR - 2025-05-22 06:58:35 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-05-22 06:58:35 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\BaseController.php(67): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(780): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-22 07:23:34 --> Undefined variable: id_kinerja
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\kinerja_karu.php(339): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp7\\htdoc...', 339, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/kinerja...', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Kinerja.php(221): view('layout/kinerja...', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Kinerja->lihat_kinerja('2')
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kinerja))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-22 08:25:42 --> session_start(): Failed to decode session object. Session has been destroyed
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'session_start()...', 'C:\\xampp7\\htdoc...', 898, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Session\Session.php(898): session_start()
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Session\Session.php(238): CodeIgniter\Session\Session->startSession()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\Services.php(577): CodeIgniter\Session\Session->start()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\BaseService.php(248): CodeIgniter\Config\Services::session(Object(Config\App), false)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\BaseService.php(189): CodeIgniter\Config\BaseService::__callStatic('session', Array)
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\Services.php(563): CodeIgniter\Config\BaseService::getSharedInstance('session', NULL)
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Config\BaseService.php(248): CodeIgniter\Config\Services::session()
+#8 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(904): CodeIgniter\Config\BaseService::__callStatic('session', Array)
+#9 C:\xampp7\htdocs\perawat\app\Filters\LoginFilter.php(13): session()
+#10 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Filters\Filters.php(169): App\Filters\LoginFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#11 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(374): CodeIgniter\Filters\Filters->run('einovasi', 'before')
+#12 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#14 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#15 {main}
+CRITICAL - 2025-05-22 08:26:21 --> Invalid file: layout/inovasi.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/inovasi....')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/inovasi', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Inovasi.php(94): view('layout/inovasi', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Inovasi->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inovasi))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 08:26:24 --> Invalid file: layout/inovasi.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/inovasi....')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/inovasi', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Inovasi.php(94): view('layout/inovasi', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Inovasi->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inovasi))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 08:26:25 --> Invalid file: layout/inovasi.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/inovasi....')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/inovasi', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Inovasi.php(94): view('layout/inovasi', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Inovasi->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inovasi))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+ERROR - 2025-05-22 20:08:00 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2025-05-22 20:08:00 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseConnection.php(570): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\BaseController.php(67): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(780): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(390): CodeIgniter\CodeIgniter->createController()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-22 20:10:50 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:10:52 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:10:57 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:11:22 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:11:23 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:11:28 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:11:57 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:11:58 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:11:58 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:12:25 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 20:12:30 --> Invalid file: admin/kelolakinerja.php
+#0 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/kelolakin...')
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelolakin...', Array, true)
+#2 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Mankinerja.php(55): view('admin/kelolakin...', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Mankinerja->index()
+#4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Mankinerja))
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#8 {main}
+CRITICAL - 2025-05-22 23:33:30 --> Undefined offset: 0
+#0 C:\xampp7\htdocs\perawat\app\Views\user\reset_passwrd.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xampp7\\htdoc...', 10, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('user/reset_pass...', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Manuser.php(229): view('user/reset_pass...', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->freset_password()
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}
+CRITICAL - 2025-05-22 23:34:05 --> Undefined offset: 0
+#0 C:\xampp7\htdocs\perawat\app\Views\user\reset_passwrd.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xampp7\\htdoc...', 10, Array)
+#1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
+#2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('user/reset_pass...', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\Admin\Manuser.php(229): view('user/reset_pass...', Array)
+#5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\Admin\Manuser->freset_password()
+#6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manuser))
+#7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp7\htdocs\perawat\public\index.php(40): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
+#10 {main}

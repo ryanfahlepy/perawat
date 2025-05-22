@@ -226,6 +226,8 @@ class Kinerja extends BaseController
         $kinerja_id = $this->request->getGet('kinerja_id');
         $tahun = $this->request->getGet('tahun');
         $bulan = $this->request->getGet('bulan');
+        $user_id = $this->request->getGet('user_id');
+
 
         // Ambil target dari tabel_kinerja
         $kinerjaModel = new \App\Models\KinerjaModel();
@@ -237,6 +239,7 @@ class Kinerja extends BaseController
             ->where('kinerja_id', $kinerja_id)
             ->where('tahun', $tahun)
             ->where('bulan', $bulan ?: null)
+            ->where('user_id', $user_id)
             ->first();
 
         $response = [

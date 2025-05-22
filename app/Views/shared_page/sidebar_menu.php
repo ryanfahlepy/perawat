@@ -25,18 +25,34 @@ $session = \Config\Services::session();
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Menu <?= $session->nama_level ?></li>
                 <!-- <li class="nav-item has-treeview menu-open"> -->
-                <?php foreach ($dtmenu as $dtm) : ?>
-                    <?php foreach ($dtm as $menu) : ?>
-                        <li class="nav-item <?php echo ($nama_menu == $menu->nama) ? 'menu-active' : '' ?>">
-                            <a href="<?= $menu->url; ?>" class="nav-link <?php echo ($nama_menu == $menu->nama) ? 'active' : '' ?>">
-                                <i class="nav-icon <?= $menu->icon; ?>"></i>
-                                <p>
-                                    <?= $menu->nama; ?>
-                                </p>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
+                <?php
+                // Gabungkan semua submenu ke satu array
+                $allMenu = [];
+                foreach ($dtmenu as $dtm) {
+                    foreach ($dtm as $menu) {
+                        $allMenu[] = $menu;
+                    }
+                }
+
+                // Urutkan berdasarkan nama
+                usort($allMenu, function ($a, $b) {
+                    return strcmp($b->nama, $a->nama); // Dibalik dari $a, $b jadi $b, $a
+                });
+
+                ?>
+
+                <?php foreach ($allMenu as $menu): ?>
+                    <li class="nav-item <?php echo ($nama_menu == $menu->nama) ? 'menu-active' : '' ?>">
+                        <a href="<?= $menu->url; ?>"
+                            class="nav-link <?php echo ($nama_menu == $menu->nama) ? 'active' : '' ?>">
+                            <i class="nav-icon <?= $menu->icon; ?>"></i>
+                            <p>
+                                <?= $menu->nama; ?>
+                            </p>
+                        </a>
+                    </li>
                 <?php endforeach; ?>
+
                 <li class="nav-item">
                     <a href="/login/logout" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>

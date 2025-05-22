@@ -57,7 +57,7 @@
                     <th>Target</th>
                     <th>Deskripsi Target</th>
                     <th>Hasil Aktual</th>
-                    <th>Aksi</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -115,12 +115,7 @@
                                     </div>
                                 <?php endif; ?>
                             </td>
-                            <td class="text-center">
-                                <a href="<?= base_url('admin/mankinerja/lihat_hasil/' . $item['id']) ?>"
-                                    class="btn btn-sm btn-info" title="Lihat Hasil">
-                                    <i class="fas fa-eye text-white"></i>
-                                </a>
-                            </td>
+
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -414,7 +409,7 @@
         console.log(userId);
 
         // Ambil data KPI terlebih dahulu
-        fetch(`<?= base_url('kinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`)
+        fetch(`<?= base_url('kinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}&user_id=${userId}`)
             .then(res => res.json())
             .then(data => {
                 const targetValue = parseFloat(data.target) || 0;

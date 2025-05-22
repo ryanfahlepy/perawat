@@ -27,11 +27,11 @@ Stack trace:
 #1 {main}
 =======
 CRITICAL - 2025-05-13 22:09:21 --> Undefined index: created_at
-#0 C:\xampp7\htdocs\perawat\app\Views\layout\einovasi.php(114): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 114, Array)
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\inovasi.php(114): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 114, Array)
 #1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
 #2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
-#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/einovasi', Array, true)
-#4 C:\xampp7\htdocs\perawat\app\Controllers\EInovasi.php(78): view('layout/einovasi', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/inovasi', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\EInovasi.php(78): view('layout/inovasi', Array)
 #5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\EInovasi->index()
 #6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EInovasi))
 #7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)

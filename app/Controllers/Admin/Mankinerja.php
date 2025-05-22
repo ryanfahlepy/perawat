@@ -172,19 +172,6 @@ class Mankinerja extends BaseController
     }
 
 
-    public function lihat_hasil()
-    {
-
-
-        $data = [
-            'level_akses' => $this->session->get('level'),
-            'dtmenu' => $this->tampil_menu($this->session->get('level')),
-            'nama_menu' => 'Lihat Hasil',
-            'user_levels' => $this->user_levelModel->findAll(),
-        ];
-
-        return view('admin/kelolakinerja', $data);
-    }
 
     public function delete($id = null)
     {

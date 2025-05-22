@@ -169,11 +169,11 @@ CRITICAL - 2025-05-09 11:33:43 --> Cannot use object of type App\Entities\Output
 #4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
 #5 {main}
 CRITICAL - 2025-05-09 11:35:13 --> Undefined index: pengusul
-#0 C:\xampp7\htdocs\perawat\app\Views\layout\einovasi.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 39, Array)
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\inovasi.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 39, Array)
 #1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
 #2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
-#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/einovasi', Array, true)
-#4 C:\xampp7\htdocs\perawat\app\Controllers\EInovasi.php(74): view('layout/einovasi', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/inovasi', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\EInovasi.php(74): view('layout/inovasi', Array)
 #5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\EInovasi->index()
 #6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EInovasi))
 #7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
@@ -188,11 +188,11 @@ CRITICAL - 2025-05-09 11:36:57 --> Cannot use object of type App\Entities\Output
 #4 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp7\\htdoc...')
 #5 {main}
 CRITICAL - 2025-05-09 11:38:23 --> Undefined index: grade
-#0 C:\xampp7\htdocs\perawat\app\Views\layout\einovasi.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 41, Array)
+#0 C:\xampp7\htdocs\perawat\app\Views\layout\inovasi.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp7\\htdoc...', 41, Array)
 #1 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(214): include('C:\\xampp7\\htdoc...')
 #2 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
-#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/einovasi', Array, true)
-#4 C:\xampp7\htdocs\perawat\app\Controllers\EInovasi.php(75): view('layout/einovasi', Array)
+#3 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\Common.php(1092): CodeIgniter\View\View->render('layout/inovasi', Array, true)
+#4 C:\xampp7\htdocs\perawat\app\Controllers\EInovasi.php(75): view('layout/inovasi', Array)
 #5 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(802): App\Controllers\EInovasi->index()
 #6 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EInovasi))
 #7 C:\xampp7\htdocs\perawat\vendor\codeigniter4\framework\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
