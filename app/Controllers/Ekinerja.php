@@ -372,4 +372,35 @@ class Ekinerja extends BaseController
 
 
     }
+    public function update_status()
+    {
+        if ($this->request->isAJAX()) {
+            $data = $this->request->getJSON();
+
+            $hasil_id = $data->hasil_id ?? null;
+            $status = $data->status ?? null;
+
+            if (!$hasil_id || !$status) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Data tidak lengkap']);
+            }
+
+          
+
+            // Update tabel_hasil_kinerja (berdasarkan hasil_id)
+            $successKpi = $this->hasilKinerjaModel->update_status_by_hasil_id($hasil_id, $status);
+
+            // Update tabel_pica_kinerja (berdasarkan hasil_id)
+            $successPica = $this->picaModel->update_status_pica($hasil_id, $status);
+
+            if ($successKpi && $successPica) {
+                return $this->response->setJSON(['success' => true]);
+            } else {
+                return $this->response->setJSON(['success' => false, 'message' => 'Update gagal']);
+            }
+        }
+
+        return $this->response->setStatusCode(403, 'Forbidden');
+    }
+
+
 }

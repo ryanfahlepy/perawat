@@ -2,7 +2,6 @@
 <?php $this->extend('shared_page/template'); ?>
 <?php $this->section('content'); ?>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     <?php if (session()->getFlashdata('message')): ?>
         Swal.fire({
@@ -256,7 +255,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="modal-footer bg-light border-top">
                     <?php if ($level_akses != 2): ?>
                         <button type="button" class="btn btn-outline-success" onclick="submitCombinedForm()">
@@ -264,319 +262,393 @@
                         </button>
                     <?php endif; ?>
 
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="fas fa-times me-1"></i> Tutup
-                    </button>
+                    <?php if ($level_akses == 2): ?>
+                        <button type="button" class="btn btn-success" onclick="setujuiData()">
+                            <i class="fas fa-check me-1"></i> Setujui
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="tolakData()">
+                            <i class="fas fa-times me-1"></i> Tolak
+                        </button>
+                    <?php endif; ?>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
 
-            <!-- CSS -->
-            <style>
-                .modal-title {
-                    font-size: 1.25rem;
-                    font-weight: 600;
-                }
+<!-- CSS -->
+<style>
+    .modal-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
 
-                .form-label {
-                    font-weight: 500;
-                    font-size: 14px;
-                    color: #333;
-                }
+    .form-label {
+        font-weight: 500;
+        font-size: 14px;
+        color: #333;
+    }
 
-                .form-control {
-                    font-size: 14px;
-                    border-radius: 6px;
-                }
+    .form-control {
+        font-size: 14px;
+        border-radius: 6px;
+    }
 
-                .badge {
-                    font-size: 0.75rem;
-                    padding: 0.35em 0.6em;
-                }
+    .badge {
+        font-size: 0.75rem;
+        padding: 0.35em 0.6em;
+    }
 
-                .text-bg-secondary {
-                    background-color: #dee2e6 !important;
-                    color: #495057 !important;
-                }
+    .text-bg-secondary {
+        background-color: #dee2e6 !important;
+        color: #495057 !important;
+    }
 
-                .btn-outline-success {
-                    font-weight: 500;
-                    font-size: 14px;
-                }
+    .btn-outline-success {
+        font-weight: 500;
+        font-size: 14px;
+    }
 
-                textarea.form-control {
-                    resize: none;
-                    font-size: 14px;
-                }
-            </style>
-            <!-- JavaScript -->
-            <script>
-                function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = '', point = '', catatan = '', status = '') {
-                    const modal = new bootstrap.Modal(document.getElementById('modalForm'));
-                    modal.show();
+    textarea.form-control {
+        resize: none;
+        font-size: 14px;
+    }
+</style>
+<!-- Bootstrap Bundle dengan Popper -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-                    const tahun = document.getElementById('inputTahun').value;
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-                    document.getElementById('statusBadge').textContent = status || 'Belum Dinilai';
 
-                    document.getElementById('inputKinerjaId').value = kinerjaId;
-                    document.getElementById('inputBulan').value = bulan;
-                    document.getElementById('inputHasil').value = '';
-                    document.getElementById('inputTarget').value = '';
-                    document.getElementById('inputNilai').value = '';
-                    document.getElementById('inputPoint').value = '';
-                    document.getElementById('inputCatatan').value = '';
 
-                    const inputHasil = document.getElementById('inputHasil');
-                    const inputTarget = document.getElementById('inputTarget');
-                    const inputNilai = document.getElementById('inputNilai');
-                    const inputPoint = document.getElementById('inputPoint');
-                    const hasilIdField = document.getElementById('hasil_id');
+<!-- Bootstrap Bundle JS (harus setelah jQuery jika kamu pakai jQuery) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-                    const userId = document.getElementById('user_id').value;
-                    console.log(userId);
+<!-- JavaScript -->
+<script>
+    function setujuiData() {
+        let hasil_id = document.getElementById('hasil_id').value;
+        updateStatus(hasil_id, 'disetujui');
+    }
 
-                    // Ambil data KPI terlebih dahulu
-                    fetch(`<?= base_url('ekinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            const targetValue = parseFloat(data.target) || 0;
-                            inputTarget.value = targetValue;
+    function tolakData() {
+        let hasil_id = document.getElementById('hasil_id').value;
+        updateStatus(hasil_id, 'ditolak');
+    }
 
-                            if (data.hasil !== null) inputHasil.value = data.hasil;
-                            if (data.catatan !== null) document.getElementById('inputCatatan').value = data.catatan;
-
-                            // Simpan hasil_id dari server
-                            const hasilId = data.id || '';
-                            hasilIdField.value = hasilId;
-
-                            // Perhitungan otomatis
-                            inputHasil.addEventListener('input', () => {
-                                const hasil = parseFloat(inputHasil.value);
-                                let nilai = 0, point = 0;
-
-                                if (!isNaN(hasil) && !isNaN(targetValue)) {
-                                    nilai = (targetValue === 0)
-                                        ? (hasil === 0 ? 100 : 0)
-                                        : (hasil / targetValue) * 100;
-                                    point = nilai * 0.1;
-
-                                    inputNilai.value = nilai.toFixed(2);
-                                    inputPoint.value = point.toFixed(2);
-                                    handlePicaActivation(nilai);
-                                } else {
-                                    inputNilai.value = '';
-                                    inputPoint.value = '';
-                                    handlePicaActivation(null);
-                                }
-                            });
-
-                            inputHasil.dispatchEvent(new Event('input'));
-
-                            // Hanya fetch PICA jika hasil_id tersedia
-                            if (hasilId) {
-                                console.log('DEBUG get_pica_by_kinerja =>', {
-                                    kinerja_id: kinerjaId,
-                                    user_id: userId,
-                                    hasil_id: hasilId
-                                });
-
-                                fetch(`<?= base_url('ekinerja/get_pica_by_kinerja') ?>?kinerja_id=${kinerjaId}&user_id=${userId}&hasil_id=${hasilId}`)
-                                    .then(res => res.json())
-                                    .then(pica => {
-                                        document.getElementById('problem_identification').value = pica.problem_identification || '';
-                                        document.getElementById('corrective_action').value = pica.corrective_action || '';
-                                        document.getElementById('due_date').value = pica.due_date || '';
-                                    })
-                                    .catch(err => console.error('Gagal mengambil data PICA:', err));
-                            } else {
-                                console.warn('hasil_id tidak ditemukan, data PICA tidak diambil.');
-                            }
-                        })
-                        .catch(err => {
-                            console.error('Gagal mengambil data KPI:', err);
-                            alert('Gagal mengambil data KPI.');
-                        });
-                }
-
-                // Fungsi untuk aktif/nonaktifkan form PICA berdasarkan nilai
-                function handlePicaActivation(nilai) {
-                    const picaTab = document.getElementById('pica-tab');
-                    const picaForm = document.getElementById('formPica');
-
-                    const disable = nilai === null || nilai >= 100;
-
-                    picaTab.classList.toggle('disabled', disable);
-                    picaTab.disabled = disable;
-
-                    picaForm.querySelectorAll('input, textarea, button').forEach(el => {
-                        el.disabled = disable;
+    function updateStatus(hasil_id, status) {
+        fetch('<?= base_url('ekinerja/update_status') ?>', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: JSON.stringify({ hasil_id: hasil_id, status: status })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses!',
+                        text: 'Status berhasil diperbarui',
+                        timer: 4000,
+                        showConfirmButton: false
+                    });
+                    // Contoh: tutup modal, reload page, atau update UI
+                    $('#modalForm').modal('hide'); // jQuery example kalau modal bootstrap
+                    location.reload();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal!',
+                        text: data.message || 'Gagal update status',
                     });
                 }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'Terjadi kesalahan pada server',
+                });
+            });
+    }
 
-                // Fungsi submit form gabungan KPI + PICA
-                function submitCombinedForm() {
-                    const hasil = parseFloat(document.getElementById('inputHasil').value);
-                    const kpiForm = document.getElementById('formAktual');
-                    const picaForm = document.getElementById('formPica');
 
-                    if (isNaN(hasil)) {
-                        alert('Nilai KPI tidak valid!');
-                        return;
-                    }
+</script>
 
-                    if (hasil < 100) {
-                        const formData = new FormData(kpiForm);
+<script>
 
-                        // Tambahkan data PICA
-                        formData.append('problem_identification', document.getElementById('problem_identification').value);
-                        formData.append('corrective_action', document.getElementById('corrective_action').value);
-                        formData.append('due_date', document.getElementById('due_date').value);
-                        formData.append('pic', document.getElementById('pic').value);
+    function openModal(kinerjaId, bulan = '', nilai = '', target = '', nilaiKpi = '', point = '', catatan = '', status = '') {
+        const modal = new bootstrap.Modal(document.getElementById('modalForm'));
+        modal.show();
 
-                        // Submit ke endpoint gabungan
-                        fetch("<?= base_url('ekinerja/update_hasil') ?>", {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest'  // <--- Tambahkan ini
-                            }
-                        })
-                            .then(res => res.text())
-                            .then(text => {
-                                try {
-                                    const data = JSON.parse(text);
-                                    if (data.status === 'ok') {
-                                        Swal.fire({
-                                            icon: 'success',
-                                            title: 'Berhasil',
-                                            text: data.message,
-                                            timer: 2000,
-                                            showConfirmButton: false
-                                        }).then(() => {
-                                            location.reload();
-                                        });
-                                    } else {
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Gagal',
-                                            text: data.message || 'Terjadi kesalahan saat menyimpan data',
-                                        });
-                                    }
+        const tahun = document.getElementById('inputTahun').value;
 
-                                } catch (e) {
-                                    console.error('Respon bukan JSON:\n', text);
-                                    alert('Terjadi kesalahan: Respon server tidak valid');
-                                }
-                            })
-                            .catch(err => {
-                                console.error('Fetch gagal:', err);
-                                alert('Terjadi kesalahan saat mengirim data');
-                            });
+        document.getElementById('statusBadge').textContent = status || 'Belum Dinilai';
 
+        document.getElementById('inputKinerjaId').value = kinerjaId;
+        document.getElementById('inputBulan').value = bulan;
+        document.getElementById('inputHasil').value = '';
+        document.getElementById('inputTarget').value = '';
+        document.getElementById('inputNilai').value = '';
+        document.getElementById('inputPoint').value = '';
+        document.getElementById('inputCatatan').value = '';
+
+        const inputHasil = document.getElementById('inputHasil');
+        const inputTarget = document.getElementById('inputTarget');
+        const inputNilai = document.getElementById('inputNilai');
+        const inputPoint = document.getElementById('inputPoint');
+        const hasilIdField = document.getElementById('hasil_id');
+
+        const userId = document.getElementById('user_id').value;
+        console.log(userId);
+
+        // Ambil data KPI terlebih dahulu
+        fetch(`<?= base_url('ekinerja/get_hasil') ?>?kinerja_id=${kinerjaId}&tahun=${tahun}&bulan=${bulan}`)
+            .then(res => res.json())
+            .then(data => {
+                const targetValue = parseFloat(data.target) || 0;
+                inputTarget.value = targetValue;
+
+                if (data.hasil !== null) inputHasil.value = data.hasil;
+                if (data.catatan !== null) document.getElementById('inputCatatan').value = data.catatan;
+
+                // Simpan hasil_id dari server
+                const hasilId = data.id || '';
+                hasilIdField.value = hasilId;
+
+                // Perhitungan otomatis
+                inputHasil.addEventListener('input', () => {
+                    const hasil = parseFloat(inputHasil.value);
+                    let nilai = 0, point = 0;
+
+                    if (!isNaN(hasil) && !isNaN(targetValue)) {
+                        nilai = (targetValue === 0)
+                            ? (hasil === 0 ? 100 : 0)
+                            : (hasil / targetValue) * 100;
+                        point = nilai * 0.1;
+
+                        inputNilai.value = nilai.toFixed(2);
+                        inputPoint.value = point.toFixed(2);
+                        handlePicaActivation(nilai);
                     } else {
-                        // Jika hasil >= 100 hanya kirim KPI
-                        kpiForm.submit();
+                        inputNilai.value = '';
+                        inputPoint.value = '';
+                        handlePicaActivation(null);
                     }
+                });
+
+                inputHasil.dispatchEvent(new Event('input'));
+
+                // Hanya fetch PICA jika hasil_id tersedia
+                if (hasilId) {
+                    console.log('DEBUG get_pica_by_kinerja =>', {
+                        kinerja_id: kinerjaId,
+                        user_id: userId,
+                        hasil_id: hasilId
+                    });
+
+                    fetch(`<?= base_url('ekinerja/get_pica_by_kinerja') ?>?kinerja_id=${kinerjaId}&user_id=${userId}&hasil_id=${hasilId}`)
+                        .then(res => res.json())
+                        .then(pica => {
+                            document.getElementById('problem_identification').value = pica.problem_identification || '';
+                            document.getElementById('corrective_action').value = pica.corrective_action || '';
+                            document.getElementById('due_date').value = pica.due_date || '';
+                        })
+                        .catch(err => console.error('Gagal mengambil data PICA:', err));
+                } else {
+                    console.warn('hasil_id tidak ditemukan, data PICA tidak diambil.');
                 }
-            </script>
+            })
+            .catch(err => {
+                console.error('Gagal mengambil data KPI:', err);
+                alert('Gagal mengambil data KPI.');
+            });
+    }
 
+    // Fungsi untuk aktif/nonaktifkan form PICA berdasarkan nilai
+    function handlePicaActivation(nilai) {
+        const picaTab = document.getElementById('pica-tab');
+        const picaForm = document.getElementById('formPica');
 
+        const disable = nilai === null || nilai >= 100;
 
+        picaTab.classList.toggle('disabled', disable);
+        picaTab.disabled = disable;
 
-            <style>
-                .filter-bar {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    margin-bottom: 20px;
-                    font-family: 'Segoe UI', sans-serif;
+        picaForm.querySelectorAll('input, textarea, button').forEach(el => {
+            el.disabled = disable;
+        });
+    }
+
+    // Fungsi submit form gabungan KPI + PICA
+    function submitCombinedForm() {
+        const hasil = parseFloat(document.getElementById('inputHasil').value);
+        const kpiForm = document.getElementById('formAktual');
+        const picaForm = document.getElementById('formPica');
+
+        if (isNaN(hasil)) {
+            alert('Nilai KPI tidak valid!');
+            return;
+        }
+
+        if (hasil < 100) {
+            const formData = new FormData(kpiForm);
+
+            // Tambahkan data PICA
+            formData.append('problem_identification', document.getElementById('problem_identification').value);
+            formData.append('corrective_action', document.getElementById('corrective_action').value);
+            formData.append('due_date', document.getElementById('due_date').value);
+            formData.append('pic', document.getElementById('pic').value);
+
+            // Submit ke endpoint gabungan
+            fetch("<?= base_url('ekinerja/update_hasil') ?>", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'  // <--- Tambahkan ini
                 }
+            })
+                .then(res => res.text())
+                .then(text => {
+                    try {
+                        const data = JSON.parse(text);
+                        if (data.status === 'ok') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: data.message,
+                                timer: 2000,
+                                showConfirmButton: false
+                            }).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: data.message || 'Terjadi kesalahan saat menyimpan data',
+                            });
+                        }
 
-                .filter-bar select {
-                    padding: 6px 12px;
-                    border-radius: 6px;
-                    border: 1px solid #ccc;
-                    min-width: 160px;
-                    font-size: 14px;
-                }
+                    } catch (e) {
+                        console.error('Respon bukan JSON:\n', text);
+                        alert('Terjadi kesalahan: Respon server tidak valid');
+                    }
+                })
+                .catch(err => {
+                    console.error('Fetch gagal:', err);
+                    alert('Terjadi kesalahan saat mengirim data');
+                });
 
-                .kinerja-table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    font-family: 'Segoe UI', Tahoma, sans-serif;
-                    font-size: 14px;
-                    background-color: #fff;
-                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
-                }
-
-                .kinerja-table thead {
-                    background-color: #f1f5f9;
-                    text-align: center;
-                    color: #333;
-                }
-
-                .kinerja-table th,
-                .kinerja-table td {
-                    padding: 10px 12px;
-                    border: 1px solid #dee2e6;
-                    vertical-align: top;
-                }
-
-                .kinerja-table tbody tr:nth-child(even) {
-                    background-color: #f9f9f9;
-                }
-
-                .kinerja-table tbody tr:hover {
-                    background-color: #eef5ff;
-                }
-
-                .aktual-bulanan-grid {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 6px;
-                }
-
-                .aktual-badge {
-                    background-color: #e8f0fe;
-                    border-radius: 6px;
-                    padding: 4px 6px;
-                    text-align: center;
-                    min-width: 48px;
-                    font-size: 12px;
-                    font-weight: 500;
-                    color: #1a73e8;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    cursor: pointer;
-                    /* Tambahkan baris ini */
-                }
+        } else {
+            // Jika hasil >= 100 hanya kirim KPI
+            kpiForm.submit();
+        }
+    }
+</script>
 
 
-                .aktual-badge .bulan {
-                    font-size: 11px;
-                    color: #555;
-                }
 
-                .aktual-badge .nilai {
-                    font-weight: bold;
-                }
 
-                .aktual-single {
-                    background-color: #d1e7dd;
-                    padding: 6px 10px;
-                    border-radius: 5px;
-                    font-weight: bold;
-                    text-align: center;
-                    color: #0f5132;
-                    display: inline-block;
-                }
+<style>
+    .filter-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        font-family: 'Segoe UI', sans-serif;
+    }
 
-                .nav-link.disabled {
-                    pointer-events: none;
-                    opacity: 0.5;
-                }
-            </style>
+    .filter-bar select {
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        min-width: 160px;
+        font-size: 14px;
+    }
 
-            <?php $this->endSection(); ?>
+    .kinerja-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        font-size: 14px;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .kinerja-table thead {
+        background-color: #f1f5f9;
+        text-align: center;
+        color: #333;
+    }
+
+    .kinerja-table th,
+    .kinerja-table td {
+        padding: 10px 12px;
+        border: 1px solid #dee2e6;
+        vertical-align: top;
+    }
+
+    .kinerja-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .kinerja-table tbody tr:hover {
+        background-color: #eef5ff;
+    }
+
+    .aktual-bulanan-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .aktual-badge {
+        background-color: #e8f0fe;
+        border-radius: 6px;
+        padding: 4px 6px;
+        text-align: center;
+        min-width: 48px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #1a73e8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        /* Tambahkan baris ini */
+    }
+
+
+    .aktual-badge .bulan {
+        font-size: 11px;
+        color: #555;
+    }
+
+    .aktual-badge .nilai {
+        font-weight: bold;
+    }
+
+    .aktual-single {
+        background-color: #d1e7dd;
+        padding: 6px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        color: #0f5132;
+        display: inline-block;
+    }
+
+    .nav-link.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+</style>
+
+<?php $this->endSection(); ?>
